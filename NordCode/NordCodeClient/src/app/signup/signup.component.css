@@ -1,0 +1,34 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  .example-half-width {
+    width: 50%;
+  }
+
+  .material-cust-large-button {
+    width: 100%;
+    height: 50px;
+    background: #11d3c1;
+    /* margin-top: 25px; */
+}
+.material-cust-medium-button {
+    width: 150px;
+    height: 70px;
+    padding-top: 13px;
+}
+
+h2{
+  font-size: 10rem;
+  color: #11d3c1;
+  margin: 100px !important; 
+}
+.mat-card{ 
+  min-height: 700px;
+ 
+}

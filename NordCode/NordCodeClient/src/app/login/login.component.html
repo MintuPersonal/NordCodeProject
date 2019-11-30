@@ -1,0 +1,46 @@
+<div class="container ">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+
+        <div style="padding: 13px;" class="container">
+            <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }} </div>
+            <mat-card style="margin-top:10px;" *ngIf="!submitted">
+                <h2 class="text-center" style="text-align: center;"><i class="fa fa-check "></i></h2>
+
+                <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+                 
+                    <mat-form-field class="example-full-width">
+                        <input matInput #username="ngModel" name="username" ngModel type="email" required minlength="6"
+                            placeholder="USERNAME" [(ngModel)]="userModel.UserName"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                        <mat-error *ngIf="username.invalid"> Please erter an valid email. </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-half-width">
+                        <input matInput #password="ngModel" name="password" ngModel type="password" required
+                            minlength="6" [(ngModel)]="userModel.PassWord" placeholder="PASSWORD">
+                         
+                        <mat-error *ngIf="password.invalid"> Please erter six char. </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-half-width text-right">
+                        <input matInput #forgotpassword="ngModel" name="forgotpassword" ngModel type="text"
+                            placeholder="Forgot Password">
+                        <mat-error *ngIf="forgotpassword.invalid"> Please enter six char. </mat-error>
+                    </mat-form-field>
+                    <hr>
+                    <div class="example-button-row">
+                        <button mat-raised-button [disabled]="userForm.form.invalid" color="primary"
+                            class="material-cust-large-button"> Sign In </button>
+                    </div>
+                    <hr>
+                    <div class="example-row">
+                        <a routerLink="/signup" class="btn btn-link col-md-12 text-center"> DON'T HAVE AN ACCOUNT? <b>
+                                &nbsp; Sign Up </b> </a>
+                    </div>
+
+                </form>
+            </mat-card>
+
+        </div>
+    </div>
+</div>

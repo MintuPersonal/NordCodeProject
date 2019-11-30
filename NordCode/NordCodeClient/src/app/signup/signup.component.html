@@ -1,0 +1,69 @@
+<div class="container ">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+
+        <div style="padding: 13px;" class="container">
+            <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }} </div>
+            <mat-card style="margin-top:10px;" *ngIf="!submitted">
+
+                <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+
+                    <mat-icon fxFlex="5%" (click)="onClear()">clear</mat-icon>
+                    <span fxFlex="90%" class="text-center"> Sign Up </span>
+                </mat-card-title>
+                <hr>
+
+                <p class="text-center" style="height: 100px;">
+                    <span>
+                        <input #file type="file" accept='image/*' (change)="preview(file.files)"
+                            style="position: absolute; width: 30px; height: 28px; border-radius: 50%;  margin-left: 70px;" />
+                        <img [src]="imgURL" height="200" width="90px" *ngIf="imgURL" alt="avatar"
+                            class="rounded-circle img-fluid">
+                        <img src="../assets/img/member/Mahatab.jpg" *ngIf="!imgURL" height="90px" width="90px"
+                            class="rounded-circle" alt="...">
+                    </span>
+                </p>
+                <hr>
+
+                <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+
+                    <mat-form-field class="example-full-width">
+                        <input matInput #fullname="ngModel" name="fullname" ngModel type="text" placeholder="FULL NAME"
+                            [(ngModel)]="userModel.FullName" minlength="3">
+                        <mat-error *ngIf="fullname.invalid"> Please erter min three character. </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <input matInput #username="ngModel" name="username" ngModel type="email" required minlength="6"
+                            placeholder="EMAIL" [(ngModel)]="userModel.UserName"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                        <mat-error *ngIf="username.invalid"> Please erter an valid email. </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <input matInput #password="ngModel" name="password" ngModel type="password" required
+                            minlength="6" [(ngModel)]="userModel.PassWord" placeholder="PASSWORD">
+
+                        <mat-error *ngIf="password.invalid"> Please erter six character. </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <input matInput [matDatepicker]="picker" placeholder="BIRTHDAY">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <hr>
+                    <div class="example-button-row">
+                        <button mat-raised-button [disabled]="userForm.form.invalid" color="primary"
+                            class="material-cust-large-button"> Create </button>
+                    </div>
+                    <hr>
+                    <div class="example-row">
+                        <a routerLink="/signup" class="btn btn-link col-md-12 text-center"> ALREADY HAVE AN ACCOUNT? <b>
+                                &nbsp; Sign In </b> </a>
+                    </div>
+
+                </form>
+            </mat-card>
+
+        </div>
+    </div>
+</div>
