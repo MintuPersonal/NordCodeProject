@@ -1,0 +1,28 @@
+CREATE TABLE IF NOT EXISTS users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    user VARCHAR(255) NOT NULL,
+    pass VARCHAR(255) NOT NULL,
+    isDelete TINYINT  NULL,
+    isActive TINYINT  NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)  ENGINE=INNODB;
+
+
+CREATE TABLE IF NOT EXISTS tasks (
+    task_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,   
+    date DATE,
+    time_from json DEFAULT NULL,
+    time_to json DEFAULT NULL,
+    location VARCHAR(255) NOT NULL,
+    notify TINYINT  NULL,
+    email VARCHAR(255) NOT NULL,
+    priority TINYINT NULL,
+    isDelete TINYINT  NULL,
+    isDone TINYINT  NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)  ENGINE=INNODB;
+
+
+INSERT INTO tasks (title, description, date, time_from, time_to, location, notify, email, priority, isDelete, isDone)VALUES ('new Product M','new Productnew Productnew Productnew Product','2019-11-30T07:02:04.341Z','["JavaScript", "ES2015", "JSON"]','["JavaScript", "ES2015", "JSON"]','sssssww','30','mdmahafuzhuq@ymail.com','50','false','false')
