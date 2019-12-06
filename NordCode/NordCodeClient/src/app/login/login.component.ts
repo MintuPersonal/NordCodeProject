@@ -21,13 +21,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent {
   constructor(private _loginservice: LoginService) { }
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
+  emailFormControl = new FormControl(
+    '', [ Validators.required, Validators.email, ]
+    );
 
   matcher = new MyErrorStateMatcher();
-  userModel = new User('', '');
+  userModel = new User('', '', '', '', '', new Date, '');
   submitted = false;
   errorMsg = '';
   id = 0;
@@ -37,7 +36,7 @@ export class LoginComponent {
     this._loginservice.createUser(this.userModel).subscribe(data => this.id = data.id, error => this.errorMsg = error.statusText)
 
     console.log(this.id)
-    this.userModel = { UserName: '', PassWord: '' }
+    this.userModel = new User('', '', '', '', '', new Date, '');
   }
 }
 

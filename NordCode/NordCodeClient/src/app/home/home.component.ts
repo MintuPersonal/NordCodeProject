@@ -15,13 +15,14 @@ export class HomeComponent implements OnInit {
   constructor(private _addnewService: AddnewService) { }
 
   pictures = [
-  { 'date': new Date, 'title': 'Mr Rahman', 'time': '10-12 pm', 'location': 'Bangladesh', 'IsDone': true, 'IsDelete': true},
-  { 'date': new Date('29 nov 2019'), 'title': 'Mr Rahman', 'time': '10-12 pm', 'location': 'Bangladesh', 'IsDone': false, 'IsDelete': false}
-]
+    { 'date': new Date, 'title': 'Mr Rahman', 'time': '10-12 pm', 'location': 'Bangladesh', 'IsDone': true, 'IsDelete': true },
+    { 'date': new Date('29 nov 2019'), 'title': 'Mr Rahman', 'time': '10-12 pm', 'location': 'Bangladesh', 'IsDone': false, 'IsDelete': false }
+  ]
 
   selected = 'option2';
   private exportTime = { hour: 7, minute: 15, meriden: 'PM', format: 24 };
   taskModel = new Task('', '', new Date(''), this.exportTime, this.exportTime, '', 50, '', '', false, false);
+  tasksModel: Task[];
   title = 'demo';
 
   onChangeHour(event) {
@@ -41,6 +42,8 @@ export class HomeComponent implements OnInit {
     return value;
   }
   ngOnInit() {
+    // this.ps.getProducts().subscribe((data: Product[]) => {this.products = data; });
+    this._addnewService.getTask(this.taskModel).subscribe((data: Task[]) => { this.tasksModel = data; });   
   }
 
   onSubmit(event) {
@@ -50,8 +53,8 @@ export class HomeComponent implements OnInit {
 
   onClear() {
     console.log('all clear')
-    
-    this.taskModel = { Title:'', Description:'', Date: new Date("dd M yy"), From: '', To: '', Location:'', Notify:'', Email:'', Priority: 0, IsDelete: false, IsDone: false }
- 
+
+    this.taskModel = { Title: '', Description: '', Date: new Date("dd M yy"), From: '', To: '', Location: '', Notify: '', Email: '', Priority: 0, IsDelete: false, IsDone: false }
+
   }
 }

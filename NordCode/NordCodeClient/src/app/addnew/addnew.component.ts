@@ -34,7 +34,8 @@ export class AddnewComponent implements OnInit {
 
     return value;
   }
-  ngOnInit() {
+  ngOnInit() {  
+
   }
 
   onSubmit(event) {

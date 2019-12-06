@@ -23,11 +23,18 @@ con.connect(function (err) {
 
 });
 
+app.listen(PORT, function () {
+    console.log('Server running on localhost port :' + PORT);
+})
+
+
+
+
 app.get('/api/getuser', function (req, res) {
     var sql = "SELECT * FROM users WHERE 1";
     con.query(sql, function (err, result) {
         if (err) throw err;
-        res.status(200).send({ 'id': 1, 'user': 'gmsanzid@gmail.com', 'pass': '1qaz@WSX' });
+        res.status(200).send(result);
     });
 });
 
@@ -41,23 +48,54 @@ app.post('/api/createuser', function (req, res) {
 
 })
 
-app.listen(PORT, function () {
-    console.log('Server running on localhost port :' + PORT);
+
+
+app.get('/api/gettask', function(req, res){
+
+    var sql = "SELECT * FROM tasks Where 1";
+    con.query(sql, function(err, result){
+        if(err) throw err;
+        res.status(200).send(result);
+    })
 })
 
 app.post('/api/createtask', function (req, res) {
-    
+
     exportTimeFrom = JSON.stringify(req.body.From);
     exportTimeTo = JSON.stringify(req.body.To);
-    
+
 
     var sql = "INSERT INTO tasks (title, description, date, time_from, time_to, location, notify, email, priority, isDelete, isDone, users_user_id)" +
-        "VALUES ('" + req.body.Title + "','" + req.body.Description 
+        "VALUES ('" + req.body.Title + "','" + req.body.Description
         + "','" + req.body.Date + "','" + exportTimeFrom + "','" + exportTimeTo + "','" + req.body.Location
         + "','" + req.body.Notify + "','" + req.body.Email + "','" + req.body.Priority + "','" + req.body.IsDelete + "','" + req.body.IsDone + "', '1')";
+
     con.query(sql, function (err, result) {
         if (err) throw err;
         res.status(200).send({ 'id': 1, 'message': 'Data Save Successfully' });
     });
 
 })
+
+
+
+///// UserSignUp  /////
+
+app.post('/api/signup', function (req, res) {
+
+    exportTimeFrom = JSON.stringify(req.body.From);
+    exportTimeTo = JSON.stringify(req.body.To);
+
+
+    var signUpSql = "INSERT INTO user_Information (user, pass, isDelete, fileUrl, fileExtention, fileImage, birthday, trackedId, isActive) VALUES ('" + req.body.UserName + "', '" + req.body.PassWord
+        + "','0','" + req.body.FileUrl + "', '" + req.body.FileExtention + "', '" + req.body.FileImage + "', '" + req.body.Birthday + "', '" + req.body.TrackedId + "', '1')";
+    debugger;
+    con.query(signUpSql, function (err, result) {
+
+        if (err) throw err;
+        res.status(200).send({ 'id': 1, 'message :': req.body });
+    })
+
+})
+
+//////End Of UserSignUp///////

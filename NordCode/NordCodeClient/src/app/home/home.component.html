@@ -30,17 +30,16 @@
                                 </mat-card-subtitle>                               
 
                                 <hr>
-                                <mat-card-subtitle *ngFor="let item2 of pictures">
+                                <mat-card-subtitle *ngFor="let item2 of tasksModel">
                                         <mat-card-subtitle fxLayout.gt-xs="row" fxLayout.xs="column">
                                             <span fxFlex="90%"> {{item2.title}} </span>
                                             <mat-icon fxFlex="1%" *ngIf="item.IsDelete"> check </mat-icon>
                                             <mat-icon fxFlex="1%" *ngIf="!item.IsDone"> delete_outline </mat-icon>
                                         </mat-card-subtitle>
                                         <p>
-                                            <mat-icon fxFlex="5%" (click)="onClear()">access_time</mat-icon> &nbsp; {{item2.time}}
+                                            <mat-icon fxFlex="5%" (click)="onClear()">access_time</mat-icon> &nbsp; {{item2.email}}
                                             &nbsp; &nbsp;
-                                            <mat-icon fxFlex="5%" (click)="onClear()">where_to_vote</mat-icon> &nbsp;
-                                            {{item2.location}}
+                                            <mat-icon fxFlex="5%" (click)="onClear()">where_to_vote</mat-icon> &nbsp; {{item2.location}}
                                         </p>
                                         <hr>
                                     </mat-card-subtitle>

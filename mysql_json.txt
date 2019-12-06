@@ -1,14 +1,19 @@
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE IF NOT EXISTS user_Information (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     user VARCHAR(255) NOT NULL,
     pass VARCHAR(255) NOT NULL,
     isDelete TINYINT  NULL,
     isActive TINYINT  NULL,
+	fileUrl VARCHAR(255) NOT NULL,
+	fileExtention VARCHAR(255) NOT NULL,
+	fileImage VARCHAR(255) NOT NULL,
+	birthday DATE,
+	trackedId VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )  ENGINE=INNODB;
 
 
-CREATE TABLE IF NOT EXISTS tasks (
+CREATE TABLE IF NOT EXISTS user_Tasks (
     task_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description TEXT,   
@@ -21,8 +26,9 @@ CREATE TABLE IF NOT EXISTS tasks (
     priority TINYINT NULL,
     isDelete TINYINT  NULL,
     isDone TINYINT  NULL,
+	user_Information_user_id
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )  ENGINE=INNODB;
 
 
-INSERT INTO tasks (title, description, date, time_from, time_to, location, notify, email, priority, isDelete, isDone)VALUES ('new Product M','new Productnew Productnew Productnew Product','2019-11-30T07:02:04.341Z','["JavaScript", "ES2015", "JSON"]','["JavaScript", "ES2015", "JSON"]','sssssww','30','mdmahafuzhuq@ymail.com','50','false','false')
+INSERT INTO user_Tasks (title, description, date, time_from, time_to, location, notify, email, priority, isDelete, isDone)VALUES ('new Product M','new Productnew Productnew Productnew Product','2019-11-30T07:02:04.341Z','["JavaScript", "ES2015", "JSON"]','["JavaScript", "ES2015", "JSON"]','sssssww','30','mdmahafuzhuq@ymail.com','50','false','false')
