@@ -3,85 +3,90 @@
 
         <div style="padding: 13px;" class="container">
             <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }} </div>
-            <mat-card style="margin-top:10px;" *ngIf="!submitted">
 
-                <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                <mat-card style="margin-top:10px;" *ngIf="!submitted">
 
-                    <mat-icon fxFlex="5%" (click)="onClear()">clear</mat-icon>
-                    <span fxFlex="90%" class="text-center"> Sign Up </span>
-                </mat-card-title>
-                <hr>
+                    <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
 
-                <p class="text-center" style="height: 100px;">
-                    <span>
-                        <input #file type="file" accept='image/*' (change)="preview(file.files)"
-                            style="position: absolute; width: 30px; height: 28px; border-radius: 50%;  margin-left: 70px;" />
-                        {{message}}
-                        <img [src]="imgURL" height="200" width="90px" *ngIf="imgURL" alt=""
-                            class="rounded-circle img-fluid">
-                        <img src="../assets/img/member/Mahatab.png" *ngIf="!imgURL" height="90px" width="90px"
-                            class="rounded-circle" alt="{{message}}">
-                    </span>
-                </p>
-                <hr>
-
-                <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
-
-
-                    <mat-form-field >
-                        <input matInput name="fileUrl" ngModel type="text" [(ngModel)]="userModel.FileUrl">                        
-                        <input matInput name="fileImage" ngModel type="text" [(ngModel)]="userModel.FileImage">
-                        <input matInput name="fileExtention" ngModel type="text" [(ngModel)]="userModel.FileExtention">
-                        <input matInput name="trackedId" ngModel type="text" [(ngModel)]="userModel.TrackedId">
-                    </mat-form-field>
-
-                    <mat-form-field class="example-full-width">
-                        <input matInput #fullname="ngModel" name="fullname" ngModel type="text" placeholder="FULL NAME"
-                            [(ngModel)]="userModel.FullName" minlength="3">
-                        <mat-error *ngIf="fullname.invalid"> Please erter min three character. </mat-error>
-                    </mat-form-field>
-
-                    <mat-form-field class="example-full-width">
-                        <input matInput #username="ngModel" name="username" ngModel type="email" required minlength="6"
-                            placeholder="EMAIL" [(ngModel)]="userModel.UserName"
-                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-                        <mat-error *ngIf="username.invalid"> Please erter an valid email. </mat-error>
-                    </mat-form-field>
-
-                    <mat-form-field class="example-full-width">
-                        <input matInput #password="ngModel" name="password" ngModel type="password" required
-                            minlength="6" [(ngModel)]="userModel.PassWord" placeholder="PASSWORD">
-
-                        <mat-error *ngIf="password.invalid"> Please erter six character. </mat-error>
-                    </mat-form-field>
-                    <mat-form-field class="example-full-width">
-                        <input matInput #confirmpassword="ngModel" name="confirmpassword" ngModel type="password"
-                            required minlength="6" [(ngModel)]="userModel.ConfirmPassWord"
-                            placeholder="CONFIRM PASSWORD">
-
-                        <mat-error *ngIf="confirmpassword.invalid"> PassWord Mismatch. </mat-error>
-                    </mat-form-field>
-                    <mat-form-field class="example-full-width">
-                        <input matInput [matDatepicker]="picker" placeholder="BIRTHDAY" (dateChange)="EndDateChange($event)" >
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker ></mat-datepicker>
-                    </mat-form-field>
+                        <mat-icon fxFlex="5%" (click)="onClear()">clear</mat-icon>
+                        <span fxFlex="90%" class="text-center"> Sign Up </span>
+                    </mat-card-title>
                     <hr>
 
-                    {{userModel | json}}
-                    <div class="example-button-row">
-                        <button mat-raised-button [disabled]="userForm.form.invalid" color="primary"
-                            class="material-cust-large-button"> Create </button>
-                    </div>
+                    <p class="text-center" style="height: 100px;">
+                        <span>
+                            <input #file type="file" accept='image/*' (change)="preview(file.files)"
+                                style="position: absolute; width: 30px; height: 28px; border-radius: 50%;  margin-left: 70px;" />
+                            {{message}}
+                            <img [src]="imgURL" height="200" width="90px" *ngIf="imgURL" alt=""
+                                class="rounded-circle img-fluid">
+                            <img src="../assets/img/member/Mahatab.png" *ngIf="!imgURL" height="90px" width="90px"
+                                class="rounded-circle" alt="{{message}}">
+                        </span>
+                    </p>
                     <hr>
-                    <div class="example-row">
-                        <a routerLink="/signup" class="btn btn-link col-md-12 text-center"> ALREADY HAVE AN ACCOUNT? <b>
-                                &nbsp; Sign In </b> </a>
-                    </div>
 
-                </form>
-            </mat-card>
+                    <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
 
+
+                        <mat-form-field>
+                            <input matInput name="fileUrl" ngModel type="text" [(ngModel)]="userModel.FileUrl">
+                            <input matInput name="fileImage" ngModel type="text" [(ngModel)]="userModel.FileImage">
+                            <input matInput name="fileExtention" ngModel type="text"
+                                [(ngModel)]="userModel.FileExtention">
+                            <input matInput name="trackedId" ngModel type="text" [(ngModel)]="userModel.TrackedId">
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                            <input matInput #fullname="ngModel" name="fullname" ngModel type="text"
+                                placeholder="FULL NAME" [(ngModel)]="userModel.FullName" minlength="3">
+                            <mat-error *ngIf="fullname.invalid"> Please erter min three character. </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                            <input matInput #username="ngModel" name="username" ngModel type="email" required
+                                minlength="6" placeholder="EMAIL" [(ngModel)]="userModel.UserName"
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                            <mat-error *ngIf="username.invalid"> Please erter an valid email. </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                            <input matInput #password="ngModel" name="password" ngModel type="password" required
+                                minlength="6" [(ngModel)]="userModel.PassWord" placeholder="PASSWORD">
+
+                            <mat-error *ngIf="password.invalid"> Please erter six character. </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <input matInput #confirmpassword="ngModel" name="confirmpassword" ngModel type="password"
+                                required minlength="6" [(ngModel)]="userModel.ConfirmPassWord"
+                                placeholder="CONFIRM PASSWORD">
+
+                            <mat-error *ngIf="confirmpassword.invalid"> PassWord Mismatch. </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <input matInput [matDatepicker]="picker" placeholder="BIRTHDAY"
+                                (dateChange)="EndDateChange($event)">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <hr>
+
+                        {{userModel | json}}
+                        <div class="example-button-row">
+                            <button mat-raised-button [disabled]="userForm.form.invalid" color="primary"
+                                class="material-cust-large-button"> Create </button>
+                        </div>
+                        <hr>
+                        <div class="example-row">
+                            <a routerLink="/signup" class="btn btn-link col-md-12 text-center"> ALREADY HAVE AN ACCOUNT?
+                                <b>
+                                    &nbsp; Sign In </b> </a>
+                        </div>
+
+                    </form>
+                </mat-card>
+            </div>
         </div>
     </div>
 </div>

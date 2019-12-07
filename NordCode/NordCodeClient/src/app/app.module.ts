@@ -31,6 +31,8 @@ import { HomeComponent } from './home/home.component';
 import { from } from 'rxjs';
 
 const appRoutes: Routes = [
+  { path: '', component: LoginComponent, pathMatch: 'full' },
+  { path: 'navbar', component: NavbarComponent },
   { path: 'home', component: HomeComponent },
   { path: 'addnew', component: AddnewComponent },
   { path: 'signup', component: SignupComponent },
