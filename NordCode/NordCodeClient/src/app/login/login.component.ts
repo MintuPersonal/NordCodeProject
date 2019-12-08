@@ -28,14 +28,14 @@ export class LoginComponent {
   matcher = new MyErrorStateMatcher();
   userModel = new User('', '', '', '', '', new Date, '');
   submitted = false;
-  errorMsg = '';
+  errorMsg = false;
   id = 0;
 
   onSubmit(event) {
 
     this._loginservice.createUser(this.userModel).subscribe(data => this.id = data.id, error => this.errorMsg = error.statusText)
-
-    console.log(this.id)
+    this.errorMsg = true;
+    //console.log(this.id)
     this.userModel = new User('', '', '', '', '', new Date, '');
   }
 }

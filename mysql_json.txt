@@ -1,11 +1,22 @@
+
+CREATE TABLE IF NOT EXISTS user_LoginInformation (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    user VARCHAR(255) NOT NULL,
+    pass VARCHAR(255) NOT NULL,
+    isDelete TINYINT  NULL,
+    isActive TINYINT  NULL,
+	trackedId VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)  ENGINE=INNODB;
+
 CREATE TABLE IF NOT EXISTS user_Information (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     user VARCHAR(255) NOT NULL,
     pass VARCHAR(255) NOT NULL,
     isDelete TINYINT  NULL,
     isActive TINYINT  NULL,
-	fileUrl VARCHAR(255) NOT NULL,
-	fileExtention VARCHAR(255) NOT NULL,
+	fileUrl TEXT,
+	fileExtention TEXT,
 	fileImage VARCHAR(255) NOT NULL,
 	birthday DATE,
 	trackedId VARCHAR(255) NOT NULL,

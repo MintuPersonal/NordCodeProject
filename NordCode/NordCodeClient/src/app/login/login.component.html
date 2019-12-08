@@ -21,13 +21,13 @@
                             <input matInput #password="ngModel" name="password" ngModel type="password" required
                                 minlength="6" [(ngModel)]="userModel.PassWord" placeholder="PASSWORD">
 
-                            <mat-error *ngIf="password.invalid"> Please erter six char. </mat-error>
+                            <mat-error *ngIf="password.invalid"> Please minimum six characters. </mat-error>
                         </mat-form-field>
 
                         <mat-form-field class="example-half-width text-right">
                             <input matInput #forgotpassword="ngModel" name="forgotpassword" ngModel type="text"
                                 placeholder="Forgot Password">
-                            <mat-error *ngIf="forgotpassword.invalid"> Please enter six char. </mat-error>
+                            <mat-error *ngIf="forgotpassword.invalid"> Please minimum six characters. </mat-error>
                         </mat-form-field>
                         <hr>
                         <div class="example-button-row">
