@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
 
   constructor(private _singupService: SignupService) { }
 
-  userModel = new User('', '', '', '', '', new Date,'');
+  userModel = new User('', '', '', '', '', '', '', new Date, '');
   public imagePath;
   imgURL: any;
   public message: string;
@@ -22,12 +22,12 @@ export class SignupComponent implements OnInit {
   preview(files) {
     if (files.length === 0)
       return;
-   
+
     this.userModel.FileUrl = files[0].name;
     this.userModel.FileExtention = files[0].type;
     this.userModel.FileImage = files[0].size;
     this.userModel.TrackedId = window.location.hostname
-    
+
     if (this.userModel.FileExtention.match(/image\/*/) == null) {
       this.message = "Only images are supported.";
       return;
@@ -43,11 +43,11 @@ export class SignupComponent implements OnInit {
   }
   public EndDateChange(event): void {
     this.userModel.Birthday = event.value;
-    
+
     console.log(this.userModel.Birthday)
   }
 
-  ngOnInit() {   
+  ngOnInit() {
 
   }
 
@@ -57,15 +57,21 @@ export class SignupComponent implements OnInit {
   errorMsg = '';
   id = 0;
 
-  onSubmit() {
+  onSubmit(userModel) {
 
     console.log('UI Returm Id :' + this.userModel.FileUrl);
     debugger;
     this._singupService.singup(this.userModel).subscribe(data => this.id = data.id, error => this.errorMsg = error.statusText);
     //console.log('Returm Id :' + this.id);
-    this.userModel = { UserName: '', PassWord: '', FileUrl:'', FileExtention:'', FileImage:'', Birthday: new Date, TrackedId:'' };
+    this.userModel = { FullName: '', UserName: '', PassWord: '', ConfirmPassWord: '', FileUrl: '', FileExtention: '', FileImage: '', Birthday: new Date, TrackedId: '' };
   }
 
   /// End of Save Method ///
+
+  onClear() {
+
+    this.userModel = new User('', '', '', '', '', '', '', new Date, '');
+
+  }
 
 }

@@ -26,7 +26,8 @@ for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
 	for Publish
 	https://www.youtube.com/watch?v=8cf7f3L6Sr0
 	
-	
+	========= For Deployment ===========
+	ng build --prod
 	--==================
 
 	-- express server run 

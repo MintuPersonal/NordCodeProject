@@ -26,7 +26,7 @@ export class LoginComponent {
     );
 
   matcher = new MyErrorStateMatcher();
-  userModel = new User('', '', '', '', '', new Date, '');
+  userModel = new User('','','', '', '', '', '', new Date, '');
   submitted = false;
   errorMsg = false;
   id = 0;
@@ -36,7 +36,7 @@ export class LoginComponent {
     this._loginservice.createUser(this.userModel).subscribe(data => this.id = data.id, error => this.errorMsg = error.statusText)
     this.errorMsg = true;
     //console.log(this.id)
-    this.userModel = new User('', '', '', '', '', new Date, '');
+    this.userModel = new User('','','', '', '', '', '', new Date, '');
   }
 }
 

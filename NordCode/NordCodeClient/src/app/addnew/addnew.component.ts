@@ -17,6 +17,7 @@ export class AddnewComponent implements OnInit {
   private exportTime = { hour: 7, minute: 15, meriden: 'PM', format: 24 };
   taskModel = new Task('', '', new Date(), this.exportTime, this.exportTime, '', 50, '', '', false, false);
   title = 'demo';
+  hide :boolean;
 
   onChangeHour(event) {
     this.taskModel.From = event;

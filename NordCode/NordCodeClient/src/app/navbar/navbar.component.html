@@ -1,33 +1,40 @@
-<div class="container ">
+<!-- <div class="container ">
     <div class="col-lg-12 col-md-12 col-sm-12">
 
-        <div style="padding: 13px; width:135%" class="container">
-            <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }} </div>
+        
+<div style="padding: 13px; width:135%" class="container">
+    <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }} </div>
 
-            <div fxLayout="row">
-                <mat-card class="card-picture">
-                    
-                    <nav class="nav nav-info nav-fill header-nav">
-                        <h3 class="text-center">
-                            <img src="../assets/img/member/Mahatab.png" *ngIf="!imgURL" height="90px" width="90px"
-                                class="rounded-circle" alt="...">
+    
+</div>
+    </div>
+</div> -->
+<div style="margin: 13px;">
+    <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }} </div>
 
-                        </h3>
-                        <a class="nav-item nav-link active text-left offset-1" href="#">
-                            <a class=" fa-2x"> Andrea Pierce </a>
-                            <br>
-                            <a class="text-left"> info@gmail.com </a>
-                        </a>
+    <div fxLayout="row">
+        <mat-card class="card-picture">
 
-                    </nav>
+            <nav class="nav nav-info nav-fill header-nav">
+                <h3 class="text-center">
+                    <img src="../assets/img/member/Mahatab.png" *ngIf="!imgURL" height="90px" width="90px"
+                        class="rounded-circle" alt="...">
 
-                    <nav class="nav flex-column">
-                        <a class="nav-link active" href="/home">Home</a>
-                        <a class="nav-link" href="/addnew">Add New</a>
-                        <a class="nav-link" href="/signup">Logout</a>
-                    </nav>
-                </mat-card>
-            </div>
-        </div>
+                </h3>
+                <a class="nav-item nav-link active text-left" href="#">
+                    <a class=" fa-2x"> Andrea Pierce </a>
+                    <br>
+                    <a class="text-left"> info@gmail.com </a>
+                </a>
+
+            </nav>
+
+            <nav class="nav flex-column">
+                <a class="nav-link active" href="/home">Home</a>
+                <a class="nav-link" href="/addnew">Add New</a>
+                <a class="nav-link" href="/signup">Logout</a>
+                <a class="nav-link" href="/login">Login</a>
+            </nav>
+        </mat-card>
     </div>
 </div>
