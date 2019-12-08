@@ -1,0 +1,102 @@
+
+for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
+
+	//https://www.youtube.com/watch?v=1tRLveSyNz8
+	go to node site 
+	install Node js
+	test node -v
+	and npm -v
+	npm install npm@latest -g
+	go to Directory E:\All_Sources_Comp\Angularjs_Six_Project
+
+	install Angular cli
+	npm install -g @angular/cli
+	test ng -v
+
+	ng new hello-world
+
+	cd hello-world 
+	ng serve
+	ng new routing-demo -routing
+	cd routing-demo 
+	ng g c department-list -it -is
+	ng g c employee-list -it -is
+	--==================
+	ng add @angular/material
+	for Publish
+	https://www.youtube.com/watch?v=8cf7f3L6Sr0
+	
+	
+	--==================
+
+	-- express server run 
+	--Open in Teminal
+
+	npm init --yes
+	npm install -- save express body -parser corsu
+	npm install mssql -g
+	npm mkdir 
+	ng generate service records
+	ng g s employee-list
+
+	cd node-postgres
+	npm install pg --save
+	npm install express --save
+	node server
+
+	For MongoDB = npm install --save mongoose 
+
+	============================================
+
+	npm i npm@latest -g
+	npm uninstall -g @angular/cli
+	npm cache clean
+	npm install -g @angular/cli
+	ng new angular6-example
+	cd angular6-example
+	ng serve
+
+	ng g component login
+	ng g component add-user
+	ng g component edit-user
+	ng g component list-user
+
+	ng g component my-new-component
+	ng g directive my-new-directive
+	ng g pipe my-new-pipe
+	ng g service my-new-service
+	ng g class my-new-class
+	ng g guard my-new-guard
+	ng g interface my-new-interface
+	ng g enum my-new-enum
+	ng g module my-module
+	ng generate class hero model
+
+	==================== Token Base Api Call =========================
+
+	System.ComponentModel.Annotations .net only
+	Microsoft.Owin
+	Microsoft.Owin.Host.SystemWeb
+	Microsoft.Owin.Security
+	Microsoft.Owin.Security.OAuth
+	Microsoft.AspNet.Identity.Owin
+	Microsoft.AspNet.Cors
+	Microsoft.Owin.Cors
+
+	============ Web API ==============
+
+	API => Aplication Programming Interface
+	Rest => Represental State Interface
+	CORS => Cross Origin Resource Sharing.
+
+
+	============= Node Js REST API =================
+
+	npm init Nodejs install 
+	npm start 
+	ctrl+c for Stop y
+	npm i express 
+	npm i -D nodemon --for wotch mode
+	npm u -D morgan  --for middileware logfile
+	npm install body-parser
+	npm i cors 
