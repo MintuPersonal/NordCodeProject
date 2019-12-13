@@ -40,6 +40,8 @@ export class SignupComponent implements OnInit {
     reader.onload = (_event) => {
       this.imgURL = reader.result;
     }
+
+    console.log(files)
   }
   public EndDateChange(event): void {
     this.userModel.Birthday = event.value;

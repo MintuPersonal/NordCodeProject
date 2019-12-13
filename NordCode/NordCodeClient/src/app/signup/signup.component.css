@@ -32,3 +32,15 @@ h2{
   min-height: 700px;
  
 }
+
+.custom-fileupload{
+  
+  background-color: #11d3c1 !important;
+  border-radius: 50%;
+  width: 30px;
+  border: none;
+  font-size: 30px;
+  padding: 3px;
+  position: absolute;
+  margin-left: 70px;
+}
