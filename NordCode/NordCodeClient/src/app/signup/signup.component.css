@@ -44,3 +44,10 @@ h2{
   position: absolute;
   margin-left: 70px;
 }
+
+img {  
+  max-width:230px;
+  max-height:95px;
+  width: auto;
+  height: auto;
+}

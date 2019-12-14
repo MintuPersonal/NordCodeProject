@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
 
   constructor(private _singupService: SignupService) { }
 
-  userModel = new User('', '', '', '', '', '', '', new Date, '');
+  userModel = new User('', '', '', '', '', '', '', new Date, '', 0);
   public imagePath;
   imgURL: any;
   public message: string;
@@ -65,14 +65,14 @@ export class SignupComponent implements OnInit {
     debugger;
     this._singupService.singup(this.userModel).subscribe(data => this.id = data.id, error => this.errorMsg = error.statusText);
     //console.log('Returm Id :' + this.id);
-    this.userModel = { FullName: '', UserName: '', PassWord: '', ConfirmPassWord: '', FileUrl: '', FileExtention: '', FileImage: '', Birthday: new Date, TrackedId: '' };
+    this.userModel = { FullName: '', UserName: '', PassWord: '', ConfirmPassWord: '', FileUrl: '', FileExtention: '', FileImage: '', Birthday: new Date, TrackedId: '', IsCounted:0 };
   }
 
   /// End of Save Method ///
 
   onClear() {
 
-    this.userModel = new User('', '', '', '', '', '', '', new Date, '');
+    this.userModel = new User('', '', '', '', '', '', '', new Date, '', 0);
 
   }
 

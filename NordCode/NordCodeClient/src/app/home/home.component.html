@@ -14,9 +14,9 @@
                     <mat-icon fxFlex="5%" (click)="onClear()">list</mat-icon>
                     <span fxFlex="90%" class="text-center"> Home </span>
 
-                    <button mat-raised-button [disabled]="userForm.form.invalid" style="background-color:transparent;">
+                    <a mat-raised-button routerLink="/addnew"  [disabled]="userForm.form.invalid" style="background-color:transparent;">
                         <mat-icon fxFlex="1%"> add </mat-icon>
-                    </button>
+                    </a>
                 </mat-card-title>
 
                 <hr>

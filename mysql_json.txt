@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS user_LoginInformation (
     pass VARCHAR(255) NOT NULL,
     isDelete TINYINT  NULL,
     isActive TINYINT  NULL,
+	isCounted TINYINT  NULL,
 	trackedId VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )  ENGINE=INNODB;
@@ -23,7 +24,6 @@ CREATE TABLE IF NOT EXISTS user_Information (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )  ENGINE=INNODB;
 
-
 CREATE TABLE IF NOT EXISTS user_Tasks (
     task_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS user_Tasks (
     priority TINYINT NULL,
     isDelete TINYINT  NULL,
     isDone TINYINT  NULL,
-	user_Information_user_id
+	user_Information_user_id TINYINT  NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )  ENGINE=INNODB;
 

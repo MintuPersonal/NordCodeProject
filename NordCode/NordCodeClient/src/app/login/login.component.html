@@ -8,31 +8,33 @@
             <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
 
                 <mat-form-field class="example-full-width">
-                    <input matInput #username="ngModel" name="username" ngModel type="email" required
-                        minlength="6" placeholder="USERNAME" [(ngModel)]="userModel.UserName"
+                    <input matInput #username="ngModel" name="username" ngModel type="email" required minlength="6"
+                        placeholder="USERNAME" [(ngModel)]="userModel.UserName"
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                     <mat-error *ngIf="username.invalid"> Please erter an valid email. </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="example-half-width">
-                    <input matInput #password="ngModel" name="password" ngModel type="password" required
-                        minlength="8" [(ngModel)]="userModel.PassWord" placeholder="PASSWORD" 
-                        pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$">
+                    <input matInput #password="ngModel" name="password" ngModel type="password" required minlength="8"
+                        [(ngModel)]="userModel.PassWord" placeholder="PASSWORD">
 
-                    <mat-error *ngIf="password.invalid"> Minimum eight characters, at least one uppercase letter, one lowercase letter and one number. </mat-error>
+                    <mat-error *ngIf="password.invalid"> Please erter an valid password. </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="example-half-width text-right">
                     <input matInput #forgotpassword="ngModel" name="forgotpassword" ngModel type="text"
-                        placeholder="Forgot Password" >
-                    <mat-error *ngIf="forgotpassword.invalid"> Please minimum six characters. </mat-error>
+                        placeholder="Forgot Password" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                    <mat-error *ngIf="forgotpassword.invalid"> Please erter an valid email. </mat-error>
                 </mat-form-field>
                 <hr>
                 <div class="example-button-row">
                     <button mat-raised-button [disabled]="userForm.form.invalid" color="primary"
                         class="material-cust-large-button"> Sign In </button>
+
+                    <mat-error *ngIf="1"> Your are login : {{isCounted}} </mat-error>
                 </div>
                 <hr>
+                {{usersModel | json}}
                 <div class="example-row">
                     <a routerLink="/signup" class="btn btn-link col-md-12 text-center"> DON'T HAVE AN ACCOUNT?
                         <b>
