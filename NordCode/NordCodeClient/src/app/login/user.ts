@@ -1,7 +1,4 @@
-export class User {
-  forEach(arg0: (element: any) => void) {
-    throw new Error("Method not implemented.");
-  }
+export class User {  
     constructor(
         public FullName: string,
         public UserName: string,

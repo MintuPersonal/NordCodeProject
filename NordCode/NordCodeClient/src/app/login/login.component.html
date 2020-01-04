@@ -36,7 +36,7 @@
                 <hr>
                 {{usersModel | json}}
                 <div class="example-row">
-                    <a routerLink="/signup" class="btn btn-link col-md-12 text-center"> DON'T HAVE AN ACCOUNT?
+                    <a [routerLink]="['/signup', '']" class="btn btn-link col-md-12 text-center"> DON'T HAVE AN ACCOUNT?
                         <b>
                             &nbsp; Sign Up </b> </a>
                 </div>

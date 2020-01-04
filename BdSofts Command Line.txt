@@ -1,6 +1,6 @@
 
 for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
-
+****************** powershell Set-ExecutionPolicy Unrestricted *************
 	//https://www.youtube.com/watch?v=1tRLveSyNz8
 	go to node site 
 	install Node js

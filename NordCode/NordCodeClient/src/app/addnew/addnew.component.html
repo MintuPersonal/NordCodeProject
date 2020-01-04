@@ -10,12 +10,11 @@
                     <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
                         <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
 
-                            <mat-icon fxFlex="5%" (click)="onClear()">clear</mat-icon>
-                            <span fxFlex="90%" class="text-center"> Add New </span>
-
+                            <mat-icon fxFlex="5%" (click)="onClear()"> clear </mat-icon>
+                             <span fxFlex="90%" class="text-center"> Add New </span>
                             <button mat-raised-button [disabled]="userForm.form.invalid"
                                 style="background-color:transparent;">
-                                <mat-icon fxFlex="1%">done </mat-icon>
+                                <mat-icon fxFlex="1%"> done </mat-icon>
                             </button>
                         </mat-card-title>
                         <hr>

@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,18 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialTimePickerModule } from '@candidosales/material-time-picker';
 
-
-import {
-  MatToolbarModule,
-  MatIconModule,
-  MatCardModule,
-  MatButtonModule,
-  MatDatepickerModule,
-  MatNativeDateModule,
-  MatBadgeModule,
-  MatSelectModule,
-  MatSliderModule
-} from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatDatepickerModule, MatNativeDateModule, MatBadgeModule, MatSelectModule, MatSliderModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -29,17 +17,20 @@ import { SignupComponent } from './signup/signup.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddnewComponent } from './addnew/addnew.component';
 import { HomeComponent } from './home/home.component';
-import { from } from 'rxjs';
+import { ProductComponent } from './product/product.component';
+import { ProductdetailsComponent } from './productdetails/productdetails.component';
 
+//I keep the new line
 const appRoutes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
   { path: 'navbar', component: NavbarComponent },
   { path: 'home', component: HomeComponent },
   { path: 'addnew', component: AddnewComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'login', component: LoginComponent }
-]
-
+  { path: 'login', component: LoginComponent },
+  { path: 'product', component: ProductComponent },
+  { path: 'productdetails/:productId', component: ProductdetailsComponent },
+];
 
 @NgModule({
   declarations: [
@@ -48,7 +39,9 @@ const appRoutes: Routes = [
     SignupComponent,
     NavbarComponent,
     AddnewComponent,
-    HomeComponent
+    HomeComponent,
+    ProductComponent,
+    ProductdetailsComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -71,8 +64,10 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatSliderModule
   ],
+
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 
-export class AppModule { }
+export class AppModule {
+}
