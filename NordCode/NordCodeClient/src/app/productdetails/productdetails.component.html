@@ -1,0 +1,9 @@
+<h2>Product Details</h2>
+
+<div  *ngIf="product" class="container">
+    <hr>
+    <h5>{{ product.name }}</h5>
+    <h4>{{ product.price | currency }}</h4>
+    <p>{{ product.description }}</p>
+    <hr>
+</div>

@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     let isCounted = JSON.parse(localStorage.getItem('IsCounted'))
     this.isCounted = isCounted;
-    debugger;
   }
   constructor(private _loginservice: LoginService, private _signupservice: SignupService, public router: Router) { }
   emailFormControl = new FormControl(

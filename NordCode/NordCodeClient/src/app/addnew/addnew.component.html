@@ -21,13 +21,13 @@
 
                         <mat-form-field class="example-full-width">
                             <input matInput #title="ngModel" name="title" ngModel type="text" placeholder="TITLE"
-                                required [(ngModel)]="taskModel.Title" minlength="3">
+                                required [(ngModel)]="taskModel.title" minlength="3">
                             <mat-error *ngIf="title.invalid"> Please erter min three character. </mat-error>
                         </mat-form-field>
 
                         <mat-form-field class="example-full-width">
                             <input matInput #description="ngModel" name="description" type="text" required
-                                placeholder="DESCRIPTION" ngModel [(ngModel)]="taskModel.Description">
+                                placeholder="DESCRIPTION" ngModel [(ngModel)]="taskModel.description">
                             <mat-error *ngIf="description.invalid"> Please erter an valid email. </mat-error>
                         </mat-form-field>
 
@@ -40,13 +40,13 @@
 
                         <div class="row" style="padding: 15px;">
                             <material-timepicker color="primary" label="FROM" appearance="standard" required
-                                class="example-half-width" [userTime]="taskModel.From" (change)="onChangeHour($event)"
+                                class="example-half-width" [userTime]="taskModel.time_from" (change)="onChangeHour($event)"
                                 revertLabel="Remove" submitLabel="Ok">
                             </material-timepicker>
 
                             <div style="padding-left: 29px;">
                                 <material-timepicker color="primary" label="TO" appearance="standard" required
-                                    [userTime]="taskModel.To" (change)="onChangeHourTo($event)" revertLabel="Remove"
+                                    [userTime]="taskModel.time_to" (change)="onChangeHourTo($event)" revertLabel="Remove"
                                     submitLabel="Ok">
                                 </material-timepicker>
                             </div>
@@ -54,7 +54,7 @@
 
                         <mat-form-field class="example-full-width">
                             <input matInput #location="ngModel" name="location" ngModel
-                                [type]="hide ? 'password' : 'text'" minlength="6" [(ngModel)]="taskModel.Location"
+                                [type]="hide ? 'password' : 'text'" minlength="6" [(ngModel)]="taskModel.location"
                                 placeholder="LOCATION">
                             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                                 [attr.aria-pressed]="hide">
@@ -65,7 +65,7 @@
 
                         <mat-form-field class="example-half-width">
                             <mat-label>Select an option</mat-label>
-                            <mat-select [(ngModel)]="taskModel.Notify" name="time" required>
+                            <mat-select [(ngModel)]="taskModel.notify" name="time" required>
                                 <mat-option>None</mat-option>
                                 <mat-option value="20">20 Min</mat-option>
                                 <mat-option value="30">30 Min</mat-option>
@@ -76,13 +76,13 @@
 
                         <mat-form-field class="example-half-width">
                             <input matInput #email="ngModel" name="email" ngModel required type="email"
-                                placeholder="EMAIL" [(ngModel)]="taskModel.Email">
+                                placeholder="EMAIL" [(ngModel)]="taskModel.email">
                             <mat-error *ngIf="email.invalid"> Please erter an valid email. </mat-error>
                         </mat-form-field>
 
                         <span>LABEL</span>
 
-                        <mat-slider name="priority" ngModel [ngModel]="taskModel.Priority" class="example-full-width">
+                        <mat-slider name="priority" ngModel [ngModel]="taskModel.priority" class="example-full-width">
 
                         </mat-slider>
                     </form>

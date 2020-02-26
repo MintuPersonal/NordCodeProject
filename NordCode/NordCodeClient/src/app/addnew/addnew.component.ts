@@ -15,16 +15,18 @@ export class AddnewComponent implements OnInit {
 
   selected = 'option2';
   private exportTime = { hour: 7, minute: 15, meriden: 'PM', format: 24 };
-  taskModel = new Task('', '', new Date(), this.exportTime, this.exportTime, '', 50, '', '', false, false);
-  title = 'demo';
-  hide :boolean;
+  taskModel = new Task('', '', '', new Date(), this.exportTime, this.exportTime, '', 50, '', '', false, false, new Date(), '');
+
+  tasksModel: Task[];
+  Title = 'demo';
+  hide: boolean;
 
   onChangeHour(event) {
-    this.taskModel.From = event;
+    this.taskModel.time_from = event;
     console.log('event', event);
   }
   onChangeHourTo(event) {
-    this.taskModel.To = event;
+    this.taskModel.time_to = event;
     console.log('event', event);
   }
 
@@ -35,11 +37,18 @@ export class AddnewComponent implements OnInit {
 
     return value;
   }
-  ngOnInit() {  
-
+  ngOnInit() {
+    this._addnewService.getTask(this.taskModel).subscribe((data: Task[]) => { this.tasksModel = data; });
+    debugger;
   }
 
   onSubmit(event) {
+    
+    this.taskModel.task_id = '11'
+    this.taskModel.create_at = new Date()
+    this.taskModel.user_Information_user_id = '11'
+    this.taskModel.time_from = new Date()
+    this.taskModel.time_to = new Date()
 
     this._addnewService.createTask(this.taskModel).subscribe(data => this.id = data.id, error => this.errorMsg = error.statusText)
     this.onClear();
@@ -47,7 +56,6 @@ export class AddnewComponent implements OnInit {
 
   onClear() {
     //console.log('all clear')
-    this.taskModel = { Title: '', Description: '', Date: new Date(), From: '', To: '', Location: '', Notify: '', Email: '', Priority: 0, IsDelete: false, IsDone: false }
-
+    this.taskModel = {task_id: '', title: '', description: '', date: new Date(), time_from: '', time_to: '', location: '', notify: '', email: '', priority: 0, isDelete: false, isDone: false, create_at: new Date(), user_Information_user_id: '' }
   }
 }

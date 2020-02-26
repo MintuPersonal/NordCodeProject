@@ -1,0 +1,26 @@
+{
+    "development": {
+        "username": "root",
+        "password": null,
+        "database": "example",
+        "host": "example.sqlite",
+        "dialect": "sqlite"
+    },
+    "stage": {
+        "username": "db_user",
+        "password": "db_password",
+        "database": "db_name",
+        "host": "localhost",
+        "dialect": "mysql"
+    },
+    "production": {
+        "host": "localhost",
+        "database": "nordcode",
+        "username": "root",
+        "password": null,
+        "dialect": "mysql",
+        "operatorsAliases": false,
+
+        "ip": "127.0.0.1"
+    }
+}
