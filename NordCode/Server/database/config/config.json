@@ -14,11 +14,11 @@
         "dialect": "mysql"
     },
     "production": {
-        "host": "localhost",
-        "database": "nordcode",
-        "username": "root",
-        "password": null,
-        "dialect": "mysql",
+        "host": "10.11.4.153",
+        "database": "EcommercePOS",
+        "username": "sa",
+        "password": "Oneict@123",
+        "dialect": "mssql",
         "operatorsAliases": false,
 
         "ip": "127.0.0.1"

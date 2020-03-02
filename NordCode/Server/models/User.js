@@ -1,4 +1,5 @@
 const db = require('../database/db.js');
+
 const user = db.sequelize.define(
     'user_informations', {
     user_id: db.Sequelize.INTEGER,
