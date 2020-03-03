@@ -27,7 +27,8 @@ const product = db.sequelize.define(
 });
 
 db.sequelize.sync({ force: true });
-    // .then(() => {
+    
+// .then(() => {
     //     product.create();
     // }).catch(err => {
     //     console.log('Error : ' + err);
