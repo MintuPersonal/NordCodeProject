@@ -39,7 +39,7 @@ router.get('/gethome', (req, res, next) => {
                 homeobj.features = features;
                 res.json({ 
                     status: true,
-                    msg: 'Data has been loaded Sucessfully',
+                    msg: 'Data has been loaded Successfully',
                     homeobj });
             }).catch(err => { res.send('Error :' + err) });
         }
