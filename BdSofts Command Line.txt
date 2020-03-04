@@ -10,7 +10,8 @@ for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
 	go to Directory E:\All_Sources_Comp\Angularjs_Six_Project
 
 	install Angular cli
-	npm install -g @angular/cli
+	npm install --save-dev @angular-devkit/build-angular	
+	Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 	test ng -v
 
 	ng new hello-world

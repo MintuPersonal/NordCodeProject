@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "MahatubAhmed"
+  "defaultProject": "MahatubAhmed",
+  "cli": {
+    "analytics": "2fa0167e-aab2-4247-a5b8-5b907162f418"
+  }
 }

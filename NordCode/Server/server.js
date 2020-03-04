@@ -6,8 +6,9 @@ const auth = require('../Server/auth/auth.js');
 const home = require('../Server/routes/home.js')
 const product = require('../Server/routes/product.js');
 const order = require('../Server/routes/order.js');
+const cart = require('../Server/routes/cart.js');
 
-// const task = require('../Server/routes/task.js');
+const task = require('../Server/routes/task.js');
 // const user = require('../Server/routes/user.js');
 // const login = require('../Server/routes/login.js');
 // const article = require('../Server/routes/article.js');
@@ -22,7 +23,7 @@ app.listen(PORT, function () {
     console.log('Server running on localhost port :' + PORT);
 });
 
-app.use('/api', auth, home, product, order);
+app.use('/api', auth, home, product, order, cart, task);
 
 
 

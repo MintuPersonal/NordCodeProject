@@ -1,6 +1,6 @@
 const db = require('../database/db.js');
 const tasks = db.sequelize.define(
-    'user_tasks', {
+    'Ecom_tasks', {
     task_id: db.Sequelize.BIGINT,
     title: db.Sequelize.STRING,
     description: db.Sequelize.TEXT,

@@ -21,16 +21,17 @@ export class HomeComponent implements OnInit {
 
   selected = 'option2';
   private exportTime = { hour: 7, minute: 15, meriden: 'PM', format: 24 };
-  taskModel = new Task('', '', new Date(''), this.exportTime, this.exportTime, '', 50, '', '', false, false);
+  taskModel = new Task('', '', '', new Date(''), this.exportTime, this.exportTime, '', 50, '', '', false, false, new Date(), '');
+  //'', '', new Date(''), this.exportTime, this.exportTime, '', 50, '', '', false, false);
   tasksModel: Task[];
   title = 'demo';
 
   onChangeHour(event) {
-    this.taskModel.From = event;
+    this.taskModel.time_from = event;
     console.log('event', event);
   }
   onChangeHourTo(event) {
-    this.taskModel.To = event;
+    this.taskModel.time_to = event;
     console.log('event', event);
   }
 
@@ -43,7 +44,7 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit() {
     // this.ps.getProducts().subscribe((data: Product[]) => {this.products = data; });
-    this._addnewService.getTask(this.taskModel).subscribe((data: Task[]) => { this.tasksModel = data; });   
+    this._addnewService.getTask(this.taskModel).subscribe((data: Task[]) => { this.tasksModel = data; });
   }
 
   onSubmit(event) {
@@ -54,7 +55,7 @@ export class HomeComponent implements OnInit {
   onClear() {
     console.log('all clear')
 
-    this.taskModel = { Title: '', Description: '', Date: new Date("dd M yy"), From: '', To: '', Location: '', Notify: '', Email: '', Priority: 0, IsDelete: false, IsDone: false }
+    //this.taskModel = { task_id: '', title: '', description: '', date: new Date("dd M yy"), time_from: '', time_to: '', location: '', notify: '', email: '', priority: 0, isDelete: false, isDone: false };
 
   }
 }
