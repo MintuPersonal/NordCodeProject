@@ -23,7 +23,15 @@ const product = db.sequelize.define(
     ParentId: db.Sequelize.BIGINT,
     Img_Path: db.Sequelize.STRING,
     Inserted_By: db.Sequelize.STRING,
-    Inserted_Date: db.Sequelize.DATE
+    Inserted_Date: db.Sequelize.DATE,
+    
+    Img_Path: db.Sequelize.STRING, 
+    Display: db.Sequelize.STRING,
+    FileUrl: db.Sequelize.STRING,
+    FileExtension: db.Sequelize.STRING,
+    FileImage: db.Sequelize.STRING,
+    TrackedId: db.Sequelize.STRING,
+    Active: db.Sequelize.STRING,
 });
 
 db.sequelize.sync(); //{ force: true }
