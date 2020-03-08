@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Ecom_Product } from './products';
 import { ProductService } from './product.service';
+import { PageEvent } from '@angular/material';
 
 
 @Component({
@@ -17,7 +18,21 @@ export class ProductComponent implements OnInit {
   imgURLLarge: string | ArrayBuffer;
   imgURLExLarge: string | ArrayBuffer;
 
-  constructor(private _productService: ProductService) { }
+  length = 100;
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+
+  // MatPaginator Output
+  pageEvent: PageEvent;
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    if (setPageSizeOptionsInput) {
+      this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+    }
+  };
+
+  constructor(private _productService: ProductService) {
+    this.ngOnInit();
+  }
 
   selected = 'option2';
   private exportTime = { hour: 7, minute: 15, meriden: 'PM', format: 24 };
@@ -27,7 +42,7 @@ export class ProductComponent implements OnInit {
   Title = 'demo';
   hide: boolean;
   errorMsg: false;
-  
+  isEdit = 0;
   public searchContact: string;
 
   public products = [
@@ -55,19 +70,29 @@ export class ProductComponent implements OnInit {
   };
 
   onSubmit(event) {
-
+    
     this.productModel.SID = 0;
     this.productModel.Rol = 0;
     this.productModel.ParentId = 0;
-    this.productModel.Img_Path = 'Images/Products/' + this.productModel.FileUrl;
-    this.productModel.Inserted_By = "";
+    this.productModel.Img_Path = '../assets/img/member/' + this.productModel.FileUrl;
+    this.productModel.Inserted_By = "Mitnu";
+    this.productModel.Inserted_Date = new Date();
+    if (this.isEdit == 0){
+      this.productModel.PID = 0;
+    }
     this._productService.setProduct(this.productModel).subscribe(data => this.PID = data.PID, error => this.errorMsg = error.statusText)
     this.onClear();
+
   };
 
   onClear() {
-    console.log('all clear');
-    //this.taskModel = {task_id: '', title: '', description: '', date: new Date(), time_from: '', time_to: '', location: '', notify: '', email: '', priority: 0, isDelete: false, isDone: false, create_at: new Date(), user_Information_user_id: '' }
+    console.log('Clear All');
+    this.productModel = new Ecom_Product();
+    this.productModel.Display = "Banner";
+    this.productModel.Active = true;
+    this.imgURL = "../assets/img/member/Mahatab.png";
+    this.imgURLLarge = "../assets/img/member/Mahatab.png";
+    this.imgURLExLarge = "../assets/img/member/Mahatab.png";
   };
 
   preview(files, Id) {
@@ -77,8 +102,7 @@ export class ProductComponent implements OnInit {
     this.productModel.FileUrl = files[0].name;
     this.productModel.FileExtension = files[0].type;
     this.productModel.FileImage = files[0].size;
-    this.productModel.TrackedId = window.location.hostname
-    debugger
+    this.productModel.TrackedId = window.location.hostname;
     if (this.productModel.FileExtension.match(/image\/*/) == null) {
       this.message = "Only images are supported.";
       return;
@@ -97,4 +121,19 @@ export class ProductComponent implements OnInit {
     console.log(files)
   };
 
+  editItem(item) {
+     this.isEdit = 1;
+    return this.productModel = item;
+    // this.imgURL = item.Img_Path;
+    // this.imgURLLarge = item.Img_Path;
+    // this.imgURLExLarge = item.Img_Path;
+  }
+
+  deleteItem(pid) {
+    alert('Are you confirm delete data');
+    if (pid > 0) {
+      this._productService.deleteProduct(pid).subscribe((data: Ecom_Product[]) => { this.productModels = data });
+      this.ngOnInit();
+    }
+  }
 };

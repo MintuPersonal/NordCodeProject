@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatCheckboxModule } from '@angular/material';
+import { MatCheckboxModule, MatPaginatorModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -66,7 +66,8 @@ const appRoutes: Routes = [
     MatBadgeModule,
     FlexLayoutModule,
     MatSelectModule,
-    MatSliderModule
+    MatSliderModule,
+    MatPaginatorModule 
   ],
 
   providers: [MatDatepickerModule],

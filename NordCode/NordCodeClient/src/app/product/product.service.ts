@@ -22,4 +22,9 @@ export class ProductService {
     this._url = this._baseUrl + 'api/createProduct';
     return this._http.post<any>(this._url, _product);
   };
+
+  deleteProduct(pid: any) {
+    this._url = this._baseUrl + 'api/deleteProduct?pid=' + pid;
+    return this._http.get(this._url)
+  };
 };
