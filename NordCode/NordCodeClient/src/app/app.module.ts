@@ -21,6 +21,9 @@ import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CommercialComponent } from './commercial/commercial.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 
 //I keep the new line
 const appRoutes: Routes = [
@@ -32,6 +35,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'product', component: ProductComponent },
   { path: 'productdetails/:productId', component: ProductdetailsComponent },
+  { path: 'commercial', component: CommercialComponent }
 ];
 
 @NgModule({
@@ -43,7 +47,8 @@ const appRoutes: Routes = [
     AddnewComponent,
     HomeComponent,
     ProductComponent,
-    ProductdetailsComponent
+    ProductdetailsComponent,
+    CommercialComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -53,11 +58,11 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatInputModule,
+    //MatInputModule,
     MatRadioModule,
     MatCheckboxModule,
     MatButtonModule,
-    MatListModule,
+    //MatListModule,
     MatCardModule,
     MatToolbarModule,
     MatDatepickerModule,
@@ -67,7 +72,8 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     MatSelectModule,
     MatSliderModule,
-    MatPaginatorModule 
+    MatPaginatorModule,
+    MatGridListModule
   ],
 
   providers: [MatDatepickerModule],

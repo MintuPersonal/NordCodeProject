@@ -11,4 +11,5 @@ export class AppComponent {
   logMessage(value){
     console.log(value);
   }
+
 }

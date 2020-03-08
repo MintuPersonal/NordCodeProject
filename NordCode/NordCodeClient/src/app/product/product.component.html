@@ -1,3 +1,4 @@
+
 <div style="padding: 13px;" class="container">
     <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }} </div>
 
@@ -17,8 +18,7 @@
                 </mat-card-title>
                 <hr>
 
-                <input #PID="ngModel" name="PID" ngModel type="text" [(ngModel)]="productModel.PID">
-
+                <input #PID="ngModel" name="PID" ngModel type="hidden" [(ngModel)]="productModel.PID" commercial>
                 <mat-form-field class="example-full-width">
                     <input matInput #PName="ngModel" name="PName" ngModel type="text" placeholder="Product Name"
                         required [(ngModel)]="productModel.PName" minlength="2" maxlength="200">
@@ -97,7 +97,7 @@
                 <mat-checkbox #Active="ngModel" name="Active" ngModel [(ngModel)]="productModel.Active"> Active
                 </mat-checkbox>
 
-                <mat-divider></mat-divider>
+                <!-- <mat-divider></mat-divider> -->
                 <p>
                     <mat-label> Display </mat-label>
                     <mat-radio-group *ngFor="let item of displays;" aria-label="Select an option"
@@ -153,7 +153,7 @@
         <mat-card *ngIf="!submitted">
             <h5 class="text-center" style="text-align: center; margin: 10px;"><i class="fa fa-check "></i> Product List
             </h5>
-            <mat-divider></mat-divider>
+            <!-- <mat-divider></mat-divider> -->
             <mat-card-subtitle fxLayoutGap="10px">
                 <span fxFlex="6%" fxLayoutAlign="center"> Picture </span>
                 <span fxFlex="5%"> Sl No </span>
