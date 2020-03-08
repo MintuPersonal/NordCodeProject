@@ -27,7 +27,9 @@ export class ProductComponent implements OnInit {
   Title = 'demo';
   hide: boolean;
   errorMsg: false;
+  
   public searchContact: string;
+
   public products = [
     { isFavorite: false, productId: 1, name: 'Apple', title: 'Apple', price: 500, description: ' quia recusandae aut.' },
     { isFavorite: true, productId: 2, name: 'Angur', title: 'Angur', price: 700, description: ' quia recusandae aut.' },
@@ -35,6 +37,7 @@ export class ProductComponent implements OnInit {
     { isFavorite: true, productId: 4, name: 'Aner', title: 'Aner', price: 100, description: ' quia recusandae aut.' },
     { isFavorite: false, productId: 5, name: 'Piyara', title: 'Piyara', price: 150, description: ' quia recusandae aut.' }
   ];
+
   public displays = [
     { name: 'Banner', title: 'Banner', },
     { name: 'Categories', title: 'Categories', },
@@ -49,7 +52,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     return this._productService.getProduct(this.productModel).subscribe((data: Ecom_Product[]) => { this.productModels = data });
-  }
+  };
 
   onSubmit(event) {
 
@@ -60,12 +63,12 @@ export class ProductComponent implements OnInit {
     this.productModel.Inserted_By = "";
     this._productService.setProduct(this.productModel).subscribe(data => this.PID = data.PID, error => this.errorMsg = error.statusText)
     this.onClear();
-  }
+  };
 
   onClear() {
-    console.log('all clear')
+    console.log('all clear');
     //this.taskModel = {task_id: '', title: '', description: '', date: new Date(), time_from: '', time_to: '', location: '', notify: '', email: '', priority: 0, isDelete: false, isDone: false, create_at: new Date(), user_Information_user_id: '' }
-  }
+  };
 
   preview(files, Id) {
     if (files.length === 0)
@@ -92,5 +95,6 @@ export class ProductComponent implements OnInit {
 
     }
     console.log(files)
-  }
-}
+  };
+
+};

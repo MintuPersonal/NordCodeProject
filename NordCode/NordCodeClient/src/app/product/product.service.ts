@@ -20,7 +20,6 @@ export class ProductService {
 
   setProduct(_product: Ecom_Product) {
     this._url = this._baseUrl + 'api/createProduct';
-    return this._http.post<any>(this._url, _product)
+    return this._http.post<any>(this._url, _product);
   };
-
 };
