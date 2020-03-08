@@ -102,3 +102,10 @@ for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
 	npm u -D morgan  --for middileware logfile
 	npm install body-parser
 	npm i cors 
+
+
+=============== For Updated ================= 
+ ng update --next @angular/cli --force
+npm install typescript@latest
+
+https://www.itsolutionstuff.com/post/angular-9-toastr-notifications-exampleexample.html

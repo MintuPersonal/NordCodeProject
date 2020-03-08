@@ -8,10 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialTimePickerModule } from '@candidosales/material-time-picker';
 
-import { MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatDatepickerModule, MatNativeDateModule, MatBadgeModule, MatSelectModule, MatSliderModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatDatepickerModule, MatBadgeModule, MatSelectModule, MatSliderModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -21,6 +20,7 @@ import { AddnewComponent } from './addnew/addnew.component';
 import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 //I keep the new line
 const appRoutes: Routes = [
@@ -62,7 +62,7 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatDatepickerModule,
     MaterialTimePickerModule,
-    MatNativeDateModule,
+    //MatNativeDateModule,
     MatBadgeModule,
     FlexLayoutModule,
     MatSelectModule,
