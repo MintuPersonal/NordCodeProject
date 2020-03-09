@@ -1,7 +1,8 @@
 
+
 <div style="padding: 13px;" class="container">
     <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }} </div>
-
+    <app-navbar></app-navbar>
     <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
 
         <!-- Product Entry -->
@@ -208,6 +209,34 @@
           </div> -->
         </mat-card>
 
+    </div>
+
+
+    <!-- Image Upload -->
+
+    <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3>Choose File</h3>
+                <div class="form-group">
+                    <input type="file" name="image" (change)="fileProgress($event)" />
+                </div>
+                <div *ngIf="fileUploadProgress">
+                    Upload progress: {{ fileUploadProgress }}
+                </div>
+                <div class="image-preview mb-3" *ngIf="previewUrl">
+                    <img [src]="previewUrl" height="300" />
+                </div>
+
+                <div class="mb-3" *ngIf="uploadedFilePath">
+                    {{uploadedFilePath}}
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary" (click)="onSubmit()">Upload</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

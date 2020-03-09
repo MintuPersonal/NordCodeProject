@@ -1,3 +1,74 @@
-mat-grid-tile {
-    background: lightblue;
+
+.container {
+    max-width: 1820px;
+}
+.search{    
+    background: #4abfbf;
+    height: 100px;
+    font-size: 30;
+    padding: 10px;
+}
+.banner{    
+    background: sandybrown;
+    height: 250px;
+}
+
+.category{
+    margin: 0px 50px 0px 100px;
+    padding: 50px;
+    background: #f3f3f3;
+}
+
+.brand{
+    margin: 0px 50px 0px 100px;
+    padding: 50px;
+    background: #f3f3f3;
+}
+
+
+.popular{
+    margin: 0px 150px 0px 150px;
+    padding: 20px;
+    background: white;
+}
+
+.feature{
+    margin: 0px 150px 20px 150px;
+    padding: 20px;
+    background: white;
+}
+.footer{    
+    background: #4abfbf;
+    height: 70px;
+    padding: 10px 150px 10px 150px;
+    color: whitesmoke;
+}
+mat-card-title {
+    justify-content: center;
+    flex-direction: row; 
+    box-sizing: border-box;
+    display: flex;
+    font-weight: bold;
+    margin: 0px;
+}
+
+  mat-card-content{
+    font-size: 35px;
+    justify-content: center;
+    display: flex;
   }
+  mat-card-footer{
+      background: sandybrown;
+      margin: 0px;
+      color: papayawhip;
+  }
+label{
+    margin-bottom: 0px;
+}
+.mat-raised-button{
+    line-height: 20px;
+}
+.banner{
+    width: 100%;
+    height: 300px;
+}

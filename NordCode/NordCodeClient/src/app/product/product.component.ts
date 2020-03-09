@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Ecom_Product } from './products';
 import { ProductService } from './product.service';
 import { PageEvent } from '@angular/material';
+import { HttpEventType, HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class ProductComponent implements OnInit {
     }
   };
 
-  constructor(private _productService: ProductService) {
+  constructor(private _productService: ProductService, private http : HttpClient) {
     this.ngOnInit();
   }
 
@@ -136,4 +137,53 @@ export class ProductComponent implements OnInit {
       this.ngOnInit();
     }
   }
+
+ 
+  fileData: File = null;
+  previewUrl: any = null;
+  fileUploadProgress: string = null;
+  uploadedFilePath: string = null;
+
+  fileProgress(fileInput: any) {
+    this.fileData = <File>fileInput.target.files[0];
+    this.previewImage();
+  }
+
+  previewImage() {
+    // Show preview 
+    var mimeType = this.fileData.type;
+    if (mimeType.match(/image\/*/) == null) {
+      return;
+    }
+
+    var reader = new FileReader();
+    reader.readAsDataURL(this.fileData);
+    reader.onload = (_event) => {
+      this.previewUrl = reader.result;
+    }
+  }
+
+  // onSubmit() {
+  //   const formData = new FormData();
+  //   formData.append('files', this.fileData);
+
+  //   this.fileUploadProgress = '0%';
+
+  //   this.http.post('https://us-central1-tutorial-e6ea7.cloudfunctions.net/fileUpload', formData, {
+  //   //this.http.post('https://console.firebase.google.com/project/mitu-77f76/storage/mitu-77f76.appspot.com/fileUpload', formData, {
+  //     reportProgress: true,
+  //     observe: 'events'
+  //   })
+  //     .subscribe(events => {
+  //       if (events.type === HttpEventType.UploadProgress) {
+  //         this.fileUploadProgress = Math.round(events.loaded / events.total * 100) + '%';
+  //         console.log(this.fileUploadProgress);
+  //       } else if (events.type === HttpEventType.Response) {
+  //         this.fileUploadProgress = '';
+  //         console.log(events.body);
+  //         alert('SUCCESS !!');
+  //       }
+
+  //     })
+  // }
 };

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatCheckboxModule, MatPaginatorModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,7 +9,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialTimePickerModule } from '@candidosales/material-time-picker';
 
-import { MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatDatepickerModule, MatBadgeModule, MatSelectModule, MatSliderModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatDatepickerModule, MatBadgeModule, MatSelectModule, MatSliderModule, MatTableModule } from '@angular/material';
+import { MatCheckboxModule, MatPaginatorModule, MatTooltipModule, MatFormFieldModule, MatSidenavModule, MatMenuModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -27,7 +27,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 //I keep the new line
 const appRoutes: Routes = [
-  { path: '', component: LoginComponent, pathMatch: 'full' },
+  { path: '', component: NavbarComponent, pathMatch: 'full' },
+  { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: 'navbar', component: NavbarComponent },
   { path: 'home', component: HomeComponent },
   { path: 'addnew', component: AddnewComponent },
@@ -58,11 +59,11 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    //MatInputModule,
+    MatInputModule,
     MatRadioModule,
     MatCheckboxModule,
     MatButtonModule,
-    //MatListModule,
+    MatListModule,
     MatCardModule,
     MatToolbarModule,
     MatDatepickerModule,
@@ -73,7 +74,17 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatSliderModule,
     MatPaginatorModule,
-    MatGridListModule
+    MatGridListModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTooltipModule,
+    MatTableModule
   ],
 
   providers: [MatDatepickerModule],

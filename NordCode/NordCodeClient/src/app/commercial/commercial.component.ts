@@ -12,4 +12,9 @@ export class CommercialComponent implements OnInit {
   ngOnInit() {
   }
 
+  category = ['red', 'yellow', 'overage', 'black', 'accent', 'Miss']
+  brandModels = [1111, 2, 1111, 4, 1111, 6, 7];
+  popularModels = [1, 2, 3, 4];
+
+
 }

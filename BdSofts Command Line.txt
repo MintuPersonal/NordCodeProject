@@ -107,5 +107,6 @@ for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
 =============== For Updated ================= 
  ng update --next @angular/cli --force
 npm install typescript@latest
-
+npm i --save-dev typescript@3.4.5
+npm i @angular/flex-layout @angular/cdk
 https://www.itsolutionstuff.com/post/angular-9-toastr-notifications-exampleexample.html

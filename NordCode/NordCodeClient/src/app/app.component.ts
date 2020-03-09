@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'BardCode';
- 
-  logMessage(value){
+
+  logMessage(value) {
     console.log(value);
   }
-
 }

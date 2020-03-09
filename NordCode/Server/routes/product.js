@@ -39,7 +39,7 @@ router.get('/getproductsbyparam', (req, res, next) => {
 });
 
 router.get('/getproductbyproductid', (req, res, next) => {
-    var ProductId = req.query.ProductId;
+    var ProductId = req.query.PID;
     product.findByPk(ProductId).then(products => {
         res.json(products);
     }).catch(err => {

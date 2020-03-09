@@ -1,13 +1,140 @@
-<p>commercial works!</p>
-<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
+<!-- Grid row -->
 
-    <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+<div class="container">
+    <div class="row search" fxLayoutAlign="space-evenly center">
+        <mat-icon fxFlex="5%" (click)="onClear()" style="color: whitesmoke;"> drag_indicator </mat-icon>
+        <mat-form-field>
+            <input type="text" matInput placeholder=" Search.." style="background: white;">
+            <mat-icon fxFlex="5%" (click)="onClear()" style="color: whitesmoke;"> search </mat-icon>
+        </mat-form-field>
+        <mat-icon fxFlex="5%" (click)="onClear()" style="color: whitesmoke;"> add_shopping_cart </mat-icon>
+    </div>
+    <div class="row">
+        <img class="banner" src="../assets/img/member/banner.jpg" alt="LG" fxLayoutAlign="space-around center">
+    </div>
 
-        <mat-icon fxFlex="5%" > clear </mat-icon>
-        <span fxFlex="100%" class="text-center"> Add New Product </span>
-        <button mat-raised-button >
-            <mat-icon fxFlex="5%"> done </mat-icon>
-        </button>
-    </mat-card-title>
-    <hr>
+    <label class="col-lg-2 offset-1 font-weight-bold" style="font-size: 40px; padding: 5px;">
+        Category
+    </label>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" class="category">
+        <mat-icon fxFlex="5%" (click)="onClear()"> keyboard_arrow_left </mat-icon>
+        <span *ngFor="let item of category; index as itemed ">
+            <mat-card class="" style="background: aquamarine;border-radius: 10px; height: 100px;">
+                <mat-card-subtitle></mat-card-subtitle>
+                <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
+                    <mat-card-content> Baby Care </mat-card-content>
+                </mat-card-title>
+
+            </mat-card>
+        </span>
+        <mat-icon fxFlex="10%" (click)="onClear()"> keyboard_arrow_right </mat-icon>
+
+
+        <!-- 
+    <div class="example-button-row">
+        <button mat-raised-button>Basic</button>
+        <button mat-raised-button color="primary">Primary</button>
+        <button mat-raised-button color="accent">Accent</button>
+        <button mat-raised-button color="warn">Warn</button>
+        <button mat-raised-button disabled>Disabled</button>
+        <a mat-raised-button routerLink=".">More....</a> -->
+    </div>
+
+    <label class="col-lg-2 offset-1 font-weight-bold" style="font-size: 40px; padding: 5px;">
+        Brand
+    </label>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center " class="brand">
+        <mat-icon fxFlex="5%" (click)="onClear()"> keyboard_arrow_left </mat-icon>
+        <span *ngFor="let item of brandModels; index as itemed ">
+            <mat-card class="card-picture">
+                <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column" class="rounded-circle border border-dark">
+                    <img mat-card-md-image src="../assets/img/member/1111.jpg" alt="LG"
+                        fxLayoutAlign="space-around center">
+                </mat-card-title>
+                <mat-card-footer fxLayoutAlign="space-around center"> APPLE </mat-card-footer>
+            </mat-card>
+        </span>
+        <mat-icon fxFlex="10%" (click)="onClear()"> keyboard_arrow_right </mat-icon>
+    </div>
+
+
+    <label class="col-lg-12 offset-1 font-weight-bold" style="font-size: 35px; padding: 5px;">
+        Popular
+        <label class="offset-8"> <a mat-raised-button btn-sm routerLink="." style="background: #4abfbf; color: white;">More....</a> </label>
+    </label>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" class="popular">
+
+        <span *ngFor="let item of popularModels; index as itemed ">
+            <mat-card class="card-picture" style="border-top-left-radius:3em; padding: 0px;">
+                <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
+                    <img style="border-top-left-radius:2em;" src="../assets/img/member/OIP.jpg">
+                </mat-card-title>
+                <mat-card-footer fxLayoutAlign="space-around center"> Lorem ipsum dolor sit <br> Lorem ipsum dolor sit
+                    <br> Tk.2000 </mat-card-footer>
+            </mat-card>
+        </span>
+    </div>
+    
+    <label class="col-lg-12 offset-1 font-weight-bold" style="font-size: 35px; padding: 5px;">
+        House Hold
+        <label class="offset-8"> <a mat-raised-button btn-sm routerLink="." style="background: #4abfbf; color: white;">More....</a> </label>
+    </label>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" class="popular">
+
+        <span *ngFor="let item of popularModels; index as itemed ">
+            <mat-card class="card-picture" style="border-top-left-radius:3em; padding: 0px;">
+                <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
+                    <img style="border-top-left-radius:2em;" src="../assets/img/member/1111.jpg">
+                </mat-card-title>
+                <mat-card-footer fxLayoutAlign="space-around center"> Lorem ipsum dolor sit <br> Lorem ipsum dolor sit
+                    <br> Tk.2000 </mat-card-footer>
+            </mat-card>
+        </span>
+    </div>
+<!-- 
+    <label class="col-lg-12 offset-1 font-weight-bold" style="font-size: 35px; padding: 5px;">
+        House Hold
+        <label class="offset-8"> <a mat-raised-button routerLink="." style="background: #4abfbf; color: white;" >More....</a> </label>
+    </label>
+
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" class="feature">
+        <div class="row">
+
+        </div>
+        <span *ngFor="let item of popularModels; index as itemed ">
+            <mat-card class="card-picture" style="border-top-left-radius:3em; padding: 0px;">
+                <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column" style="background:rebeccapurple;">
+                    <img mat-card-lg-image src="../assets/img/member/1111.jpg">
+                    <mat-icon fxFlex="10%" (click)="onClear()"> list </mat-icon>
+                </mat-card-title>
+                <mat-card-footer fxLayoutAlign="space-around center"> Lorem ipsum dolor sit <br> Lorem ipsum dolor sit
+                    <br> Tk.2000 </mat-card-footer>
+            </mat-card>
+        </span>
+    </div> -->
+
+    <div class="row footer" fxLayoutAlign="space-evenly center">
+
+        <label class="col-lg-1">
+            <mat-icon fxFlex="5%" (click)="onClear()" style="color: whitesmoke;"> &nbsp; home </mat-icon>
+            <br> Home
+        </label>
+        <label class="col-lg-1">
+            <mat-icon fxFlex="5%" (click)="onClear()" style="color: whitesmoke;"> &nbsp; &nbsp; message </mat-icon>
+            <br>
+            Message
+        </label>
+        <label class="col-lg-1">
+            <mat-icon fxFlex="5%" (click)="onClear()" style="color: whitesmoke;"> &nbsp; add_shopping_cart </mat-icon>
+            <br>
+            Card
+        </label>
+        <label class="col-lg-1">
+            <mat-icon fxFlex="5%" (click)="onClear()" style="color: whitesmoke;"> &nbsp; &nbsp; account_circle
+            </mat-icon>
+            <br>Account
+        </label>
+    </div>
+
+
 </div>
