@@ -57,6 +57,7 @@
         <mat-icon fxFlex="10%" (click)="onClear()"> keyboard_arrow_right </mat-icon>
     </div>
 
+    
 
     <label class="col-lg-12 offset-1 font-weight-bold" style="font-size: 35px; padding: 5px;">
         Popular
@@ -64,11 +65,13 @@
     </label>
     <div fxLayout="row" fxLayoutAlign="space-evenly center" class="popular">
 
-        <span *ngFor="let item of popularModels; index as itemed ">
-            <mat-card class="card-picture" style="border-top-left-radius:3em; padding: 0px;">
-                <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                    <img style="border-top-left-radius:2em;" src="../assets/img/member/OIP.jpg">
+        <span *ngFor="let item of popularModels; index as itemed ">            
+            <mat-card class="card-picture" style="border-top-left-radius:3em; padding: 0px;">                
+                <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">                   
+                    <img style="border-top-left-radius:2em;" src="../assets/img/member/OIP.jpg">  
+                    <mat-card-subtitle class="round"> ID # 123456</mat-card-subtitle>                  
                 </mat-card-title>
+               
                 <mat-card-footer fxLayoutAlign="space-around center"> Lorem ipsum dolor sit <br> Lorem ipsum dolor sit
                     <br> Tk.2000 </mat-card-footer>
             </mat-card>
@@ -85,33 +88,14 @@
             <mat-card class="card-picture" style="border-top-left-radius:3em; padding: 0px;">
                 <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
                     <img style="border-top-left-radius:2em;" src="../assets/img/member/1111.jpg">
+                    <mat-card-subtitle class="round"> ID # 123456</mat-card-subtitle>      
                 </mat-card-title>
                 <mat-card-footer fxLayoutAlign="space-around center"> Lorem ipsum dolor sit <br> Lorem ipsum dolor sit
                     <br> Tk.2000 </mat-card-footer>
             </mat-card>
         </span>
     </div>
-<!-- 
-    <label class="col-lg-12 offset-1 font-weight-bold" style="font-size: 35px; padding: 5px;">
-        House Hold
-        <label class="offset-8"> <a mat-raised-button routerLink="." style="background: #4abfbf; color: white;" >More....</a> </label>
-    </label>
 
-    <div fxLayout="row" fxLayoutAlign="space-evenly center" class="feature">
-        <div class="row">
-
-        </div>
-        <span *ngFor="let item of popularModels; index as itemed ">
-            <mat-card class="card-picture" style="border-top-left-radius:3em; padding: 0px;">
-                <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column" style="background:rebeccapurple;">
-                    <img mat-card-lg-image src="../assets/img/member/1111.jpg">
-                    <mat-icon fxFlex="10%" (click)="onClear()"> list </mat-icon>
-                </mat-card-title>
-                <mat-card-footer fxLayoutAlign="space-around center"> Lorem ipsum dolor sit <br> Lorem ipsum dolor sit
-                    <br> Tk.2000 </mat-card-footer>
-            </mat-card>
-        </span>
-    </div> -->
 
     <div class="row footer" fxLayoutAlign="space-evenly center">
 
