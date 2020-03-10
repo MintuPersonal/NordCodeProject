@@ -31,7 +31,7 @@ export class ProductComponent implements OnInit {
     }
   };
 
-  constructor(private _productService: ProductService, private http : HttpClient) {
+  constructor(private _productService: ProductService, private http: HttpClient) {
     this.ngOnInit();
   }
 
@@ -67,18 +67,21 @@ export class ProductComponent implements OnInit {
   ];
 
   ngOnInit() {
-    return this._productService.getProduct(this.productModel).subscribe((data: Ecom_Product[]) => { this.productModels = data });
+    var data = this._productService.getProduct(this.productModel).subscribe((data: Ecom_Product[]) => { this.productModels = data });
+    console.log(this.productModels);
+    debugger;
+    return data;
   };
 
   onSubmit(event) {
-    
+
     this.productModel.SID = 0;
     this.productModel.Rol = 0;
     this.productModel.ParentId = 0;
     this.productModel.Img_Path = '../assets/img/member/' + this.productModel.FileUrl;
     this.productModel.Inserted_By = "Mitnu";
     this.productModel.Inserted_Date = new Date();
-    if (this.isEdit == 0){
+    if (this.isEdit == 0) {
       this.productModel.PID = 0;
     }
     this._productService.setProduct(this.productModel).subscribe(data => this.PID = data.PID, error => this.errorMsg = error.statusText)
@@ -123,7 +126,7 @@ export class ProductComponent implements OnInit {
   };
 
   editItem(item) {
-     this.isEdit = 1;
+    this.isEdit = 1;
     return this.productModel = item;
     // this.imgURL = item.Img_Path;
     // this.imgURLLarge = item.Img_Path;
@@ -138,7 +141,7 @@ export class ProductComponent implements OnInit {
     }
   }
 
- 
+
   fileData: File = null;
   previewUrl: any = null;
   fileUploadProgress: string = null;

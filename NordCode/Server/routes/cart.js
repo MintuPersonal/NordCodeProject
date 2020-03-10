@@ -4,7 +4,7 @@ const cart = require('../models/Cart.js')
 const router = express.Router();
 
 router.get('/getaddtocart', (req, res, next) => {
-    var cid = req.body.CID;
+    var cid = 1; //req.body.CID;
     cart.findAll({ where: { CID: cid } }).then(addtocarts => {
         res.json(addtocarts);
     }).catch(err => {

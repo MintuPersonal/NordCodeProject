@@ -62,6 +62,11 @@ mat-card-title {
       margin: 0px;
       color: papayawhip;
   }
+  mat-card-footer:hover{
+    background: #ff5722;
+    margin: 0px;
+    color: papayawhip;
+  }
 label{
     margin-bottom: 0px;
 }
@@ -80,3 +85,26 @@ label{
     color: white;
     font-size: 20px;
 }
+
+mat-card-subtitle.round.mat-card-subtitle {
+    height: 35px;
+    font-size: 15px;
+    padding: 6px;
+    position: relative;
+    right: -174px;    
+    margin: 0;
+    width: 100px;
+    bottom: 162px;
+} 
+
+  img:hover {
+    opacity: 0.5;
+  }
+
+  .mat-drawer-container{
+    position: unset;
+     }
+
+     table.mat-table{
+        margin: 100px;
+     }

@@ -23,6 +23,7 @@ import { ProductdetailsComponent } from './productdetails/productdetails.compone
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommercialComponent } from './commercial/commercial.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 //I keep the new line
@@ -84,7 +85,8 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatTooltipModule,
-    MatTableModule
+    MatTableModule,
+    MatExpansionModule
   ],
 
   providers: [MatDatepickerModule],
