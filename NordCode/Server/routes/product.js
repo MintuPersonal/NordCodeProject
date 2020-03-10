@@ -27,7 +27,6 @@ router.get('/getproducts', (req, res, next) => {
         console.log('Error ' + err);
     });
 });
-
 router.get('/getproductsbyparam', (req, res, next) => {
     var name = req.query.Name;
     product.findAll({ where: { [Op.or]: [{ Brand: { [Op.like]: '%' + name + '%', } }, { Category: { [Op.like]: '%' + name + '%', } }] } }
@@ -37,14 +36,31 @@ router.get('/getproductsbyparam', (req, res, next) => {
         console.log('Error ' + err);
     });
 });
-
-router.get('/getproductbyproductid', (req, res, next) => {
+router.get('/getproductdetail', (req, res, next) => {
+    var productdetailobj = {};
     var ProductId = req.query.PID;
+    var name = '';
     product.findByPk(ProductId).then(products => {
-        res.json(products);
+        console.log(products.Category);
+        name = products.Category;
+        var imgUrl = products.Img_Path
+        productdetailobj.Banner = [imgUrl, 'One_' + imgUrl, 'Two_' + imgUrl, 'Three_' + imgUrl, 'Four_' + imgUrl];
+        productdetailobj.Product = products;
     }).catch(err => {
         console.log('Error ' + err);
     });
+
+    product.findAll({ where: { [Op.or]: [{ Brand: { [Op.like]: '%' + name + '%', } }, { Category: { [Op.like]: '%' + name + '%', } }] } }
+    ).then(reproduces => {
+        productdetailobj.Recommended = reproduces;
+        res.json({
+            status: true,
+            msg: 'Data has been loaded successfully',
+            productdetailobj
+        });
+    }).catch(err => {
+        console.log('Error ' + err);
+    });;
 });
 router.post('/createProduct', (req, res, next) => {
 
@@ -72,7 +88,6 @@ router.post('/createProduct', (req, res, next) => {
         }
     }
 });
-
 router.get('/deleteProduct', (req, res, next) => {
     var pid = req.query.pid;
     if (pid = 0) {

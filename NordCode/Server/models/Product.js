@@ -25,7 +25,7 @@ const product = db.sequelize.define(
     Inserted_By: db.Sequelize.STRING,
     Inserted_Date: db.Sequelize.DATE,
     
-    Img_Path: db.Sequelize.STRING, 
+    //Img_Paths: db.Sequelize.STRING, 
     Display: db.Sequelize.STRING,
     FileUrl: db.Sequelize.STRING,
     FileExtension: db.Sequelize.STRING,
