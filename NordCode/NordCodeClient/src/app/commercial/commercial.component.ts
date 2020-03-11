@@ -44,23 +44,24 @@ export class CommercialComponent implements OnInit {
     )
   }
 
-  
+
   isHidden = true;
   itemObj = new Array();
 
-  addtobag(item: Ecom_Commercial) {  
+  addtobag(item: Ecom_Commercial) {
 
     var data = this._commercialService.getAddtoCart(this.commercialModel).subscribe(
       (data: Ecom_Commercial[]) => {
         this.commercialModels = data
 
         Object.keys(this.commercialModels).forEach(key => {
-          this.commercialModel = this.commercialModels[key];
+          this.commercialModels = this.commercialModels[key] as Ecom_Commercial[];
+          data as object[]
           this.total = key;
-          debugger;
+          debugger;         
           console.log(`key is ${key} and value is ${this.commercialModel.UnitePrice}`);
         });
-       // this.total = this.commercialModels.length;
+        // this.total = this.commercialModels.length;
       });
 
     //this.total = data;
