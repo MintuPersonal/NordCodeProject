@@ -96,16 +96,15 @@ export class CommercialComponent implements OnInit {
         const addItem = Object.keys(itemObj).map(key => itemObj[key]);
 
         if (storageItem[0] == addItem[0]) {
-          this.isItemLocalStorage = true
-          return false;
+          return this.isItemLocalStorage = true
+
         } else {
-          this.isItemLocalStorage = false;
-          return false;
+          return this.isItemLocalStorage = false;
+
         }
       });
     } else {
       return this.isItemLocalStorage = false;
-      return false;
     }
   }
 
