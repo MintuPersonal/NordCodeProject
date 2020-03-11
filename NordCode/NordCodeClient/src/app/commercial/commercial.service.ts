@@ -13,12 +13,12 @@ export class CommercialService {
 
   constructor(private _http: HttpClient) { }
 
-  getCommercial(_commercial: Ecom_Commercial) {
+  getCommercial() {
     this._url = this._baseUrl+'api/gethomes';    
     return this._http.get(this._url);
   }
 
-  getAddtoCart(commercialModel: Ecom_Commercial) {
+  getAddtoCart() {
     this._url = this._baseUrl+'api/getaddtocart';    
     return this._http.get(this._url);
   }

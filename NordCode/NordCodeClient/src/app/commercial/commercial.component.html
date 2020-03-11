@@ -6,16 +6,17 @@
         <button mat-raised-button (click)="addColumn()"> Add column </button>
         <button mat-raised-button (click)="removeColumn()"> Remove column </button>
         <button mat-raised-button (click)="shuffle()"> Shuffle </button>
-         <h5 class="text-center"> Items {{total}} Total: ${{5000}} </h5>
+        <h5 class="text-center"> Items {{totalItemsCount}} Total: $ {{totalItemsPrice}} </h5>
         <table mat-table [dataSource]="commercialModels" class="mat-elevation-z8">
             <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
                 <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-                <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
-            </ng-container>
+                <td mat-cell *matCellDef="let element"> {{element[column]}} </td>                                          
+            </ng-container>           
 
             <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
             <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
         </table>
+
 
     </mat-drawer>
 
@@ -45,7 +46,7 @@
         <img class="banner" src="../assets/img/member/banner.jpg" alt="LG" fxLayoutAlign="space-around center">
     </div>
 
-    <label class="col-lg-2 offset-1 font-weight-bold" style="font-size: 40px; padding: 5px;">
+    <!-- <label class="col-lg-2 offset-1 font-weight-bold" style="font-size: 40px; padding: 5px;">
         Category
     </label>
     <div fxLayout="row" fxLayoutAlign="space-evenly center" class="category">
@@ -80,7 +81,7 @@
             </mat-card>
         </div>
         <mat-icon fxFlex="10%" (click)="onClear()"> keyboard_arrow_right </mat-icon>
-    </div>
+    </div> -->
 
 
 
@@ -98,12 +99,34 @@
                         <mat-card-subtitle class="round"> ID#123456</mat-card-subtitle>
                     </mat-card-title>
 
+                    <div class="imageWrapper">
+                        <div class="overlay text">
+                            <div class="row">
+                                <p class="addIcon">
+                                    <mat-icon class="hide" matBadgeColor="warn" style="color: whitesmoke;"
+                                        (click)="RemoveFromBag(item)">indeterminate_check_box</mat-icon>
+                                </p>
+                                <p class="addText"> Add to Shopping Bag </p>
+                                <p class="addIcon">
+                                    <mat-icon class="hide" matBadgeColor="warn" style="color: whitesmoke;"
+                                        (click)="AddToBag(item)"> add </mat-icon>
+                                </p>
+                            </div>
+                            <span>
+                                <a href="#" class="btnShowDetails">
+                                    <span>Details</span>
+                                    <span> &gt;</span></a>
+                                <a href="#" class="btnShowDetailsIcon"></a>
+                            </span>
+                        </div>
+                    </div>
+
                     <mat-card-footer fxLayoutAlign="space-around center">
                         <mat-icon class="hide" matBadgeColor="warn" style="color: whitesmoke;"
-                            (click)="minustobag(item)">indeterminate_check_box</mat-icon>
-                        <mat-icon class="hide" matBadgeColor="warn" style="color: whitesmoke;" (click)="addtobag(item)">
+                            (click)="RemoveFromBag(item)">indeterminate_check_box</mat-icon>
+                        <mat-icon matBadgeColor="warn" style="color: whitesmoke;" (click)="AddToBag(item)">
                             directions_run</mat-icon>
-                        <span>{{total}} in bag </span> <span (click)="addtobag(item)"> add to bag </span>
+                        <span>{{individualItemCount}} in bag </span> <span (click)="AddToBag(item)"> add to bag </span>
 
                         <!-- <mat-icon matBadgeColor="warn" style="color: whitesmoke;">minus</mat-icon>
                         <span>{{total}} in bag </span> add -->
@@ -126,6 +149,18 @@
                         <img style="border-top-left-radius:2em;" src="../assets/img/member/1111.jpg">
                         <mat-card-subtitle class="round"> ID#123456</mat-card-subtitle>
                     </mat-card-title>
+
+                    <div class="imageWrapper">
+                        <div class="overlay text">
+                            <p class="addText">Add to Shopping Bag</p>
+                            <span>
+                                <a href="#" class="btnShowDetails">
+                                    <span>Details</span>
+                                    <span> &gt;</span></a>
+                                <a href="#" class="btnShowDetailsIcon"></a>
+                            </span>
+                        </div>
+                    </div>
 
                     <mat-card-footer fxLayoutAlign="space-around center">
                         <mat-icon class="hide" matBadgeColor="warn" style="color: whitesmoke;"

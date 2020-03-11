@@ -96,10 +96,10 @@ mat-card-subtitle.round.mat-card-subtitle {
     width: 100px;
     bottom: 162px;
 } 
-
+/* 
   img:hover {
     opacity: 0.5;
-  }
+  } */
 
   .mat-drawer-container{
     position: unset;
@@ -108,3 +108,90 @@ mat-card-subtitle.round.mat-card-subtitle {
      table.mat-table{
         margin: 100px;
      }
+     .overlay.text {
+        /* display: none; */
+        font-size: 20px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding-top: 0;
+        color: #fff;
+        background-color: rgba(40,40,40,.75);
+        text-align: center;
+        height: 88%;
+        width: 100%;
+        border: 1px solid #CCC;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        padding-bottom: 55px;
+        opacity: 0;
+    }
+    .overlay {
+        position: absolute;
+        overflow: hidden;
+        color: #fff;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 14px;
+        border-radius: 4px;
+    }
+    .imageWrapper:hover .overlay.text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .imageWrapper:hover .overlay {
+        opacity: 1;
+    }
+    .imageWrapper .overlay {
+        position: absolute;
+        overflow: hidden;
+        color: #fff;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 14px;
+        border-radius: 4px;
+    }
+    .overlay.text p.addText {
+        height: 100px;
+        width: 125px;       
+        color: #fff;
+        font-size: 22px;
+        line-height: 34px;
+    }
+    .overlay.text p.addIcon {
+        height: 64px;       
+        margin: 75px auto 0;
+        color: #fff;
+        font-size: 22px;      
+    }
+    .btnShowDetails {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 25px;
+        background: #fff;
+        text-align: center;
+        border: 0;
+        width: 100%;
+        color: #5e5e5e;
+        font-weight: 700;
+        font-size: 12px;
+        padding: 3px;
+        text-decoration: none;
+        line-height: 20px;
+    }
+
+    th.mat-header-cell {
+        text-align: left;
+        width: 100px;
+    }

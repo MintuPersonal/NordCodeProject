@@ -8,6 +8,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './commercial.component.html',
   styleUrls: ['./commercial.component.css']
 })
+
 export class CommercialComponent implements OnInit {
   featuresModels: any;
   commercialObj: object[];
@@ -15,18 +16,26 @@ export class CommercialComponent implements OnInit {
   bannersModel: any;
   brandsModel: any;
   featuresModel: any;
-  newitems: Ecom_Commercial;
+  newitems: Ecom_Commercial[];
   newData: Ecom_Commercial[];
-  total: any;
+  itemPrice: any;
+
+  totalItemsPrice: any = 0;
+  totalItemsCount: any = 0;
+  individualItemCount: any = 0;
+  itemState: Ecom_Commercial[] = [];
+  itemCount: number = 0;
+  newline: Ecom_Commercial;
+  isItemLocalStorage: any;
 
   constructor(private _commercialService: CommercialService) { }
-  commercialModel = new Ecom_Commercial();
+  //commercialModel = new Ecom_Commercial(0, '', 0, 0);
   _commercialModel: Object[];
   commercialModels = [] //Ecom_Commercial[];
 
   ngOnInit() {
-
-    this._commercialService.getCommercial(this.commercialModel).subscribe(
+    localStorage.setItem('item', null);
+    this._commercialService.getCommercial().subscribe(
       data => {
         this.commercialObj = data as object[];	 // FILL THE ARRAY WITH DATA.
         this._commercialModel = this.commercialObj['homeobj'];
@@ -40,43 +49,127 @@ export class CommercialComponent implements OnInit {
       (err: HttpErrorResponse) => {
         console.log(err.message);
       }
-
     )
+
+    // this.HasThisItem({});
   }
 
+  AddToBag(itemObj) {
+    if (Object.keys(itemObj).length !== 0) {
+      this.HasThisItem(itemObj);
+      if (this.isItemLocalStorage) {
 
-  isHidden = true;
-  itemObj = new Array();
-
-  addtobag(item: Ecom_Commercial) {
-
-    var data = this._commercialService.getAddtoCart(this.commercialModel).subscribe(
-      (data: Ecom_Commercial[]) => {
-        this.commercialModels = data
-
-        Object.keys(this.commercialModels).forEach(key => {
-          this.commercialModels = this.commercialModels[key] as Ecom_Commercial[];
-          data as object[]
-          this.total = key;
-          debugger;         
-          console.log(`key is ${key} and value is ${this.commercialModel.UnitePrice}`);
+        var hasitemdata = JSON.parse(localStorage.getItem('item'));
+        this.itemState = [];
+        Object.keys(hasitemdata).forEach(key => {
+          const iteming = hasitemdata[key];
+          const storageItem = Object.keys(iteming).map(mapper => iteming[mapper]);
+          const addItem = Object.keys(itemObj).map(key => itemObj[key]);
+          if (storageItem[0] == addItem[0]) {
+            var totalQty = storageItem[2] + 1;
+            var totalPrice = storageItem[3] + addItem[6]
+            this.newline = new Ecom_Commercial(storageItem[0], storageItem[1], totalQty, totalPrice);
+          }
         });
-        // this.total = this.commercialModels.length;
+        this.itemState.push(this.newline);
+        localStorage.setItem('item', JSON.stringify(this.itemState));
+      } else {
+        this.newline = new Ecom_Commercial(itemObj.PId, itemObj.PName, 1, itemObj.UnitPrice);
+        this.itemState.push(this.newline);
+        localStorage.setItem('item', JSON.stringify(this.itemState));
+      }
+      this.LoadItemTotal();
+
+    } else {
+      this.newline = new Ecom_Commercial(itemObj.PId, itemObj.PName, 1, itemObj.UnitPrice);
+      this.itemState.push(this.newline);
+      localStorage.setItem('item', JSON.stringify(this.itemState));
+      this.LoadItemTotal();
+    }
+  }
+  public HasThisItem(itemObj: any) {
+    var hasitemdata = JSON.parse(localStorage.getItem('item'));
+    if (hasitemdata != null) {
+      Object.keys(hasitemdata).forEach(key => {
+        const iteming = hasitemdata[key];
+        const storageItem = Object.keys(iteming).map(mapper => iteming[mapper]);
+        const addItem = Object.keys(itemObj).map(key => itemObj[key]);
+
+        if (storageItem[0] == addItem[0]) {
+          this.isItemLocalStorage = true
+          return false;
+        } else {
+          this.isItemLocalStorage = false;
+          return false;
+        }
       });
-
-    //this.total = data;
-    // this.newitems = { 'PId': item.PId, 'PName': item.PName, 'Qty': 5, 'UnitePrice': 50000 };
-    // this.itemObj.push(this.newitems);
-    // console.log(this.itemObj);
+    } else {
+      return this.isItemLocalStorage = false;
+      return false;
+    }
   }
 
-  minustobag(item) {
-    this.total -= 1;
-    // const index = this.items.indexOf(item);
-    // this.items.splice(index, 1);
+  public LoadItemTotal() {
+    var hasitemdata = JSON.parse(localStorage.getItem('item'));
+    var _totalItemsPrice = 0;
+    Object.keys(hasitemdata).forEach(key => {
+      const iteming = hasitemdata[key];
+      const intervale = Object.keys(iteming).map(key => iteming[key]);
+      _totalItemsPrice = _totalItemsPrice + intervale[3];
+    });
+    // alert('Total Price is Final :'+ _totalItemsPrice);
+    this.setTotalPrice(_totalItemsPrice);
+    this.totalItemsCount = hasitemdata.length;
+    this.commercialModels = hasitemdata;
   }
 
-  displayedColumns: string[] = ['PId', 'PName', 'Qty', 'UnitPrice'];
+  public setTotalPrice(totalItemsPrice) {
+    this.totalItemsPrice = totalItemsPrice;
+  }
+
+  public RemoveFromBag(itemObj) {
+    if (Object.keys(itemObj).length !== 0) {
+      this.HasThisItem(itemObj);
+      if (this.isItemLocalStorage) {
+        var hasitemdata = JSON.parse(localStorage.getItem('item'));
+        if (hasitemdata != null) {
+          this.itemState = [];
+          Object.keys(hasitemdata).forEach(key => {
+            const iteming = hasitemdata[key];
+            const storageItem = Object.keys(iteming).map(mapper => iteming[mapper]);
+            const addItem = Object.keys(itemObj).map(key => itemObj[key]);
+            if (storageItem[0] == addItem[0] && storageItem[2] > 1) {
+              var totalQty = storageItem[2] - 1;
+              var totalPrice = storageItem[3] - addItem[6]
+              this.newline = new Ecom_Commercial(storageItem[0], storageItem[1], totalQty, totalPrice);
+              this.itemState.push(this.newline);
+            }
+            else {
+              // var totalQty = storageItem[2] - 1;
+              // var totalPrice = storageItem[3] - addItem[6]
+              // this.newline = new Ecom_Commercial(storageItem[0], storageItem[1], totalQty, totalPrice);
+              //this.itemState.push(this.newline);            
+            }
+          });
+
+          localStorage.setItem('items', JSON.stringify(this.itemState));
+          this.LoadItemTotal();
+        }
+      }
+      else {
+
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+  displayedColumns: string[] = ['Name', 'Qty', 'UnitPrice'];
   columnsToDisplay: string[] = this.displayedColumns.slice();
 
 
