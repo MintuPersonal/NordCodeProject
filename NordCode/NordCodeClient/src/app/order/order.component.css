@@ -1,0 +1,10 @@
+mat-card{
+    width: 50%;
+}
+
+.order {
+    background: #ff8182;
+    border: none;
+    color: #fff;
+    font-size: 17px;    
+}

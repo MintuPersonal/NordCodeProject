@@ -1,0 +1,35 @@
+<div style="padding: 13px;" class="container">
+    <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }} </div>
+    <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
+
+        <!-- Product Entry -->
+        <mat-card class="card-picture">
+            <h5 class="h5"> My Orders {{OrderNo}} </h5>
+            <br>
+            <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+                <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">                  
+                    <span fxFlex="100%" class="text-center"> Order List </span>                    
+                </mat-card-title>
+                <hr>    
+                <h5 class="text-right">
+                    >>>                  
+                </h5>           
+            </form>
+        </mat-card>
+
+        <mat-card class="card-picture">
+            <h5 class="h5"> Order Details {{OrderNo}} </h5>
+            <br>
+            <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+                <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+                    <span fxFlex="100%" class="text-center bg-maroon"> Add all items to Shopping Bag </span>
+                </mat-card-title>
+                <hr>
+
+
+                
+            </form>
+        </mat-card>
+
+    </div>
+</div>

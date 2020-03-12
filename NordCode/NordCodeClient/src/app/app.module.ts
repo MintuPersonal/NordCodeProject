@@ -23,8 +23,13 @@ import { ProductdetailsComponent } from './productdetails/productdetails.compone
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommercialComponent } from './commercial/commercial.component';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatExpansionModule} from '@angular/material/expansion';
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { MenubarComponent } from './menubar/menubar.component';
+import { OrderComponent } from './order/order.component';
+import { PaymentComponent } from './payment/payment.component';
 
 //I keep the new line
 const appRoutes: Routes = [
@@ -37,7 +42,12 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'product', component: ProductComponent },
   { path: 'productdetails/:productId', component: ProductdetailsComponent },
-  { path: 'commercial', component: CommercialComponent }
+  { path: 'commercial', component: CommercialComponent },
+  { path: 'menubar', component: MenubarComponent },
+  { path: 'checkout', component: CheckoutComponent },
+  { path: 'payment', component: PaymentComponent },
+  { path: 'order', component: OrderComponent }
+
 ];
 
 @NgModule({
@@ -50,7 +60,11 @@ const appRoutes: Routes = [
     HomeComponent,
     ProductComponent,
     ProductdetailsComponent,
-    CommercialComponent
+    CommercialComponent,
+    CheckoutComponent,
+    MenubarComponent,
+    OrderComponent,
+    PaymentComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -86,7 +100,9 @@ const appRoutes: Routes = [
     MatInputModule,
     MatTooltipModule,
     MatTableModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatChipsModule,
+    MatButtonToggleModule
   ],
 
   providers: [MatDatepickerModule],

@@ -1,0 +1,16 @@
+.order {
+    background: #ff8182;
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    
+}
+.price {
+    background: #e04f54;
+    border: none;
+    color: #fff;
+    font-size: 17px;
+}
+mat-card{
+    width: 100%;
+}
