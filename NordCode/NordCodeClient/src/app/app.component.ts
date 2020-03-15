@@ -8,8 +8,9 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'BardCode';
-
   logMessage(value) {
     console.log(value);
   }
+
+  
 }

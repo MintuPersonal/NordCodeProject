@@ -8,6 +8,7 @@ import { MatListModule } from '@angular/material/list';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialTimePickerModule } from '@candidosales/material-time-picker';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatDatepickerModule, MatBadgeModule, MatSelectModule, MatSliderModule, MatTableModule } from '@angular/material';
 import { MatCheckboxModule, MatPaginatorModule, MatTooltipModule, MatFormFieldModule, MatSidenavModule, MatMenuModule } from '@angular/material';
@@ -81,6 +82,7 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
+    NgbModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
