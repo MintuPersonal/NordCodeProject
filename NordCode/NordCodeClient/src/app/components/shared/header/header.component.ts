@@ -12,5 +12,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  openNav() {
+    document.getElementById("mySidepanel").style.width = "350px";
+    document.getElementById("mySidepanel").style.height = "900px";
+    //document.getElementById("mySidepanel").style.display = "none";
+  }
+
+  closeNav() {
+    document.getElementById("mySidepanel").style.width = "0";
+  }
+
 }
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Ecom_Commercial } from 'src/app/commercial/Commercial';
+import { CommercialService } from 'src/app/commercial/commercial.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-product-item',
@@ -13,14 +15,21 @@ export class ProductItemComponent implements OnInit {
   totalItemsCount: any;
   commercialModels: any;
   totalItemsPrice: any;
+  commercialObj: object[];
+  _commercialModel: any;
+  categoriesModel: any;
+  bannersModel: any;
+  brandsModel: any;
+  featuresModel: any;
 
-  constructor() { }
+  constructor(private _commercialService: CommercialService) { }
 
   ngOnInit() {
+    
   }
 
   public AddToBag(itemObj) {
-
+   debugger;
     if (Object.keys(itemObj).length !== 0) {
 
       this.HasThisItem(itemObj);

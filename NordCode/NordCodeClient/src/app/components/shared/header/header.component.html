@@ -30,11 +30,6 @@
                         <h3 class="text-center">
                             <img src="../assets/img/member/Mahatab.png" *ngIf="!imgURL" class="rounded-circle" alt="...">
                         </h3>
-                        <!-- <a class="nav-item nav-link active text-left" href="#">
-                        <a class=" fa-2x"> Andrea Pierce </a>
-                        <br>
-                        <a class="text-left"> info@gmail.com </a>
-                    </a> -->
                     </nav>
 
                     <nav class="nav flex-column">
@@ -46,7 +41,7 @@
                     </nav>
                 </mat-card>
 
-                <h5 class="text-center h5">
+                <!-- <h5 class="text-center h5">
                     <mat-icon matBadgeColor="warn">directions_run </mat-icon> Express Delivery
                 </h5>
                 <h5 class="text-center ">
@@ -98,7 +93,7 @@
                             </mat-button-toggle-group>
                         </div>
                     </a>
-                </h5>
+                </h5> -->
             </div>
         </mat-drawer>
 
@@ -108,5 +103,68 @@
             </button>
         </div>
     </mat-drawer-container>
-
 </div>
+
+<div id="mySidepanel" class="sidepanel">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a>
+    <div class="mat-elevation-z8" *ngIf="totalItemsCount">
+
+        <h5 class="text-center h5">
+            <mat-icon matBadgeColor="warn">directions_run </mat-icon> Express Delivery
+        </h5>
+        <h5 class="text-center ">
+            <mat-icon matBadgeColor="warn"> shopping </mat-icon>
+            {{totalItemsCount}} Items | Total: Tk. {{totalItemsPrice}}
+        </h5>
+        <table mat-table [dataSource]="commercialModels">
+
+            <ng-container matColumnDef="Add">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let element" (click)="AddRowQty(element)"> {{element.Add}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="Qty">
+                <th mat-header-cell *matHeaderCellDef> Weight </th>
+                <td mat-cell *matCellDef="let element"> {{element.Qty}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="UnitPrice">
+                <th mat-header-cell *matHeaderCellDef> UnitPrice </th>
+                <td mat-cell *matCellDef="let element"> {{element.UnitPrice}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Close">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let element" (click)="DeleteRow(element)"> {{element.Close}} </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <h5 class="text-center h5" style="position: relative;top: 52px;">
+            <a href="/checkout">
+                <div class="">
+                    <mat-button-toggle-group color="accent" name="fontStyle" aria-label="Font Style">
+                        <mat-button-toggle value="italic" class="order">
+                            Place Order </mat-button-toggle>
+                        <mat-button-toggle value="underline" class="price">Tk. {{totalItemsPrice}}
+                        </mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+            </a>
+        </h5>
+    </div>
+</div>
+
+<button class="openbtn" (click)="openNav()">
+    <img style="width: 20px; height: 50px;" class="" src="../assets/icon/2222.png" alt="LG" fxLayoutAlign="space-around center">
+</button>

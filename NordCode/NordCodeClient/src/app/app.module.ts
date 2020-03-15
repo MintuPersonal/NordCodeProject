@@ -37,11 +37,14 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { ProductListComponent } from './components/shoping-cart/product-list/product-list.component';
 import { ProductItemComponent } from './components/shoping-cart/product-list/product-item/product-item.component';
+import { BannerComponent } from './components/shared/banner/banner.component';
+import { CartComponent } from './components/shoping-cart/cart/cart.component';
+
 
 //I keep the new line
 const appRoutes: Routes = [
   { path: '', component: ProductListComponent, pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: 'cart', component: CartComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'home', component: HomeComponent },
   { path: 'addnew', component: AddnewComponent },
@@ -60,12 +63,15 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    BannerComponent,
     BrandComponent,
     CategoryComponent,
     HeaderComponent,
     FooterComponent,
     ProductListComponent,
     ProductItemComponent,
+    CartComponent,
+    
     LoginComponent,
     SignupComponent,
     NavbarComponent,
@@ -77,7 +83,8 @@ const appRoutes: Routes = [
     CheckoutComponent,
     MenubarComponent,
     OrderComponent,
-    PaymentComponent
+    PaymentComponent,
+    BannerComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
