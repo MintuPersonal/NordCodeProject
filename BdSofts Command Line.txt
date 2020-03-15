@@ -114,10 +114,7 @@ for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
 
    
 	================== Slider ================
-	ng update
-	ng update @angular/cdk @angular/material @angular/material-moment-adapter
-	****** ng update @angular/cli @angular/core --allow-dirty --force *********
-	npm install @angular/cli@9.0.6
+	ng update	
 	npm i --save-dev typescript@3.8.3
 	npm i --save-dev typescript@3.4.5
 	https://ng-bootstrap.github.io/#/components/carousel/examples
@@ -126,3 +123,11 @@ for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
 	https://coursetro.com/posts/code/79/A-Quick-and-Easy-Angular-Carousel-in-a-Few-Minutes-(Angular-2-and-4+)
 	https://www.youtube.com/watch?v=5Z2C0wy4bmg
 	https://ng-bootstrap.github.io/#/components/popover/examples
+	
+	
+	================== Angular 8 To 9 Command ====================
+	npm install --save @angular/flex-layout@9.0.0-beta.29
+	npm install --save-dev @angular-devkit/build-angular
+	ng update @angular/cdk @angular/material @angular/material-moment-adapter
+	****** ng update @angular/cli @angular/core --allow-dirty --force *********
+	npm install @angular/cli@9.0.6
