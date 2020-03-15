@@ -1,0 +1,38 @@
+<div class="row col-lg-12 p-5">
+
+    <div class="row">
+        <img style="width: 2000px; height: 500px;" class="" src="../assets/img/member/banner.jpg" alt="LG" fxLayoutAlign="space-around center">
+    </div>
+
+    <label class="col-lg-12 font-weight-bold" style="font-size: 35px; padding: 5px;">
+        Category    
+    </label>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" class="category" style="padding-left: 300px;">
+        <mat-icon fxFlex="5%" (click)="onClear()"> keyboard_arrow_left </mat-icon>
+        <app-category *ngFor="let item of [1,2,3,4,5,6]"></app-category>
+        <mat-icon fxFlex="10%" (click)="onClear()"> keyboard_arrow_right </mat-icon>
+    </div>
+
+    <label class="col-lg-12 font-weight-bold" style="font-size: 35px; padding: 5px;">
+        Brand     
+    </label>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center " class="brand" style="padding-left: 150px;">
+        <mat-icon fxFlex="5%" (click)="onClear()"> keyboard_arrow_left </mat-icon>
+        <app-brand *ngFor="let item of [1,2]"></app-brand>
+        <mat-icon fxFlex="10%" (click)="onClear()"> keyboard_arrow_right </mat-icon>
+    </div>
+
+    <label class="col-lg-12 font-weight-bold" style="font-size: 35px; padding: 5px;">
+        Popular
+        <a mat-raised-button btn-sm routerLink="." class="text-right more">More....</a>
+    </label>
+
+    <app-product-item *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]"></app-product-item>
+
+    <label class="col-lg-12 font-weight-bold" style="font-size: 35px; padding: 5px;">
+        House Hold
+        <a mat-raised-button btn-sm routerLink="." class="text-right more">More....</a>
+    </label>
+    <app-product-item *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]"></app-product-item>
+
+</div>

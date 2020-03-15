@@ -104,18 +104,25 @@ for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
 	npm i cors 
 
 
-=============== For Updated ================= 
- ng update --next @angular/cli --force
-npm install typescript@latest
-npm i --save-dev typescript@3.4.5
-npm i @angular/flex-layout @angular/cdk
-https://www.itsolutionstuff.com/post/angular-9-toastr-notifications-exampleexample.html
+	=============== For Updated ================= 
+	 ng update --next @angular/cli --force
+	npm install typescript@latest
+	npm i --save-dev typescript@3.4.5
+	npm i @angular/flex-layout @angular/cdk
+	https://www.itsolutionstuff.com/post/angular-9-toastr-notifications-exampleexample.html
 
 
-
-
-    // var data = this._commercialService.getAddtoCart(this.commercialModel).subscribe(
-    //   (data: Ecom_Commercial[]) => {
-    //     this.commercialModels = data
-    //     this.total = this.commercialModels.length;
-    //   });
+   
+	================== Slider ================
+	ng update
+	ng update @angular/cdk @angular/material @angular/material-moment-adapter
+	****** ng update @angular/cli @angular/core --allow-dirty --force *********
+	npm install @angular/cli@9.0.6
+	npm i --save-dev typescript@3.8.3
+	npm i --save-dev typescript@3.4.5
+	https://ng-bootstrap.github.io/#/components/carousel/examples
+	https://www.youtube.com/watch?v=fkmS9Pq7Sww
+	https://www.iconfinder.com/editor/?id=383101&hash=a9186f6a4b6e7a916a874a4e417f686794a7bcc449e48d9899027440
+	https://coursetro.com/posts/code/79/A-Quick-and-Easy-Angular-Carousel-in-a-Few-Minutes-(Angular-2-and-4+)
+	https://www.youtube.com/watch?v=5Z2C0wy4bmg
+	https://ng-bootstrap.github.io/#/components/popover/examples
