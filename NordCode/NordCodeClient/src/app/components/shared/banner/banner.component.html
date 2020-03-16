@@ -5,12 +5,190 @@
         </div>
         <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
             <div class="picsum-img-wrapper">
-                <img [src]="img" alt="My image {{i + 1}} description">
+                <img [src]="img" alt="My image {{i + 1}} description" style="height: 500px;">
             </div>
         </a>
     </ng-template>
 </ngb-carousel>
+<hr>
+<ngb-carousel #carousel interval="1000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)">
+    <div class="container">
+        <ng-template ngbSlide *ngFor="let img of images; index as i">
+            <div class="row">
+                <div class="carousel-caption">
+                    <h3>Big Sale {{i + 1}} 5 % Off </h3>
+                </div>
+                <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
+                    <div class="picsum-img-wrapper col-lg-4">
+                        <img [src]="img" alt="My image {{i + 1}} description" style="height: 500px;">
+                    </div>
+                </a>
+                <div class="carousel-caption">
+                    <h3>Summer Sale {{i + 1}} 5 % Off </h3>
+                </div>
+                <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
+                    <div class="picsum-img-wrapper col-lg-4">
+                        <img [src]="img" alt="My image {{i + 1}} description" style="height: 500px;">
+                    </div>
+                </a>
+                <div class="carousel-caption">
+                    <h3>Other Sale {{i + 1}} 5 % Off </h3>
+                </div>
+                <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
+                    <div class="picsum-img-wrapper col-lg-4">
+                        <img [src]="img" alt="My image {{i + 1}} description" style="height: 500px;">
+                    </div>
+                </a>
+            </div>
+        </ng-template>
+    </div>
+</ngb-carousel>
+<!-- <hr>
+<ngb-carousel *ngIf="images">
+    <ng-template ngbSlide>
+        <div class="row">
+            <div class="picsum-img-wrapper col-lg-4">
+                <img [src]="images[0]" alt="Random first slide">
+            </div>
+            <div class="picsum-img-wrapper col-lg-4">
+                <img [src]="images[0]" alt="Random first slide">
+            </div>
+            <div class="picsum-img-wrapper col-lg-4">
+                <img [src]="images[0]" alt="Random first slide">
+            </div>
+        </div>
+    </ng-template>
+    <ng-template ngbSlide>
+        <div class="row">
+            <div class="picsum-img-wrapper col-lg-4">
+                <img [src]="images[1]" alt="Random second slide">
+            </div>
+            <div class="picsum-img-wrapper col-lg-4">
+                <img [src]="images[0]" alt="Random first slide">
+            </div>
+            <div class="picsum-img-wrapper col-lg-4">
+                <img [src]="images[1]" alt="Random second slide">
+            </div>
+        </div>
+    </ng-template>
+    <ng-template ngbSlide>
+        <div class="row">
+            <div class="picsum-img-wrapper col-lg-4">
+                <img [src]="images[1]" alt="Random second slide">
+            </div>
+            <div class="picsum-img-wrapper col-lg-4">
+                <img [src]="images[2]" alt="Random third slide">
+            </div>
+            <div class="picsum-img-wrapper col-lg-4">
+                <img [src]="images[1]" alt="Random second slide">
+            </div>
+        </div>
+    </ng-template>
+</ngb-carousel> -->
 
+<!-- 
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div id="imageCarousel" class="carousel slide" data-interval="2000" data-ride="carousel" data-pause="hover" data-wrap="true">
+
+                <ol class="carousel-indicators">
+                    <li data-target="#imageCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#imageCarousel" data-slide-to="1"></li>
+                    <li data-target="#imageCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <img src="https://picsum.photos/id/83/900/500" class="img-responsive">
+                                <div class="carousel-caption">
+                                    <h3>Desert</h3>
+                                    <p>Desert Image Description</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="https://picsum.photos/id/83/900/500" chicago.jpg class="img-responsive">
+                                <div class="carousel-caption">
+                                    <h3>Jellyfish</h3>
+                                    <p>Jellyfish Image Description</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="https://picsum.photos/id/83/900/500" class="img-responsive">
+                                <div class="carousel-caption">
+                                    <h3>Penguins</h3>
+                                    <p>Penguins Image Description</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <img src="Images/Lighthouse.jpg" class="img-responsive">
+                                <div class="carousel-caption">
+                                    <h3>Lighthouse</h3>
+                                    <p>Lighthouse Image Description</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="Images/Hydrangeas.jpg" class="img-responsive">
+                                <div class="carousel-caption">
+                                    <h3>Hydrangeas</h3>
+                                    <p>Hydrangeas Image Description</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="Images/Koala.jpg" class="img-responsive">
+                                <div class="carousel-caption">
+                                    <h3>Koala</h3>
+                                    <p>Koala Image Description</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <img src="Images/tulips.jpg" class="img-responsive">
+                                <div class="carousel-caption">
+                                    <h3>Tulips</h3>
+                                    <p>Tulips Image Description</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="Images/Chrysanthemum.jpg" class="img-responsive">
+                                <div class="carousel-caption">
+                                    <h3>Chrysanthemum</h3>
+                                    <p>Chrysanthemum Image Description</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="Images/stripes.jpg" class="img-responsive">
+                                <div class="carousel-caption">
+                                    <h3>Stripes</h3>
+                                    <p>Stripes Image Description</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#imageCarousel" class="carousel-control left" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a href="#imageCarousel" class="carousel-control right" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div> -->
 
 <!-- <hr>
 
