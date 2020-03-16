@@ -1,0 +1,100 @@
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: gray;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: orange;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 16px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    /* padding: 16px; */
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+
+/* Add to Cart  */
+
+.sidecartnav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    float: right;
+    position: relative
+}
+
+.sidecartnav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: gray;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidecartnav a:hover {
+    color: orange;
+}
+
+.sidecartnav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 16px;
+    margin-left: 50px;
+}
+
+#maincart {
+    transition: margin-left .5s;
+    /* padding: 16px; */
+}
+
+@media screen and (max-height: 450px) {
+    .sidecartnav {
+        padding-top: 15px;
+    }
+    .sidecartnav a {
+        font-size: 18px;
+    }
+}

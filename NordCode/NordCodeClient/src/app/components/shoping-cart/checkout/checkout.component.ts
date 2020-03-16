@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-  totalItemsPrice: any;
+  totalItemsPrice: number;
 
   constructor() { }
 
+  
   ngOnInit() {    
     this.LoadItemTotal();
   }
@@ -30,5 +31,4 @@ export class CheckoutComponent implements OnInit {
 
     }
   };
-
 }

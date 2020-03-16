@@ -125,3 +125,10 @@ th.mat-header-cell {
     color: white;
     float: right
 }
+
+.brand {
+    background: white;
+    margin-top: 10px;
+    padding: 30px;
+    border-radius: 5px;
+}

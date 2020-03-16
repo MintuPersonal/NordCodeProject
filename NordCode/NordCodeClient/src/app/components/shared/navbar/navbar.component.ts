@@ -12,4 +12,14 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
+  openMenuNav() {
+    document.getElementById("menunav").style.width = "250px";
+    //document.getElementById("main").style.marginLeft = "250px";
+  }
+
+  closeMenuNav() {
+    document.getElementById("menunav").style.width = "0";
+    //document.getElementById("main").style.marginLeft = "0";
+  }
+
 }

@@ -1,0 +1,29 @@
+<div id="cartnav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeCartNav()">&times;</a>
+    <mat-card class="card-picture">
+        <nav class="nav nav-info">
+            <!-- <h3 class="text-center">
+                <img src="../assets/img/member/Mahatab.png" *ngIf="!imgURL" class="rounded-circle" alt="...">
+            </h3> -->
+        </nav>
+
+        <nav class="nav flex-column">
+            <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active"> Home </a>
+            <a class="nav-link" [routerLink]="['/addnew']"> Add New </a>
+            <a class="nav-link" [routerLink]="['/signup']"> Logout </a>
+            <a class="nav-link" [routerLink]="['/login']"> Login </a>
+            <a class="nav-link" [routerLink]="['/product']"> Product </a>
+        </nav>
+    </mat-card>
+</div>
+
+<!-- <button class="openbtn" (click)="openNav()">
+    <img style="width: 20px; height: 50px;" class="" src="../assets/icon/pre.png" alt="LG" fxLayoutAlign="space-around center">
+</button> -->
+
+<div id="maincart" style="background: orange; float: right;">
+    <span style="font-size:30px;cursor:pointer" (click)="openCartNav()">
+        <img style="width: 20px; height: 50px;" class="" src="../assets/icon/pre.png" alt="LG" fxLayoutAlign="space-around center">
+        
+    </span>
+</div>
