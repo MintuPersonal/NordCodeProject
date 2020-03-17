@@ -16,18 +16,15 @@ import { MatCheckboxModule, MatPaginatorModule, MatTooltipModule, MatFormFieldMo
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { AddnewComponent } from './addnew/addnew.component';
 import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
-import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommercialComponent } from './commercial/commercial.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { CheckoutComponent } from './checkout/checkout.component';
 import { MenubarComponent } from './menubar/menubar.component';
 import { OrderComponent } from './order/order.component';
 import { PaymentComponent } from './payment/payment.component';
@@ -37,8 +34,11 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { ProductListComponent } from './components/shoping-cart/product-list/product-list.component';
 import { ProductItemComponent } from './components/shoping-cart/product-list/product-item/product-item.component';
+import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { BannerComponent } from './components/shared/banner/banner.component';
 import { CartComponent } from './components/shoping-cart/cart/cart.component';
+import { CheckoutComponent } from './components/shoping-cart/checkout/checkout.component';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
 
 
 //I keep the new line

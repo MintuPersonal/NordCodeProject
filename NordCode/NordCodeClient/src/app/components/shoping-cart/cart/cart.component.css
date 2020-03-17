@@ -1,0 +1,73 @@
+.sidenav {
+    /* height: 100%; */
+    /* width: 0; */
+    position: fixed;
+    z-index: 90;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    float: right;
+    position: relative
+    /*     
+    overflow-x: hidden;
+    position: relative;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+    float: right;
+    z-index: 99;
+    border: solid 1px gray;
+    margin-top: 20px;
+    background: lightgray;
+    padding-top: 20px; */
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: gray;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: orange;
+}
+
+.openbtn {
+    cursor: pointer;
+    color: white;
+    padding: 15px 0 15px;
+    border: none;
+    position: fixed;
+    float: right;
+    top: 50%;
+    right: 0;
+    /* z-index: 99; */
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 16px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    /* padding: 16px; */
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}

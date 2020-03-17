@@ -1,18 +1,18 @@
 <div class="p-3">
     <mat-card class="card-picture" style="border-top-left-radius:3em; padding: 0px;">
         <mat-card-title style="display: grid;">
-            <img style="border-top-left-radius:2em;" src="../assets/img/member/1111.jpg">
+            <img style="border-top-left-radius:2em;" src="../assets/img/member/OIP.jpg">
             <mat-card-subtitle class="round"> ID#123456</mat-card-subtitle>
         </mat-card-title>
         <div class="imageWrapper">
             <div class="overlay text">
                 <div class="row">
                     <p class="addIcon">
-                        <mat-icon class="hide" matBadgeColor="warn" style="color: whitesmoke;" (click)="RemoveFromBag(item)">indeterminate_check_box</mat-icon>
+                        <mat-icon class="hide" matBadgeColor="warn" style="color: whitesmoke;" (click)="RemoveFromBag(featureItem)">indeterminate_check_box</mat-icon>
                     </p>
-                    <p class="addText" (click)="AddRowQtyAfter(itself)"> Add to Shopping Bag </p>
+                    <p class="addText" (click)="AddRowQtyAfter(featureItem)"> Add to Shopping Bag </p>
                     <p class="addIcon">
-                        <mat-icon class="hide" matBadgeColor="warn" style="color: whitesmoke;" (click)="AddRowQtyAfter(item)"> add </mat-icon>
+                        <mat-icon class="hide" matBadgeColor="warn" style="color: whitesmoke;" (click)="AddRowQtyAfter(featureItem)"> add </mat-icon>
                     </p>
                 </div>
                 <span>
@@ -24,11 +24,11 @@
             </div>
         </div>
         <mat-card-footer fxLayoutAlign="space-around center">
-            <mat-icon matBadgeColor="warn" style="color: whitesmoke;" (click)="RemoveFromBag(item)">
+            <mat-icon matBadgeColor="warn" style="color: whitesmoke;" (click)="RemoveFromBag(featureItem)">
                 indeterminate_check_box</mat-icon>
-            <mat-icon matBadgeColor="warn" style="color: whitesmoke;" (click)="AddToBag(item)">
+            <mat-icon matBadgeColor="warn" style="color: whitesmoke;" (click)="AddToBag(featureItem)">
                 directions_run</mat-icon>
-            <span>{{individualItemCount}} in bag </span> <span (click)="AddToBag(item)"> add to bag </span>
+            <span>{{individualItemCount}} in bag </span> <span (click)="AddToBag(featureItem)"> add to bag </span>
         </mat-card-footer>
     </mat-card>
 </div>

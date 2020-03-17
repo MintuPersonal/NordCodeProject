@@ -1,1 +1,24 @@
-<p>navbar works!</p>
+<div id="menunav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeMenuNav()">&times;</a>
+    <mat-card class="card-picture">
+        <nav class="nav nav-info">
+            <!-- <h3 class="text-center">
+                <img src="../assets/img/member/Mahatab.png" *ngIf="!imgURL" class="rounded-circle" alt="...">
+            </h3> -->
+        </nav>
+
+        <nav class="nav flex-column">
+            <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active"> Home </a>
+            <a class="nav-link" [routerLink]="['/addnew']"> Add New </a>
+            <a class="nav-link" [routerLink]="['/signup']"> Logout </a>
+            <a class="nav-link" [routerLink]="['/login']"> Login </a>
+            <a class="nav-link" [routerLink]="['/product']"> Product </a>
+        </nav>
+    </mat-card>
+</div>
+
+<div id="main">
+    <span style="font-size:30px;cursor:pointer" (click)="openMenuNav()">
+        <mat-icon matBadgeColor="warn">list</mat-icon>
+    </span>
+</div>

@@ -9,7 +9,7 @@
                 <mat-form-field class="example-full-width">
                     <mat-label> Search Item </mat-label>
                     <input matInput placeholder="Search for products (e.g. eggs, milk, alu)" style="background: whitesmoke;">
-                    <!-- <mat-hint> Egg </mat-hint> -->
+
                     <mat-error>
                     </mat-error>
                 </mat-form-field>
@@ -18,11 +18,79 @@
                 <mat-icon matBadge="15" matBadgeColor="warn">add_shopping_cart</mat-icon>
                 <span class="cdk-visually-hidden"> </span>
             </p>
-
-            <!-- <mat-icon fxFlex="5%" (click)="onClear()" style="color: whitesmoke;"> add_shopping_cart </mat-icon> -->
         </div>
     </div>
-    <mat-drawer-container class="example-container" autosize>
+</div>
+
+
+<div id="mySidepanel" class="sidepanel">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a>
+    <div class="mat-elevation-z8">
+        <h5 class="text-center h5">
+            <mat-icon matBadgeColor="warn">directions_run </mat-icon> Express Delivery
+        </h5>
+        <h5 class="text-center ">
+            {{totalItemsCount}} Items | Total: Tk. {{totalItemsPrice}}
+        </h5>
+        <div *ngIf="totalItemsCount">
+            <table mat-table [dataSource]="commercialModels">
+
+                <ng-container matColumnDef="Add">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element" (click)="AddRowQty(element)"> {{element.Add}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="Qty">
+                    <th mat-header-cell *matHeaderCellDef> Weight </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Qty}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="UnitPrice">
+                    <th mat-header-cell *matHeaderCellDef> UnitPrice </th>
+                    <td mat-cell *matCellDef="let element"> {{element.UnitPrice}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Close">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element" (click)="DeleteRow(element)"> {{element.Close}} </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <h5 class="text-center h5" style="position: relative;top: 52px;">
+                <a href="/checkout">
+                    <div class="">
+                        <mat-button-toggle-group color="accent" name="fontStyle" aria-label="Font Style">
+                            <mat-button-toggle value="italic" class="order">
+                                Place Order </mat-button-toggle>
+                            <mat-button-toggle value="underline" class="price">Tk. {{totalItemsPrice}}
+                            </mat-button-toggle>
+                        </mat-button-toggle-group>
+                    </div>
+                </a>
+            </h5>
+        </div>
+    </div>
+</div>
+
+<button class="openbtn" (click)="openNav()">
+    <img style="width: 20px; height: 50px;" class="" src="../assets/icon/pre.png" alt="LG" fxLayoutAlign="space-around center">
+</button>
+
+
+
+
+<!-- <mat-drawer-container class="example-container" autosize>
         <mat-drawer #drawer class="example-sidenav" mode="side">
             <div class="mat-elevation-z8" *ngIf="totalItemsCount">
                 <mat-card class="card-picture">
@@ -40,60 +108,6 @@
                         <a class="nav-link" [routerLink]="['/product']"> Product </a>
                     </nav>
                 </mat-card>
-
-                <!-- <h5 class="text-center h5">
-                    <mat-icon matBadgeColor="warn">directions_run </mat-icon> Express Delivery
-                </h5>
-                <h5 class="text-center ">
-                    <mat-icon matBadgeColor="warn"> shopping </mat-icon>
-                    {{totalItemsCount}} Items | Total: Tk. {{totalItemsPrice}}
-                </h5>
-                <table mat-table [dataSource]="commercialModels">
-
-                    <ng-container matColumnDef="Add">
-                        <th mat-header-cell *matHeaderCellDef> </th>
-                        <td mat-cell *matCellDef="let element" (click)="AddRowQty(element)"> {{element.Add}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="Name">
-                        <th mat-header-cell *matHeaderCellDef> Name </th>
-                        <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
-                    </ng-container>
-
-
-                    <ng-container matColumnDef="Qty">
-                        <th mat-header-cell *matHeaderCellDef> Weight </th>
-                        <td mat-cell *matCellDef="let element"> {{element.Qty}} </td>
-                    </ng-container>
-
-
-                    <ng-container matColumnDef="UnitPrice">
-                        <th mat-header-cell *matHeaderCellDef> UnitPrice </th>
-                        <td mat-cell *matCellDef="let element"> {{element.UnitPrice}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="Close">
-                        <th mat-header-cell *matHeaderCellDef> </th>
-                        <td mat-cell *matCellDef="let element" (click)="DeleteRow(element)"> {{element.Close}} </td>
-                    </ng-container>
-
-
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-
-                <h5 class="text-center h5" style="position: relative;top: 52px;">
-                    <a href="/checkout">
-                        <div class="output-size">
-                            <mat-button-toggle-group color="accent" name="fontStyle" aria-label="Font Style">
-                                <mat-button-toggle value="italic" class="order">
-                                    Place Order </mat-button-toggle>
-                                <mat-button-toggle value="underline" class="price">Tk. {{totalItemsPrice}}
-                                </mat-button-toggle>
-                            </mat-button-toggle-group>
-                        </div>
-                    </a>
-                </h5> -->
             </div>
         </mat-drawer>
 
@@ -102,69 +116,4 @@
                 <mat-icon fxFlex="5%"> list </mat-icon>
             </button>
         </div>
-    </mat-drawer-container>
-</div>
-
-<div id="mySidepanel" class="sidepanel">
-    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a>
-    <div class="mat-elevation-z8" *ngIf="totalItemsCount">
-
-        <h5 class="text-center h5">
-            <mat-icon matBadgeColor="warn">directions_run </mat-icon> Express Delivery
-        </h5>
-        <h5 class="text-center ">
-            <mat-icon matBadgeColor="warn"> shopping </mat-icon>
-            {{totalItemsCount}} Items | Total: Tk. {{totalItemsPrice}}
-        </h5>
-        <table mat-table [dataSource]="commercialModels">
-
-            <ng-container matColumnDef="Add">
-                <th mat-header-cell *matHeaderCellDef> </th>
-                <td mat-cell *matCellDef="let element" (click)="AddRowQty(element)"> {{element.Add}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="Name">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
-            </ng-container>
-
-
-            <ng-container matColumnDef="Qty">
-                <th mat-header-cell *matHeaderCellDef> Weight </th>
-                <td mat-cell *matCellDef="let element"> {{element.Qty}} </td>
-            </ng-container>
-
-
-            <ng-container matColumnDef="UnitPrice">
-                <th mat-header-cell *matHeaderCellDef> UnitPrice </th>
-                <td mat-cell *matCellDef="let element"> {{element.UnitPrice}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="Close">
-                <th mat-header-cell *matHeaderCellDef> </th>
-                <td mat-cell *matCellDef="let element" (click)="DeleteRow(element)"> {{element.Close}} </td>
-            </ng-container>
-
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-
-        <h5 class="text-center h5" style="position: relative;top: 52px;">
-            <a href="/checkout">
-                <div class="">
-                    <mat-button-toggle-group color="accent" name="fontStyle" aria-label="Font Style">
-                        <mat-button-toggle value="italic" class="order">
-                            Place Order </mat-button-toggle>
-                        <mat-button-toggle value="underline" class="price">Tk. {{totalItemsPrice}}
-                        </mat-button-toggle>
-                    </mat-button-toggle-group>
-                </div>
-            </a>
-        </h5>
-    </div>
-</div>
-
-<button class="openbtn" (click)="openNav()">
-    <img style="width: 20px; height: 50px;" class="" src="../assets/icon/2222.png" alt="LG" fxLayoutAlign="space-around center">
-</button>
+    </mat-drawer-container> -->
