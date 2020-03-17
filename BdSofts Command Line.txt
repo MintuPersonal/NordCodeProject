@@ -139,4 +139,10 @@ for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
 	
 	===============Knex ==============
 	npm install --save express pg knex body-parser
+	npm install knex --save
+	npm install knex -g
+	knex init
+	npm install sqlite3 --save
+	knex migrate:latest
+	knex migrate:latest
 	
