@@ -145,4 +145,7 @@ for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
 	npm install sqlite3 --save
 	knex migrate:latest
 	knex migrate:latest
+	https://www.youtube.com/watch?v=qexy4Ph66JE
+	https://www.youtube.com/watch?v=KLCcCTFivhM
+	https://mladenplavsic.github.io/bootstrap-navbar-sidebar/
 	
