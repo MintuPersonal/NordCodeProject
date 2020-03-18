@@ -52,4 +52,6 @@ export class ProductListComponent implements OnInit {
     )
     // this.HasThisItem({});
   }
+
+  
 }

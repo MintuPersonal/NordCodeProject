@@ -9,9 +9,10 @@ const order = require('../Server/routes/order.js');
 const cart = require('../Server/routes/cart.js');
 
 const task = require('../Server/routes/task.js');
-// const user = require('../Server/routes/user.js');
-// const login = require('../Server/routes/login.js');
-// const article = require('../Server/routes/article.js');
+const customer = require('../Server/routes/customer.js')
+    // const user = require('../Server/routes/user.js');
+    // const login = require('../Server/routes/login.js');
+    // const article = require('../Server/routes/article.js');
 
 const PORT = 3000;
 const app = express();
@@ -19,11 +20,11 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.listen(PORT, function () {
+app.listen(PORT, function() {
     console.log('Server running on localhost port :' + PORT);
 });
 
-app.use('/api', auth, home, product, order, cart, task);
+app.use('/api', auth, home, product, order, cart, task, customer);
 
 
 

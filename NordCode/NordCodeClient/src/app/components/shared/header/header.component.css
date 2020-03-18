@@ -182,10 +182,8 @@ th.mat-header-cell {
 }
 
 .mat-card {
-    background: orange;
-    min-height: 600px;
-    padding: 25px;
-    min-width: 300px;
+    min-height: 900px;
+    margin-top: 30px;
 }
 
 img {
@@ -221,16 +219,16 @@ body {
 
 .sidepanel {
     overflow-x: hidden;
-    position: relative;
+    position: sticky;
     top: 0;
     left: 0;
     transition: 0.5s;
     float: right;
     z-index: 99;
     border: solid 1px gray;
-    margin-top: 20px;
-    background: lightgray;
+    background: white;
     padding-top: 20px;
+    width: 0px;
 }
 
 .sidepanel a {

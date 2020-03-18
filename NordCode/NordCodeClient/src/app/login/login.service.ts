@@ -10,7 +10,6 @@ export class LoginService {
 
   _httpparams = new HttpParams();
 
-
   _baseUrl = "http://localhost:3000/";
   _url = '';
 

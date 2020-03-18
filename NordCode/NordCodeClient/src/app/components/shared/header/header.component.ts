@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
     //this.LoadItemTotal();  
   }
   public LoadItemTotal() {
-    //debugger;
+    
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
     if (hasitemdata != null && Object.keys(hasitemdata).length !== 0) {
       var _totalItemsPrice = 0;
@@ -44,7 +44,6 @@ export class HeaderComponent implements OnInit {
   public setTotalPrice(totalItemsPrice) {
     this.totalItemsPrice = totalItemsPrice;
   }
-
   public DeleteRow(item) {
     //alert('hi')
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
@@ -75,5 +74,18 @@ export class HeaderComponent implements OnInit {
     document.getElementById("mySidepanel").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
   }
+
+  openCartNav() {
+    this.LoadItemTotal();
+    document.getElementById("cartnav").style.width = "350px";
+    //document.getElementById("maincart").style.marginLeft = "250px";
+  }
+  
+  closeCartNav() {
+    document.getElementById("cartnav").style.width = "0";
+    //document.getElementById("maincart").style.marginLeft= "0";
+  }
+
+
 }
 

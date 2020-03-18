@@ -54,7 +54,7 @@ const appRoutes: Routes = [
   { path: 'productdetails/:productId', component: ProductdetailsComponent },
   { path: 'commercial', component: CommercialComponent },
   { path: 'menubar', component: MenubarComponent },
-  { path: 'checkout', component: CheckoutComponent },
+  { path: 'checkout/:price', component: CheckoutComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'order', component: OrderComponent }
 

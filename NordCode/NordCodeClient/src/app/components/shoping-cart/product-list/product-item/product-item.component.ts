@@ -30,7 +30,7 @@ export class ProductItemComponent implements OnInit {
     //this.LoadItemTotal();
   }
   public LoadItemTotal() {
-    //debugger;
+    //
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
     if (hasitemdata != null && Object.keys(hasitemdata).length !== 0) {
       var _totalItemsPrice = 0;
@@ -43,14 +43,14 @@ export class ProductItemComponent implements OnInit {
       this.setTotalPrice(_totalItemsPrice);
       this.totalItemsCount = hasitemdata.length;
       this.commercialModels = hasitemdata;
-    }else{
+    } else {
       this.setTotalPrice(0);
       this.totalItemsCount = 0;
       this.commercialModels = [];
     }
   }
   public AddToBag(itemObj) {
-
+    
     if (Object.keys(itemObj).length !== 0) {
       this.HasThisItem(itemObj);
       this.itemState = [];
@@ -161,7 +161,7 @@ export class ProductItemComponent implements OnInit {
       }
     }
   }
-  
+
   public AddRowQty(item) {
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
     if (hasitemdata != null) {

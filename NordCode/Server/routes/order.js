@@ -1,10 +1,9 @@
-
-const express = require('express');
+const db = require('../database/db.js');
 const coupon = require('../models/Coupon.js');
 const order = require('../models/Order.js');
-const cart = require('../models/Cart.js')
-const router = express.Router();
 
+
+const router = db.Express.Router();
 router.get('/setcoupon', (req, res, next) => {
     var couponNo = req.body.CouponNo;
     coupon.findAll({ where: { CouponNo: couponNo } }).then(offers => {
@@ -24,12 +23,12 @@ router.get('/getorder', (req, res, next) => {
 });
 
 router.post('/setorder', (req, res, next) => {
-    //  console.log(req.body);
+    console.log(req.body[0] + 'test');
+    debugger;
     if (!req.body) {
         res.status(400);
         res.json({ error: 'Bad data request' + req.body });
-    }
-    else {
+    } else {
         order.create(req.body).then(data => {
             res.json({
                 status: true,

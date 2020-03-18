@@ -1,10 +1,10 @@
-<div style="padding: 13px;" class="container">
+<div class="container">
     <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }} </div>
-    <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
+    <div fxLayoutGap="0.2%" style="margin-top: 55px;">
 
         <!-- Product Entry -->
         <mat-card class="card-picture">
-            <h5 class="h5"> Total Price: {{totalItemsPrice}} </h5>
+            <h5 class="h5"> Total Price: {{totalPrice}} </h5>
             <br>
             <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
                 <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
@@ -27,9 +27,8 @@
 
                         <mat-form-field appearance="fill">
                             <mat-label>Address</mat-label>
-                            <textarea matInput></textarea>
+                            <textarea #address='ngModel' ngModel [(ngModel)]="userForm.Address" name="address" required matInput ngModel atInput></textarea>
                         </mat-form-field>
-
                         <!-- <mat-form-field>
                             <mat-label>Age</mat-label>
                             <input matInput type="number" min="1">
@@ -46,26 +45,29 @@
                                 Currently I am {{panelOpenState ? 'open' : 'closed'}}
                             </mat-panel-description>
                         </mat-expansion-panel-header>
-                        <p>I'm visible because I am open</p>
+                        <mat-form-field>
+                            <mat-label>Time</mat-label>
+                            <input #daytime='ngModel' ngModel [(ngModel)]="userForm.DeliveryTime" name="daytime" required matInput type="time" min="1">
+                        </mat-form-field>
                     </mat-expansion-panel>
                 </mat-accordion>
 
                 <label class="col-lg-12" style="padding-top: 50px;"> Payment options available on the next
-                    page <a class="text-right offset-5">৳20 Delivery charge included</a>
+                    page <a class="text-right offset-5">৳ 20 Delivery charge included</a>
                 </label>
 
                 <h5 class="text-right">
-                    <a href="/payment">
-                        <div class="output-size">
-                            <mat-button-toggle-group color="accent" name="fontStyle" aria-label="Font Style">
-                                <mat-button-toggle class="btn-large" value="italic" class="order"> Process
-                                </mat-button-toggle>
-                                <mat-button-toggle value="underline" class="price">Tk. {{totalItemsPrice}}
-                                </mat-button-toggle>
-                            </mat-button-toggle-group>
-                        </div>
-                    </a>
-                    <span style="font-size: 10px">By clicking/tapping proceed, I agree to E-commerce's <a href="/t/TermsOfUse"
+                    <!-- <a href="/payment"> -->
+                    <div class="output-size">
+                        <mat-button-toggle-group (click)="onSubmit(userForm)" [disabled]="userForm.form.invalid" color="accent" name="fontStyle" aria-label="Font Style">
+                            <mat-button-toggle type="submit" class="btn-large" value="submit" class="order"> Process
+                            </mat-button-toggle>
+                            <mat-button-toggle type="submit" value="submit" class="price">Tk. {{totalPrice}}
+                            </mat-button-toggle>
+                        </mat-button-toggle-group>
+                    </div>
+                    <!-- </a> -->
+                    <span style="font-size: 10px">By clicking/tapping proceed, I agree to E-commerce's <a href="#"
                             target="_blank">Terms of Services</a></span>
                 </h5>
             </form>
