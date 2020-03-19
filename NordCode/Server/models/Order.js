@@ -17,7 +17,17 @@ const order = db.sequelize.define('Ecom_Orders', {
     ProductId: db.Sequelize.INTEGER,
     UnitPrice: db.Sequelize.INTEGER,
     Qty: db.Sequelize.INTEGER,
-    NetPrice: db.Sequelize.INTEGER
+    NetPrice: db.Sequelize.INTEGER,
+    Address: db.Sequelize.STRING,
+    Aria: db.Sequelize.STRING,
+    DeliveryTime: db.Sequelize.STRING,
 });
+db.sequelize.sync({ force: true }); //{ force: true }
+
+// .then(() => {
+//     product.create();
+// }).catch(err => {
+//     console.log('Error : ' + err);
+// });
 
 module.exports = order;

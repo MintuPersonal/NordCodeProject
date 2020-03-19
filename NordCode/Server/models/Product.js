@@ -1,7 +1,6 @@
 const db = require('../database/db.js');
 
-const product = db.sequelize.define(
-    'Ecom_Products', {
+const product = db.sequelize.define('Ecom_Products', {
     PID: {
         type: db.Sequelize.INTEGER,
         primaryKey: true,
@@ -24,7 +23,7 @@ const product = db.sequelize.define(
     Img_Path: db.Sequelize.STRING,
     Inserted_By: db.Sequelize.STRING,
     Inserted_Date: db.Sequelize.DATE,
-    
+
     //Img_Paths: db.Sequelize.STRING, 
     Display: db.Sequelize.STRING,
     FileUrl: db.Sequelize.STRING,
@@ -35,11 +34,11 @@ const product = db.sequelize.define(
 });
 
 db.sequelize.sync(); //{ force: true }
-    
+
 // .then(() => {
-    //     product.create();
-    // }).catch(err => {
-    //     console.log('Error : ' + err);
-    // });
+//     product.create();
+// }).catch(err => {
+//     console.log('Error : ' + err);
+// });
 
 module.exports = product;

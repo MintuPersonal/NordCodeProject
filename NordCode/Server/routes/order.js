@@ -14,7 +14,8 @@ router.get('/setcoupon', (req, res, next) => {
 });
 
 router.get('/getorder', (req, res, next) => {
-    var orderNo = req.body.OrderNo;
+    var orderNo = req.query.OrderNo;
+    console.log(orderNo);
     order.findAll({ where: { OrderNo: orderNo } }).then(orders => {
         res.json(orders);
     }).catch(err => {
@@ -22,9 +23,8 @@ router.get('/getorder', (req, res, next) => {
     });
 });
 
-router.post('/setorder', (req, res, next) => {
-    console.log(req.body[0] + 'test');
-    debugger;
+router.post('/createorder', (req, res, next) => {
+    //console.log(req.body.OrderNo + ' test');
     if (!req.body) {
         res.status(400);
         res.json({ error: 'Bad data request' + req.body });

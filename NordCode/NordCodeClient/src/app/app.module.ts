@@ -26,8 +26,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MenubarComponent } from './menubar/menubar.component';
-import { OrderComponent } from './order/order.component';
-import { PaymentComponent } from './payment/payment.component';
 import { BrandComponent } from './components/shoping-cart/brand/brand.component';
 import { CategoryComponent } from './components/shoping-cart/category/category.component';
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -39,6 +37,8 @@ import { BannerComponent } from './components/shared/banner/banner.component';
 import { CartComponent } from './components/shoping-cart/cart/cart.component';
 import { CheckoutComponent } from './components/shoping-cart/checkout/checkout.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { OrderComponent } from './order/order.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 //I keep the new line
@@ -55,7 +55,7 @@ const appRoutes: Routes = [
   { path: 'commercial', component: CommercialComponent },
   { path: 'menubar', component: MenubarComponent },
   { path: 'checkout/:price', component: CheckoutComponent },
-  { path: 'payment', component: PaymentComponent },
+  { path: 'payment/:order/:price', component: PaymentComponent },
   { path: 'order', component: OrderComponent }
 
 ];

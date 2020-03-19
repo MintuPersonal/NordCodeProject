@@ -20,37 +20,43 @@
                 </div>
                 <hr>
 
-                <div class="inlinePaymentComponent" style="width: 500px;">
-                    <div>
-                        <h4><span>Do you want to <b>Pay Now</b>?</span>
-                        </h4>
-                        <section class="paymentMethods">
-                            <div class="paymentMethodItem" data-payment="1">
+
+                <h5 class="text-center">
+                    <p>Do you want to <b>Pay Now</b>?</p>
+                </h5>
+                <div class="inlinePaymentComponent text-center">
+
+                    <section class="paymentMethods">
+                        <div class="row">
+                            <div class="offset-3 col-3 paymentMethodItem" data-payment="1">
                                 <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-399/Default/components/checkoutV2/PaymentMethod/images/payment_icons_portwallet.png?q=low&amp;webp=1&amp;alpha=1">
-                                <p>Bangladeshi Credit / Debit Card</p>
+                                <span style="font-size: 12px;">Bangladeshi Credit / Debit Card</span>
                             </div>
-                            <div class="paymentMethodItem" data-payment="2" style="padding-left: 51px;">
+                            <div class="col-3 paymentMethodItem" data-payment="2">
                                 <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-399/Default/components/checkoutV2/PaymentMethod/images/bkash.png?q=low&webp=1&alpha=1">
-                                <p>bKash</p>
+                                <span style="font-size: 12px;">bKash</span>
                             </div>
-                            <div class="brainTree" data-payment="3">
-                                <div class="braintreePaymentContainer"><span>or</span><button class="braintreePayment"><img
-                                            src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-399/Default/components/checkoutV2/PaymentMethod/images/paypal.png?q=low&webp=1&alpha=1"><span
-                                            class="divider">/</span><span>International
-                                            Credit Card</span></button></div>
-                            </div>
-                            <form id="braintreeCheckout">
-                                <div id="payment-container"></div>
-                            </form>
-                        </section><br>
-                    </div>
+                        </div>
+                        <br>
+                        <div class="brainTree" data-payment="3">
+                            <div class="braintreePaymentContainer">
+                                <span>or</span>
+                                <br>
+                                <button class="">
+                                    <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-399/Default/components/checkoutV2/PaymentMethod/images/paypal.png?q=low&webp=1&alpha=1"><span
+                                            class="divider">/</span><span>International Credit Card</span></button></div>
+                        </div>
+                        <form id="braintreeCheckout">
+                            <div id="payment-container"></div>
+                        </form>
+                    </section><br>
+
                 </div>
                 <hr>
 
 
                 <br>
                 <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
-
                     <mat-card class="card-picture">
                         <table mat-table [dataSource]="orderModels" style="width: 100%;">
 
@@ -59,31 +65,13 @@
                                 <td mat-cell *matCellDef="let element" (click)="AddRowQty(element)"> {{element.Add}} </td>
                             </ng-container>
 
-                            <ng-container matColumnDef="Name">
+                            <ng-container matColumnDef="Address">
                                 <th mat-header-cell *matHeaderCellDef> </th>
-                                <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+                                <td mat-cell *matCellDef="let element"> {{element.Address}} </td>
                             </ng-container>
-
-
-                            <ng-container matColumnDef="Qty">
-                                <th mat-header-cell *matHeaderCellDef> Delivery Address </th>
-                                <td mat-cell *matCellDef="let element"> {{element.Qty}} </td>
-                            </ng-container>
-
-
-                            <ng-container matColumnDef="UnitPrice">
-                                <th mat-header-cell *matHeaderCellDef> </th>
-                                <td mat-cell *matCellDef="let element"> {{element.UnitPrice}} </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="Close">
-                                <th mat-header-cell *matHeaderCellDef> </th>
-                                <td mat-cell *matCellDef="let element" (click)="DeleteRow(element)"> {{element.Close}} </td>
-                            </ng-container>
-
 
                             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumn;"></tr>
                         </table>
                     </mat-card>
 

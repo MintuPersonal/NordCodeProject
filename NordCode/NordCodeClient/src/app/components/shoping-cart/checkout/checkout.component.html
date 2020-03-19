@@ -4,20 +4,21 @@
 
         <!-- Product Entry -->
         <mat-card class="card-picture">
-            <h5 class="h5"> Total Price: {{totalPrice}} </h5>
+            <h5 class="h5"> Total Price: {{UnitPrice}} </h5>
             <br>
-            <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+            <form class="example-form" #orderModel="ngForm" (ngSubmit)="onSubmit(orderModel)">
                 <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
 
                     <mat-icon fxFlex="5%" (click)="onClear()"> clear </mat-icon>
                     <span fxFlex="100%" class="text-center"> Checkout </span>
-                    <button mat-raised-button [disabled]="userForm.form.invalid" style="background-color:transparent;">
+                    <button mat-raised-button [disabled]="orderModel.form.invalid" style="background-color:transparent;">
                         <mat-icon fxFlex="5%"> done </mat-icon>
                     </button>
                 </mat-card-title>
                 <hr>
                 <mat-accordion>
                     <mat-expansion-panel>
+
                         <mat-expansion-panel-header>
                             <mat-panel-title>
                                 <mat-icon fxFlex=""> location_on </mat-icon> Delivery Address
@@ -25,14 +26,100 @@
                             <mat-panel-description> Type your delivery address details </mat-panel-description>
                         </mat-expansion-panel-header>
 
-                        <mat-form-field appearance="fill">
-                            <mat-label>Address</mat-label>
-                            <textarea #address='ngModel' ngModel [(ngModel)]="userForm.Address" name="address" required matInput ngModel atInput></textarea>
-                        </mat-form-field>
-                        <!-- <mat-form-field>
-                            <mat-label>Age</mat-label>
-                            <input matInput type="number" min="1">
+                        <!-- <mat-form-field [hidden]="false">
+                            <input matInput name="CustomerId" ngModel [(ngModel)]="orderModel.CustomerId">
+                            <input matInput name="UnitPrice" ngModel [(ngModel)]="orderModel.UnitPrice">
+                            <input matInput name="LoginFrom" ngModel [(ngModel)]="orderModel.LoginFrom">
+                            <input matInput name="TrackedId" ngModel [(ngModel)]="orderModel.TrackedId">
                         </mat-form-field> -->
+
+                        <!-- <mat-form-field appearance="fill">
+                            <mat-label> OrderNo </mat-label>
+                            <input #OrderNo='ngModel' [(ngModel)]="orderModel.OrderNo" name="OrderNo" required matInput ngModel/>
+                        </mat-form-field> -->
+                        <mat-form-field appearance="fill" fxFlex="50%">
+                            <mat-label> Address </mat-label>
+                            <textarea #Address='ngModel' [(ngModel)]="orderModel.Address" name="Address" required matInput ngModel></textarea>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" class="offset-1">
+                            <mat-label>Select an option</mat-label>
+                            <mat-select [(ngModel)]="orderModel.Aria" name="time" required>
+                                <mat-option value="Adabor" data-reactid="$Adabor">Adabor</mat-option>
+                                <mat-option value="Aftabnagar" data-reactid="$Aftabnagar">Aftabnagar </mat-option>
+                                <mat-option value="Agargaon" data-reactid="$Agargaon">Agargaon </mat-option>
+                                <mat-option value="Azimpur" data-reactid="$Azimpur">Azimpur </mat-option>
+                                <mat-option value="Babubazar" data-reactid="$Babubazar">Babubazar </mat-option>
+                                <mat-option value="Badda" data-reactid="$Badda">Badda </mat-option>
+                                <mat-option value="Banani" data-reactid="$Banani">Banani </mat-option>
+                                <mat-option value="Banasree" data-reactid="$Banasree">Banasree </mat-option>
+                                <mat-option value="Bangshal" data-reactid="$Bangshal">Bangshal </mat-option>
+                                <mat-option value="Baridhara" data-reactid="$Baridhara">Baridhara </mat-option>
+                                <mat-option value="Baridhara J Block" data-reactid="$Baridhara J Block">Baridhara J Block </mat-option>
+                                <mat-option value="Basundhara RA" data-reactid="$Basundhara RA">Basundhara RA </mat-option>
+                                <mat-option value="Bawnia" data-reactid="$Bawnia">Bawnia </mat-option>
+                                <mat-option value="Cantonment" data-reactid="$Cantonment">Cantonment </mat-option>
+                                <mat-option value="Dakshin Khan" data-reactid="$Dakshin Khan">Dakshin Khan </mat-option>
+                                <mat-option value="Dayaganj" data-reactid="$Dayaganj">Dayaganj </mat-option>
+                                <mat-option value="Dhaka University" data-reactid="$Dhaka University">Dhaka University </mat-option>
+                                <mat-option value="Dhalpur" data-reactid="$Dhalpur">Dhalpur </mat-option>
+                                <mat-option value="Dhanmondi" data-reactid="$Dhanmondi">Dhanmondi </mat-option>
+                                <mat-option value="Dholaipar" data-reactid="$Dholaipar">Dholaipar </mat-option>
+                                <mat-option value="DOHS Banani" data-reactid="$DOHS Banani">DOHS Banani </mat-option>
+                                <mat-option value="DOHS Baridhara" data-reactid="$DOHS Baridhara">DOHS Baridhara </mat-option>
+                                <mat-option value="DOHS Mirpur" data-reactid="$DOHS Mirpur">DOHS Mirpur </mat-option>
+                                <mat-option value="DOHS Mohakhali" data-reactid="$DOHS Mohakhali">DOHS Mohakhali </mat-option>
+                                <mat-option value="Eskaton" data-reactid="$Eskaton">Eskaton </mat-option>
+                                <mat-option value="Faridabad" data-reactid="$Faridabad">Faridabad </mat-option>
+                                <mat-option value="Farmgate" data-reactid="$Farmgate">Farmgate </mat-option>
+                                <mat-option value="Gabtoli" data-reactid="$Gabtoli">Gabtoli </mat-option>
+                                <mat-option value="Gandaria" data-reactid="$Gandaria">Gandaria </mat-option>
+                                <mat-option value="Gulshan" data-reactid="$Gulshan">Gulshan </mat-option>
+                                <mat-option value="Indira Road" data-reactid="$Indira Road">Indira Road </mat-option>
+                                <mat-option value="Jatrabari" data-reactid="$Jatrabari">Jatrabari </mat-option>
+                                <mat-option value="Jurain" data-reactid="$Jurain">Jurain </mat-option>
+                                <mat-option value="Kakrail" data-reactid="$Kakrail">Kakrail </mat-option>
+                                <mat-option value="Kalabagan" data-reactid="$Kalabagan">Kalabagan </mat-option>
+                                <mat-option value="Kallyanpur" data-reactid="$Kallyanpur">Kallyanpur </mat-option>
+                                <mat-option value="Kalshi" data-reactid="$Kalshi">Kalshi </mat-option>
+                                <mat-option value="Kamrangir Char" data-reactid="$Kamrangir Char">Kamrangir Char </mat-option>
+                                <mat-option value="Khilgaon" data-reactid="$Khilgaon">Khilgaon </mat-option>
+                                <mat-option value="Khilkhet" data-reactid="$Khilkhet">Khilkhet </mat-option>
+                                <mat-option value="Kotwali" data-reactid="$Kotwali">Kotwali </mat-option>
+                                <mat-option value="Lalbagh" data-reactid="$Lalbagh">Lalbagh </mat-option>
+                                <mat-option value="Lalmatia" data-reactid="$Lalmatia">Lalmatia </mat-option>
+                                <mat-option value="Malibagh" data-reactid="$Malibagh">Malibagh </mat-option>
+                                <mat-option value="Maniknagar" data-reactid="$Maniknagar">Maniknagar </mat-option>
+                                <mat-option value="Matikata" data-reactid="$Matikata">Matikata </mat-option>
+                                <mat-option value="Matuail" data-reactid="$Matuail">Matuail </mat-option>
+                                <mat-option value="Merul Badda" data-reactid="$Merul Badda">Merul Badda </mat-option>
+                                <mat-option value="Mirpur" data-reactid="$Mirpur">Mirpur </mat-option>
+                                <mat-option value="Moghbazaar" data-reactid="$Moghbazaar">Moghbazaar </mat-option>
+                                <mat-option value="Mohakhali" data-reactid="$Mohakhali">Mohakhali </mat-option>
+                                <mat-option value="Mohammadpur" data-reactid="$Mohammadpur">Mohammadpur </mat-option>
+                                <mat-option value="Motijheel" data-reactid="$Motijheel">Motijheel </mat-option>
+                                <mat-option value="Mridhabari" data-reactid="$Mridhabari">Mridhabari </mat-option>
+                                <mat-option value="Niketan" data-reactid="$Niketan">Niketan </mat-option>
+                                <mat-option value="Nikunja" data-reactid="$Nikunja">Nikunja </mat-option>
+                                <mat-option value="Paikpara" data-reactid="$Paikpara">Paikpara </mat-option>
+                                <mat-option value="Pallabi" data-reactid="$Pallabi">Pallabi </mat-option>
+                                <mat-option value="Paltan" data-reactid="$Paltan">Paltan </mat-option>
+                                <mat-option value="PanthaPath" data-reactid="$PanthaPath">PanthaPath </mat-option>
+                                <mat-option value="Pink City" data-reactid="$Pink City">Pink City </mat-option>
+                                <mat-option value="Ramna" data-reactid="$Ramna">Ramna </mat-option>
+                                <mat-option value="Rampura" data-reactid="$Rampura">Rampura </mat-option>
+                                <mat-option value="Rayerbagh" data-reactid="$Rayerbagh">Rayerbagh </mat-option>
+                                <mat-option value="Sadarghat" data-reactid="$Sadarghat">Sadarghat </mat-option>
+                                <mat-option value="Shaymoli" data-reactid="$Shaymoli">Shaymoli </mat-option>
+                                <mat-option value="Shonir akra" data-reactid="$Shonir akra">Shonir akra </mat-option>
+                                <mat-option value="Sutrapur" data-reactid="$Sutrapur">Sutrapur </mat-option>
+                                <mat-option value="Tejgaon" data-reactid="$Tejgaon">Tejgaon </mat-option>
+                                <mat-option value="Tongi" data-reactid="$Tongi">Tongi </mat-option>
+                                <mat-option value="Uttar Khan" data-reactid="$Uttar Khan">Uttar Khan </mat-option>
+                                <mat-option value="Uttara" data-reactid="$Uttara">Uttara </mat-option>
+                                <mat-option value="Vatara" data-reactid="$Vatara">Vatara </mat-option>
+                                <mat-option value="Wari" data-reactid="$Wari">Wari </mat-option>
+                            </mat-select>
+                        </mat-form-field>
                     </mat-expansion-panel>
 
                     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
@@ -45,9 +132,13 @@
                                 Currently I am {{panelOpenState ? 'open' : 'closed'}}
                             </mat-panel-description>
                         </mat-expansion-panel-header>
-                        <mat-form-field>
-                            <mat-label>Time</mat-label>
-                            <input #daytime='ngModel' ngModel [(ngModel)]="userForm.DeliveryTime" name="daytime" required matInput type="time" min="1">
+                        <mat-form-field appearance="fill" fxFlex="50%">
+                            <mat-label> Time</mat-label>
+                            <input #DeliveryTime='ngModel' ngModel [(ngModel)]="orderModel.DeliveryTime" name="DeliveryTime" required matInput type="time" min="1">
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" class="offset-1">
+                            <mat-label>Note</mat-label>
+                            <input #Reason='ngModel' [(ngModel)]="orderModel.Reason" name="Reason" required matInput ngModel/>
                         </mat-form-field>
                     </mat-expansion-panel>
                 </mat-accordion>
@@ -57,16 +148,14 @@
                 </label>
 
                 <h5 class="text-right">
-                    <!-- <a href="/payment"> -->
                     <div class="output-size">
-                        <mat-button-toggle-group (click)="onSubmit(userForm)" [disabled]="userForm.form.invalid" color="accent" name="fontStyle" aria-label="Font Style">
+                        <mat-button-toggle-group (click)="onSubmit(orderModel)" [disabled]="orderModel.form.invalid" color="accent" name="fontStyle" aria-label="Font Style">
                             <mat-button-toggle type="submit" class="btn-large" value="submit" class="order"> Process
                             </mat-button-toggle>
-                            <mat-button-toggle type="submit" value="submit" class="price">Tk. {{totalPrice}}
+                            <mat-button-toggle type="submit" value="submit" class="price">Tk. {{UnitPrice}}
                             </mat-button-toggle>
                         </mat-button-toggle-group>
                     </div>
-                    <!-- </a> -->
                     <span style="font-size: 10px">By clicking/tapping proceed, I agree to E-commerce's <a href="#"
                             target="_blank">Terms of Services</a></span>
                 </h5>

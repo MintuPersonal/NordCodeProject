@@ -67,8 +67,11 @@ export class ProductComponent implements OnInit {
   ];
 
   ngOnInit() {
-    var data = this._productService.getProduct(this.productModel).subscribe((data: Ecom_Product[]) => { this.productModels = data });
-    console.log(this.productModels);
+    var data = this._productService.getProduct(this.productModel).subscribe((data: Ecom_Product[]) => {
+      this.productModels = data;
+      console.log(this.productModels);
+    });
+    //console.log(this.productModels);
     debugger;
     return data;
   };

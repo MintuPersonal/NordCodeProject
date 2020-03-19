@@ -53,7 +53,7 @@ mat-card {
 
 .paymentMethodItem {
     width: 200px;
-    height: 100px;
+    height: 110px;
     float: none;
     display: inline-block;
     margin-right: 25px;
@@ -71,4 +71,9 @@ mat-card {
 
 .table {
     width: 100%;
+}
+
+h5 b {
+    color: #39B87C;
+    font-size: 20px;
 }

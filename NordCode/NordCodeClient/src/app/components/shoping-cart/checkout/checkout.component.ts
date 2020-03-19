@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input, SystemJsNgModuleLoader } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Ecom_Orders } from 'src/app/order/order';
 
@@ -9,17 +9,19 @@ import { Ecom_Orders } from 'src/app/order/order';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-  totalPrice: any;
-  customerId: string;
+  TotalPrice: number;
+  CustomerId: number;
+  UnitPrice: number;
+  OrderNo: string;
 
   constructor(private route: ActivatedRoute, private _customerService: CustomerService) { }
 
   // @Input() totalItemsPrice: any;
 
   ngOnInit() {
-    this.totalPrice = this.route.snapshot.paramMap.get("price");
-    this.customerId = '1111';//this.route.snapshot.paramMap.get("customerId")
-    //this.LoadItemTotal();    
+    this.UnitPrice = parseInt(this.route.snapshot.paramMap.get("price"));
+    this.CustomerId = 2020888; // + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds());
+    this.OrderNo = '2020555';
   }
 
   public LoadItemTotal() {
@@ -39,16 +41,24 @@ export class CheckoutComponent implements OnInit {
     }
   };
 
-  onSubmit(info) {
-    alert(info.Address)
-    var order = new Ecom_Orders(1, '1111', '22222', '3333', '1', '20', 'Test', 1, 1, 200, 5, 150);
+  onSubmit(_product: Ecom_Orders) {
+    var order = new Ecom_Orders();
+    order.OId = 0;
+    order.OrderNo = this.OrderNo;
+    order.CustomerId = this.CustomerId + this.UnitPrice;
+    order.CouponId = 3333;
+    order.PaymentId = 1;
+    order.Discount = 20;
+    order.Reason = _product.Reason;
+    order.Active = true;
+    order.UnitPrice = this.UnitPrice;
+    order.Qty = 5;
+    order.NetPrice = this.UnitPrice;
+    order.Address = _product.Address;
+    order.Aria = _product.Aria;
+    order.DeliveryTime = _product.DeliveryTime;
 
-    //  order.Address = info.Address,
-    //  order.DeliveryAddress = info.Address,
-    //  order.DeliveryTime = info.DeliveryTime
-    //)
-    debugger;
-    this._customerService.setOrder(order)
+    var data = this._customerService.setOrder(order);
 
   }
   onClear() {
