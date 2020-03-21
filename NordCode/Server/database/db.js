@@ -21,5 +21,4 @@ const sequelize = new Sequelize('postgres://postgres:1qaz@127.0.0.1:5432/ERP', {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 db.Express = express;
-
 module.exports = db;
