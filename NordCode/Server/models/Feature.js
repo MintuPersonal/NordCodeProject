@@ -1,7 +1,7 @@
 const db = require('../database/db.js');
 
 const home = db.sequelize.define('Ecom_Products', {
-    PId: {
+    PID: {
         type: db.Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -10,7 +10,7 @@ const home = db.sequelize.define('Ecom_Products', {
     PName_BN: db.Sequelize.STRING,
     Brand: db.Sequelize.STRING,
     Brand_BN: db.Sequelize.STRING,
-    Img_path: db.Sequelize.STRING,
+    ImgPath: db.Sequelize.STRING,
     UnitPrice: db.Sequelize.INTEGER
 });
 

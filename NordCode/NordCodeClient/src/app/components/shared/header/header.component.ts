@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
       Object.keys(hasitemdata).forEach(key => {
         const iteming = hasitemdata[key];
         const intervale = Object.keys(iteming).map(key => iteming[key]);
-        _totalItemsPrice = _totalItemsPrice + intervale[3];
+        _totalItemsPrice = _totalItemsPrice + intervale[4];
       });
       // alert('Total Price is Final :'+ _totalItemsPrice);
       this.setTotalPrice(_totalItemsPrice);

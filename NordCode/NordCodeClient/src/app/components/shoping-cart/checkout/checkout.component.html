@@ -141,24 +141,38 @@
                             <input #Reason='ngModel' [(ngModel)]="orderModel.Reason" name="Reason" required matInput ngModel/>
                         </mat-form-field>
                     </mat-expansion-panel>
+                    <br>
+                    <mat-card>
+                        <!-- <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <mat-icon fxFlex=""> watch_later </mat-icon>
+                                Order Processing
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header> -->
+
+                        <mat-label class="example-full-width"> Payment options available on the next page <a class="text-center offset-1">৳ 20 Delivery charge included</a>
+                        </mat-label>
+                        <br>
+                        <div class="example-full-width" style="margin-top: 10px; padding-left: 40%;">
+                            <mat-button-toggle-group (click)="onSubmit(orderModel)" [disabled]="orderModel.form.invalid" color="accent" name="fontStyle" aria-label="Font Style">
+                                <mat-button-toggle type="submit" class="btn-large" value="submit" class="order"> Process
+                                </mat-button-toggle>
+                                <mat-button-toggle type="submit" value="submit" class="price">Tk. {{UnitPrice}}
+                                </mat-button-toggle>
+                            </mat-button-toggle-group>
+                            <br>
+                            <span style="font-size: 10px">By clicking/tapping proceed, I agree to E-commerce's <a href="#"
+                                    target="_blank">Terms of Services</a></span>
+                        </div>
+
+
+
+                    </mat-card>
+
                 </mat-accordion>
-
-                <label class="col-lg-12" style="padding-top: 50px;"> Payment options available on the next
-                    page <a class="text-right offset-5">৳ 20 Delivery charge included</a>
-                </label>
-
-                <h5 class="text-right">
-                    <div class="output-size">
-                        <mat-button-toggle-group (click)="onSubmit(orderModel)" [disabled]="orderModel.form.invalid" color="accent" name="fontStyle" aria-label="Font Style">
-                            <mat-button-toggle type="submit" class="btn-large" value="submit" class="order"> Process
-                            </mat-button-toggle>
-                            <mat-button-toggle type="submit" value="submit" class="price">Tk. {{UnitPrice}}
-                            </mat-button-toggle>
-                        </mat-button-toggle-group>
-                    </div>
-                    <span style="font-size: 10px">By clicking/tapping proceed, I agree to E-commerce's <a href="#"
-                            target="_blank">Terms of Services</a></span>
-                </h5>
             </form>
         </mat-card>
 

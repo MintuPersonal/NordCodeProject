@@ -1,17 +1,19 @@
 export class Ecom_Commercial {
-    PId: string;
+    Add: any;
+    PID: string;
     Name: string;
     Qty: number;
     UnitPrice: number;
     Close: any;
-    Add: any;
+    
 
-    constructor(pid, pname, qty, unitprice, Close, add) {
-        this.PId = pid;
+    constructor( add, pid, pname, qty, unitprice, Close) {
+        this.Add = add;
+        this.PID = pid;
         this.Name = pname;
         this.Qty = qty;
         this.UnitPrice = unitprice;
         this.Close = Close;
-        this.Add = add;
+        
     }
 }

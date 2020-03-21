@@ -12,7 +12,7 @@ const home = db.sequelize.define('Ecom_Products', {
     Category_BN: db.Sequelize.STRING,
     Brand: db.Sequelize.STRING,
     Brand_BN: db.Sequelize.STRING,
-    Img_path: db.Sequelize.STRING
+    ImgPath: db.Sequelize.STRING
 });
 
 module.exports = home;

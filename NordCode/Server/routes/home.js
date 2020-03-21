@@ -1,4 +1,3 @@
-
 const express = require('express');
 const jwt = require('jsonwebtoken');
 
@@ -19,7 +18,7 @@ router.get('/gethome', (req, res, next) => {
     //         res.sendStatus(403);
     //     } else {
     var homeobj = {};
-    home.findAll().then(homes => {  //[Op.gt]: 6 { where: { parentid: 0 } } // { limit: 5 } // { where: { parentid: 0 } } // { where: { parentid: 0 } }
+    home.findAll().then(homes => { //[Op.gt]: 6 { where: { parentid: 0 } } // { limit: 5 } // { where: { parentid: 0 } } // { where: { parentid: 0 } }
         homeobj.categories = homes;
     }).catch(err => { res.send('Error :' + err) });
 
@@ -57,7 +56,7 @@ router.get('/gethomes', (req, res, next) => {
     //         res.sendStatus(403);
     //     } else {
     var homeobj = {};
-    home.findAll().then(homes => {  //[Op.gt]: 6 { where: { parentid: 0 } } // { limit: 5 } // { where: { parentid: 0 } } // { where: { parentid: 0 } }
+    home.findAll().then(homes => { //[Op.gt]: 6 { where: { parentid: 0 } } // { limit: 5 } // { where: { parentid: 0 } } // { where: { parentid: 0 } }
         homeobj.categories = homes;
     }).catch(err => { res.send('Error :' + err) });
 

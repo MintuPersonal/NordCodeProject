@@ -20,11 +20,10 @@ const product = db.sequelize.define('Ecom_Products', {
     SID: db.Sequelize.BIGINT,
     Rol: db.Sequelize.STRING,
     ParentId: db.Sequelize.BIGINT,
-    Img_Path: db.Sequelize.STRING,
+    ImgPath: db.Sequelize.STRING,
     Inserted_By: db.Sequelize.STRING,
     Inserted_Date: db.Sequelize.DATE,
 
-    //Img_Paths: db.Sequelize.STRING, 
     Display: db.Sequelize.STRING,
     FileUrl: db.Sequelize.STRING,
     FileExtension: db.Sequelize.STRING,
@@ -33,12 +32,37 @@ const product = db.sequelize.define('Ecom_Products', {
     Active: db.Sequelize.STRING,
 });
 
-db.sequelize.sync(); //{ force: true }
+db.sequelize.sync({ force: true })
+    .then(() => {
+        product.create({
+            PID: 0,
+            PName: 'Apple',
+            PName_BN: 'Apple',
+            Brand: 'Apple',
+            Brand_BN: 'Apple',
+            UnitPrice: 250,
+            Unit: 500,
+            UnitsInStock: 50,
+            Category: 'Apple',
+            Category_BN: 'Apple',
+            Description: 'Apple',
+            Description_BN: 'Apple',
+            SID: 1,
+            Rol: 1,
+            ParentId: 1,
+            ImgPath: 'image/product/Apple.jpg',
+            Inserted_By: 11,
+            Inserted_Date: new Date().toLocaleDateString(),
 
-// .then(() => {
-//     product.create();
-// }).catch(err => {
-//     console.log('Error : ' + err);
-// });
+            Display: 1,
+            FileUrl: 'image/product/Apple.jpg',
+            FileExtension: '.jpg',
+            FileImage: 'image/product/Apple.jpg',
+            TrackedId: '127',
+            Active: 1,
+        });
+    }).catch(err => {
+        console.log('Error : ' + err);
+    });
 
 module.exports = product;

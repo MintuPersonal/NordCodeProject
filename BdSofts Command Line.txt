@@ -98,6 +98,7 @@ for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
 	npm start 
 	ctrl+c for Stop y
 	npm i express 
+	npm install --save pg pg-hstore
 	npm i -D nodemon --for wotch mode
 	npm u -D morgan  --for middileware logfile
 	npm install body-parser
@@ -147,4 +148,6 @@ for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
 	https://www.youtube.com/watch?v=qexy4Ph66JE
 	https://www.youtube.com/watch?v=KLCcCTFivhM
 	https://mladenplavsic.github.io/bootstrap-navbar-sidebar/
+	
+	https://www.youtube.com/watch?v=srPXMt1Q0nY
 	

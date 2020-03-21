@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Ecom_Commercial } from 'src/app/commercial/Commercial';
-import { CommercialService } from 'src/app/commercial/commercial.service';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-product-item',
@@ -21,23 +19,25 @@ export class ProductItemComponent implements OnInit {
   bannersModel: any;
   brandsModel: any;
   featuresModel: any;
+  close = 'X';
+  add = 'A+';
 
   @Input() featureItem: any;
-  constructor(private _commercialService: CommercialService) { }
+  constructor() { }
 
   ngOnInit() {
     localStorage.setItem('item', null);
     //this.LoadItemTotal();
   }
   public LoadItemTotal() {
-    //
+    
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
     if (hasitemdata != null && Object.keys(hasitemdata).length !== 0) {
       var _totalItemsPrice = 0;
       Object.keys(hasitemdata).forEach(key => {
         const iteming = hasitemdata[key];
         const intervale = Object.keys(iteming).map(key => iteming[key]);
-        _totalItemsPrice = _totalItemsPrice + intervale[3];
+        _totalItemsPrice = _totalItemsPrice + intervale[4];
       });
       // alert('Total Price is Final :'+ _totalItemsPrice);
       this.setTotalPrice(_totalItemsPrice);
@@ -50,6 +50,7 @@ export class ProductItemComponent implements OnInit {
     }
   }
   public AddToBag(itemObj) {
+    debugger;
     //this.badgeCounter = 0;
     if (Object.keys(itemObj).length !== 0) {
       this.HasThisItem(itemObj);
@@ -57,33 +58,31 @@ export class ProductItemComponent implements OnInit {
       if (this.isItemLocalStorage) {
         this.AddExitsItem(itemObj);
       } else {
-        this.newline = new Ecom_Commercial(itemObj.PId, itemObj.PName, 1, itemObj.UnitPrice, 'X', 'A+');
+        this.newline = new Ecom_Commercial(this.add, itemObj.PID, itemObj.PName, 1, itemObj.UnitPrice, this.close);
         this.AddNewItem(this.newline);
       }
       this.LoadItemTotal();
 
     } else {
-      this.newline = new Ecom_Commercial(itemObj.PId, itemObj.PName, 1, itemObj.UnitPrice, 'X', 'A+');
+      this.newline = new Ecom_Commercial(this.add, itemObj.PId, itemObj.PName, 1, itemObj.UnitPrice, this.close);
       this.itemState.push(this.newline);
       localStorage.setItem('item', JSON.stringify(this.itemState));
       this.LoadItemTotal();
     }
   }
-  AddExitsItem(existed) {
+  public AddExitsItem(existed) {
     this.itemState = [];
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
     Object.keys(hasitemdata).forEach(key => {
       const iteming = hasitemdata[key];
       const storageItem = Object.keys(iteming).map(mapper => iteming[mapper]);
       const addItem = Object.keys(existed).map(key => existed[key]);
-      if (storageItem[0] == addItem[0]) {
-        var totalQty = storageItem[2] + 1;
-        var totalPrice = storageItem[3] + addItem[6];
-        var close = 'X';
-        var add = 'V';
-        this.newline = new Ecom_Commercial(storageItem[0], storageItem[1], totalQty, totalPrice, close, add);
-        this.itemState.push(this.newline);
-        //
+      if (storageItem[1] == addItem[0]) {
+        var totalQty = storageItem[3] + 1;
+        var totalPrice = storageItem[4] + addItem[6];
+
+        this.newline = new Ecom_Commercial(this.add, storageItem[1], storageItem[1], totalQty, totalPrice, this.close);
+        this.itemState.push(this.newline);        
       } else {
         this.itemState.push(iteming);
         //localStorage.setItem('item', JSON.stringify(this.itemState)); 
@@ -112,7 +111,7 @@ export class ProductItemComponent implements OnInit {
         const storageItem = Object.keys(iteming).map(mapper => iteming[mapper]);
         const addItem = Object.keys(itemObj).map(key => itemObj[key]);
 
-        if (storageItem[0] == addItem[0]) {
+        if (storageItem[1] == addItem[0]) {
           return this.isItemLocalStorage = true
 
         } else {
@@ -138,16 +137,16 @@ export class ProductItemComponent implements OnInit {
             const iteming = hasitemdata[key];
             const storageItem = Object.keys(iteming).map(mapper => iteming[mapper]);
             const addItem = Object.keys(itemObj).map(key => itemObj[key]);
-            if (storageItem[0] == addItem[0] && storageItem[2] > 1) {
+            if (storageItem[1] == addItem[1] && storageItem[3] > 1) {
               var totalQty = storageItem[2] - 1;
               var totalPrice = storageItem[3] - addItem[6]
-              this.newline = new Ecom_Commercial(storageItem[0], storageItem[1], totalQty, totalPrice, 'X', 'A+');
+              this.newline = new Ecom_Commercial(this.add, storageItem[1], storageItem[1], totalQty, totalPrice, this.close);
               this.itemState.push(this.newline);
             }
             else {
               // var totalQty = storageItem[2] - 1;
               // var totalPrice = storageItem[3] - addItem[6]
-              // this.newline = new Ecom_Commercial(storageItem[0], storageItem[1], totalQty, totalPrice);
+              // this.newline = new Ecom_Commercial(storageItem[1], storageItem[1], totalQty, totalPrice);
               //this.itemState.push(this.newline);            
             }
           });
@@ -170,16 +169,16 @@ export class ProductItemComponent implements OnInit {
         const iteming = hasitemdata[key];
         const storageItem = Object.keys(iteming).map(mapper => iteming[mapper]);
         const addItem = Object.keys(item).map(key => item[key]);
-        if (storageItem[0] != addItem[0]) {
+        if (storageItem[1] != addItem[0]) {
           var totalQty = storageItem[2];
           var totalPrice = storageItem[3]
-          this.newline = new Ecom_Commercial(storageItem[0], storageItem[1], totalQty, totalPrice, 'X', 'A+');
+          this.newline = new Ecom_Commercial(this.add, storageItem[1], storageItem[1], totalQty, totalPrice, this.close);
           this.itemState.push(this.newline);
         }
         else {
           var _totalQty = storageItem[2] + 1;
           var _totalPrice = storageItem[3] + addItem[3]
-          this.newline = new Ecom_Commercial(storageItem[0], storageItem[1], _totalQty, _totalPrice, 'X', 'A+');
+          this.newline = new Ecom_Commercial(this.add, storageItem[1], storageItem[1], _totalQty, _totalPrice, this.close);
           this.itemState.push(this.newline);
         }
       });
@@ -199,16 +198,16 @@ export class ProductItemComponent implements OnInit {
         const iteming = hasitemdata[key];
         const storageItem = Object.keys(iteming).map(mapper => iteming[mapper]);
         const addItem = Object.keys(item).map(key => item[key]);
-        if (storageItem[0] != addItem[0]) {
+        if (storageItem[1] != addItem[0]) {
           var totalQty = storageItem[2];
           var totalPrice = storageItem[3]
-          this.newline = new Ecom_Commercial(storageItem[0], storageItem[1], totalQty, totalPrice, 'X', 'A+');
+          this.newline = new Ecom_Commercial(this.add, storageItem[1], storageItem[1], totalQty, totalPrice, this.close);
           this.itemState.push(this.newline);
         }
         else {
           var _totalQty = storageItem[2] + 1;
           var _totalPrice = storageItem[3] + addItem[6]
-          this.newline = new Ecom_Commercial(storageItem[0], storageItem[1], _totalQty, _totalPrice, 'X', 'A+');
+          this.newline = new Ecom_Commercial(this.add, storageItem[1], storageItem[1], _totalQty, _totalPrice, this.close);
           this.itemState.push(this.newline);
         }
       });
