@@ -50,7 +50,7 @@ export class ProductItemComponent implements OnInit {
     }
   }
   public AddToBag(itemObj) {
-    
+    //this.badgeCounter = 0;
     if (Object.keys(itemObj).length !== 0) {
       this.HasThisItem(itemObj);
       this.itemState = [];

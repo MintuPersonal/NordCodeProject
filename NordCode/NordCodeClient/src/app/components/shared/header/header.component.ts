@@ -14,15 +14,18 @@ export class HeaderComponent implements OnInit {
   totalItemsPrice: any;
   itemState: any[];
   newline: Ecom_Commercial;
+  isOpen: any = false;
+  badgeCounter: number;
 
   constructor() { }
   totalItemsCount = 0;
   ngOnInit() {
+    this.badgeCounter = 0;
     localStorage.setItem('item', null);
     //this.LoadItemTotal();  
   }
   public LoadItemTotal() {
-    
+
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
     if (hasitemdata != null && Object.keys(hasitemdata).length !== 0) {
       var _totalItemsPrice = 0;
@@ -76,15 +79,20 @@ export class HeaderComponent implements OnInit {
   }
 
   openCartNav() {
-    this.LoadItemTotal();
-    document.getElementById("cartnav").style.width = "350px";
-    //document.getElementById("maincart").style.marginLeft = "250px";
+    this.LoadItemTotal();       
+    if (!this.isOpen) {      
+      document.getElementById("cartnav").style.width = "350px";     
+      this.isOpen = true;
+    } else {
+      document.getElementById("cartnav").style.width = "0";  
+      this.isOpen = false;    
+    }
   }
-  
-  closeCartNav() {
-    document.getElementById("cartnav").style.width = "0";
-    //document.getElementById("maincart").style.marginLeft= "0";
-  }
+
+  // closeCartNav() {
+  //   document.getElementById("cartnav").style.width = "0";
+  //   //document.getElementById("maincart").style.marginLeft= "0";
+  // }
 
 
 }

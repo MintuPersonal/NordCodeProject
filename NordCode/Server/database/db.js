@@ -8,14 +8,15 @@ const express = require('express');
 // var config = require(__dirname + '/../config/config.json')[env];
 
 const db = {};
-const sequelize = new Sequelize('ERP', 'sa', 'Oneict@123', {
-    host: '10.11.4.153',
-    dialect: 'mssql',
-    operatorsAliases: 0,
-    define: {
-        timestamps: false
-    }
-});
+// const sequelize = new Sequelize('ERP', 'sa', 'Oneict@123', {
+//     host: '10.11.4.153',
+//     dialect: 'mssql',
+//     operatorsAliases: 0,
+//     define: {
+//         timestamps: false
+//     }
+// });
+const sequelize = new Sequelize('postgres://postgres:1qaz@127.0.0.1:5432/ERP', { dialect: 'postgres' });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

@@ -14,8 +14,8 @@
                     </mat-error>
                 </mat-form-field>
             </form>
-            <p class="col-lg-2" style="margin-top: 15px;">
-                <mat-icon matBadge="15" matBadgeColor="warn">add_shopping_cart</mat-icon>
+            <p style="margin-top: 15px;" (click)="openCartNav()">
+                <mat-icon [matBadge]="badgeCounter" matBadgeColor="warn">add_shopping_cart</mat-icon>
                 <span class="cdk-visually-hidden"> </span>
             </p>
         </div>
@@ -23,7 +23,7 @@
 </div>
 
 <div id="cartnav" class="sidepanel">
-    <a href=" javascript:void(0) " class="closebtn " (click)="closeCartNav() ">&times;</a>
+    <a href=" javascript:void(0) " class="closebtn " (click)="openCartNav() ">&times;</a>
     <mat-card class="card-picture ">
         <nav class="nav nav-info ">
         </nav>
@@ -88,8 +88,8 @@
 </div>
 
 <div id="maincart " style="float: right; margin-top: 450px;">
-    <span style="font-size:30px;cursor:pointer " (click)="openCartNav() ">
-        <img style="width: 20px; height: 50px; " class=" " src="../assets/icon/pre.png " alt="LG " fxLayoutAlign="space-around center ">        
+    <span style="font-size:30px;cursor:pointer" (click)="openCartNav()">
+        <img style="width: 20px; height: 50px; " class=" " src="../assets/icon/next.png " alt="LG " fxLayoutAlign="space-around center ">        
     </span>
 </div>
 
