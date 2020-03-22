@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ecom_Commercial } from 'src/app/commercial/Commercial';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -17,13 +18,24 @@ export class HeaderComponent implements OnInit {
   isOpen: any = false;
   badgeCounter: number;
 
-  constructor() { }
+  constructor(private router: Router) { }
   totalItemsCount = 0;
   ngOnInit() {
     this.badgeCounter = 0;
     localStorage.setItem('item', null);
     //this.LoadItemTotal();  
   }
+  public PlaceOrder(totalPrice) {
+    if(this.CheckUserSession()){
+      this.router.navigate(['/checkout', totalPrice]) 
+    }else{
+      this.router.navigate(['/login']) 
+    }
+  }
+  public CheckUserSession() {
+    return false;
+  }
+
   public LoadItemTotal() {
 
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
@@ -66,34 +78,23 @@ export class HeaderComponent implements OnInit {
     }
     this.LoadItemTotal();
   }
-
-
-  openNav() {
+  public openNav() {
     document.getElementById("mySidepanel").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
   }
-
-  closeNav() {
+  public closeNav() {
     document.getElementById("mySidepanel").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
   }
-
-  openCartNav() {
-    this.LoadItemTotal();       
-    if (!this.isOpen) {      
-      document.getElementById("cartnav").style.width = "350px";     
+  public openCartNav() {
+    this.LoadItemTotal();
+    if (!this.isOpen) {
+      document.getElementById("cartnav").style.width = "350px";
       this.isOpen = true;
     } else {
-      document.getElementById("cartnav").style.width = "0";  
-      this.isOpen = false;    
+      document.getElementById("cartnav").style.width = "0";
+      this.isOpen = false;
     }
   }
-
-  // closeCartNav() {
-  //   document.getElementById("cartnav").style.width = "0";
-  //   //document.getElementById("maincart").style.marginLeft= "0";
-  // }
-
-
 }
 

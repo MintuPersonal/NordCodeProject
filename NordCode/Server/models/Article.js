@@ -1,7 +1,11 @@
 const db = require('../database/db.js');
 
-const article = db.sequelize.define(
-    'user_articles', {
+const article = db.sequelize.define('user_articles', {
+    Id: {
+        type: db.Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
     title: db.Sequelize.TEXT,
     body: db.Sequelize.TEXT
 });

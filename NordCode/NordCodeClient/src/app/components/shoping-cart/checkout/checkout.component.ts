@@ -43,7 +43,7 @@ export class CheckoutComponent implements OnInit {
 
   onSubmit(_product: Ecom_Orders) {
     var order = new Ecom_Orders();
-    order.OId = 0;
+    order.OID = 0;
     order.OrderNo = this.OrderNo;
     order.CustomerId = this.CustomerId + this.UnitPrice;
     order.CouponId = 3333;
@@ -58,6 +58,12 @@ export class CheckoutComponent implements OnInit {
     order.Aria = _product.Aria;
     order.DeliveryTime = _product.DeliveryTime;
 
+    order.TrackedId = '127';
+    order.CreateBy = 11;
+    order.CreateDate = new Date();
+    order.Active = true;
+    order.Delete = false;
+    debugger;
     var data = this._customerService.setOrder(order);
 
   }

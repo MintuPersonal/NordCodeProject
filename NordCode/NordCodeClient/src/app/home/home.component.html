@@ -1,19 +1,12 @@
 <div style="padding: 13px;" class="container">
     <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }} </div>
-
-
     <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
-
         <mat-card class="card-picture">
-            <!--  -->
-
             <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
 
                 <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
-
                     <mat-icon fxFlex="5%" (click)="onClear()">list</mat-icon>
                     <span fxFlex="90%" class="text-center"> Home </span>
-
                     <a mat-raised-button [routerLink]="['/addnew']" [disabled]="userForm.form.invalid" style="background-color:transparent;">
                         <mat-icon fxFlex="1%"> add </mat-icon>
                     </a>
@@ -33,16 +26,14 @@
                             <mat-icon fxFlex="1%" *ngIf="!item.IsDone"> delete_outline </mat-icon>
                         </mat-card-subtitle>
                         <p>
-                            <mat-icon fxFlex="5%" (click)="onClear()">access_time</mat-icon> &nbsp; {{item2.email}}
-                            &nbsp; &nbsp;
+                            <mat-icon fxFlex="5%" (click)="onClear()">access_time</mat-icon> &nbsp; {{item2.email}} &nbsp; &nbsp;
                             <mat-icon fxFlex="5%" (click)="onClear()">where_to_vote</mat-icon> &nbsp; {{item2.location}}
                         </p>
                         <hr>
                     </mat-card-subtitle>
                 </mat-card-subtitle>
 
-                <hr>
-                {{taskModel | json}}
+                <hr> {{taskModel | json}}
 
             </form>
         </mat-card>

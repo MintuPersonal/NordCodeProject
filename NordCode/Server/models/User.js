@@ -1,38 +1,51 @@
 const db = require('../database/db.js');
 
-const user = db.sequelize.define(
-    'user_informations', {
-    user_id: db.Sequelize.INTEGER,
-    name: db.Sequelize.STRING,
-    email: db.Sequelize.STRING,
-    password: db.Sequelize.STRING,
-    isDelete: db.Sequelize.BOOLEAN,
-    isActive: db.Sequelize.BOOLEAN,
-    fileUrl: db.Sequelize.STRING,
-    fileExtention: db.Sequelize.STRING,
-    fileImage: db.Sequelize.STRING,
-    birthday: db.Sequelize.DATE,
-    trackedId: db.Sequelize.STRING,
-    create_at: db.Sequelize.DATE
+const user = db.sequelize.define('Ecom_User', {
+    Id: {
+        type: db.Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
+    UID: db.Sequelize.INTEGER,
+    Name: db.Sequelize.STRING,
+    Email: db.Sequelize.STRING,
+    Username: db.Sequelize.STRING,
+    Password: db.Sequelize.STRING,
+
+    FileUrl: db.Sequelize.STRING,
+    FileExtension: db.Sequelize.STRING,
+    FileImage: db.Sequelize.STRING,
+    Birthday: db.Sequelize.DATE,
+
+    TrackedId: db.Sequelize.STRING,
+    CreateBy: db.Sequelize.STRING,
+    CreateDate: db.Sequelize.DATE,
+    Delete: db.Sequelize.BOOLEAN,
+    Active: db.Sequelize.BOOLEAN,
 });
 
-db.sequelize.sync({ force: true });
-    // .then(() => {
-    //     user.create({
-    //         user_id: 1,
-    //         user: 'Mintu',
-    //         pass: '123456',
-    //         isDelete: false,
-    //         isActive: true,
-    //         fileUrl: 'db.Sequelize.STRING',
-    //         fileExtention: '.png',
-    //         fileImage: 'db.Sequelize.STRING',
-    //         birthday: new Date().toLocaleDateString(),
-    //         trackedId: 'lenovopc',
-    //         created_at: new Date().toLocaleDateString()
-    //     })
-    // }).catch(err => {
-    //     console.log('Error : ' + err);
-    // })
+db.sequelize.sync({ force: true })
+    .then(() => {
+        user.create({
+            UID: 1,
+            Name: 'Md Mahafuzul Huq',
+            Email: 'gmsanzid@gmail.com',
+            Birthday: new Date().toLocaleDateString(),
+            Username: 'Mintu',
+            Password: '1qaz@WSX',
+
+            FileUrl: 'db.Sequelize.STRING',
+            FileExtension: '.jpg',
+            FileImage: 'db.Sequelize.STRING',
+
+            TrackedId: 'Noc Desktop',
+            CreateBy: 11,
+            CreateDate: new Date().toLocaleDateString(),
+            Delete: false,
+            Active: true,
+        })
+    }).catch(err => {
+        console.log('Error : ' + err);
+    })
 
 module.exports = user;

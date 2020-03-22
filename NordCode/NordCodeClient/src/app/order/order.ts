@@ -1,12 +1,11 @@
 export class Ecom_Orders {
-    OId: any;
+    OID: any;
     OrderNo: string;
     CustomerId: number;
     CouponId: number;
     PaymentId: number;
     Discount: number;
     Reason: any;
-    Active: boolean;
     ProductId: number;
     UnitPrice: number;
     Qty: number;
@@ -14,7 +13,13 @@ export class Ecom_Orders {
     Address: any;
     Aria: any;
     DeliveryTime: any;
-    //Address: any;
+
+    TrackedId: any;
+    CreateBy: any;
+    CreateDate: Date;
+    Delete: boolean;
+    Active: boolean;
+    
 
     // constructor(oid, orderid, customerid, couponid, paymentid, discount, reason, active, productid,
     //     unitprice, qty, netprice, address, aria, deliveryTime) {

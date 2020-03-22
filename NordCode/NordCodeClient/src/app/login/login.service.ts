@@ -9,21 +9,18 @@ import { __param } from 'tslib';
 export class LoginService {
 
   _httpparams = new HttpParams();
-
-  _baseUrl = "http://localhost:3000/";
+  _baseUrl = "http://localhost:3000/api/";
   _url = '';
 
   constructor(private _http: HttpClient) { }
-
   getUser(user: User) {
-
-    this._url = this._baseUrl + "api/getuser";
-    const  params = new  HttpParams().set('user', user.UserName).set('pass', user.PassWord);
-    return this._http.get(this._url, {params});
+    this._url = this._baseUrl + "getuser?Username" + user.Username + "&Password" + user.Password;
+    //const  params = new  HttpParams().set('user', user.Username).set('pass', user.Password);
+    return this._http.get(this._url);//, {params});
   }
 
   updateUser(user: User) {
-    this._url = this._baseUrl + "api/createuser";
+    this._url = this._baseUrl + "createuser";
     return this._http.post<any>(this._url, user)
   }
 }

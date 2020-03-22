@@ -71,16 +71,16 @@
                 </table>
 
                 <h5 class="text-center h5 " style="position: relative;top: 52px; ">
-                    <a [routerLink]="['/checkout', totalItemsPrice]">
-                        <div class=" ">
-                            <mat-button-toggle-group color="accent" [totalPrice]="totalItemsPrice" name="fontStyle " aria-label="Font Style ">
-                                <mat-button-toggle value="italic " class="order ">
-                                    Place Order </mat-button-toggle>
-                                <mat-button-toggle value="underline " class="price ">Tk. {{totalItemsPrice}}
-                                </mat-button-toggle>
-                            </mat-button-toggle-group>
-                        </div>
-                    </a>
+                    <!-- <a [routerLink]="['/checkout', totalItemsPrice]"> -->
+                    <div class=" ">
+                        <mat-button-toggle-group (click)="PlaceOrder(totalItemsPrice)" color="accent" [totalPrice]="totalItemsPrice" name="fontStyle " aria-label="Font Style ">
+                            <mat-button-toggle value="italic " class="order ">
+                                Place Order </mat-button-toggle>
+                            <mat-button-toggle value="underline " class="price ">Tk. {{totalItemsPrice}}
+                            </mat-button-toggle>
+                        </mat-button-toggle-group>
+                    </div>
+                    <!-- </a> -->
                 </h5>
             </div>
         </div>

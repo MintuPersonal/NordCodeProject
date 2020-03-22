@@ -1,14 +1,34 @@
-const express = require('express');
+const db = require('../database/db.js');
 const user = require('../models/User.js');
 
-const router = express.Router();
+const router = db.Express.Router();
 router.get('/getuser', (req, res, next) => {
-    user.findAll().then( users => {
+    var Username = req.query.Username;
+    console.log(Username);
+    user.findAll({ where: { Username: Username, Password: req.query.Password } }).then(users => {
         res.json(users);
     }).catch(err => {
         res.send('Error :' + err);
     })
 })
+
+router.post('/createuser', (req, res, next) => {
+    //console.log(req.body.OrderNo + ' test');
+    if (!req.body) {
+        res.status(400);
+        res.json({ error: 'Bad data request' + req.body });
+    } else {
+        user.create(req.body).then(data => {
+            res.json({
+                status: true,
+                msg: 'user submitted successfully'
+            });
+            // res.send(data);
+        }).catch(err => {
+            console.log('Error :' + err);
+        });
+    }
+});
 
 module.exports = router;
 

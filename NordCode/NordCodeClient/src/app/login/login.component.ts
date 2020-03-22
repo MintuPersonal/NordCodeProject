@@ -5,9 +5,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { LoginService } from '../login/login.service';
 import { User } from './User';
 import { Router } from '@angular/router';
-import { SignupService } from '../signup/signup.service';
 
-/** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
@@ -27,14 +25,12 @@ export class LoginComponent implements OnInit {
     let isCounted = JSON.parse(localStorage.getItem('IsCounted'))
     this.isCounted = isCounted;
   }
-  constructor(private _loginservice: LoginService, private _signupservice: SignupService, public router: Router) { }
-  emailFormControl = new FormControl(
-    '', [Validators.required, Validators.email,]
-  );
+  constructor(private _loginService: LoginService, public router: Router) { }
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   matcher = new MyErrorStateMatcher();
-  userModel = new User('', '', '', '', '', '', '', new Date, '', 0);
-  usersModel: User[];
+  userModel = new User();
+  userModels: User[];
   submitted = false;
   errorMsg = false;
   isCounted = 1;
@@ -43,9 +39,19 @@ export class LoginComponent implements OnInit {
   onSubmit(event) {
     this.isCounted += 1;
     this.userModel.IsCounted = this.isCounted;
-    localStorage.setItem('IsCounted', JSON.stringify(this.isCounted));
-    this._loginservice.getUser(this.userModel).subscribe((data: User[]) => { this.usersModel = data; });
-    
+    localStorage.setItem('IsCounted', JSON.stringify(this.isCounted));   
+    this._loginService.getUser(this.userModel).subscribe((data: User[]) => {
+      this.userModels = data;
+      debugger;
+    });
+    if (this.userModels) {
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/']);
+    }
+
+
+
     // this.usersModel.forEach(element => {
     //   if (element.UserName === this.userModel.UserName && element.PassWord === this.userModel.PassWord) {
     //     this.router.navigate(['home']);
@@ -53,9 +59,9 @@ export class LoginComponent implements OnInit {
 
     // });  
 
-    console.log(this.isCounted)
-    this.userModel = new User('', '', '', '', '', '', '', new Date, '', 0);
-    this.router.navigate(['home']);
+    // console.log(this.isCounted)
+    // this.userModel = new User('', '', '', '', '', '', '', new Date, '', 0);
+
   }
 }
 

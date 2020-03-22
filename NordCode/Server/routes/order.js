@@ -12,7 +12,6 @@ router.get('/setcoupon', (req, res, next) => {
         console.log('Error ' + err);
     });
 });
-
 router.get('/getorder', (req, res, next) => {
     var orderNo = req.query.OrderNo;
     console.log(orderNo);
@@ -22,7 +21,6 @@ router.get('/getorder', (req, res, next) => {
         console.log('Error ' + err);
     });
 });
-
 router.post('/createorder', (req, res, next) => {
     //console.log(req.body.OrderNo + ' test');
     if (!req.body) {

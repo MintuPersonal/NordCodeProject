@@ -1,4 +1,4 @@
-<div style="padding: 13px;" class="container">
+<div style="padding: 55px;" class="container">
     <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }} </div>
 
     <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
@@ -8,33 +8,26 @@
             <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
 
                 <mat-form-field class="example-full-width">
-                    <input matInput #username="ngModel" name="username" ngModel type="email" required minlength="6"
-                        placeholder="USERNAME" [(ngModel)]="userModel.UserName"
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-                    <mat-error *ngIf="username.invalid"> Please erter an valid email. </mat-error>
+                    <input matInput #username="ngModel" name="username" ngModel [(ngModel)]="userModel.UserName" type="email" required minlength="6" placeholder="UserName" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                    <mat-error *ngIf="username.invalid"> Please enter an valid email. </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="example-half-width">
-                    <input matInput #password="ngModel" name="password" ngModel type="password" required minlength="8"
-                        [(ngModel)]="userModel.PassWord" placeholder="PASSWORD">
-
-                    <mat-error *ngIf="password.invalid"> Please erter an valid password. </mat-error>
+                    <input matInput #password="ngModel" name="password" ngModel [(ngModel)]="userModel.PassWord" type="password" required minlength="8" placeholder="Password">
+                    <mat-error *ngIf="password.invalid"> Please enter an valid password. </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="example-half-width text-right">
-                    <input matInput #forgotpassword="ngModel" name="forgotpassword" ngModel type="text"
-                        placeholder="Forgot Password" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-                    <mat-error *ngIf="forgotpassword.invalid"> Please erter an valid email. </mat-error>
+                    <input matInput #forgotPassword="ngModel" name="forgotPassword" ngModel type="text" placeholder="Forgot Password" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                    <mat-error *ngIf="forgotPassword.invalid"> Please enter an valid email. </mat-error>
                 </mat-form-field>
                 <hr>
                 <div class="example-button-row">
-                    <button mat-raised-button [disabled]="userForm.form.invalid" color="primary"
-                        class="material-cust-large-button"> Sign In </button>
+                    <button mat-raised-button [disabled]="userForm.form.invalid" color="primary" class="material-cust-large-button"> Sign In </button>
 
                     <mat-error *ngIf="1"> Your are login : {{isCounted}} </mat-error>
                 </div>
-                <hr>
-                {{usersModel | json}}
+                <hr> {{usersModel | json}}
                 <div class="example-row">
                     <a [routerLink]="['/signup', '']" class="btn btn-link col-md-12 text-center"> DON'T HAVE AN ACCOUNT?
                         <b>

@@ -1,18 +1,18 @@
 const db = require('../database/db.js');
 
-const order = db.sequelize.define('Ecom_Orders', {
-    OId: {
+const order = db.sequelize.define('Ecom_Order', {
+    Id: {
         type: db.Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
+    OID: db.Sequelize.INTEGER,
     OrderNo: db.Sequelize.STRING,
     CustomerId: db.Sequelize.INTEGER,
     CouponId: db.Sequelize.INTEGER,
     PaymentId: db.Sequelize.INTEGER,
     Discount: db.Sequelize.INTEGER,
     Reason: db.Sequelize.STRING,
-    Active: db.Sequelize.BOOLEAN,
 
     ProductId: db.Sequelize.INTEGER,
     UnitPrice: db.Sequelize.INTEGER,
@@ -21,6 +21,12 @@ const order = db.sequelize.define('Ecom_Orders', {
     Address: db.Sequelize.STRING,
     Aria: db.Sequelize.STRING,
     DeliveryTime: db.Sequelize.STRING,
+
+    TrackedId: db.Sequelize.STRING,
+    CreateBy: db.Sequelize.STRING,
+    CreateDate: db.Sequelize.DATE,
+    Delete: db.Sequelize.BOOLEAN,
+    Active: db.Sequelize.BOOLEAN,
 });
 db.sequelize.sync({ force: true }); //{ force: true }
 

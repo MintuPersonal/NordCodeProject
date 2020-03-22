@@ -1,25 +1,26 @@
 const db = require('../database/db.js');
 
-const product = db.sequelize.define('Ecom_Products', {
-    PID: {
+const product = db.sequelize.define('Ecom_Product', {
+    Id: {
         type: db.Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
+    PID: db.Sequelize.INTEGER,
     PName: db.Sequelize.STRING,
     PName_BN: db.Sequelize.STRING,
     Brand: db.Sequelize.STRING,
     Brand_BN: db.Sequelize.STRING,
     UnitPrice: db.Sequelize.FLOAT,
     Unit: db.Sequelize.FLOAT,
-    UnitsInStock: db.Sequelize.BIGINT,
+    UnitsInStock: db.Sequelize.INTEGER,
     Category: db.Sequelize.STRING,
     Category_BN: db.Sequelize.STRING,
     Description: db.Sequelize.STRING,
     Description_BN: db.Sequelize.STRING,
-    SID: db.Sequelize.BIGINT,
+    SID: db.Sequelize.INTEGER,
     Rol: db.Sequelize.STRING,
-    ParentId: db.Sequelize.BIGINT,
+    ParentId: db.Sequelize.INTEGER,
     ImgPath: db.Sequelize.STRING,
     Inserted_By: db.Sequelize.STRING,
     Inserted_Date: db.Sequelize.DATE,
@@ -28,8 +29,12 @@ const product = db.sequelize.define('Ecom_Products', {
     FileUrl: db.Sequelize.STRING,
     FileExtension: db.Sequelize.STRING,
     FileImage: db.Sequelize.STRING,
+
     TrackedId: db.Sequelize.STRING,
-    Active: db.Sequelize.STRING,
+    CreateBy: db.Sequelize.STRING,
+    CreateDate: db.Sequelize.DATE,
+    Delete: db.Sequelize.BOOLEAN,
+    Active: db.Sequelize.BOOLEAN,
 });
 
 db.sequelize.sync({ force: true })

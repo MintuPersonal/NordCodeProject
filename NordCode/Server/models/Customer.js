@@ -1,18 +1,50 @@
 const db = require('../database/db.js');
 
 const customer = db.sequelize.define('Ecom_Customers', {
-    TOId: {
+    Id: {
         type: db.Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
     CID: db.Sequelize.INTEGER,
-    PID: db.Sequelize.INTEGER,
     TONumber: db.Sequelize.STRING,
-    PName: db.Sequelize.STRING,
+    Name: db.Sequelize.STRING,
+    Address: db.Sequelize.STRING,
+    Aria: db.Sequelize.STRING,
+
+    MobileNo: db.Sequelize.STRING,
+    PhoneNo: db.Sequelize.STRING,
+    Priority: db.Sequelize.DATE,
     HostAddress: db.Sequelize.STRING,
-    UnitPrice: db.Sequelize.INTEGER,
-    NetPrice: db.Sequelize.INTEGER,
+
+    TrackedId: db.Sequelize.STRING,
+    CreateBy: db.Sequelize.STRING,
+    CreateDate: db.Sequelize.DATE,
+    Delete: db.Sequelize.BOOLEAN,
+    Active: db.Sequelize.BOOLEAN,
 });
+
+db.sequelize.sync({ force: true })
+    .then(() => {
+        product.create({
+            CID: 0,
+            TONumber: 888888,
+            Name: 'Md Karim',
+            Address: 'Houser # 11, Road# 11, Mirpur, Dhaka',
+            Aria: 'Mirpur',
+            MobileNo: '01911788888',
+            PhoneNo: '02888888',
+            Priority: 'Top',
+            HostAddress: '127.0.0.1',
+
+            CreateBy: '11',
+            CreateDate: new Date().toLocaleTimeSTRING(),
+            IsDelete: false,
+            TrackedId: '127',
+            Active: 1,
+        });
+    }).catch(err => {
+        console.log('Error : ' + err);
+    });
 
 module.exports = customer;

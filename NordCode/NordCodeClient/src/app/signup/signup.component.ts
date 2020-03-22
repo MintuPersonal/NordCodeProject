@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { User } from '../login/User';
 import { SignupService } from './signup.service';
+import { FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -12,9 +13,10 @@ import { SignupService } from './signup.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private _singupService: SignupService) { }
-
-  userModel = new User('', '', '', '', '', '', '', new Date, '', 0);
+  constructor(private _singUpService: SignupService) { }
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  
+  userModel = new User();
   public imagePath;
   imgURL: any;
   public message: string;
@@ -24,11 +26,11 @@ export class SignupComponent implements OnInit {
       return;
 
     this.userModel.FileUrl = files[0].name;
-    this.userModel.FileExtention = files[0].type;
+    this.userModel.FileExtension = files[0].type;
     this.userModel.FileImage = files[0].size;
     this.userModel.TrackedId = window.location.hostname
 
-    if (this.userModel.FileExtention.match(/image\/*/) == null) {
+    if (this.userModel.FileExtension.match(/image\/*/) == null) {
       this.message = "Only images are supported.";
       return;
     }
@@ -59,21 +61,22 @@ export class SignupComponent implements OnInit {
   errorMsg = '';
   id = 0;
 
-  onSubmit(userModel) {
+  onSubmit() {
+    this.userModel;
+    this.userModel.UID = '1';    
+    this.userModel.TrackedId = '127';
+    this.userModel.CreateBy = '11';
+    this.userModel.CreateDate = new Date;
+    this.userModel.Delete = false;
+    this.userModel.Active = true;
 
-    console.log('UI Returm Id :' + this.userModel.FileUrl);
-    debugger;
-    this._singupService.singup(this.userModel).subscribe(data => this.id = data.id, error => this.errorMsg = error.statusText);
-    //console.log('Returm Id :' + this.id);
-    this.userModel = { FullName: '', UserName: '', PassWord: '', ConfirmPassWord: '', FileUrl: '', FileExtention: '', FileImage: '', Birthday: new Date, TrackedId: '', IsCounted:0 };
-  }
-
-  /// End of Save Method ///
-
+    var data = this._singUpService.singUp(this.userModel); //.subscribe((data: any)=>{    });
+    debugger; 
+    this.userModel = new User();      
+    
+  };
   onClear() {
-
-    this.userModel = new User('', '', '', '', '', '', '', new Date, '', 0);
-
+    this.userModel = new User();
   }
 
 }

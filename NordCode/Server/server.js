@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const auth = require('../Server/auth/auth.js');
+const user = require('../Server/routes/user.js')
 const home = require('../Server/routes/home.js')
 const product = require('../Server/routes/product.js');
 const order = require('../Server/routes/order.js');
@@ -24,7 +25,7 @@ app.listen(PORT, function() {
     console.log('Server running on localhost port :' + PORT);
 });
 
-app.use('/api', auth, home, product, order, cart, task, customer);
+app.use('/api', auth, user, home, product, order, cart, task, customer);
 
 
 

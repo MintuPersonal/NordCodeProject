@@ -13,7 +13,7 @@ export class PaymentComponent implements OnInit {
   itemState: any[];
   newline: Ecom_Commercial;
   OrderNo: number;
-  Adderess: any;
+  Address: any;
   constructor(private _customerService: CustomerService, private route: ActivatedRoute, ) { }
   displayedColumn: string[] = ['Address'];
   displayedColumns: string[] = ['Add','OrderNo', 'Qty', 'UnitPrice', 'Close'];
@@ -52,7 +52,7 @@ export class PaymentComponent implements OnInit {
       // newline.Aria;
       // newline.DeliveryTime;
       // this.itemState.push(newline);
-      this.Adderess = orderModel[0].Address;
+      this.Address = orderModel[0].Address;
       this.itemState = [];
 
       this.itemState = orderModel;
