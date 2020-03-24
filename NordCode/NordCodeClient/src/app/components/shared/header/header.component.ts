@@ -22,22 +22,28 @@ export class HeaderComponent implements OnInit {
   totalItemsCount = 0;
   ngOnInit() {
     this.badgeCounter = 0;
-    localStorage.setItem('item', null);
-    //this.LoadItemTotal();  
+    var hasitemdata = JSON.parse(localStorage.getItem('item'));
+    if (hasitemdata != null && Object.keys(hasitemdata).length !== 0) {
+      this.badgeCounter = Object.keys(hasitemdata).length
+    }
   }
   public PlaceOrder(totalPrice) {
-    if(this.CheckUserSession()){
-      this.router.navigate(['/checkout', totalPrice]) 
-    }else{
-      this.router.navigate(['/login']) 
+    if (this.CheckUserSession()) {
+      this.router.navigate(['/checkout', totalPrice])
+    } else {
+      this.router.navigate(['/login'])
     }
   }
   public CheckUserSession() {
-    return false;
+    debugger;
+    var user = localStorage.getItem('user');
+    if (user != null) {
+      return true;
+    } else {
+      return false;
+    }
   }
-
   public LoadItemTotal() {
-
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
     if (hasitemdata != null && Object.keys(hasitemdata).length !== 0) {
       var _totalItemsPrice = 0;
@@ -95,6 +101,12 @@ export class HeaderComponent implements OnInit {
       document.getElementById("cartnav").style.width = "0";
       this.isOpen = false;
     }
+  }
+  public logout(){
+    //alert('hi')
+    localStorage.setItem('user', null);
+    localStorage.setItem('item', null);
+    this.router.navigate(['/']);
   }
 }
 

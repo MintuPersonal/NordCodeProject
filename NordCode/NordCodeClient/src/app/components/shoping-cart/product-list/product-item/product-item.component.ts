@@ -26,7 +26,7 @@ export class ProductItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    localStorage.setItem('item', null);
+    //localStorage.setItem('item', null);
     //this.LoadItemTotal();
   }
   public LoadItemTotal() {

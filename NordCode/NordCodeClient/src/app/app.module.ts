@@ -39,6 +39,8 @@ import { CheckoutComponent } from './components/shoping-cart/checkout/checkout.c
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { OrderComponent } from './order/order.component';
 import { PaymentComponent } from './payment/payment.component';
+import { ImageComponent } from './components/common/image/image.component';
+import { PhoneLoginComponent } from './phone-login/phone-login.component';
 
 
 //I keep the new line
@@ -56,7 +58,8 @@ const appRoutes: Routes = [
   { path: 'menubar', component: MenubarComponent },
   { path: 'checkout/:price', component: CheckoutComponent },
   { path: 'payment/:order/:price', component: PaymentComponent },
-  { path: 'order', component: OrderComponent }
+  { path: 'order', component: OrderComponent },
+  { path: 'phonelogin', component: PhoneLoginComponent }
 
 ];
 
@@ -84,7 +87,9 @@ const appRoutes: Routes = [
     MenubarComponent,
     OrderComponent,
     PaymentComponent,
-    BannerComponent
+    BannerComponent,
+    ImageComponent,
+    PhoneLoginComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

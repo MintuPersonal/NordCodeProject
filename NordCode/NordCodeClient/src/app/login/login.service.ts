@@ -14,9 +14,10 @@ export class LoginService {
 
   constructor(private _http: HttpClient) { }
   getUser(user: User) {
-    this._url = this._baseUrl + "getuser?Username" + user.Username + "&Password" + user.Password;
+    debugger;
+    this._url = this._baseUrl + "getuser?Username=" + user.Username + "&Password=" + user.Password;
     //const  params = new  HttpParams().set('user', user.Username).set('pass', user.Password);
-    return this._http.get(this._url);//, {params});
+    return this._http.get(this._url); //, {params});
   }
 
   updateUser(user: User) {

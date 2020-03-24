@@ -34,7 +34,7 @@ export class ProductListComponent implements OnInit {
   commercialModels = [] //Ecom_Commercial[];
 
   ngOnInit() {   
-    localStorage.setItem('item', null);
+    //localStorage.setItem('item', null);
     this._commercialService.getCommercial().subscribe(
       data => {
         this.commercialObj = data as object[];	 // FILL THE ARRAY WITH DATA.

@@ -1,0 +1,10 @@
+<label class="p-3"> multiple image upload here </label>
+<div class="container row">
+    <div *ngFor="let url of urls ; let i = index" class="flex-center">
+        <img [src]="url">
+        <br>
+        <mat-icon style="padding-left: 100px;" (click)="RemoveImg(i)"> remove_circle </mat-icon>
+    </div>
+    <input type="file" (change)="onselect($event)" multiple>
+    <input type="button" (click)="UploadAll()" class="btn btn-primary text-right" value="Upload">
+</div>

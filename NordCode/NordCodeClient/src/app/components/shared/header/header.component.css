@@ -11,6 +11,12 @@ mat-card-content {
     font-size: 35px;
     justify-content: center;
     display: flex;
+    margin-top: 40px;
+}
+
+.mat-card-content>:first-child,
+.mat-card>:first-child {
+    margin-top: -40px;
 }
 
 mat-card-footer {

@@ -151,3 +151,6 @@ for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
 	
 	https://www.youtube.com/watch?v=srPXMt1Q0nY
 	
+	https://github.com/jainpiyus/furniture-ecomm-webapp  For ecom
+	https://www.youtube.com/watch?v=XIq_VU1Njw0
+	

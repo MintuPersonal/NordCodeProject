@@ -70,9 +70,7 @@ export class ProductComponent implements OnInit {
     var data = this._productService.getProduct(this.productModel).subscribe((data: Ecom_Product[]) => {
       this.productModels = data;
       console.log(this.productModels);
-    });
-    //console.log(this.productModels);
-    debugger;
+    });    
     return data;
   };
 
@@ -144,7 +142,6 @@ export class ProductComponent implements OnInit {
     }
   }
 
-
   fileData: File = null;
   previewUrl: any = null;
   fileUploadProgress: string = null;
@@ -169,7 +166,7 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  // onSubmit() {
+  // onImageUpload() {
   //   const formData = new FormData();
   //   formData.append('files', this.fileData);
 
@@ -179,8 +176,7 @@ export class ProductComponent implements OnInit {
   //   //this.http.post('https://console.firebase.google.com/project/mitu-77f76/storage/mitu-77f76.appspot.com/fileUpload', formData, {
   //     reportProgress: true,
   //     observe: 'events'
-  //   })
-  //     .subscribe(events => {
+  //   }).subscribe(events => {
   //       if (events.type === HttpEventType.UploadProgress) {
   //         this.fileUploadProgress = Math.round(events.loaded / events.total * 100) + '%';
   //         console.log(this.fileUploadProgress);
@@ -189,7 +185,6 @@ export class ProductComponent implements OnInit {
   //         console.log(events.body);
   //         alert('SUCCESS !!');
   //       }
-
   //     })
   // }
 };

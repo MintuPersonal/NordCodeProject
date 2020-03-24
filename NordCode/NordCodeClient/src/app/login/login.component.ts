@@ -39,29 +39,22 @@ export class LoginComponent implements OnInit {
   onSubmit(event) {
     this.isCounted += 1;
     this.userModel.IsCounted = this.isCounted;
-    localStorage.setItem('IsCounted', JSON.stringify(this.isCounted));   
-    this._loginService.getUser(this.userModel).subscribe((data: User[]) => {
-      this.userModels = data;
-      debugger;
+    localStorage.setItem('IsCounted', JSON.stringify(this.isCounted));
+    this._loginService.getUser(this.userModel).subscribe((data: User) => {
+      //this.userModels = data;  
+      if (this.userModel.Username == data.Username) {
+        localStorage.setItem('user', this.userModel.Username.toString());
+      }
+      else {
+        localStorage.setItem('user', '');
+      }
+
     });
-    if (this.userModels) {
-      this.router.navigate(['/login']);
-    } else {
-      this.router.navigate(['/']);
-    }
-
-
-
-    // this.usersModel.forEach(element => {
-    //   if (element.UserName === this.userModel.UserName && element.PassWord === this.userModel.PassWord) {
-    //     this.router.navigate(['home']);
-    //   }
-
-    // });  
-
-    // console.log(this.isCounted)
-    // this.userModel = new User('', '', '', '', '', '', '', new Date, '', 0);
-
+    // if (this.userModels) {
+    //   this.router.navigate(['/login']);
+    // } else {
+    //   this.router.navigate(['/']);
+    // }
   }
 }
 

@@ -31,7 +31,7 @@ db.sequelize.sync({ force: true })
             Name: 'Md Mahafuzul Huq',
             Email: 'gmsanzid@gmail.com',
             Birthday: new Date().toLocaleDateString(),
-            Username: 'Mintu',
+            Username: 'gmsanzid@gmail.com',
             Password: '1qaz@WSX',
 
             FileUrl: 'db.Sequelize.STRING',
