@@ -20,3 +20,8 @@ img {
 #right {
     margin: 30px;
 }
+
+div#main {
+    position: relative;
+    bottom: 38px;
+}

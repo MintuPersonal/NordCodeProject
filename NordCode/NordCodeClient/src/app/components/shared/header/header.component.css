@@ -280,6 +280,11 @@ body {
     color: white;
 }
 
+div#main {
+    position: relative;
+    bottom: 38px;
+}
+
 .signin:hover {
     height: 50px;
     background: #f44336;
