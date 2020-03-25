@@ -3,8 +3,8 @@ import { Ecom_Commercial } from 'src/app/commercial/Commercial';
 import { Router } from '@angular/router';
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-//import {DialogOverviewExampleDialog} from '../header.html'
-//import { ModalComponent } from './modal/modal.component';
+import { DialogComponent } from '../../common/dialog/dialog.component';
+
 
 
 @Component({
@@ -26,8 +26,8 @@ export class HeaderComponent implements OnInit {
 
   animal: string;
   name: string;
-  constructor(private router: Router, private dialog : MatDialog) { }
-  
+  constructor(private router: Router, private dialog: MatDialog) { }
+
   totalItemsCount = 0;
   ngOnInit() {
     this.badgeCounter = 0;
@@ -111,7 +111,7 @@ export class HeaderComponent implements OnInit {
       this.isOpen = false;
     }
   }
-  public logout(){
+  public logout() {
     //alert('hi')
     localStorage.setItem('user', null);
     localStorage.setItem('item', null);
@@ -119,17 +119,15 @@ export class HeaderComponent implements OnInit {
   }
 
   // ================
+  openDialog(): void {
+    
+    const dialogRef = this.dialog.open(DialogComponent, { width: '250px', data: { name: this.name, animal: this.animal } });
 
-  // openDialog(): void {
-  //   const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-  //     width: '250px',
-  //     data: {name: this.name, animal: this.animal}
-  //   });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-  //     this.animal = result;
-  //   });
-  // }
 }
 

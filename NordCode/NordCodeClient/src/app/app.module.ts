@@ -45,6 +45,7 @@ import { OrderComponent } from './order/order.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ImageComponent } from './components/common/image/image.component';
 import { PhoneLoginComponent } from './phone-login/phone-login.component';
+import { DialogComponent } from './components/common/dialog/dialog.component';
 
 
 //I keep the new line
@@ -93,7 +94,8 @@ const appRoutes: Routes = [
     PaymentComponent,
     BannerComponent,
     ImageComponent,
-    PhoneLoginComponent
+    PhoneLoginComponent,
+    DialogComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

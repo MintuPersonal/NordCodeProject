@@ -19,9 +19,9 @@
             <div class="col-lg-1 enbn">
                 <span> En | Bn </span>
             </div>
-            <div class="col-lg-1 signin">
-                <span *ngIf="condition" (click)="openDialog()"> Signin </span>
-                <mat-icon *ngIf="!condition" (click)="openDialog()"> person_pin </mat-icon>
+            <div class="col-lg-1 signin" (click)="openDialog()">
+                <span *ngIf="condition"> Signin </span>
+                <mat-icon *ngIf="!condition"> person_pin </mat-icon>
             </div>
         </div>
     </div>
