@@ -310,3 +310,10 @@ div#main {
     height: 40px;
     margin-top: 5px;
 }
+
+.maincart {
+    float: right;
+    margin-top: 350px;
+    POSITION: fixed;
+    RIGHT: 0px;
+}

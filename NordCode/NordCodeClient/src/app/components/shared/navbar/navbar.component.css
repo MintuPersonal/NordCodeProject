@@ -92,7 +92,11 @@
 
 div#main {
     position: relative;
-    bottom: 38px;
+    bottom: 40px;
+}
+
+.enbn {
+    color: white;
 }
 
 @media screen and (max-height: 450px) {
