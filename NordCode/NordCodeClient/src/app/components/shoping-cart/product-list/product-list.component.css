@@ -9,10 +9,11 @@ mat-card-subtitle.round.mat-card-subtitle {
     bottom: 162px;
 }
 
-div#main {
+
+/* div#main {
     position: relative;
     bottom: 38px;
-}
+} */
 
 .h5 {
     font-weight: bold;
