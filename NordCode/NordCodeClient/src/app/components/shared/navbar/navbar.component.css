@@ -90,6 +90,11 @@
     /* padding: 16px; */
 }
 
+div#main {
+    position: relative;
+    bottom: 38px;
+}
+
 @media screen and (max-height: 450px) {
     .sidecartnav {
         padding-top: 15px;

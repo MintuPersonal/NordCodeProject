@@ -7,3 +7,7 @@
     background: salmon;
     background: sandybrown;
 } */
+
+mat-card.mat-card {
+    width: 160px;
+}

@@ -273,6 +273,11 @@ body {
     background-color: wheat;
 }
 
+div#main {
+    position: relative;
+    bottom: 38px;
+}
+
 
 /*
 .output-size {
