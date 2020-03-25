@@ -3,7 +3,7 @@ import * as firebase from 'firebase';
 import { WindowService } from 'src/app/services/window.service';
 
 export class PhoneNumber {
-  country: string;
+  //country: string;
   line: string;
   get e164() {
     return `+${this.line}`;

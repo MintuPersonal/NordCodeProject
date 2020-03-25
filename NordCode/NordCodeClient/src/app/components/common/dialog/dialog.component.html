@@ -14,32 +14,32 @@
                      Email Login 
                 </button>
             </div>
-            <form>
-                <!-- <mat-form-field class="example-full-width search">
+            <!-- <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)"> -->
+            <!-- <mat-form-field class="example-full-width search">
                     <mat-label> Search Item </mat-label>
                     <input matInput placeholder="Search for products (e.g. eggs, milk, alu)">
                     <mat-error> </mat-error>
                 </mat-form-field> -->
-                <div class="actions">
-                    <label for="phone"> Phone Number </label><br>
-                    <input type="text" [(ngModel)]="phoneNumber.line" class="input col-12" placeholder="880 1704 164 912" maxlength="13">
-                    <div id="recaptcha-container" style="display: none;"></div>
+            <div class="actions">
+                <label for="phone"> Phone Number </label><br>
+                <input type="text" #line="ngModel" name="line" ngModel [(ngModel)]="phoneNumber.line" class="input col-12" placeholder="880 1704 164 912" maxlength="13">
+                <div id="recaptcha-container" style="display: none;"></div>
 
-                    <div *ngIf="windowRef.confirmationResult">
-                        <hr>
-                        <label for="code">Enter your Verification Code Here</label><br>
-                        <input type="text" name="code" [(ngModel)]="verificationCode">
-                        <button (click)="verifyLoginCode()">Verify</button>
-                    </div>
+                <div *ngIf="windowRef.confirmationResult">
+                    <hr>
+                    <label for="code"> Enter your Verification Code Here </label><br>
+                    <input type="text" #code="ngModel" name="code" ngModel [(ngModel)]="verificationCode">
+                    <button (click)="verifyLoginCode()">Verify</button>
                 </div>
-                <hr>
-                <div class="actions">
-                    <button (click)="sendLoginCode()" class="btn btn-danger col-12" type="submit">
+            </div>
+            <hr>
+            <div class="actions">
+                <button (click)="sendLoginCode()" class="btn btn-danger col-12" type="submit">
                         <mat-icon aria-hidden="false" aria-label="Example home icon"></mat-icon>
                         SIGN UP / LOGIN
                     </button>
-                </div>
-            </form>
+            </div>
+            <!-- </form> -->
         </div>
         <!-- <div mat-dialog-actions>
             <button mat-button (click)="onNoClick()">No Thanks</button>
