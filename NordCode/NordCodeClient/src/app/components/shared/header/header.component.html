@@ -1,24 +1,28 @@
 <div class="row">
-    <div class="col-lg-12" style="text-align: center; background-color: orange; height: 50px; position: absolute;">
+    <div class="header">
 
         <div class="row" fxLayoutAlign="space-evenly">
-            <p class="col-lg-2" style="margin-top: 10px;">
-                <mat-icon fxFlex="5%" (click)="onClear()"> drag_indicator </mat-icon>
-            </p>
-            <form class="col-lg-4">
-                <mat-form-field class="example-full-width">
+            <div class="col-lg-2">
+                <mat-icon (click)="logout()"> list </mat-icon>
+            </div>
+            <form class="col-lg-7">
+                <mat-form-field class="example-full-width search">
                     <mat-label> Search Item </mat-label>
-                    <input matInput placeholder="Search for products (e.g. eggs, milk, alu)" style="background: whitesmoke;">
-
-                    <mat-error>
-                    </mat-error>
+                    <input matInput placeholder="Search for products (e.g. eggs, milk, alu)">
+                    <mat-error> </mat-error>
                 </mat-form-field>
             </form>
-            <p style="margin-top: 15px;">
+            <div class="col-lg-1 signin">
                 <mat-icon (click)="openCartNav()" [matBadge]="badgeCounter" matBadgeColor="warn">add_shopping_cart</mat-icon>
-                <span class="cdk-visually-hidden"> </span> &nbsp; &nbsp;&nbsp;
-                <mat-icon (click)="logout()"> logout </mat-icon>
-            </p>
+                <span class="cdk-visually-hidden"> </span>
+            </div>
+            <div class="col-lg-1 enbn">
+                <span> En | Bn </span>
+            </div>
+            <div class="col-lg-1 signin">
+                <span *ngIf="condition" (click)="openDialog()"> Signin </span>
+                <mat-icon *ngIf="!condition" (click)="openDialog()"> person_pin </mat-icon>
+            </div>
         </div>
     </div>
 </div>

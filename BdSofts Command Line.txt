@@ -132,7 +132,7 @@ for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
 	ng update @angular/cdk @angular/material @angular/material-moment-adapter
 	****** ng update @angular/cli @angular/core --allow-dirty --force *********
 	npm install @angular/cli@9.0.6
-	
+	npm install @material/dialog
 	===========================
 	
 	https://www.youtube.com/watch?v=SAyLQVR1t5s
@@ -153,4 +153,7 @@ for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
 	
 	https://github.com/jainpiyus/furniture-ecomm-webapp  For ecom
 	https://www.youtube.com/watch?v=XIq_VU1Njw0
-	
+	https://www.youtube.com/watch?v=n1HCaw00_zU //Firebase Phone Number Authentication 
+	https://medium.com/front-end-weekly/firebase-phone-authentication-web-tutorial-2019-29f5f5c97839
+	https://www.youtube.com/watch?v=qP5zw7fjQgo
+	https://www.youtube.com/watch?v=lrVpUVydZwM

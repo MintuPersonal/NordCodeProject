@@ -273,8 +273,35 @@ body {
     background-color: wheat;
 }
 
+.signin {
+    height: 50px;
+    background: orangered;
+    padding: 10px;
+    color: white;
+}
 
-/*
-.output-size {
-    margin: 50px;
-} */
+.signin:hover {
+    height: 50px;
+    background: #f44336;
+    padding: 10px;
+}
+
+.enbn {
+    padding: 10px;
+    color: white;
+}
+
+.header {
+    text-align: center;
+    background-color: orange;
+    height: 50px;
+    position: absolute;
+    width: 100%;
+}
+
+.search {
+    background: whitesmoke;
+    border-radius: 5px;
+    height: 40px;
+    margin-top: 5px;
+}

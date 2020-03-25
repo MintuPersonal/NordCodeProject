@@ -1,27 +1,110 @@
 <div [hidden]="user">
-    <h1>Sign In with Your Phone Number</h1>
+    <h5>PLEASE ENTER YOUR MOBILE PHONE NUMBER</h5>
 
     <label for="phone">Phone Number</label><br>
-    <input type="text" [(ngModel)]="phoneNumber.country" class="input" placeholder="1" maxlength="2">
+    <!-- <input type="text" [(ngModel)]="phoneNumber.country" class="input" placeholder="1" maxlength="2">
     <input type="text" [(ngModel)]="phoneNumber.area" class="input" placeholder="949" maxlength="3">
-    <input type="text" [(ngModel)]="phoneNumber.prefix" class="input" placeholder="555" maxlength="3">
-    <input type="text" [(ngModel)]="phoneNumber.line" class="input" placeholder="5555" maxlength="4">
+    <input type="text" [(ngModel)]="phoneNumber.prefix" class="input" placeholder="555" maxlength="3">-->
+    <input type="text" [(ngModel)]="phoneNumber.line" class="input col-2" placeholder="880 1704 164 912" maxlength="13">
 
-    <div id="recaptcha-container"></div>
+    <div id="recaptcha-container" style="display: none;"></div>
 
     <button (click)="sendLoginCode()">SMS Text Login Code</button>
-
     <div *ngIf="windowRef.confirmationResult">
         <hr>
         <label for="code">Enter your Verification Code Here</label><br>
         <input type="text" name="code" [(ngModel)]="verificationCode">
-
         <button (click)="verifyLoginCode()">Verify</button>
     </div>
-
 </div>
 
 <div *ngIf="user">
     You have successfully logged in with your phone number! UserId: {{ user?.uid }}
 
 </div>
+
+
+
+
+<!-- <div class="container" style="margin-top:55px">
+    <input type="tel" id="phoneNumber" />
+    <input type="text" id="code" />
+
+    <button id="sign-in-button" onclick="submitPhoneNumberAuth()"> SIGN IN WITH PHONE </button>
+    <button id="confirm-code" onclick="submitPhoneNumberAuthCode()"> ENTER CODE </button>
+    <div id="recaptcha-container"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyAABTcunn62aKYHkJGkfnr5JhXA-D9Ztak",
+            authDomain: "otp-ecommerce.firebaseapp.com",
+            databaseURL: "https://otp-ecommerce.firebaseio.com",
+            projectId: "otp-ecommerce",
+            storageBucket: "otp-ecommerce.appspot.com",
+            messagingSenderId: "932041012966",
+            appId: "1:932041012966:web:9936106c9ea4e508e42d27"
+                // apiKey: "AIzaSyB8Kxq0YvdYQwsW1v9tDYDOw67flbMxdEU",
+                // authDomain: "medium-d924f.firebaseapp.com",
+                // databaseURL: "https://medium-d924f.firebaseio.com",
+                // projectId: "medium-d924f",
+                // storageBucket: "",
+                // messagingSenderId: "488630368524",
+                // appId: "1:488630368524:web:dad0e9e3dc65b2ff"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        // Create a Recaptcha verifier instance globally
+        // Calls submitPhoneNumberAuth() when the captcha is verified
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+            "recaptcha-container", {
+                size: "invisible",
+                callback: function(response) {
+                    submitPhoneNumberAuth();
+                }
+            }
+        );
+
+        // This function runs when the 'sign-in-button' is clicked
+        // Takes the value from the 'phoneNumber' input and sends SMS to that phone number
+        function submitPhoneNumberAuth() {
+            var phoneNumber = document.getElementById("phoneNumber").value;
+            var appVerifier = window.recaptchaVerifier;
+            firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+                .then(function(confirmationResult) {
+                    window.confirmationResult = confirmationResult;
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        }
+
+        // This function runs when the 'confirm-code' button is clicked
+        // Takes the value from the 'code' input and submits the code to verify the phone number
+        // Return a user object if the authentication was successful, and auth is complete
+        function submitPhoneNumberAuthCode() {
+            var code = document.getElementById("code").value;
+            confirmationResult
+                .confirm(code)
+                .then(function(result) {
+                    var user = result.user;
+                    console.log(user);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        }
+
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                console.log("USER LOGGED IN" + user.phoneNumber);
+                debugger;
+            } else {
+                console.log("USER NOT LOGGED IN");
+            }
+        });
+    </script>
+</div> -->

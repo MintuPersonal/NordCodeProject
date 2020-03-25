@@ -10,8 +10,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialTimePickerModule } from '@candidosales/material-time-picker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatDatepickerModule, MatBadgeModule, MatSelectModule, MatSliderModule, MatTableModule, MatNativeDateModule } from '@angular/material';
-import { MatCheckboxModule, MatPaginatorModule, MatTooltipModule, MatFormFieldModule, MatSidenavModule, MatMenuModule } from '@angular/material';
+import {
+  MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatDatepickerModule, MatBadgeModule,
+  MatSelectModule, MatSliderModule, MatTableModule, MatNativeDateModule
+} from '@angular/material';
+import { MatCheckboxModule, MatPaginatorModule, MatTooltipModule, MatFormFieldModule, MatSidenavModule, 
+  MatMenuModule, MatDialogModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -74,7 +78,7 @@ const appRoutes: Routes = [
     ProductListComponent,
     ProductItemComponent,
     CartComponent,
-    
+
     LoginComponent,
     SignupComponent,
     NavbarComponent,
@@ -128,7 +132,8 @@ const appRoutes: Routes = [
     MatTableModule,
     MatExpansionModule,
     MatChipsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatDialogModule
   ],
 
   providers: [MatDatepickerModule],

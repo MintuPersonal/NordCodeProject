@@ -4,9 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class WindowService {
-
-  constructor() { }
-  get windowRef(){
+  get windowRef() {
     return window
   }
+  //constructor() { }
 }
