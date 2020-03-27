@@ -3,17 +3,19 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const auth = require('../Server/auth/auth.js');
-const user = require('../Server/routes/user.js')
-const home = require('../Server/routes/home.js')
+const user = require('../Server/routes/user.js');
+const home = require('../Server/routes/home.js');
 const product = require('../Server/routes/product.js');
 const order = require('../Server/routes/order.js');
 const cart = require('../Server/routes/cart.js');
 
 const task = require('../Server/routes/task.js');
-const customer = require('../Server/routes/customer.js')
-    // const user = require('../Server/routes/user.js');
-    // const login = require('../Server/routes/login.js');
-    // const article = require('../Server/routes/article.js');
+const customer = require('../Server/routes/customer.js');
+
+const menu = require('../Server/routes/menu.js');
+// const user = require('../Server/routes/user.js');
+// const login = require('../Server/routes/login.js');
+// const article = require('../Server/routes/article.js');
 
 const PORT = 3000;
 const app = express();
@@ -25,7 +27,7 @@ app.listen(PORT, function() {
     console.log('Server running on localhost port :' + PORT);
 });
 
-app.use('/api', auth, user, home, product, order, cart, task, customer);
+app.use('/api', auth, user, home, product, order, cart, task, customer, menu);
 
 
 

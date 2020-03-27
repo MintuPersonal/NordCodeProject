@@ -42,4 +42,113 @@ CREATE TABLE IF NOT EXISTS user_Tasks (
 )  ENGINE=INNODB;
 
 
+	----------------
+
+
+/****** Object:  Table [dbo].[Menu] ******/  
+SET ANSI_NULLS ON  
+GO  
+SET QUOTED_IDENTIFIER ON  
+GO  
+SET ANSI_PADDING ON  
+GO  
+CREATE TABLE [dbo].[Ecom_Menu](  
+    [MenuId] [int] IDENTITY(1,1) NOT NULL,  
+    [Title] [nvarchar](50) NOT NULL,  
+    [IsActive] [bit] NULL,  
+    [Path] [nvarchar](250) NULL,  
+    [DisplayOrder] [int] NULL,  
+    [ParentId] [int] NULL,  
+    [CreatedUser] [varchar](100) NULL CONSTRAINT [DF_Menu_CreatedUser]  DEFAULT (suser_sname()),  
+    [ModifiedUser] [varchar](100) NULL,  
+    [CreatedDate] [datetime] NULL CONSTRAINT [DF_Menu_CreatedDate]  DEFAULT (getdate()),  
+    [ModifiedDate] [datetime] NULL,  
+    [SystemInfo] [varchar](50) NULL CONSTRAINT [DF_Menu_SystemInfo]  DEFAULT (CONVERT([char](15),connectionproperty('client_net_address'))),  
+    [Parameter] [nvarchar](50) NULL,  
+    [NodeId] [nvarchar](50) NULL,  
+    [Style] [nvarchar](50) NULL,  
+ CONSTRAINT [PK_Ecom_Menu] PRIMARY KEY CLUSTERED   
+(  
+    [MenuId] ASC  
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]  
+) ON [PRIMARY]  
+  
+GO  
+SET ANSI_PADDING ON  
+GO  
+/****** Object:  Table [dbo].[MenuRoles]   ******/  
+SET ANSI_NULLS ON  
+GO  
+SET QUOTED_IDENTIFIER ON  
+GO  
+SET ANSI_PADDING ON  
+GO  
+CREATE TABLE [dbo].[Ecom_MenuRoles](  
+    [MenuRoleId] [int] IDENTITY(1,1) NOT NULL,  
+    [MenuId] [int] NOT NULL,  
+    [RoleId] [int] NULL,  
+    [CreatedUser] [varchar](100) NULL CONSTRAINT [DF_MenuRoles_CreatedUser]  DEFAULT (suser_sname()),  
+    [ModifiedUser] [varchar](100) NULL,  
+    [CreatedDate] [datetime] NULL CONSTRAINT [DF_MenuRoles_CreatedDate]  DEFAULT (getdate()),  
+    [ModifiedDate] [datetime] NULL,  
+    [SystemInfo] [varchar](50) NULL CONSTRAINT [DF_MenuRoles_SystemInfo]  DEFAULT (CONVERT([char](15),connectionproperty('client_net_address'))),  
+ CONSTRAINT [PK_EcomMenuRoles] PRIMARY KEY CLUSTERED   
+(  
+    [MenuRoleId] ASC  
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]  
+) ON [PRIMARY]  
+  
+GO  
+SET ANSI_PADDING ON  
+GO  
+/****** Object:  Table [dbo].[Roles]    ******/  
+SET ANSI_NULLS ON  
+GO  
+SET QUOTED_IDENTIFIER ON  
+GO  
+SET ANSI_PADDING ON  
+GO  
+CREATE TABLE [dbo].[Ecom_Roles](  
+    [RoleId] [int] IDENTITY(1,1) NOT NULL,  
+    [RoleName] [nvarchar](256) NULL,  
+    [RoleDescription] [nvarchar](256) NULL,  
+    [IsActive] [bit] NULL,  
+    [CreatedUser] [varchar](100) NULL CONSTRAINT [DF_Roles_CreatedUser]  DEFAULT (suser_sname()),  
+    [ModifiedUser] [varchar](100) NULL,  
+    [CreatedDate] [datetime] NULL CONSTRAINT [DF_Roles_CreatedDate]  DEFAULT (getdate()),  
+    [ModifiedDate] [datetime] NULL,  
+    [SystemInfo] [varchar](50) NULL CONSTRAINT [DF_Roles_SystemInfo]  DEFAULT (CONVERT([char](15),connectionproperty('client_net_address'))),  
+    [DepartmentId] [int] NULL,  
+    [KeyResponsibilities] [nvarchar](max) NULL,  
+    [EducationQualification] [nvarchar](max) NULL,  
+ CONSTRAINT [PK_EcomRoleId] PRIMARY KEY CLUSTERED   
+(  
+    [RoleId] ASC  
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]  
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]  
+  
+GO  
+SET ANSI_PADDING ON  
+GO  
+
+
+
+
+ public int MenuId { get; set; }  
+        public string Title { get; set; }  
+        public string Path { get; set; }  
+        public int? ParentId { get; set; }  
+        public int? DisplayOrder { get; set; }  
+        public string Parameter { get; set; }  
+        public string NodeId { get; set; }  
+        public string Style { get; set; }  
+        public List<MenuData> Categories { get; set; }  
+        public IEnumerable<RoleData> MenuRoles { get; set; }  
+   
+        public  MenuData()  
+        {  
+            Categories = new List<MenuData>();  
+            MenuRoles = new List<RoleData>();  
+        }  
+
 INSERT INTO user_Tasks (title, description, date, time_from, time_to, location, notify, email, priority, isDelete, isDone)VALUES ('new Product M','new Productnew Productnew Productnew Product','2019-11-30T07:02:04.341Z','["JavaScript", "ES2015", "JSON"]','["JavaScript", "ES2015", "JSON"]','sssssww','30','mdmahafuzhuq@ymail.com','50','false','false')

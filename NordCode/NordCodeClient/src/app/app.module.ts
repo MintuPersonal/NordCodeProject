@@ -5,17 +5,25 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
-import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialTimePickerModule } from '@candidosales/material-time-picker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { RoutingModule } from './app.routing'
+import { AlertModule } from './_alert';
 
 import {
   MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatDatepickerModule, MatBadgeModule,
   MatSelectModule, MatSliderModule, MatTableModule, MatNativeDateModule
 } from '@angular/material';
-import { MatCheckboxModule, MatPaginatorModule, MatTooltipModule, MatFormFieldModule, MatSidenavModule, 
-  MatMenuModule, MatDialogModule } from '@angular/material';
+import {
+  MatCheckboxModule, MatPaginatorModule, MatTooltipModule, MatFormFieldModule, MatSidenavModule,
+  MatMenuModule, MatDialogModule
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -23,12 +31,7 @@ import { SignupComponent } from './signup/signup.component';
 import { AddnewComponent } from './addnew/addnew.component';
 import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommercialComponent } from './commercial/commercial.component';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MenubarComponent } from './menubar/menubar.component';
 import { BrandComponent } from './components/shoping-cart/brand/brand.component';
 import { CategoryComponent } from './components/shoping-cart/category/category.component';
@@ -46,27 +49,9 @@ import { PaymentComponent } from './payment/payment.component';
 import { ImageComponent } from './components/common/image/image.component';
 import { PhoneLoginComponent } from './phone-login/phone-login.component';
 import { DialogComponent } from './components/common/dialog/dialog.component';
-
-
-//I keep the new line
-const appRoutes: Routes = [
-  { path: '', component: ProductListComponent, pathMatch: 'full' },
-  { path: 'cart', component: CartComponent },
-  { path: 'navbar', component: NavbarComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'addnew', component: AddnewComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'product', component: ProductComponent },
-  { path: 'productdetails/:productId', component: ProductdetailsComponent },
-  { path: 'commercial', component: CommercialComponent },
-  { path: 'menubar', component: MenubarComponent },
-  { path: 'checkout/:price', component: CheckoutComponent },
-  { path: 'payment/:order/:price', component: PaymentComponent },
-  { path: 'order', component: OrderComponent },
-  { path: 'phonelogin', component: PhoneLoginComponent }
-
-];
+import { AlertHomeComponent } from './alert-home/alert-home.component';
+import { TreeViewComponent } from './tree-view-menu/tree-view/tree-view.component';
+import { TreeViewDirective } from './tree-view-menu/tree-view.directive';
 
 @NgModule({
   declarations: [
@@ -95,10 +80,14 @@ const appRoutes: Routes = [
     BannerComponent,
     ImageComponent,
     PhoneLoginComponent,
-    DialogComponent
+    DialogComponent,
+    AlertHomeComponent,
+    TreeViewComponent,
+    TreeViewDirective
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
+    RoutingModule,
+    AlertModule,
     BrowserModule,
     NgbModule,
     BrowserAnimationsModule,

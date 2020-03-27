@@ -7,10 +7,11 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor() { }
   title = 'BardCode';
   logMessage(value) {
     console.log(value);
   }
-
   
 }

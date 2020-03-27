@@ -1,6 +1,35 @@
 <div id="menunav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" (click)="closeMenuNav()">&times;</a>
     <mat-card class="card-picture">
+
+        <!-- <ul class="sidebar-menu">
+            <li class="treeview" *ngFor="let parentNode of menuList">
+                <a *ngIf="parentNode.Path == ''" href="" id="parentNode.NodeId">
+                    <i [ngClass]="parentNode.Style"></i><span> {{ parentNode.Title }}</span>
+                    <i *ngIf="parentNode.Categories.length > 0" class="fa fa-angle-left pull-right"></i>
+                </a>
+                <a *ngIf="parentNode.Path != ''" [routerLink]="[parentNode.Path]" id="parentNode.NodeId">
+                    <i [ngClass]="parentNode.Style"></i><span> {{ parentNode.Title }}</span>
+                    <i *ngIf="parentNode.Categories.length > 0" class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li *ngFor="let childNode of parentNode.Categories">
+                        <a [routerLinkActive]="['active']" [routerLink]="[childNode.Path]" id="childNode.NodeId">
+                            <i [ngClass]="childNode.Style"></i><span>{{childNode.Title}}</span>
+                            <i *ngIf="childNode.Categories.length > 0" class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <div *ngIf="childNode.Categories.length > 0" class="treeview-menu">
+                            <tree-view [menuList]="childNode.Categories"></tree-view>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul> -->
+
+
+
+
+
         <nav class="nav nav-info">
             <!-- <h3 class="text-center">
                 <img src="../assets/img/member/Mahatab.png" *ngIf="!imgURL" class="rounded-circle" alt="...">
@@ -14,6 +43,9 @@
             <a class="nav-link" [routerLink]="['/login']"> Login </a>
             <a class="nav-link" [routerLink]="['/product']"> Product </a>
         </nav>
+
+        <tree-view-menu>Loading...</tree-view-menu>
+
     </mat-card>
 </div>
 

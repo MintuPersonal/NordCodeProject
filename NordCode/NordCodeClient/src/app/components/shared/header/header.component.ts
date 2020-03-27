@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogComponent } from '../../common/dialog/dialog.component';
+import { AlertService } from 'src/app/_alert';
 
 
 
@@ -27,8 +28,13 @@ export class HeaderComponent implements OnInit {
   animal: string;
   name: string;
   condition: boolean = false;
-  userName : string = 'Md Mahafuzul Huq'
-  constructor(private router: Router, private dialog: MatDialog) { }
+  userName: string = 'Md Mahafuzul Huq'
+
+  options = {
+    autoClose: true,
+    keepAfterRouteChange: false
+  };
+  constructor(private router: Router, private dialog: MatDialog, protected alertService: AlertService) { }
 
   totalItemsCount = 0;
   ngOnInit() {
@@ -156,9 +162,9 @@ export class HeaderComponent implements OnInit {
         this.animal = result;
         //this.condition = true;
       });
-    } else {      
+    } else {
       firebase.auth().signOut().then((data) => {
-        alert(this.condition + data)
+        //alert(this.condition + data)
         this.condition = false;
       });
     }

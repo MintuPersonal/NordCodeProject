@@ -25,13 +25,13 @@
                     <!-- <mat-icon> person_pin </mat-icon>  -->
                     <i class="fa fa-user-circle"> </i> &nbsp; {{userName}}
                     <div class="dropdown-content text-left">
+                        <button class="btn btn-success m-1" (click)="alertService.success('Success!!', options)">Success</button>
                         <a href="profile" class="fa fa-user-circle"> &nbsp; My Profile </a>
                         <a href="orders" class="fa fa-reorder"> &nbsp; My Orders </a>
                         <a href="account-history" class="fa fa-history"> &nbsp; Payment Histry</a>
                         <a href="customer/changepassword" class="fa fa-key"> &nbsp; Change Password</a>
                         <a href="" class="fa fa-sign-out"> &nbsp; Logout </a>
-                        
-                    </div>
+                        </div>
                 </span>
                 <!-- <mat-icon *ngIf="!condition"> person_pin </mat-icon> -->
             </div>
