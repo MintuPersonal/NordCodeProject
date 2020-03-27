@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit {
   animal: string;
   name: string;
   condition: boolean = false;
+  userName : string = 'Md Mahafuzul Huq'
   constructor(private router: Router, private dialog: MatDialog) { }
 
   totalItemsCount = 0;
