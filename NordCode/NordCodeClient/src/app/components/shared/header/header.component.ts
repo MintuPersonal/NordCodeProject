@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Ecom_Commercial } from 'src/app/commercial/Commercial';
 import { Router } from '@angular/router';
-
+import * as firebase from 'firebase';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogComponent } from '../../common/dialog/dialog.component';
 
@@ -26,11 +26,25 @@ export class HeaderComponent implements OnInit {
 
   animal: string;
   name: string;
+  condition: boolean = false;
   constructor(private router: Router, private dialog: MatDialog) { }
 
   totalItemsCount = 0;
   ngOnInit() {
+
     this.badgeCounter = 0;
+    var firebaseConfig = {
+      apiKey: "AIzaSyAABTcunn62aKYHkJGkfnr5JhXA-D9Ztak",
+      authDomain: "otp-ecommerce.firebaseapp.com",
+      databaseURL: "https://otp-ecommerce.firebaseio.com",
+      projectId: "otp-ecommerce",
+      storageBucket: "otp-ecommerce.appspot.com",
+      messagingSenderId: "932041012966",
+      appId: "1:932041012966:web:9936106c9ea4e508e42d27"
+    };
+    firebase.initializeApp(firebaseConfig);
+    this.loginStatus();
+
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
     if (hasitemdata != null && Object.keys(hasitemdata).length !== 0) {
       this.badgeCounter = Object.keys(hasitemdata).length
@@ -119,14 +133,34 @@ export class HeaderComponent implements OnInit {
   }
 
   // ================
-  openDialog(): void {
-    
-    const dialogRef = this.dialog.open(DialogComponent, { width: '250px', data: { name: this.name, animal: this.animal } });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
+  loginStatus() {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        this.condition = true;
+        console.log("USER LOGGED IN" + user.phoneNumber);
+        //debugger;
+      } else {
+        // No user is signed in.
+        this.condition = false;
+        console.log("USER NOT LOGGED IN");
+      }
     });
+  }
+  openDialog(): void {
+    if (!this.condition) {
+      const dialogRef = this.dialog.open(DialogComponent, { width: '250px', data: { name: this.name, animal: this.animal } });
+      dialogRef.afterClosed().subscribe(result => {
+        //console.log('The dialog was closed');
+        this.animal = result;
+        //this.condition = true;
+      });
+    } else {      
+      firebase.auth().signOut().then((data) => {
+        alert(this.condition + data)
+        this.condition = false;
+      });
+    }
   }
 
 }

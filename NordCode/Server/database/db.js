@@ -9,7 +9,7 @@ const express = require('express');
 
 const db = {};
 const sequelize = new Sequelize('ERP', 'sa', 'Oneict@123', {
-    host: '10.11.4.153',
+    host: '103.106.236.90', //'10.11.4.153',
     dialect: 'mssql',
     operatorsAliases: 0,
     define: {
