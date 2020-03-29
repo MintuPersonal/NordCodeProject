@@ -24,11 +24,11 @@
             </div>
         </div>
         <mat-card-footer fxLayoutAlign="space-around center">
-            <mat-icon matBadgeColor="warn" style="color: whitesmoke;" (click)="RemoveFromBag(featureItem)">
-                indeterminate_check_box</mat-icon>
-            <mat-icon matBadgeColor="warn" style="color: whitesmoke;" (click)="AddToBag(featureItem)">
-                directions_run</mat-icon>
+            <!-- class="card-body" -->
+            <mat-icon matBadgeColor="warn" style="color: whitesmoke;" (click)="RemoveFromBag(featureItem)"> indeterminate_check_box</mat-icon>
+            <mat-icon matBadgeColor="warn" style="color: whitesmoke;" (click)="AddToBag(featureItem)"> directions_run</mat-icon>
             <span>{{individualItemCount}} in bag </span> <span (click)="AddToBag(featureItem)"> add to bag </span>
         </mat-card-footer>
+
     </mat-card>
 </div>

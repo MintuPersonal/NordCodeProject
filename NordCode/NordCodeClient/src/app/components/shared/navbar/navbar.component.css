@@ -34,7 +34,6 @@
 
 #main {
     transition: margin-left .5s;
-    /* padding: 16px; */
 }
 
 @media screen and (max-height: 450px) {
@@ -45,9 +44,6 @@
         font-size: 18px;
     }
 }
-
-
-/* Add to Cart  */
 
 .sidecartnav {
     height: 100%;
@@ -87,7 +83,6 @@
 
 #maincart {
     transition: margin-left .5s;
-    /* padding: 16px; */
 }
 
 div#main {
@@ -106,4 +101,31 @@ div#main {
     .sidecartnav a {
         font-size: 18px;
     }
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.cards>li {
+    padding: 5px;
+    cursor: pointer;
+    margin: 10px;
+    width: 200px;
+    height: 300px;
+    vertical-align: top;
+    border: 1px solid #ccc;
+    box-shadow: 10px 10px 5px #CCC;
+    display: inline-block;
+}
+
+ul.cards>li:hover {
+    border: 1px solid deepskyblue;
+    box-shadow: 15px 15px 5px #CCC;
+}
+
+section.users {
+    padding: 5px;
 }

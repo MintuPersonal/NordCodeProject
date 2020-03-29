@@ -1,3 +1,27 @@
+.header {
+    text-align: center;
+    background-color: orange;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    z-index: 9999;
+}
+
+#menucart {
+    margin-top: 300px;
+    margin-left: 50px;
+    width: 80px;
+    height: 85px;
+    background: radial-gradient(black, transparent);
+    border: orange solid 1px;
+}
+
+.pricecrt {
+    background: orange;
+    color: #fff;
+    width: 101%;
+}
+
 mat-card-title {
     justify-content: center;
     flex-direction: row;
@@ -188,7 +212,7 @@ th.mat-header-cell {
 }
 
 .mat-card {
-    min-height: 900px;
+    min-height: auto;
     margin-top: 30px;
 }
 
@@ -231,7 +255,7 @@ body {
     transition: 0.5s;
     float: right;
     z-index: 99;
-    border: solid 1px gray;
+    border: solid 1px orange;
     background: white;
     padding-top: 20px;
     width: 0px;
@@ -252,7 +276,7 @@ body {
 
 .sidepanel .closebtn {
     position: absolute;
-    top: 0;
+    top: 0px;
     /* right: 25px; */
     font-size: 36px;
 }
@@ -302,14 +326,6 @@ div#main {
     color: white;
 }
 
-.header {
-    text-align: center;
-    background-color: orange;
-    height: 50px;
-    position: absolute;
-    width: 100%;
-}
-
 .search {
     background: whitesmoke;
     border-radius: 5px;
@@ -321,7 +337,7 @@ div#main {
     float: right;
     margin-top: 350px;
     POSITION: fixed;
-    RIGHT: 0px;
+    RIGHT: 20px;
 }
 
 .dropbtn {

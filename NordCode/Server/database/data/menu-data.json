@@ -1,155 +1,155 @@
  {
      "data": [{
-             "title": "Parent 1",
-             "routerLink": "/ap/dashboard",
-             "style": "fa fa-home",
-             "nodeId": "liDashboard",
-             "param": "",
-             "categories": [
+             "Title": "Parent 1",
+             "RouterLink": "/dashboard",
+             "Style": "fa fa-home",
+             "NodeId": "liDashboard",
+             "Param": "",
+             "Categories": [
 
              ]
          },
          {
-             "title": "Parent 2",
-             "routerLink": "",
-             "style": "fa fa-users",
-             "nodeId": "liAssociates",
-             "param": "",
-             "categories": [{
-                     "title": "Child 1",
-                     "style": "fa fa-users",
-                     "nodeId": "liProspectiveAssociate",
-                     "param": "",
-                     "routerLink": "/ap/associates/view",
-                     "categories": [{
-                             "title": "Grand Child 1",
-                             "style": "fa fa-users",
-                             "nodeId": "A",
-                             "param": "",
-                             "routerLink": "/ap/associates/view",
-                             "categories": [{
-                                     "title": "Grand Grand Child 1",
-                                     "style": "fa fa-user-plus",
-                                     "nodeId": "D",
-                                     "param": "",
-                                     "routerLink": "/ap/reports/resourcereport",
-                                     "categories": [
+             "Title": "Parent 2",
+             "RouterLink": "",
+             "Style": "fa fa-users",
+             "NodeId": "liAssociates",
+             "Param": "",
+             "Categories": [{
+                     "Title": "Child 1",
+                     "Style": "fa fa-users",
+                     "NodeId": "liProspectiveAssociate",
+                     "Param": "",
+                     "RouterLink": "/dashboard",
+                     "Categories": [{
+                             "Title": "Grand Child 1",
+                             "Style": "fa fa-users",
+                             "NodeId": "A",
+                             "Param": "",
+                             "RouterLink": "/dashboard",
+                             "Categories": [{
+                                     "Title": "Grand Grand Child 1",
+                                     "Style": "fa fa-user-plus",
+                                     "NodeId": "D",
+                                     "Param": "",
+                                     "RouterLink": "/cart",
+                                     "Categories": [
 
                                      ]
                                  },
                                  {
-                                     "title": "Grand Grand Child 2",
-                                     "style": "fa fa-user-plus",
-                                     "nodeId": "E",
-                                     "param": "",
-                                     "routerLink": "/ap/reports/financereport",
-                                     "categories": [
+                                     "Title": "Grand Grand Child 2",
+                                     "Style": "fa fa-user-plus",
+                                     "NodeId": "E",
+                                     "Param": "",
+                                     "RouterLink": "/cart",
+                                     "Categories": [
 
                                      ]
                                  },
                                  {
-                                     "title": "Grand Grand Child 3",
-                                     "style": "fa fa-pencil-square",
-                                     "nodeId": "F",
-                                     "param": "",
-                                     "routerLink": "/ap/reports/importRMGreport",
-                                     "categories": [
+                                     "Title": "Grand Grand Child 3",
+                                     "Style": "fa fa-pencil-square",
+                                     "NodeId": "F",
+                                     "Param": "",
+                                     "RouterLink": "/cart",
+                                     "Categories": [
 
                                      ]
                                  }
                              ]
                          },
                          {
-                             "title": "Grand Child 2",
-                             "style": "fa fa-pencil-square",
-                             "nodeId": "B",
-                             "param": "",
-                             "routerLink": "/ap/associates/prospective-associates",
-                             "categories": [
+                             "Title": "Grand Child 2",
+                             "Style": "fa fa-pencil-square",
+                             "NodeId": "B",
+                             "Param": "",
+                             "RouterLink": "/cart",
+                             "Categories": [
 
                              ]
                          },
                          {
-                             "title": "Grand Child 3",
-                             "style": "fa fa-users",
-                             "nodeId": "C",
-                             "param": "",
-                             "routerLink": "/ap/associates/list",
-                             "categories": [
+                             "Title": "Grand Child 3",
+                             "Style": "fa fa-users",
+                             "NodeId": "C",
+                             "Param": "",
+                             "RouterLink": "/ap/associates/list",
+                             "Categories": [
 
                              ]
                          }
                      ]
                  },
                  {
-                     "title": "Child 2",
-                     "style": "fa fa-pencil-square",
-                     "nodeId": "liAssociateJoining",
-                     "param": "",
-                     "routerLink": "/ap/associates/prospective-associates",
-                     "categories": [
+                     "Title": "Child 2",
+                     "Style": "fa fa-pencil-square",
+                     "NodeId": "liAssociateJoining",
+                     "Param": "",
+                     "RouterLink": "/cart",
+                     "Categories": [
 
                      ]
                  },
                  {
-                     "title": "Child 3",
-                     "style": "fa fa-users",
-                     "nodeId": "liAssociatesChild",
-                     "param": "",
-                     "routerLink": "/ap/associates/list",
-                     "categories": [
+                     "Title": "Child 3",
+                     "Style": "fa fa-users",
+                     "NodeId": "liAssociatesChild",
+                     "Param": "",
+                     "RouterLink": "/ap/associates/list",
+                     "Categories": [
 
                      ]
                  }
              ]
          },
          {
-             "title": "Parent 3",
-             "routerLink": "",
-             "style": "fa fa-users",
-             "nodeId": "liTalentManagement",
-             "param": "",
-             "categories": [
+             "Title": "Parent 3",
+             "RouterLink": "",
+             "Style": "fa fa-users",
+             "NodeId": "liTalentManagement",
+             "Param": "",
+             "Categories": [
 
              ]
          },
          {
-             "title": "Parent 4",
-             "routerLink": "",
-             "style": "fa fa-users",
-             "nodeId": "liTeamManagement",
-             "param": "",
-             "categories": [
+             "Title": "Parent 4",
+             "RouterLink": "",
+             "Style": "fa fa-users",
+             "NodeId": "liTeamManagement",
+             "Param": "",
+             "Categories": [
 
              ]
          },
          {
-             "title": "Parent 5",
-             "routerLink": "",
-             "style": "fa fa-users",
-             "nodeId": "liPerformanceManagement",
-             "param": "",
-             "categories": [
+             "Title": "Parent 5",
+             "RouterLink": "",
+             "Style": "fa fa-users",
+             "NodeId": "liPerformanceManagement",
+             "Param": "",
+             "Categories": [
 
              ]
          },
          {
-             "title": "Parent 6",
-             "routerLink": "",
-             "style": "fa fa-street-view",
-             "nodeId": "liAdmin",
-             "param": "",
-             "categories": [
+             "Title": "Parent 6",
+             "RouterLink": "",
+             "Style": "fa fa-street-view",
+             "NodeId": "liAdmin",
+             "Param": "",
+             "Categories": [
 
              ]
          },
          {
-             "title": "Parent 7",
-             "routerLink": "",
-             "style": "fa fa-users",
-             "nodeId": "liReports",
-             "param": "",
-             "categories": [
+             "Title": "Parent 7",
+             "RouterLink": "",
+             "Style": "fa fa-users",
+             "NodeId": "liReports",
+             "Param": "",
+             "Categories": [
 
              ]
          }

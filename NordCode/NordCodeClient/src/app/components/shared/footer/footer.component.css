@@ -1,7 +1,12 @@
-
-.footer {
-    background: #4abfbf;
-    height: 70px;
-    padding: 10px 150px 10px 150px;
-    color: whitesmoke;
-}
+    .footer {
+        /* background: #4abfbf; */
+        height: 70px;
+        padding: 10px 150px 10px 150px;
+        color: whitesmoke;
+        margin: 0px;
+    }
+    
+    .bg-info {
+        /* //background-color: #17a2b8!important; */
+        margin: 0px;
+    }

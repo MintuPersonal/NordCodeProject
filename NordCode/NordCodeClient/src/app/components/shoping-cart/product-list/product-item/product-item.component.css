@@ -10,10 +10,11 @@
     padding: 10px;
 }
 
-.banner {
-    background: sandybrown;
+
+/* .banner {
+    background: #ff3b00a6;
     height: 250px;
-}
+} */
 
 .category {
     margin: 0px 50px 0px 100px;
@@ -62,7 +63,7 @@ mat-card-content {
 }
 
 mat-card-footer {
-    background: sandybrown;
+    background: #ff3b00a6;
     margin: 0px;
     color: papayawhip;
 }

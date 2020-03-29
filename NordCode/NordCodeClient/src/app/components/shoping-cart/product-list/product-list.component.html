@@ -1,9 +1,6 @@
 <div class="container-fluid p-5">
-
     <div class="row">
         <div class="col-lg-12 ">
-            <!-- <app-cart></app-cart> -->
-            <app-navbar></app-navbar>
             <app-banner></app-banner>
         </div>
 
@@ -26,10 +23,26 @@
             </label>
         <div fxLayout="row" fxLayoutAlign="space-evenly center ">
             <div class="row col-lg-11 offset-1">
+                <!-- <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+                    <div class="card-header">
+                        <h5 class="card-title">Warning card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    <div class="card-body">Header
+                    </div>
+                </div>
+
+                <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Header</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Warning card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div> -->
+
                 <app-product-item [featureItem]="featureItem" *ngFor="let featureItem of featuresModel"></app-product-item>
             </div>
         </div>
-
         <label class="col-lg-10 offset-1 font-weight-bold" style="font-size: 35px; padding: 5px;">  House Hold
             <a mat-raised-button btn-sm routerLink="." class="text-right more">More....</a>
             </label>

@@ -1,21 +1,48 @@
-<div id="menunav" class="sidenav">
+<app-top-nav class="fixed-topnav" fxHide.gt-xs> </app-top-nav>
+<mat-sidenav-container>
+    <mat-sidenav #appDrawer mode="over" opened="false">
+        <mat-nav-list>
+            <app-menu-list-item *ngFor="let item of navItems" [item]="item"></app-menu-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <app-top-nav fxHide.xs></app-top-nav>
+    <router-outlet></router-outlet>
+    <div fxFlex></div>
+    <span class="version-info">Current build: {{version.full ? version.full : version}}</span>
+</mat-sidenav-container>
+
+
+
+
+<!-- <div id="menunav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" (click)="closeMenuNav()">&times;</a>
     <mat-card class="card-picture">
 
-        <!-- <ul class="sidebar-menu">
+        <nav class="nav nav-info"></nav>
+        <nav class="nav flex-column">
+            <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active"> Home </a>
+            <a class="nav-link" [routerLink]="['/addnew']"> Add New </a>
+            <a class="nav-link" [routerLink]="['/signup']"> Logout </a>
+            <a class="nav-link" [routerLink]="['/login']"> Login </a>
+            <a class="nav-link" [routerLink]="['/product']"> Product </a>
+        </nav>
+    </mat-card>
+
+    <mat-card class="card-picture">
+        <ul class="sidebar-menu">
             <li class="treeview" *ngFor="let parentNode of menuList">
-                <a *ngIf="parentNode.Path == ''" href="" id="parentNode.NodeId">
+                <a *ngIf="parentNode.RouterLink == ''" href="" id="parentNode.NodeId">
                     <i [ngClass]="parentNode.Style"></i><span> {{ parentNode.Title }}</span>
                     <i *ngIf="parentNode.Categories.length > 0" class="fa fa-angle-left pull-right"></i>
                 </a>
-                <a *ngIf="parentNode.Path != ''" [routerLink]="[parentNode.Path]" id="parentNode.NodeId">
+                <a *ngIf="parentNode.RouterLink != ''" [routerLink]="[parentNode.RouterLink]" id="parentNode.NodeId">
                     <i [ngClass]="parentNode.Style"></i><span> {{ parentNode.Title }}</span>
                     <i *ngIf="parentNode.Categories.length > 0" class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                     <li *ngFor="let childNode of parentNode.Categories">
-                        <a [routerLinkActive]="['active']" [routerLink]="[childNode.Path]" id="childNode.NodeId">
-                            <i [ngClass]="childNode.Style"></i><span>{{childNode.Title}}</span>
+                        <a [routerLinkActive]="['active']" [routerLink]="[childNode.RouterLink]" id="childNode.NodeId">
+                            <i [ngClass]="childNode.Style"></i><span> {{childNode.Title}}</span>
                             <i *ngIf="childNode.Categories.length > 0" class="fa fa-angle-left pull-right"></i>
                         </a>
                         <div *ngIf="childNode.Categories.length > 0" class="treeview-menu">
@@ -24,28 +51,7 @@
                     </li>
                 </ul>
             </li>
-        </ul> -->
-
-
-
-
-
-        <nav class="nav nav-info">
-            <!-- <h3 class="text-center">
-                <img src="../assets/img/member/Mahatab.png" *ngIf="!imgURL" class="rounded-circle" alt="...">
-            </h3> -->
-        </nav>
-
-        <nav class="nav flex-column">
-            <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active"> Home </a>
-            <a class="nav-link" [routerLink]="['/addnew']"> Add New </a>
-            <a class="nav-link" [routerLink]="['/signup']"> Logout </a>
-            <a class="nav-link" [routerLink]="['/login']"> Login </a>
-            <a class="nav-link" [routerLink]="['/product']"> Product </a>
-        </nav>
-
-        <tree-view-menu>Loading...</tree-view-menu>
-
+        </ul>      
     </mat-card>
 </div>
 
@@ -53,4 +59,4 @@
     <span style="font-size:30px;cursor:pointer" (click)="openMenuNav()">
         <mat-icon matBadgeColor="warn">list</mat-icon>
     </span>
-</div>
+</div> -->

@@ -2,8 +2,8 @@
     <div class="header">
 
         <div class="row" fxLayoutAlign="space-evenly">
-            <div class="col-lg-2">
-                <mat-icon (click)="logout()"> </mat-icon>
+            <div class="col-lg-1">
+                <mat-icon mat-icon-button id="menu" (click)="navService.openNav()"> menu </mat-icon>
             </div>
             <form class="col-lg-7">
                 <mat-form-field class="example-full-width search">
@@ -16,7 +16,7 @@
                 <mat-icon (click)="openCartNav()" [matBadge]="badgeCounter" matBadgeColor="warn">add_shopping_cart</mat-icon>
                 <span class="cdk-visually-hidden"> </span>
             </div>
-            <div class="col-lg-1 enbn">
+            <div class="enbn">
                 <span> En | Bn </span>
             </div>
             <div class="col-lg-1 signin">
@@ -33,14 +33,22 @@
                         <a href="" class="fa fa-sign-out"> &nbsp; Logout </a>
                         </div>
                 </span>
-                <!-- <mat-icon *ngIf="!condition"> person_pin </mat-icon> -->
+                <div id="menucart" mat-icon-button (click)="navService.openNavCart()">
+                    <!-- navService.openNavRight() -->
+                    <mat-icon> shopping_basket </mat-icon>
+                    <br>
+                    <label> 0 items </label>
+                    <div class="pricecrt">
+                        <label> Tk. 0 </label>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <div id="cartnav" class="sidepanel" style="margin-top: 55px;">
-    <a href=" javascript:void(0) " class="closebtn " (click)="openCartNav() ">&times;</a>
+    <a href=" javascript:void(0)" class="closebtn" (click)="navService.openNavCart()">&times;</a>
     <mat-card class="card-picture ">
         <nav class="nav nav-info ">
         </nav>
@@ -102,14 +110,26 @@
     </mat-card>
 </div>
 
-<div id="maincart" class="maincart">
-    <span style="font-size:30px;cursor:pointer " (click)="openCartNav() ">
-        <img style="width: 20px; height: 50px; " class=" " src="../assets/icon/next.png " alt="LG " fxLayoutAlign="space-around center ">        
-    </span>
-</div>
+
+
+
+
+
+
+
+
+
+
 
 <!-- 
-<div id="mySidepanel " class="sidepanel ">
+<div id="maincart" class="maincart">
+    <span style="font-size:30px;cursor:pointer " (click)="openCartNav() ">
+        <img style="width: 120px; height: 50px; " class=" " src="../assets/icon/next.png " alt="LG " fxLayoutAlign="space-around center ">        
+    </span>
+</div>
+-->
+
+<!-- <div id="mySidepanel " class="sidepanel ">
     <a href="javascript:void(0) " class="closebtn " (click)="closeNav() ">×</a>
     <div class="mat-elevation-z8 ">
         <h5 class="text-center h5 ">
@@ -175,6 +195,15 @@
 
 
 
+<!-- <div class="col-lg-2">
+                <mat-icon (click)="logout()"> </mat-icon>
+            </div> -->
+<!-- <mat-toolbar color="primary" class="mat-elevation-z1">
+                <button mat-icon-button id="menu" (click)="navService.openNav()">
+                  <mat-icon>menu</mat-icon>
+                </button>
+                <span>Dynamic Expanding Nav Drawer Example</span>
+            </mat-toolbar> -->
 
 <!-- <mat-drawer-container class="example-container " autosize>
         <mat-drawer #drawer class="example-sidenav " mode="side ">

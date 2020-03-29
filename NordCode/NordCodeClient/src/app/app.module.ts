@@ -1,28 +1,46 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatRadioModule } from '@angular/material/radio';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialTimePickerModule } from '@candidosales/material-time-picker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { RoutingModule } from './app.routing'
 import { AlertModule } from './_alert';
 
 import {
-  MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatDatepickerModule, MatBadgeModule,
-  MatSelectModule, MatSliderModule, MatTableModule, MatNativeDateModule
-} from '@angular/material';
-import {
-  MatCheckboxModule, MatPaginatorModule, MatTooltipModule, MatFormFieldModule, MatSidenavModule,
-  MatMenuModule, MatDialogModule
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatBadgeModule,
+  MatPaginatorModule,
+  MatFormFieldModule,
+  MatTableModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -32,7 +50,6 @@ import { AddnewComponent } from './addnew/addnew.component';
 import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
 import { CommercialComponent } from './commercial/commercial.component';
-import { MenubarComponent } from './menubar/menubar.component';
 import { BrandComponent } from './components/shoping-cart/brand/brand.component';
 import { CategoryComponent } from './components/shoping-cart/category/category.component';
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -43,15 +60,16 @@ import { ProductdetailsComponent } from './productdetails/productdetails.compone
 import { BannerComponent } from './components/shared/banner/banner.component';
 import { CartComponent } from './components/shoping-cart/cart/cart.component';
 import { CheckoutComponent } from './components/shoping-cart/checkout/checkout.component';
-import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { OrderComponent } from './order/order.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ImageComponent } from './components/common/image/image.component';
 import { PhoneLoginComponent } from './phone-login/phone-login.component';
 import { DialogComponent } from './components/common/dialog/dialog.component';
 import { AlertHomeComponent } from './alert-home/alert-home.component';
-import { TreeViewComponent } from './tree-view-menu/tree-view/tree-view.component';
-import { TreeViewDirective } from './tree-view-menu/tree-view.directive';
+import { TopNavComponent } from './top-nav/top-nav.component';
+import { MenuComponent } from './components/shared/menu/menu.component';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { NavbarService } from './components/shared/navbar/navbar.service';
 
 @NgModule({
   declarations: [
@@ -64,7 +82,6 @@ import { TreeViewDirective } from './tree-view-menu/tree-view.directive';
     ProductListComponent,
     ProductItemComponent,
     CartComponent,
-
     LoginComponent,
     SignupComponent,
     NavbarComponent,
@@ -73,8 +90,7 @@ import { TreeViewDirective } from './tree-view-menu/tree-view.directive';
     ProductComponent,
     ProductdetailsComponent,
     CommercialComponent,
-    CheckoutComponent,
-    MenubarComponent,
+    CheckoutComponent,    
     OrderComponent,
     PaymentComponent,
     BannerComponent,
@@ -82,8 +98,9 @@ import { TreeViewDirective } from './tree-view-menu/tree-view.directive';
     PhoneLoginComponent,
     DialogComponent,
     AlertHomeComponent,
-    TreeViewComponent,
-    TreeViewDirective
+    TopNavComponent,
+    MenuComponent,
+    MenuComponent
   ],
   imports: [
     RoutingModule,
@@ -104,22 +121,22 @@ import { TreeViewDirective } from './tree-view-menu/tree-view.directive';
     MatToolbarModule,
     MatDatepickerModule,
     MaterialTimePickerModule,
-    MatNativeDateModule,
-    MatBadgeModule,
+    MatNativeDateModule,    
     FlexLayoutModule,
     MatSelectModule,
-    MatSliderModule,
-    MatPaginatorModule,
+    MatSliderModule,    
     MatGridListModule,
     MatButtonModule,
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    MatSidenavModule,
-    MatFormFieldModule,
+    MatSidenavModule,    
     MatInputModule,
     MatTooltipModule,
+    MatBadgeModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
     MatTableModule,
     MatExpansionModule,
     MatChipsModule,
@@ -127,7 +144,7 @@ import { TreeViewDirective } from './tree-view-menu/tree-view.directive';
     MatDialogModule
   ],
 
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule, NavbarService],
   bootstrap: [AppComponent]
 })
 
