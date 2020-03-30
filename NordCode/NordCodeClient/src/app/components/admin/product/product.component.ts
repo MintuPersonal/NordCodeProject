@@ -79,12 +79,13 @@ export class ProductComponent implements OnInit {
     this.productModel.SID = 0;
     this.productModel.Rol = 0;
     this.productModel.ParentId = 0;
-    this.productModel.Img_Path = '../assets/img/member/' + this.productModel.FileUrl;
+    this.productModel.ImgPath = '../assets/img/product/feature/' + this.productModel.FileUrl;
     this.productModel.Inserted_By = "Mitnu";
     this.productModel.Inserted_Date = new Date();
     if (this.isEdit == 0) {
       this.productModel.PID = 0;
     }
+    debugger;
     this._productService.setProduct(this.productModel).subscribe(data => this.PID = data.PID, error => this.errorMsg = error.statusText)
     this.onClear();
 
@@ -95,9 +96,9 @@ export class ProductComponent implements OnInit {
     this.productModel = new Ecom_Product();
     this.productModel.Display = "Banner";
     this.productModel.Active = true;
-    this.imgURL = "../assets/img/member/Mahatab.png";
-    this.imgURLLarge = "../assets/img/member/Mahatab.png";
-    this.imgURLExLarge = "../assets/img/member/Mahatab.png";
+    this.imgURL = "../assets/img/product/feature/0000.png";
+    this.imgURLLarge = "../assets/img/product/feature/0000.png";
+    this.imgURLExLarge = "../assets/img/product/feature/0000.png";
   };
 
   preview(files, Id) {

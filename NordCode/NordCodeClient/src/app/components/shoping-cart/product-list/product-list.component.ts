@@ -44,7 +44,7 @@ export class ProductListComponent implements OnInit {
         this.bannersModel = this._commercialModel['banners'];
         this.brandsModel = this._commercialModel['brands'];
         this.featuresModel = this._commercialModel['features'];
-       // debugger;
+        debugger;
       },
       (err: HttpErrorResponse) => {
         console.log(err.message);

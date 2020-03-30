@@ -1,23 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NavbarService } from '../shared/navbar/navbar.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductListService {
-    
-  _baseUrl = "http://localhost:3000/";
+      
+  _baseUrl = "http://localhost:3000/api/";
   _url = '';
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, private navbarService: NavbarService) { }
 
   getCommercial() {
-    this._url = this._baseUrl+'api/gethomes';    
+    this._url = this._baseUrl+'gethomes';    
     return this._http.get(this._url);
   }
 
   getAddtoCart() {
-    this._url = this._baseUrl+'api/getaddtocart';    
+    this._url = this._baseUrl+'getaddtocart';    
     return this._http.get(this._url);
+  }
+
+
+  AddtoItems(itemObj: any) {
+    this.navbarService.getTotalItemAmount();
   }
 }

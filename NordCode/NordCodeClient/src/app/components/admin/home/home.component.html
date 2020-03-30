@@ -1,4 +1,4 @@
-<div style="padding: 13px;" class="container">
+<div style="padding-top: 55px;" class="container">
     <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }} </div>
     <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
         <mat-card class="card-picture">
@@ -6,7 +6,7 @@
 
                 <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
                     <mat-icon fxFlex="5%" (click)="onClear()">list</mat-icon>
-                    <span fxFlex="90%" class="text-center"> Home </span>
+                    <span fxFlex="90%" class="text-center"> Home /My Orders </span>
                     <a mat-raised-button [routerLink]="['/addnew']" [disabled]="userForm.form.invalid" style="background-color:transparent;">
                         <mat-icon fxFlex="1%"> add </mat-icon>
                     </a>

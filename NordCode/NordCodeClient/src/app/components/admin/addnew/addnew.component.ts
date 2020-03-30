@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from './task';
-import { AddnewService } from './addnew.service';
+import { AddnewService } from '../../../services/addnew.service';
 
 @Component({
   selector: 'app-addnew',
@@ -39,7 +39,7 @@ export class AddnewComponent implements OnInit {
   }
   ngOnInit() {
     this._addnewService.getTask(this.taskModel).subscribe((data: Task[]) => { this.tasksModel = data; });
-    debugger;
+    //debugger;
   }
 
   onSubmit(event) {

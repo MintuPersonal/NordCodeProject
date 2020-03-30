@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Ecom_Commercial } from '../commercial/Commercial';
-import { CustomerService } from '../services/customer.service';
+import { Ecom_Commercial } from '../../../commercial/Commercial';
+import { CustomerService } from '../../../services/customer.service';
 import { ActivatedRoute } from '@angular/router';
 import { Ecom_Orders } from '../order/order';
 

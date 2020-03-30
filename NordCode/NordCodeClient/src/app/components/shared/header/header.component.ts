@@ -34,8 +34,18 @@ export class HeaderComponent implements OnInit {
     autoClose: true,
     keepAfterRouteChange: false
   };
-  constructor(private router: Router, private dialog: MatDialog, 
-    protected alertService: AlertService, public navService: NavbarService) { }
+
+  totalItems = 10;
+  totalAmount = 100;
+
+  constructor(private router: Router, private dialog: MatDialog,
+    protected alertService: AlertService, public navService: NavbarService) {
+
+    var data = navService.getTotalItemAmount();
+    this.totalItems = data.totalItems;
+    this.totalAmount = data.totalAmounts;
+
+  }
 
   totalItemsCount = 0;
   ngOnInit() {
@@ -171,8 +181,6 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-
-  
 
 }
 

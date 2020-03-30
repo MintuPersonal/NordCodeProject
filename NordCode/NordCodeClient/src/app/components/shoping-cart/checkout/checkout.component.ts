@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, SystemJsNgModuleLoader } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
-import { Ecom_Orders } from 'src/app/order/order';
+import { Ecom_Orders } from '../../admin/order/order';
+//import { Ecom_Orders } from 'src/app/order/order';
 
 @Component({
   selector: 'app-checkout',

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Ecom_Commercial } from 'src/app/commercial/Commercial';
+import { ProductListService } from '../../product-list.service';
 
 @Component({
   selector: 'app-product-item',
@@ -23,7 +24,7 @@ export class ProductItemComponent implements OnInit {
   add = 'A+';
 
   @Input() featureItem: any;
-  constructor() { }
+  constructor( private productService : ProductListService) { }
 
   ngOnInit() {
     //localStorage.setItem('item', null);
@@ -51,6 +52,9 @@ export class ProductItemComponent implements OnInit {
   }
   public AddToBag(itemObj) {
     debugger;
+
+    this.productService.AddtoItems(itemObj);
+
     //this.badgeCounter = 0;
     if (Object.keys(itemObj).length !== 0) {
       this.HasThisItem(itemObj);
@@ -122,7 +126,6 @@ export class ProductItemComponent implements OnInit {
       return this.isItemLocalStorage = false;
     }
   }
-
   public setTotalPrice(totalItemsPrice) {
     this.totalItemsPrice = totalItemsPrice;
   }
@@ -160,7 +163,6 @@ export class ProductItemComponent implements OnInit {
       }
     }
   }
-
   public AddRowQty(item) {
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
     if (hasitemdata != null) {

@@ -1,157 +1,311 @@
  {
      "data": [{
-             "Title": "Parent 1",
-             "RouterLink": "/dashboard",
-             "Style": "fa fa-home",
-             "NodeId": "liDashboard",
-             "Param": "",
-             "Categories": [
-
-             ]
-         },
-         {
-             "Title": "Parent 2",
-             "RouterLink": "",
-             "Style": "fa fa-users",
-             "NodeId": "liAssociates",
-             "Param": "",
-             "Categories": [{
-                     "Title": "Child 1",
-                     "Style": "fa fa-users",
-                     "NodeId": "liProspectiveAssociate",
-                     "Param": "",
-                     "RouterLink": "/dashboard",
-                     "Categories": [{
-                             "Title": "Grand Child 1",
-                             "Style": "fa fa-users",
-                             "NodeId": "A",
-                             "Param": "",
-                             "RouterLink": "/dashboard",
-                             "Categories": [{
-                                     "Title": "Grand Grand Child 1",
-                                     "Style": "fa fa-user-plus",
-                                     "NodeId": "D",
-                                     "Param": "",
-                                     "RouterLink": "/cart",
-                                     "Categories": [
-
-                                     ]
+             "displayName": "home Apparel",
+             "iconName": "recent_actors",
+             "route": "product",
+             "children": [{
+                     "displayName": "Speakers",
+                     "iconName": "group",
+                     "route": "product",
+                     "children": [{
+                             "displayName": "Michael Prentice",
+                             "iconName": "person",
+                             "route": "product",
+                             "children": [{
+                                 "displayName": "Create Product",
+                                 "iconName": "star_rate",
+                                 "route": "product"
+                             }]
+                         },
+                         {
+                             "displayName": "Stephen Fluin",
+                             "iconName": "person",
+                             "route": "devfestfl/speakers/stephen-fluin",
+                             "children": [{
+                                 "displayName": "What\\'s up with the Web?",
+                                 "iconName": "star_rate",
+                                 "route": "devfestfl/speakers/stephen-fluin/what-up-web"
+                             }]
+                         },
+                         {
+                             "displayName": "Mike Brocchi",
+                             "iconName": "person",
+                             "route": "devfestfl/speakers/mike-brocchi",
+                             "children": [{
+                                     "displayName": "My ally, the CLI",
+                                     "iconName": "star_rate",
+                                     "route": "devfestfl/speakers/mike-brocchi/my-ally-cli"
                                  },
                                  {
-                                     "Title": "Grand Grand Child 2",
-                                     "Style": "fa fa-user-plus",
-                                     "NodeId": "E",
-                                     "Param": "",
-                                     "RouterLink": "/cart",
-                                     "Categories": [
-
-                                     ]
-                                 },
-                                 {
-                                     "Title": "Grand Grand Child 3",
-                                     "Style": "fa fa-pencil-square",
-                                     "NodeId": "F",
-                                     "Param": "",
-                                     "RouterLink": "/cart",
-                                     "Categories": [
-
-                                     ]
+                                     "displayName": "Become an Angular Tailor",
+                                     "iconName": "star_rate",
+                                     "route": "devfestfl/speakers/mike-brocchi/become-angular-tailer"
                                  }
-                             ]
-                         },
-                         {
-                             "Title": "Grand Child 2",
-                             "Style": "fa fa-pencil-square",
-                             "NodeId": "B",
-                             "Param": "",
-                             "RouterLink": "/cart",
-                             "Categories": [
-
-                             ]
-                         },
-                         {
-                             "Title": "Grand Child 3",
-                             "Style": "fa fa-users",
-                             "NodeId": "C",
-                             "Param": "",
-                             "RouterLink": "/ap/associates/list",
-                             "Categories": [
-
                              ]
                          }
                      ]
                  },
                  {
-                     "Title": "Child 2",
-                     "Style": "fa fa-pencil-square",
-                     "NodeId": "liAssociateJoining",
-                     "Param": "",
-                     "RouterLink": "/cart",
-                     "Categories": [
-
+                     "displayName": "Sessions",
+                     "iconName": "speaker_notes",
+                     "route": "devfestfl/sessions",
+                     "children": [{
+                             "displayName": "Create Enterprise UIs",
+                             "iconName": "star_rate",
+                             "route": "devfestfl/sessions/material-design"
+                         },
+                         {
+                             "displayName": "What\\'s up with the Web?",
+                             "iconName": "star_rate",
+                             "route": "devfestfl/sessions/what-up-web"
+                         },
+                         {
+                             "displayName": "My ally, the CLI",
+                             "iconName": "star_rate",
+                             "route": "devfestfl/sessions/my-ally-cli"
+                         },
+                         {
+                             "displayName": "Become an Angular Tailor",
+                             "iconName": "star_rate",
+                             "route": "devfestfl/sessions/become-angular-tailer"
+                         }
                      ]
                  },
                  {
-                     "Title": "Child 3",
-                     "Style": "fa fa-users",
-                     "NodeId": "liAssociatesChild",
-                     "Param": "",
-                     "RouterLink": "/ap/associates/list",
-                     "Categories": [
-
+                     "displayName": "Feedback",
+                     "iconName": "feedback",
+                     "route": "devfestfl/feedback"
+                 }
+             ]
+         },
+         {
+             "displayName": "Office Product",
+             "iconName": "videocam",
+             "children": [{
+                     "displayName": "Organizing",
+                     "iconName": "group",
+                     "children": [{
+                             "displayName": "Office file",
+                             "iconName": "person",
+                             "route": "michael-prentice",
+                             "children": [{
+                                 "displayName": "Create product",
+                                 "iconName": "star_rate",
+                                 "route": "product"
+                             }]
+                         },
+                         {
+                             "displayName": "Stephen Fluin",
+                             "iconName": "person",
+                             "route": "stephen-fluin",
+                             "children": [{
+                                 "displayName": "What\\'s up with the Web?",
+                                 "iconName": "star_rate",
+                                 "route": "what-up-web"
+                             }]
+                         },
+                         {
+                             "displayName": "Mike Brocchi",
+                             "iconName": "person",
+                             "route": "mike-brocchi",
+                             "children": [{
+                                     "displayName": "My ally, the CLI",
+                                     "iconName": "star_rate",
+                                     "route": "my-ally-cli"
+                                 },
+                                 {
+                                     "displayName": "Become an Angular Tailor",
+                                     "iconName": "star_rate",
+                                     "route": "become-angular-tailer"
+                                 }
+                             ]
+                         }
+                     ]
+                 },
+                 {
+                     "displayName": "Sessions",
+                     "iconName": "speaker_notes",
+                     "children": [{
+                             "displayName": "Create Enterprise UIs",
+                             "iconName": "star_rate",
+                             "route": "material-design"
+                         },
+                         {
+                             "displayName": "What\\'s up with the Web?",
+                             "iconName": "star_rate",
+                             "route": "what-up-web"
+                         },
+                         {
+                             "displayName": "My ally, the CLI",
+                             "iconName": "star_rate",
+                             "route": "my-ally-cli"
+                         },
+                         {
+                             "displayName": "Become an Angular Tailor",
+                             "iconName": "star_rate",
+                             "route": "become-angular-tailer"
+                         }
+                     ]
+                 },
+                 {
+                     "displayName": "Feedback",
+                     "iconName": "feedback",
+                     "route": "feedback"
+                 }
+             ]
+         },
+         {
+             "displayName": "Food & Fruit",
+             "iconName": "movie_filter",
+             "children": [{
+                     "displayName": "Speakers",
+                     "iconName": "group",
+                     "children": [{
+                             "displayName": "Michael Prentice",
+                             "iconName": "person",
+                             "route": "michael-prentice",
+                             "children": [{
+                                 "displayName": "Create Enterprise UIs",
+                                 "iconName": "star_rate",
+                                 "route": "material-design"
+                             }]
+                         },
+                         {
+                             "displayName": "Stephen Fluin",
+                             "iconName": "person",
+                             "route": "stephen-fluin",
+                             "children": [{
+                                 "displayName": "What\\'s up with the Web?",
+                                 "iconName": "star_rate",
+                                 "route": "what-up-web"
+                             }]
+                         },
+                         {
+                             "displayName": "Mike Brocchi",
+                             "iconName": "person",
+                             "route": "mike-brocchi",
+                             "children": [{
+                                     "displayName": "My ally, the CLI",
+                                     "iconName": "star_rate",
+                                     "route": "my-ally-cli"
+                                 },
+                                 {
+                                     "displayName": "Become an Angular Tailor",
+                                     "iconName": "star_rate",
+                                     "route": "become-angular-tailer"
+                                 }
+                             ]
+                         }
+                     ]
+                 },
+                 {
+                     "displayName": "Sessions",
+                     "iconName": "speaker_notes",
+                     "children": [{
+                             "displayName": "Create Enterprise UIs",
+                             "iconName": "star_rate",
+                             "route": "material-design"
+                         },
+                         {
+                             "displayName": "What\\'s up with the Web?",
+                             "iconName": "star_rate",
+                             "route": "what-up-web"
+                         },
+                         {
+                             "displayName": "My ally, the CLI",
+                             "iconName": "star_rate",
+                             "route": "my-ally-cli"
+                         },
+                         {
+                             "displayName": "Become an Angular Tailor",
+                             "iconName": "star_rate",
+                             "route": "become-angular-tailer"
+                         }
                      ]
                  }
              ]
          },
          {
-             "Title": "Parent 3",
-             "RouterLink": "",
-             "Style": "fa fa-users",
-             "NodeId": "liTalentManagement",
-             "Param": "",
-             "Categories": [
-
+             "displayName": "Vehicle Essentials",
+             "disabled": true,
+             "iconName": "report_problem",
+             "children": [{
+                     "displayName": "Speakers",
+                     "iconName": "group",
+                     "children": [{
+                             "displayName": "Michael Prentice",
+                             "iconName": "person",
+                             "route": "michael-prentice",
+                             "children": [{
+                                 "displayName": "Create Enterprise UIs",
+                                 "iconName": "star_rate",
+                                 "route": "material-design"
+                             }]
+                         },
+                         {
+                             "displayName": "Stephen Fluin",
+                             "iconName": "person",
+                             "route": "stephen-fluin",
+                             "children": [{
+                                 "displayName": "What\\'s up with the Web?",
+                                 "iconName": "star_rate",
+                                 "route": "what-up-web"
+                             }]
+                         },
+                         {
+                             "displayName": "Mike Brocchi",
+                             "iconName": "person",
+                             "route": "mike-brocchi",
+                             "children": [{
+                                     "displayName": "My ally, the CLI",
+                                     "iconName": "star_rate",
+                                     "route": "my-ally-cli"
+                                 },
+                                 {
+                                     "displayName": "Become an Angular Tailor",
+                                     "iconName": "star_rate",
+                                     "route": "become-angular-tailer"
+                                 }
+                             ]
+                         }
+                     ]
+                 },
+                 {
+                     "displayName": "Sessions",
+                     "iconName": "speaker_notes",
+                     "children": [{
+                             "displayName": "Create Enterprise UIs",
+                             "iconName": "star_rate",
+                             "route": "material-design"
+                         },
+                         {
+                             "displayName": "What\\'s up with the Web?",
+                             "iconName": "star_rate",
+                             "route": "what-up-web"
+                         },
+                         {
+                             "displayName": "My ally, the CLI",
+                             "iconName": "star_rate",
+                             "route": "my-ally-cli"
+                         },
+                         {
+                             "displayName": "Become an Angular Tailor",
+                             "iconName": "star_rate",
+                             "route": "become-angular-tailer"
+                         }
+                     ]
+                 },
+                 {
+                     "displayName": "Feedback",
+                     "iconName": "feedback",
+                     "route": "feedback"
+                 }
              ]
          },
          {
-             "Title": "Parent 4",
-             "RouterLink": "",
-             "Style": "fa fa-users",
-             "NodeId": "liTeamManagement",
-             "Param": "",
-             "Categories": [
-
-             ]
-         },
-         {
-             "Title": "Parent 5",
-             "RouterLink": "",
-             "Style": "fa fa-users",
-             "NodeId": "liPerformanceManagement",
-             "Param": "",
-             "Categories": [
-
-             ]
-         },
-         {
-             "Title": "Parent 6",
-             "RouterLink": "",
-             "Style": "fa fa-street-view",
-             "NodeId": "liAdmin",
-             "Param": "",
-             "Categories": [
-
-             ]
-         },
-         {
-             "Title": "Parent 7",
-             "RouterLink": "",
-             "Style": "fa fa-users",
-             "NodeId": "liReports",
-             "Param": "",
-             "Categories": [
-
-             ]
+             "displayName": "Feedback",
+             "iconName": "feedback",
+             "route": "feedback"
          }
      ]
  }

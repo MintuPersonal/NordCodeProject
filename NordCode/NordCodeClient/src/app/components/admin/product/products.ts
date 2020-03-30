@@ -17,7 +17,7 @@ export class Ecom_Product {
     ParentId: any;    
     Inserted_By: string;
     Inserted_Date: Date;
-    Img_Path: string;    
+    ImgPath: string;    
     Display: string
     FileUrl: any;
     FileExtension: any;

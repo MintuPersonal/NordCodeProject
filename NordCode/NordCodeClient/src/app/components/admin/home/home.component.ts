@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../addnew/task';
-import { AddnewService } from '../addnew/addnew.service';
+import { AddnewService } from '../../../services/addnew.service';
 
 @Component({
   selector: 'app-home',

@@ -234,3 +234,9 @@ table {
     color: #fff;
     font-size: 17px;
 }
+
+.features {
+    border-top-left-radius: 2em;
+    height: 195px;
+    width: 242px;
+}

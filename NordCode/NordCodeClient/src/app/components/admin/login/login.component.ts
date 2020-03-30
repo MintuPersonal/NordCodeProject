@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 
-import { LoginService } from '../login/login.service';
+import { LoginService } from './login.service';
 import { User } from './User';
 import { Router } from '@angular/router';
 

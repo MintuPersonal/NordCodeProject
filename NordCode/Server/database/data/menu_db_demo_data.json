@@ -1,0 +1,154 @@
+ [{
+
+         "Title": "Parent 1",
+         "RouterLink": "/dashboard",
+         "Style": "fa fa-home",
+         "NodeId": "liDashboard",
+         "Param": "",
+         "Categories": []
+     },
+     {
+         "Title": "Parent 2",
+         "RouterLink": "",
+         "Style": "fa fa-users",
+         "NodeId": "liAssociates",
+         "Param": "",
+         "Categories": [{
+                 "Title": "Child 1",
+                 "Style": "fa fa-users",
+                 "NodeId": "liProspectiveAssociate",
+                 "Param": "",
+                 "RouterLink": "/dashboard",
+                 "Categories": [{
+                         "Title": "Grand Child 1",
+                         "Style": "fa fa-users",
+                         "NodeId": "A",
+                         "Param": "",
+                         "RouterLink": "/dashboard",
+                         "Categories": [{
+                                 "Title": "Grand Grand Child 1",
+                                 "Style": "fa fa-user-plus",
+                                 "NodeId": "D",
+                                 "Param": "",
+                                 "RouterLink": "/cart",
+                                 "Categories": [
+
+                                 ]
+                             },
+                             {
+                                 "Title": "Grand Grand Child 2",
+                                 "Style": "fa fa-user-plus",
+                                 "NodeId": "E",
+                                 "Param": "",
+                                 "RouterLink": "/cart",
+                                 "Categories": [
+
+                                 ]
+                             },
+                             {
+                                 "Title": "Grand Grand Child 3",
+                                 "Style": "fa fa-pencil-square",
+                                 "NodeId": "F",
+                                 "Param": "",
+                                 "RouterLink": "/cart",
+                                 "Categories": [
+
+                                 ]
+                             }
+                         ]
+                     },
+                     {
+                         "Title": "Grand Child 2",
+                         "Style": "fa fa-pencil-square",
+                         "NodeId": "B",
+                         "Param": "",
+                         "RouterLink": "/cart",
+                         "Categories": [
+
+                         ]
+                     },
+                     {
+                         "Title": "Grand Child 3",
+                         "Style": "fa fa-users",
+                         "NodeId": "C",
+                         "Param": "",
+                         "RouterLink": "/ap/associates/list",
+                         "Categories": [
+
+                         ]
+                     }
+                 ]
+             },
+             {
+                 "Title": "Child 2",
+                 "Style": "fa fa-pencil-square",
+                 "NodeId": "liAssociateJoining",
+                 "Param": "",
+                 "RouterLink": "/cart",
+                 "Categories": [
+
+                 ]
+             },
+             {
+                 "Title": "Child 3",
+                 "Style": "fa fa-users",
+                 "NodeId": "liAssociatesChild",
+                 "Param": "",
+                 "RouterLink": "/ap/associates/list",
+                 "Categories": [
+
+                 ]
+             }
+         ]
+     },
+     {
+         "Title": "Parent 3",
+         "RouterLink": "",
+         "Style": "fa fa-users",
+         "NodeId": "liTalentManagement",
+         "Param": "",
+         "Categories": [
+
+         ]
+     },
+     {
+         "Title": "Parent 4",
+         "RouterLink": "",
+         "Style": "fa fa-users",
+         "NodeId": "liTeamManagement",
+         "Param": "",
+         "Categories": [
+
+         ]
+     },
+     {
+         "Title": "Parent 5",
+         "RouterLink": "",
+         "Style": "fa fa-users",
+         "NodeId": "liPerformanceManagement",
+         "Param": "",
+         "Categories": [
+
+         ]
+     },
+     {
+         "Title": "Parent 6",
+         "RouterLink": "",
+         "Style": "fa fa-street-view",
+         "NodeId": "liAdmin",
+         "Param": "",
+         "Categories": [
+
+         ]
+     },
+     {
+         "Title": "Parent 7",
+         "RouterLink": "",
+         "Style": "fa fa-users",
+         "NodeId": "liReports",
+         "Param": "",
+         "Categories": [
+
+         ]
+     }
+ ]
