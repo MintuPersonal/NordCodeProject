@@ -5,7 +5,7 @@
             <div class="col-lg-1">
                 <mat-icon mat-icon-button id="menu" (click)="navService.openNav()"> menu </mat-icon>
             </div>
-            <form class="col-lg-7">
+            <form class="col-lg-8">
                 <mat-form-field class="example-full-width search">
                     <mat-label> Search Item </mat-label>
                     <input matInput placeholder="Search for products (e.g. eggs, milk, alu)">
@@ -16,38 +16,39 @@
                 <mat-icon (click)="openCartNav()" [matBadge]="badgeCounter" matBadgeColor="warn">add_shopping_cart</mat-icon>
                 <span class="cdk-visually-hidden"> </span>
             </div>
-            <div class="enbn">
+            <div class="enbn  col-lg-1">
                 <span> En | Bn </span>
             </div>
             <div class="col-lg-1 signin">
                 <span *ngIf="condition" (click)="openDialog()"> Signin </span>
                 <span *ngIf="!condition" class="dropdown">
                     <!-- <mat-icon> person_pin </mat-icon>  -->
-                    <i class="fa fa-user-circle"> </i> &nbsp; {{userName}}
-                    <div class="dropdown-content text-left">
-                        <button class="btn btn-success m-1" (click)="alertService.success('Success!!', options)">Success</button>
-                        <a href="profile" class="fa fa-user-circle"> &nbsp; My Profile </a>
-                        <a href="orders" class="fa fa-reorder"> &nbsp; My Orders </a>
-                        <a href="account-history" class="fa fa-history"> &nbsp; Payment Histry</a>
-                        <a href="customer/changepassword" class="fa fa-key"> &nbsp; Change Password</a>
-                        <a href="" class="fa fa-sign-out"> &nbsp; Logout </a>
-                        </div>
-                </span>
-                <div id="menucart" mat-icon-button (click)="navService.openNavCart()">
-                    <!-- navService.openNavRight() -->
-                    <mat-icon> shopping_basket </mat-icon>
-                    <br>
-                    <label> {{totalItems}} items </label>
-                    <div class="pricecrt">
-                        <label> Tk. {{totalAmount}} </label>
-                    </div>
+                    <i class="fa fa-user-circle"> </i>  <span>{{userName}}</span>
+                <div class="dropdown-content text-left">
+                    <button class="btn btn-success m-1" (click)="alertService.success('Success!!', options)">Success</button>
+                    <a href="profile" class="fa fa-user-circle"> &nbsp; My Profile </a>
+                    <a href="orders" class="fa fa-reorder"> &nbsp; My Orders </a>
+                    <a href="account-history" class="fa fa-history"> &nbsp; Payment Histry</a>
+                    <a href="customer/changepassword" class="fa fa-key"> &nbsp; Change Password</a>
+                    <a href="" class="fa fa-sign-out"> &nbsp; Logout </a>
                 </div>
+                </span>
+
+            </div>
+        </div>
+        <div id="menucart" mat-icon-button (click)="navService.openNavCart()">
+            <!-- navService.openNavRight() -->
+            <mat-icon> shopping_basket </mat-icon>
+            <br>
+            <label> {{totalItems}} items </label>
+            <div class="pricecrt">
+                <label> Tk. {{totalAmount}} </label>
             </div>
         </div>
     </div>
 </div>
 
-<div id="cartnav" class="sidepanel" style="margin-top: 55px;">
+<div id="cartnav" class="sidepanel" style="margin-top: 55px; height: 900px; Z-INDEX: 9999;">
     <a href=" javascript:void(0)" class="closebtn" (click)="navService.openNavCart()">&times;</a>
     <mat-card class="card-picture ">
         <nav class="nav nav-info ">
