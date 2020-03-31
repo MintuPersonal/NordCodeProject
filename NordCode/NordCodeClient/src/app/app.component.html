@@ -8,7 +8,11 @@
     </mat-sidenav>
     <alert></alert>
     <router-outlet></router-outlet>
-    <div fxFlex></div>
+    <div fxFlex>
+        <button (click)="greetStudent()"> Greet Student </button>
+        <button (click)="appreciateStudent()"> Appreciate Student </button>
+    </div>
+
     <app-footer></app-footer>
 </mat-sidenav-container>
 
