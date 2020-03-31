@@ -45,7 +45,6 @@ import {
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/admin/login/login.component';
-import { SignupComponent } from './components/admin/signup/signup.component';
 import { AddnewComponent } from './components/admin/addnew/addnew.component';
 import { HomeComponent } from './components/admin/home/home.component';
 import { ProductComponent } from './components/admin/product/product.component';
@@ -70,6 +69,7 @@ import { TopNavComponent } from './top-nav/top-nav.component';
 import { MenuComponent } from './components/shared/menu/menu.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { NavbarService } from './components/shared/navbar/navbar.service';
+import { SignupComponent } from './components/admin/signup/signup.component';
 
 @NgModule({
   declarations: [

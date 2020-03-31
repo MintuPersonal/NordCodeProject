@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { User } from '../login/User';
-import { SignupService } from './signup.service';
+import { SignupService } from '../../../services/signup.service';
 import { FormControl, Validators } from '@angular/forms';
+import { User } from 'src/app/models/user';
 
 
 @Component({

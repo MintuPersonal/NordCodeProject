@@ -3,7 +3,6 @@ import { ProductListComponent } from './components/shoping-cart/product-list/pro
 import { CartComponent } from './components/shoping-cart/cart/cart.component';
 import { HomeComponent } from './components/admin/home/home.component';
 import { AddnewComponent } from './components/admin/addnew/addnew.component';
-import { SignupComponent } from './components/admin/signup/signup.component';
 import { LoginComponent } from './components/admin/login/login.component';
 import { ProductComponent } from './components/admin/product/product.component';
 import { ProductdetailsComponent } from './components/admin/productdetails/productdetails.component';
@@ -14,6 +13,7 @@ import { OrderComponent } from './components/admin/order/order.component';
 import { PhoneLoginComponent } from './components/admin/phone-login/phone-login.component';
 import { AlertHomeComponent } from './alert-home';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { SignupComponent } from './components/admin/signup/signup.component';
 
 const routes: Routes = [
   { path: '', component: ProductListComponent}, //, pathMatch: 'full' 

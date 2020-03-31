@@ -1,5 +1,5 @@
-@import './breakpoints';
-@import './theme';
+@import './theme/breakpoints';
+@import './theme/theme';
 .mat-sidenav {
     width: 250px;
 }

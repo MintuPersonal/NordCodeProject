@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http'
-import { User } from './User';
+import { User } from '../models/user';
 import { __param } from 'tslib';
 
 @Injectable({
