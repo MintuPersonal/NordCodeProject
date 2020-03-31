@@ -23,7 +23,7 @@
                 <span *ngIf="condition" (click)="openDialog()"> Signin </span>
                 <span *ngIf="!condition" class="dropdown">
                     <!-- <mat-icon> person_pin </mat-icon>  -->
-                    <i class="fa fa-user-circle"> </i>  <span>{{userName}}</span>
+                    <i class="fa fa-user-circle"> </i>  <span> {{userName}} </span>
                 <div class="dropdown-content text-left">
                     <button class="btn btn-success m-1" (click)="alertService.success('Success!!', options)">Success</button>
                     <a href="profile" class="fa fa-user-circle"> &nbsp; My Profile </a>
@@ -34,24 +34,22 @@
                 </div>
                 </span>
 
-                <div id="menucart" mat-icon-button (click)="navService.openNavCart()">
-                    <!-- navService.openNavRight() -->
+                <!-- <div id="menucart" mat-icon-button (click)="navService.openNavCart()">
                     <mat-icon> shopping_basket </mat-icon>
                     <br>
                     <label> {{badgeCounter}} items </label>
                     <div class="pricecrt">
                         <label> Tk. {{totalAmounts}} </label>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div id="menucart" mat-icon-button (click)="navService.openNavCart()">
-            <!-- navService.openNavRight() -->
             <mat-icon> shopping_basket </mat-icon>
             <br>
-            <label> {{totalItems}} items </label>
+            <label> {{badgeCounter}} items </label>
             <div class="pricecrt">
-                <label> Tk. {{totalAmount}} </label>
+                <label> Tk. {{totalAmounts}} </label>
             </div>
         </div>
     </div>

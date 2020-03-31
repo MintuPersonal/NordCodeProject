@@ -12,11 +12,12 @@
     /* margin-left: 50px; */
     width: 80px;
     height: 85px;
-    background: radial-gradient(white, transparent);
+    background: radial-gradient(black, transparent);
     border: orange solid 1px;
     float: right;
     position: relative;
     top: 300px;
+    color: white;
 }
 
 .pricecrt {
