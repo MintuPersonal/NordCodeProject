@@ -24,14 +24,14 @@ export class ProductItemComponent implements OnInit {
   add = 'A+';
 
   @Input() featureItem: any;
-  constructor( private productService : ProductListService) { }
+  constructor(private productService: ProductListService) { }
 
   ngOnInit() {
     //localStorage.setItem('item', null);
     //this.LoadItemTotal();
   }
   public LoadItemTotal() {
-    
+
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
     if (hasitemdata != null && Object.keys(hasitemdata).length !== 0) {
       var _totalItemsPrice = 0;
@@ -53,6 +53,7 @@ export class ProductItemComponent implements OnInit {
   public AddToBag(itemObj) {
     debugger;
 
+   // this.headerComponent.UpdateItem();
     this.productService.AddtoItems(itemObj);
 
     //this.badgeCounter = 0;
@@ -74,6 +75,9 @@ export class ProductItemComponent implements OnInit {
       this.LoadItemTotal();
     }
   }
+  UpdateItem() {
+    
+  }
   public AddExitsItem(existed) {
     this.itemState = [];
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
@@ -86,7 +90,7 @@ export class ProductItemComponent implements OnInit {
         var totalPrice = storageItem[4] + addItem[6];
 
         this.newline = new Ecom_Commercial(this.add, storageItem[1], storageItem[1], totalQty, totalPrice, this.close);
-        this.itemState.push(this.newline);        
+        this.itemState.push(this.newline);
       } else {
         this.itemState.push(iteming);
         //localStorage.setItem('item', JSON.stringify(this.itemState)); 

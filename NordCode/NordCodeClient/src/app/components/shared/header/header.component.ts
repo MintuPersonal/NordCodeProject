@@ -6,6 +6,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogComponent } from '../../common/dialog/dialog.component';
 import { AlertService } from 'src/app/_alert';
 import { NavbarService } from '../navbar/navbar.service';
+import { InteractionService } from 'src/app/services/interaction.service';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { NavbarService } from '../navbar/navbar.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
 
   displayedColumns: string[] = ['Add', 'Name', 'Qty', 'UnitPrice', 'Close'];
   columnsToDisplay: string[] = this.displayedColumns.slice();
@@ -35,15 +37,16 @@ export class HeaderComponent implements OnInit {
     keepAfterRouteChange: false
   };
 
-  totalItems = 10;
-  totalAmount = 100;
+  totalItems: number = 0;
+  totalAmounts: number = 0;
+  message: string;
 
-  constructor(private router: Router, private dialog: MatDialog,
-    protected alertService: AlertService, public navService: NavbarService) {
+  constructor(private router: Router, private dialog: MatDialog, protected alertService: AlertService, public navService: NavbarService,
+    private _interactionService: InteractionService) {
 
-    var data = navService.getTotalItemAmount();
-    this.totalItems = data.totalItems;
-    this.totalAmount = data.totalAmounts;
+    // var data = navService.getTotalItemAmount();
+    // this.totalItems = data.totalItems;
+    // this.totalAmounts = data.totalAmounts;
 
   }
 
@@ -67,6 +70,23 @@ export class HeaderComponent implements OnInit {
     if (hasitemdata != null && Object.keys(hasitemdata).length !== 0) {
       this.badgeCounter = Object.keys(hasitemdata).length
     }
+
+    //////// Data Passing ////////
+    this._interactionService.teacherMessage$.subscribe(message => {
+      this.UpdateItemsAndPrice();
+
+      // if (message = 'Good Morning') {
+      //   this.message = message;
+      //   //alert(message + ' Teacher');
+      // } else {
+      //   //alert('Thank you Teacher');
+      // }
+
+    });
+  }
+  UpdateItemsAndPrice() {    
+    this.badgeCounter = this.badgeCounter + 1;
+    this.totalAmounts = this.totalAmounts + 100;
   }
   public PlaceOrder(totalPrice) {
     if (this.CheckUserSession()) {
@@ -152,7 +172,7 @@ export class HeaderComponent implements OnInit {
 
   // ================
 
-  loginStatus() {
+  public loginStatus() {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         this.condition = true;
@@ -165,7 +185,7 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
-  openDialog(): void {
+  public openDialog(): void {
     if (!this.condition) {
       const dialogRef = this.dialog.open(DialogComponent, { width: '250px', data: { name: this.name, animal: this.animal } });
       dialogRef.afterClosed().subscribe(result => {
@@ -180,7 +200,5 @@ export class HeaderComponent implements OnInit {
       });
     }
   }
-
-
 }
 

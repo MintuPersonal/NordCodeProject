@@ -34,6 +34,15 @@
                 </div>
                 </span>
 
+                <div id="menucart" mat-icon-button (click)="navService.openNavCart()">
+                    <!-- navService.openNavRight() -->
+                    <mat-icon> shopping_basket </mat-icon>
+                    <br>
+                    <label> {{badgeCounter}} items </label>
+                    <div class="pricecrt">
+                        <label> Tk. {{totalAmounts}} </label>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="menucart" mat-icon-button (click)="navService.openNavCart()">

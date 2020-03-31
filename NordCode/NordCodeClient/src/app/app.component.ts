@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { NavItem } from './components/shared/navbar/nav-item';
 import { NavbarService } from './components/shared/navbar/navbar.service';
+import { InteractionService } from './services/interaction.service';
 
 
 @Component({
@@ -363,7 +364,7 @@ export class AppComponent implements AfterViewInit {
   //   }
   // ];
   menuItems: object[];
-  constructor(private navService: NavbarService) {
+  constructor(private navService: NavbarService, private  _interactionService : InteractionService) {
     navService.getmenus('admin').subscribe((menus: any) => {
       this.navItems = menus.data as NavItem[];
       //debugger;
@@ -380,6 +381,18 @@ export class AppComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.navService.appDrawer = this.appDrawer;
     this.navService.appDrawerRight = this.appDrawerRight;
+  }
+
+  ///// Here Pass Item Total  ////
+
+  number : number = 2365;
+
+  greetStudent(){
+    this._interactionService.sendMessage('Good Morning');    
+  }
+
+  appreciateStudent(){
+    this._interactionService.sendMessage('Well Come');
   }
 
 }
