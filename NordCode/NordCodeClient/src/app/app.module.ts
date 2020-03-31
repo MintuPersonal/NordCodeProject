@@ -34,7 +34,7 @@ import { AlertHomeComponent } from './alert-home/alert-home.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { MenuComponent } from './components/shared/menu/menu.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
-import { NavbarService } from './components/shared/navbar/navbar.service';
+import { NavbarService } from './services/navbar.service';
 import { SignupComponent } from './components/admin/signup/signup.component';
 
 import {

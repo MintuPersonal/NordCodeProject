@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Ecom_Product } from './products';
-import { ProductService } from './product.service';
+import { Ecom_Product } from '../../../models/products';
+import { ProductService } from '../../../services/product.service';
 import { PageEvent } from '@angular/material';
 import { HttpEventType, HttpClient } from '@angular/common/http';
 

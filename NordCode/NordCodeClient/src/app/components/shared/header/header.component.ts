@@ -5,7 +5,7 @@ import * as firebase from 'firebase';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogComponent } from '../../common/dialog/dialog.component';
 import { AlertService } from 'src/app/_alert';
-import { NavbarService } from '../navbar/navbar.service';
+import { NavbarService } from '../../../services/navbar.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 
 

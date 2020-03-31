@@ -1,12 +1,12 @@
 //import { Component, OnInit, ElementRef } from '@angular/core';
 import { ProjectRoleService } from 'src/app/services/project-role.service';
 import { AlertService } from 'src/app/_alert';
-import { Ecom_Menu } from './menu';
+import { Ecom_Menu } from '../../../models/menu';
 
 import {Component, ViewChild, ElementRef, ViewEncapsulation, AfterViewInit} from '@angular/core';
 import {VERSION} from '@angular/material';
-import {NavItem} from './nav-item';
-import {NavbarService} from './navbar.service';
+import {NavItem} from '../../../models/nav-item';
+import {NavbarService} from '../../../services/navbar.service';
 
 @Component({
   selector: 'app-navbar',

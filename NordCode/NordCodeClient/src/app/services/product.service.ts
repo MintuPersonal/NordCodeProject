@@ -1,9 +1,30 @@
 import { Injectable } from '@angular/core';
+import { Ecom_Product } from '../models/products';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProductService {
 
-  constructor() { }
-}
+  constructor(private _http: HttpClient) { }
+
+  _baseUrl = "http://localhost:3000/";
+  _url = '';
+
+  getProduct(_product: Ecom_Product) {
+    this._url = this._baseUrl + 'api/getproductall';
+    return this._http.get(this._url);
+  };
+
+  setProduct(_product: Ecom_Product) {
+    this._url = this._baseUrl + 'api/createProduct';
+    return this._http.post<any>(this._url, _product);
+  };
+
+  deleteProduct(pid: any) {
+    this._url = this._baseUrl + 'api/deleteProduct?pid=' + pid;
+    return this._http.get(this._url)
+  };
+};

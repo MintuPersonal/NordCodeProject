@@ -5,8 +5,8 @@ import {
   ViewEncapsulation,
   AfterViewInit
 } from '@angular/core';
-import { NavItem } from './components/shared/navbar/nav-item';
-import { NavbarService } from './components/shared/navbar/navbar.service';
+import { NavItem } from './models/nav-item';
+import { NavbarService } from './services/navbar.service';
 import { InteractionService } from './services/interaction.service';
 
 

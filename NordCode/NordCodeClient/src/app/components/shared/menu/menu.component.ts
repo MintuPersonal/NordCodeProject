@@ -1,8 +1,8 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { NavItem } from '../navbar/nav-item';
-import { NavbarService } from '../navbar/navbar.service';
+import { NavItem } from '../../../models/nav-item';
+import { NavbarService } from '../../../services/navbar.service';
 
 @Component({
   selector: 'app-menu',

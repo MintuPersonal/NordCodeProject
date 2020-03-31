@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NavbarService } from '../shared/navbar/navbar.service';
+import { NavbarService } from '../../services/navbar.service';
 
 @Injectable({
   providedIn: 'root'

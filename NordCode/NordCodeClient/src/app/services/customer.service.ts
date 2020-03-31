@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Ecom_Orders } from '../components/admin/order/order';
+import { Ecom_Orders } from '../models/order';
 import { Router } from '@angular/router';
 
 @Injectable({
