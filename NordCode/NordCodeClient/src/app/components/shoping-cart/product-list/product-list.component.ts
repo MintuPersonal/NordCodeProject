@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Ecom_Commercial } from 'src/app/commercial/Commercial';
-import { CommercialService } from 'src/app/commercial/commercial.service';
+import { Ecom_Commercial } from 'src/app/models/Commercial';
+import { CommercialService } from 'src/app/services/commercial.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

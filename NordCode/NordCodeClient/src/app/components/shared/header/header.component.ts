@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Ecom_Commercial } from 'src/app/commercial/Commercial';
+import { Ecom_Commercial } from 'src/app/models/Commercial';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogComponent } from '../../common/dialog/dialog.component';
-import { AlertService } from 'src/app/_alert';
+import { AlertService } from 'src/app/test/_alert';
 import { NavbarService } from '../../../services/navbar.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 

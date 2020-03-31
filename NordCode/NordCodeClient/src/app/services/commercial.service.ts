@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Ecom_Commercial } from './Commercial';
+import { Ecom_Commercial } from '../models/Commercial';
 
 @Injectable({
   providedIn: 'root'

@@ -7,14 +7,14 @@ import { MaterialTimePickerModule } from '@candidosales/material-time-picker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RoutingModule } from './app.routing'
-import { AlertModule } from './_alert';
+import { AlertModule } from './test/_alert';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/admin/login/login.component';
 import { AddnewComponent } from './components/admin/addnew/addnew.component';
 import { HomeComponent } from './components/admin/home/home.component';
 import { ProductComponent } from './components/admin/product/product.component';
-import { CommercialComponent } from './commercial/commercial.component';
+import { CommercialComponent } from './test/commercial/commercial.component';
 import { BrandComponent } from './components/shoping-cart/brand/brand.component';
 import { CategoryComponent } from './components/shoping-cart/category/category.component';
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -30,8 +30,8 @@ import { PaymentComponent } from './components/admin/payment/payment.component';
 import { ImageComponent } from './components/common/image/image.component';
 import { PhoneLoginComponent } from './components/admin/phone-login/phone-login.component';
 import { DialogComponent } from './components/common/dialog/dialog.component';
-import { AlertHomeComponent } from './alert-home/alert-home.component';
-import { TopNavComponent } from './top-nav/top-nav.component';
+import { AlertHomeComponent } from './test/alert-home/alert-home.component';
+import { TopNavComponent } from './test/top-nav/top-nav.component';
 import { MenuComponent } from './components/shared/menu/menu.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { NavbarService } from './services/navbar.service';

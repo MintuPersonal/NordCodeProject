@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Ecom_Commercial } from 'src/app/commercial/Commercial';
+import { Ecom_Commercial } from 'src/app/models/Commercial';
 import { ProductListService } from '../../product-list.service';
 
 @Component({

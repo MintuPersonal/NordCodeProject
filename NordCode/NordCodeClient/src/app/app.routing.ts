@@ -6,12 +6,12 @@ import { AddnewComponent } from './components/admin/addnew/addnew.component';
 import { LoginComponent } from './components/admin/login/login.component';
 import { ProductComponent } from './components/admin/product/product.component';
 import { ProductdetailsComponent } from './components/admin/productdetails/productdetails.component';
-import { CommercialComponent } from './commercial/commercial.component';
+import { CommercialComponent } from './test/commercial/commercial.component';
 import { CheckoutComponent } from './components/shoping-cart/checkout/checkout.component';
 import { PaymentComponent } from './components/admin/payment/payment.component';
 import { OrderComponent } from './components/admin/order/order.component';
 import { PhoneLoginComponent } from './components/admin/phone-login/phone-login.component';
-import { AlertHomeComponent } from './alert-home';
+import { AlertHomeComponent } from './test/alert-home';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SignupComponent } from './components/admin/signup/signup.component';
 
