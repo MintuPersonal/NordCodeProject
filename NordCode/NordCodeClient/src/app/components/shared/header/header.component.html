@@ -1,11 +1,11 @@
 <div class="row">
     <div class="header">
-
         <div class="row" fxLayoutAlign="space-evenly">
-            <div class="col-lg-1">
+            <div class="col-lg-2">
                 <mat-icon mat-icon-button id="menu" (click)="navService.openNav()"> menu </mat-icon>
+                <img class="img" src="../assets/img/product/header/Logo.jpg">
             </div>
-            <form class="col-lg-8">
+            <form class="col-lg-7">
                 <mat-form-field class="example-full-width search">
                     <mat-label> Search Item </mat-label>
                     <input matInput placeholder="Search for products (e.g. eggs, milk, alu)">
@@ -13,11 +13,10 @@
                 </mat-form-field>
             </form>
             <div class="col-lg-1 signin-cart">
-                <mat-icon (click)="openCartNav()" [matBadge]="totalItems" matBadgeColor="warn">add_shopping_cart</mat-icon>
-                <span class="cdk-visually-hidden"> </span>
+                <mat-icon (click)="navService.openNavCart()" [matBadge]="totalItems" matBadgeColor="warn">add_shopping_cart</mat-icon>
+                <span class="cdk-visually-hidden" (click)="navService.openNavCart()"> </span>
             </div>
             <div class="enbn  col-lg-1">
-
                 <span> En | Bn </span>
             </div>
             <div class="col-lg-1 signin">
@@ -31,7 +30,7 @@
                     <a href="orders" class="fa fa-reorder"> &nbsp; My Orders </a>
                     <a href="account-history" class="fa fa-history"> &nbsp; Payment Histry</a>
                     <a href="customer/changepassword" class="fa fa-key"> &nbsp; Change Password</a>
-                    <a href="" class="fa fa-sign-out"> &nbsp; Logout </a>
+                    <a href="/" class="fa fa-sign-out" (click)="logout()"> &nbsp; Logout </a>
                 </div>
                 </span>
             </div>
@@ -89,12 +88,12 @@
             </div>
 
 
-            <h5 class="text-center h5 " style="position: relative;top: 52px; ">
-                <div class=" ">
-                    <mat-button-toggle-group (click)="PlaceOrder(totalAmounts) " color="accent " [totalPrice]="totalAmounts " name="fontStyle " aria-label="Font Style ">
-                        <mat-button-toggle value="italic " class="order ">
+            <h5 class="text-center h-5" style="position: relative;top: 52px; ">
+                <div>
+                    <mat-button-toggle-group (click)="PlaceOrder(totalAmounts)" color="accent" [totalPrice]="totalAmounts " name="fontStyle " aria-label="Font Style ">
+                        <mat-button-toggle value="italic" class="order">
                             Place Order </mat-button-toggle>
-                        <mat-button-toggle value="underline " class="price ">Tk. {{totalAmounts}}
+                        <mat-button-toggle value="underline" class="price">Tk. {{totalAmounts}}
                         </mat-button-toggle>
                     </mat-button-toggle-group>
                 </div>

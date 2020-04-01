@@ -8,10 +8,10 @@ import { User } from '../models/user';
 })
 export class LoginService {
   constructor(private _http: HttpClient) { }
-  SetLoginUserInfo(phoneNumber: any) {
-    localStorage.setItem('user', null);
-    localStorage.setItem('user', phoneNumber);
-  }
+  // SetLoginUserInfo(phoneNumber: any) {
+  //   localStorage.setItem('user', null);
+  //   localStorage.setItem('user', phoneNumber);
+  // }
   getUser(user: User) {
     return this._http.get(environment.baseurl + "getuser?Username=" + user.Username + "&Password=" + user.Password); //, {params});
   }

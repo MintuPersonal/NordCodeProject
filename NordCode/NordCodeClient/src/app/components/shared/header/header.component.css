@@ -412,6 +412,12 @@
             width: auto;
             height: auto;
         }
+        
+        .img {
+            width: 40px;
+            height: 40px;
+            margin: 5px 0 0 30px;
+        }
         /* .mat-badge {
             position: relative;
             padding: 10px;
