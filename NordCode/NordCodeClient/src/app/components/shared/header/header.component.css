@@ -391,3 +391,7 @@ mat-icon#menu {
     position: relative;
     top: 10px;
 }
+
+mat-icon.mat-icon.notranslate.routeIcon.material-icons.mat-icon-no-color {
+    font-size: 18px;
+}

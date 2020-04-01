@@ -129,3 +129,7 @@ ul.cards>li:hover {
 section.users {
     padding: 5px;
 }
+
+mat-icon.mat-icon.notranslate.routeIcon.material-icons.mat-icon-no-color {
+    font-size: 18px;
+}

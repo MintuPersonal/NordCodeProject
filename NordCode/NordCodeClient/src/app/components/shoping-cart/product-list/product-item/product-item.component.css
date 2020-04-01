@@ -103,7 +103,7 @@ mat-card-subtitle.round.mat-card-subtitle {
     right: -174px;
     margin: 0;
     width: 100px;
-    bottom: 162px;
+    bottom: 128px;
 }
 
 .h5 {
@@ -126,13 +126,13 @@ th.mat-header-cell:last-of-type {
     /* display: none; */
     font-size: 20px;
     position: absolute;
-    top: 0;
+    top: 34px;
     left: 0;
     padding-top: 0;
     color: #fff;
     background-color: rgba(40, 40, 40, .75);
     text-align: center;
-    height: 88%;
+    height: 76%;
     width: 100%;
     border: 1px solid #CCC;
     -moz-box-sizing: border-box;
@@ -239,4 +239,6 @@ table {
     border-top-left-radius: 2em;
     height: 195px;
     width: 242px;
+    position: relative;
+    top: 35px;
 }
