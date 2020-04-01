@@ -8,8 +8,8 @@ import { AlertService } from 'src/app/test/_alert';
 import { NavbarService } from '../../../services/navbar.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { ProductService } from 'src/app/services/product.service';
-import { LoginService } from 'src/app/services/login.service';
 import { Ecom_Commercial } from 'src/app/models/Ecom_Commercial';
+import { LoginService } from 'src/app/services/login.service';
 
 
 @Component({
@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
   totalItems: number = 0;
   totalAmounts: number;
   cartItems = [];
-  condition: boolean = false;
+  condition: boolean;
   animal: any;
   name: any;
   newline: Ecom_Commercial;
@@ -34,8 +34,7 @@ export class HeaderComponent implements OnInit {
   commercialModels: any;
   constructor(private router: Router, private dialog: MatDialog,
     protected alertService: AlertService, public navService: NavbarService,
-    private _interactionService: InteractionService, private productService: ProductService,
-    private loginService: LoginService) {
+    private _interactionService: InteractionService, private productService: ProductService) {
 
   }
 
@@ -52,7 +51,7 @@ export class HeaderComponent implements OnInit {
     };
     firebase.initializeApp(firebaseConfig);
     this.loginStatus();
-
+    this.condition = this.CheckUserSession();
     ////////////// Here New Concept  ///////////////
     this._interactionService.getForAddtoCart().subscribe((product: Ecom_Product) => {
       if (!this.productService.fromproductlist) {
@@ -105,52 +104,55 @@ export class HeaderComponent implements OnInit {
     this._getTotalAmounts();
   }
   public PlaceOrder(totalPrice) {
-    if (this.CheckUserSession()) {
+    var data = this.CheckUserSession();
+    if (data) {
       this.router.navigate(['/checkout'])
     } else {
-      this.router.navigate(['/phonelogin'])
+      this.router.navigate(['/logindialog'])
     }
   }
 
   public CheckUserSession() {
-    var user = JSON.stringify(localStorage.getItem('user'));
-    if (user == "") {
-      return true;
-    } else {
+    var user = JSON.parse(localStorage.getItem('currentUser'));
+    if (user == "" || user == "undefined") {
       return false;
+    } else {
+      return true;
     }
   }
-
-
-  public loginStatus() {
+  public loginStatus(): boolean {
     firebase.auth().onAuthStateChanged(function (user) {
-      //this.loginService.SetLoginUserInfo(user.phoneNumber);
       if (user) {
+        this.phoneNumber = user.phoneNumber;
+        console.log("USER LOGGED IN" + user.phoneNumber);
+        localStorage.setItem('currentUser', JSON.stringify(user.phoneNumber));
         this.condition = true;
-        console.log("USER LOGGED IN" + user.phoneNumber);        
       } else {
         // No user is signed in.
         this.condition = false;
         console.log("USER NOT LOGGED IN");
       }
     });
-    
+    return this.condition;
   }
   public openDialog(): void {
     if (!this.condition) {
       const dialogRef = this.dialog.open(DialogComponent, { width: '450px', data: { name: this.name, animal: this.animal } });
       dialogRef.afterClosed().subscribe(result => {
-        //console.log('The dialog was closed');
-        this.animal = result;
-        //this.condition = true;
       });
     } else {
       firebase.auth().signOut().then((data) => {
-        //alert(this.condition + data)
         this.condition = false;
       });
     }
   }
+  public logout() {
+    localStorage.setItem('currentUser', JSON.stringify('')); 
+    this.CheckUserSession();    
+    this.router.navigate(['/']);
+    
+  }
+
   ////////////// Here New Concept  ///////////////
 
 
@@ -211,15 +213,6 @@ export class HeaderComponent implements OnInit {
     document.getElementById("mySidepanel").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
   }
-
-  public logout() {
-    //alert('hi')
-    localStorage.setItem('user', null);
-    localStorage.setItem('item', null);
-    this.router.navigate(['/']);
-  }
-
-  // ================
 
 }
 

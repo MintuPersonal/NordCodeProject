@@ -52,29 +52,29 @@ export class ProductItemComponent implements OnInit {
       this.commercialModels = [];
     }
   }
-  public AddToBag(itemObj) {
+  // public AddToBag(itemObj) {
 
-    this.productService.AddtoItems(itemObj);
+  //   this.productService.AddtoItems(itemObj);
 
-    //this.badgeCounter = 0;
-    if (Object.keys(itemObj).length !== 0) {
-      this.HasThisItem(itemObj);
-      this.itemState = [];
-      if (this.isItemLocalStorage) {
-        this.AddExitsItem(itemObj);
-      } else {
-        this.newline = new Ecom_Commercial(this.add, itemObj.PID, itemObj.PName, 1, itemObj.UnitPrice, this.close);
-        this.AddNewItem(this.newline);
-      }
-      this.LoadItemTotal();
+  //   //this.badgeCounter = 0;
+  //   if (Object.keys(itemObj).length !== 0) {
+  //     this.HasThisItem(itemObj);
+  //     this.itemState = [];
+  //     if (this.isItemLocalStorage) {
+  //       this.AddExitsItem(itemObj);
+  //     } else {
+  //       this.newline = new Ecom_Commercial(this.add, itemObj.PID, itemObj.PName, 1, itemObj.UnitPrice, this.close);
+  //       this.AddNewItem(this.newline);
+  //     }
+  //     this.LoadItemTotal();
 
-    } else {
-      this.newline = new Ecom_Commercial(this.add, itemObj.PId, itemObj.PName, 1, itemObj.UnitPrice, this.close);
-      this.itemState.push(this.newline);
-      localStorage.setItem('item', JSON.stringify(this.itemState));
-      this.LoadItemTotal();
-    }
-  }
+  //   } else {
+  //     this.newline = new Ecom_Commercial(this.add, itemObj.PId, itemObj.PName, 1, itemObj.UnitPrice, this.close);
+  //     this.itemState.push(this.newline);
+  //     localStorage.setItem('item', JSON.stringify(this.itemState));
+  //     this.LoadItemTotal();
+  //   }
+  // }
   public AddExitsItem(existed) {
     this.itemState = [];
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
