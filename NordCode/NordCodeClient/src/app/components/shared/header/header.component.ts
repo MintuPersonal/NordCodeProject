@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
     autoClose: true,
     keepAfterRouteChange: false
   };
-  totalItems: number;
+  totalItems: number = 0;
   totalAmounts: number;
   cartItems = [];
   condition: boolean = false;

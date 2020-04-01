@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Ecom_Product } from '../models/products';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -39,10 +40,6 @@ export class ProductService {
   }
   ////////////// Here New Concept  ///////////////
 
-
-
-
-
   getCartItems(product) {
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
     if (hasitemdata != null && Object.keys(hasitemdata).length !== 0) {
@@ -50,24 +47,13 @@ export class ProductService {
       return hasitemdata;      
     }
   }
-
-  
-
-  _baseUrl = "http://localhost:3000/";
-  _url = '';
-
   getProduct(_product: Ecom_Product) {
-    this._url = this._baseUrl + 'api/getproductall';
-    return this._http.get(this._url);
+    return this._http.get(environment.baseurl+'getproductall');
   };
-
   setProduct(_product: Ecom_Product) {
-    this._url = this._baseUrl + 'api/createProduct';
-    return this._http.post<any>(this._url, _product);
+    return this._http.post<any>(environment.baseurl+'createProduct', _product);
   };
-
   deleteProduct(pid: any) {
-    this._url = this._baseUrl + 'api/deleteProduct?pid=' + pid;
-    return this._http.get(this._url)
+    return this._http.get(environment.baseurl+'deleteProduct?pid=' + pid)
   };
 };

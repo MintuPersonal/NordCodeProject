@@ -1,25 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-//import { Ecom_Commercial } from '../models/Product';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class CommercialService {
-  
-  _baseUrl = "http://localhost:3000/api/";
-  _url = '';
-
   constructor(private _http: HttpClient) { }
-
   getCommercial() {
-    this._url = this._baseUrl+'gethomes';    
-    return this._http.get(this._url);
+    return this._http.get(environment.baseurl + 'gethomes');
   }
-
-  getAddtoCart() {
-    this._url = this._baseUrl+'getaddtocart';    
-    return this._http.get(this._url);
+  getAddtoCart() {    
+    return this._http.get(environment.baseurl + 'getaddtocart');
   }
 }

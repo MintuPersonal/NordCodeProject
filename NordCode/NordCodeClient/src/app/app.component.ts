@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { NavItem } from './models/nav-item';
 import { NavbarService } from './services/navbar.service';
-import { InteractionService } from './services/interaction.service';
+
 
 
 @Component({
@@ -364,10 +364,10 @@ export class AppComponent implements AfterViewInit {
   //   }
   // ];
   menuItems: object[];
-  constructor(private navService: NavbarService, private  _interactionService : InteractionService) {
+  constructor(private navService: NavbarService,) {
     navService.getmenus('admin').subscribe((menus: any) => {
       this.navItems = menus.data as NavItem[];
-      //debugger;
+      //console.log(environment.production);
     })
     this.logMessage(this.navItems)
   }
@@ -382,17 +382,4 @@ export class AppComponent implements AfterViewInit {
     this.navService.appDrawer = this.appDrawer;
     this.navService.appDrawerRight = this.appDrawerRight;
   }
-
-  ///// Here Pass Item Total  ////
-
-  number : number = 2365;
-
-  // greetStudent(){
-  //   this._interactionService.sendMessage('Good Morning');    
-  // }
-
-  // appreciateStudent(){
-  //   this._interactionService.sendMessage('Well Come');
-  // }
-
 }

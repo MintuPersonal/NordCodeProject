@@ -298,7 +298,7 @@
         .signin-cart {
             height: 50px;
             background: orangered;
-            padding: 10px;
+            padding: 15px;
             color: white;
         }
         
@@ -412,11 +412,10 @@
             width: auto;
             height: auto;
         }
-        
-        .mat-badge {
+        /* .mat-badge {
             position: relative;
             padding: 10px;
-        }
+        } */
         /* .header {
             text-align: center;
             background-color: orange;

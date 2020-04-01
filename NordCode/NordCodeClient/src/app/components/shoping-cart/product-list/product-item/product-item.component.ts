@@ -224,7 +224,6 @@ export class ProductItemComponent implements OnInit {
   }
 
   ////////////// Here New Concept  ///////////////
-
   onAddToBag() {
     this._interactionService.sendForAddtoCart(this.featureItem);
   }
@@ -232,6 +231,5 @@ export class ProductItemComponent implements OnInit {
   onRemoveFromBag() {
     this._interactionService.sendForRemoveFromCart(this.featureItem);
   }
-
   ////////////// Here New Concept  ///////////////
 }
