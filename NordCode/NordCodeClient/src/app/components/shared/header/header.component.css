@@ -7,6 +7,11 @@
             z-index: 9999;
         }
         
+        mat-card-content.mat-card-content {
+            text-align: center;
+            font-size: 12px;
+        }
+        
         #menucart {
             width: 80px;
             height: 85px;

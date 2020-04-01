@@ -146,6 +146,14 @@ th.mat-header-cell:last-of-type {
     opacity: 0;
 }
 
+.overlay.text {
+    border-top-left-radius: 3em!important;
+}
+
+mat-card.mat-card.card-picture {
+    box-shadow: none!important;
+}
+
 .overlay {
     position: absolute;
     overflow: hidden;
