@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommercialService } from '../../services/commercial.service';
-import { Ecom_Commercial } from '../../models/Commercial';
+//import { Ecom_Commercial } from '../../models/Product';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Ecom_Commercial } from 'src/app/models/Ecom_Commercial';
 
 @Component({
   selector: 'app-commercial',
@@ -76,7 +77,7 @@ export class CommercialComponent implements OnInit {
         this.itemState.push(this.newline);
         localStorage.setItem('item', JSON.stringify(this.itemState));
       } else {
-        this.newline = new Ecom_Commercial(itemObj.PId, itemObj.PName, 1, itemObj.UnitPrice, 'X', 'A+');
+        //this.newline = new Ecom_Commercial(itemObj.PId, itemObj.PName, 1, itemObj.UnitPrice, 'X', 'A+');
         this.itemState.push(this.newline);
         localStorage.setItem('item', JSON.stringify(this.itemState));
       }

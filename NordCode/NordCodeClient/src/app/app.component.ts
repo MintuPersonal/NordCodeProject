@@ -387,12 +387,12 @@ export class AppComponent implements AfterViewInit {
 
   number : number = 2365;
 
-  greetStudent(){
-    this._interactionService.sendMessage('Good Morning');    
-  }
+  // greetStudent(){
+  //   this._interactionService.sendMessage('Good Morning');    
+  // }
 
-  appreciateStudent(){
-    this._interactionService.sendMessage('Well Come');
-  }
+  // appreciateStudent(){
+  //   this._interactionService.sendMessage('Well Come');
+  // }
 
 }

@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Ecom_Commercial } from 'src/app/models/Commercial';
+import { Ecom_Product } from 'src/app/models/Product';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../../common/dialog/dialog.component';
 import { AlertService } from 'src/app/test/_alert';
 import { NavbarService } from '../../../services/navbar.service';
 import { InteractionService } from 'src/app/services/interaction.service';
+import { ProductService } from 'src/app/services/product.service';
+import { LoginService } from 'src/app/services/login.service';
+import { Ecom_Commercial } from 'src/app/models/Ecom_Commercial';
 
 
 @Component({
@@ -15,45 +18,29 @@ import { InteractionService } from 'src/app/services/interaction.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-
-  displayedColumns: string[] = ['Add', 'Name', 'Qty', 'UnitPrice', 'Close'];
-  columnsToDisplay: string[] = this.displayedColumns.slice();
-  commercialModels = [];
-  totalItemsPrice: any;
-  itemState: any[];
-  newline: Ecom_Commercial;
-  isOpen: any = false;
-  badgeCounter: number;
-
-
-  animal: string;
-  name: string;
-  condition: boolean = false;
   userName: string = 'Mahafuz Huq'
-
   options = {
     autoClose: true,
     keepAfterRouteChange: false
   };
-
-  totalItems: number = 0;
-  totalAmounts: number = 0;
-  message: string;
-
-  constructor(private router: Router, private dialog: MatDialog, protected alertService: AlertService, public navService: NavbarService,
-    private _interactionService: InteractionService) {
-
-    // var data = navService.getTotalItemAmount();
-    // this.totalItems = data.totalItems;
-    // this.totalAmounts = data.totalAmounts;
+  totalItems: number;
+  totalAmounts: number;
+  cartItems = [];
+  condition: boolean = false;
+  animal: any;
+  name: any;
+  newline: Ecom_Commercial;
+  itemState: any[];
+  commercialModels: any;
+  constructor(private router: Router, private dialog: MatDialog,
+    protected alertService: AlertService, public navService: NavbarService,
+    private _interactionService: InteractionService, private productService: ProductService,
+    private loginService: LoginService) {
 
   }
 
-  totalItemsCount = 0;
   ngOnInit() {
 
-    this.badgeCounter = 0;
     var firebaseConfig = {
       apiKey: "AIzaSyAABTcunn62aKYHkJGkfnr5JhXA-D9Ztak",
       authDomain: "otp-ecommerce.firebaseapp.com",
@@ -66,44 +53,115 @@ export class HeaderComponent implements OnInit {
     firebase.initializeApp(firebaseConfig);
     this.loginStatus();
 
-    var hasitemdata = JSON.parse(localStorage.getItem('item'));
-    if (hasitemdata != null && Object.keys(hasitemdata).length !== 0) {
-      this.badgeCounter = Object.keys(hasitemdata).length
-    }
+    ////////////// Here New Concept  ///////////////
+    this._interactionService.getForAddtoCart().subscribe((product: Ecom_Product) => {
+      if (!this.productService.fromproductlist) {
+        this.addProductToCart(product);
+      } else {
+        this._getTotalAmounts();
+        this.productService.fromproductlist = false;
+      }
 
-    //////// Data Passing ////////
-    this._interactionService.teacherMessage$.subscribe(message => {
-      this.UpdateItemsAndPrice();
-
-      // if (message = 'Good Morning') {
-      //   this.message = message;
-      //   //alert(message + ' Teacher');
-      // } else {
-      //   //alert('Thank you Teacher');
-      // }
 
     });
+    ////////////// Here New Concept  ///////////////
   }
-  UpdateItemsAndPrice() {    
-    this.badgeCounter = this.badgeCounter + 1;
-    this.totalAmounts = this.totalAmounts + 100;
+
+  public addProductToCart(product: Ecom_Product) {
+
+    let productExits = false;
+    this.cartItems = this.productService.cartItems;
+    for (let key in this.cartItems) {
+      if (this.cartItems[key].PID === product.PID) {
+        this.cartItems[key].Qty++;
+        productExits = true;
+        break;
+      }
+    }
+
+    if (!productExits) {
+      this.cartItems.push({
+        Add: '+', PID: product.PID, PName: product.PName, Qty: 1, UnitPrice: product.UnitPrice, Close: 'X'
+      });
+    }
+
+    this._getTotalAmounts();
+  }
+  private _getTotalAmounts() {
+    this.cartItems = this.productService.cartItems;
+    this.totalItems = this.cartItems.length;
+    this.totalAmounts = 0;
+    this.cartItems.forEach((item) => {
+      this.totalAmounts += (item.Qty * item.UnitPrice);
+    });
+  }
+
+  public RemoveProductFromCart(product: Ecom_Product, fromproductlist: boolean) {
+    this.productService.RemoveProductFromCart(product, fromproductlist)
+    this._getTotalAmounts();
+  }
+  public RemoveFromCart(index: number) {
+    this.productService.RemoveFromCart(index);
+    this._getTotalAmounts();
   }
   public PlaceOrder(totalPrice) {
     if (this.CheckUserSession()) {
-      this.router.navigate(['/checkout', totalPrice])
+      this.router.navigate(['/checkout'])
     } else {
-      this.router.navigate(['/login'])
+      this.router.navigate(['/phonelogin'])
     }
   }
+
   public CheckUserSession() {
-    debugger;
-    var user = localStorage.getItem('user');
-    if (user != null) {
+    var user = JSON.stringify(localStorage.getItem('user'));
+    if (user == "") {
       return true;
     } else {
       return false;
     }
   }
+
+
+  public loginStatus() {
+    firebase.auth().onAuthStateChanged(function (user) {
+      //this.loginService.SetLoginUserInfo(user.phoneNumber);
+      if (user) {
+        this.condition = true;
+        console.log("USER LOGGED IN" + user.phoneNumber);        
+      } else {
+        // No user is signed in.
+        this.condition = false;
+        console.log("USER NOT LOGGED IN");
+      }
+    });
+    
+  }
+  public openDialog(): void {
+    if (!this.condition) {
+      const dialogRef = this.dialog.open(DialogComponent, { width: '450px', data: { name: this.name, animal: this.animal } });
+      dialogRef.afterClosed().subscribe(result => {
+        //console.log('The dialog was closed');
+        this.animal = result;
+        //this.condition = true;
+      });
+    } else {
+      firebase.auth().signOut().then((data) => {
+        //alert(this.condition + data)
+        this.condition = false;
+      });
+    }
+  }
+  ////////////// Here New Concept  ///////////////
+
+
+
+
+
+
+
+
+
+
   public LoadItemTotal() {
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
     if (hasitemdata != null && Object.keys(hasitemdata).length !== 0) {
@@ -115,16 +173,16 @@ export class HeaderComponent implements OnInit {
       });
       // alert('Total Price is Final :'+ _totalItemsPrice);
       this.setTotalPrice(_totalItemsPrice);
-      this.totalItemsCount = hasitemdata.length;
+      this.totalItems = hasitemdata.length;
       this.commercialModels = hasitemdata;
     } else {
       this.setTotalPrice(0);
-      this.totalItemsCount = 0;
+      this.totalItems = 0;
       this.commercialModels = [];
     }
   }
   public setTotalPrice(totalItemsPrice) {
-    this.totalItemsPrice = totalItemsPrice;
+    this.totalAmounts = totalItemsPrice;
   }
   public DeleteRow(item) {
     //alert('hi')
@@ -153,16 +211,7 @@ export class HeaderComponent implements OnInit {
     document.getElementById("mySidepanel").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
   }
-  // public openCartNav() {
-  //   this.LoadItemTotal();
-  //   if (!this.isOpen) {
-  //     document.getElementById("cartnav").style.width = "350px";
-  //     this.isOpen = true;
-  //   } else {
-  //     document.getElementById("cartnav").style.width = "0";
-  //     this.isOpen = false;
-  //   }
-  // }
+
   public logout() {
     //alert('hi')
     localStorage.setItem('user', null);
@@ -172,33 +221,5 @@ export class HeaderComponent implements OnInit {
 
   // ================
 
-  public loginStatus() {
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        this.condition = true;
-        console.log("USER LOGGED IN" + user.phoneNumber);
-        //debugger;
-      } else {
-        // No user is signed in.
-        this.condition = false;
-        console.log("USER NOT LOGGED IN");
-      }
-    });
-  }
-  public openDialog(): void {
-    if (!this.condition) {
-      const dialogRef = this.dialog.open(DialogComponent, { width: '250px', data: { name: this.name, animal: this.animal } });
-      dialogRef.afterClosed().subscribe(result => {
-        //console.log('The dialog was closed');
-        this.animal = result;
-        //this.condition = true;
-      });
-    } else {
-      firebase.auth().signOut().then((data) => {
-        //alert(this.condition + data)
-        this.condition = false;
-      });
-    }
-  }
 }
 

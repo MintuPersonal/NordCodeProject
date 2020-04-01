@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import * as firebase from 'firebase';
 import { WindowService } from 'src/app/services/window.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 export class PhoneNumber {
   //country: string;
@@ -20,8 +21,11 @@ export class DialogComponent implements OnInit {
   verificationCode: string;
   user: any;
 
-  constructor(private win: WindowService) { }
-
+  constructor(private win: WindowService, 
+    public dialogRef: MatDialogRef<DialogComponent>) { }
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
   ngOnInit() {
     // var firebaseConfig = {
     //   apiKey: "AIzaSyAABTcunn62aKYHkJGkfnr5JhXA-D9Ztak",
@@ -62,8 +66,7 @@ export class DialogComponent implements OnInit {
       this.user = result.user;
       console.log(result.user)
       debugger;
-    })
-      .catch(error => console.log(error, "Incorrect code entered?"));
+    }).catch(error => console.log(error, "Incorrect code entered?"));
   }
 
 }

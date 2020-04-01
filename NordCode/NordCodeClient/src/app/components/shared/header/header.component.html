@@ -13,7 +13,7 @@
                 </mat-form-field>
             </form>
             <div class="col-lg-1 signin-cart">
-                <mat-icon (click)="openCartNav()" [matBadge]="badgeCounter" matBadgeColor="warn">add_shopping_cart</mat-icon>
+                <mat-icon (click)="openCartNav()" [matBadge]="totalItems" matBadgeColor="warn">add_shopping_cart</mat-icon>
                 <span class="cdk-visually-hidden"> </span>
             </div>
             <div class="enbn  col-lg-1">
@@ -21,8 +21,8 @@
                 <span> En | Bn </span>
             </div>
             <div class="col-lg-1 signin">
-                <span *ngIf="condition" (click)="openDialog()"> Signin </span>
-                <span *ngIf="!condition" class="dropdown">
+                <span *ngIf="!condition" (click)="openDialog()"> Signin </span>
+                <span *ngIf="condition" class="dropdown">
                     <!-- <mat-icon> person_pin </mat-icon>  -->
                     <i class="fa fa-user-circle"> </i>  <span> {{userName}} </span>
                 <div class="dropdown-content text-left">
@@ -34,21 +34,12 @@
                     <a href="" class="fa fa-sign-out"> &nbsp; Logout </a>
                 </div>
                 </span>
-
-                <!-- <div id="menucart" mat-icon-button (click)="navService.openNavCart()">
-                    <mat-icon> shopping_basket </mat-icon>
-                    <br>
-                    <label> {{badgeCounter}} items </label>
-                    <div class="pricecrt">
-                        <label> Tk. {{totalAmounts}} </label>
-                    </div>
-                </div> -->
             </div>
         </div>
         <div id="menucart" mat-icon-button (click)="navService.openNavCart()">
             <mat-icon> shopping_basket </mat-icon>
             <br>
-            <label> {{badgeCounter}} items </label>
+            <label> {{totalItems}} items </label>
             <div class="pricecrt">
                 <label> Tk. {{totalAmounts}} </label>
             </div>
@@ -56,7 +47,9 @@
     </div>
 </div>
 
+<!-- <app-cart></app-cart> -->
 <div id="cartnav" class="sidepanel" style="margin-top: 55px; height: 900px; Z-INDEX: 9999;">
+    <mat-label class="mat-lebal">{{totalItems}} Items</mat-label>
     <a href=" javascript:void(0)" class="closebtn" (click)="navService.openNavCart()">&times;</a>
     <mat-card class="card-picture ">
         <nav class="nav nav-info ">
@@ -64,57 +57,48 @@
 
         <div class="mat-elevation-z8 ">
             <h5 class="text-center h5 ">
-                <mat-icon matBadgeColor="warn ">directions_run </mat-icon> Express Delivery
+                <mat-icon matBadgeColor="warn">directions_run </mat-icon> Express Delivery
             </h5>
-            <h5 class="text-center ">
-                {{totalItemsCount}} Items | Total: Tk. {{totalItemsPrice}}
-            </h5>
-            <div *ngIf="totalItemsCount ">
-                <table mat-table [dataSource]="commercialModels ">
+            <div *ngIf="totalItems">
+                <table>
+                    <thead>
+                        <tr class="tr">
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of cartItems; index as itemed" class="tr">
 
-                    <ng-container matColumnDef="Add">
-                        <th mat-header-cell *matHeaderCellDef> </th>
-                        <td mat-cell *matCellDef="let element " (click)="AddRowQty(element) "> {{element.Add}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="Name">
-                        <th mat-header-cell *matHeaderCellDef> Name </th>
-                        <td mat-cell *matCellDef="let element "> {{element.Name}} </td>
-                    </ng-container>
-
-
-                    <ng-container matColumnDef="Qty">
-                        <th mat-header-cell *matHeaderCellDef> Weight </th>
-                        <td mat-cell *matCellDef="let element "> {{element.Qty}} </td>
-                    </ng-container>
-
-
-                    <ng-container matColumnDef="UnitPrice">
-                        <th mat-header-cell *matHeaderCellDef> UnitPrice </th>
-                        <td mat-cell *matCellDef="let element "> {{element.UnitPrice}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="Close">
-                        <th mat-header-cell *matHeaderCellDef> </th>
-                        <td mat-cell *matCellDef="let element " (click)="DeleteRow(element) "> {{element.Close}} </td>
-                    </ng-container>
-
-
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns "></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns; "></tr>
+                            <td title="add one more to bag" class="td">
+                                <mat-icon (click)="addProductToCart(item)">add_circle</mat-icon>
+                                <br> {{ item.Qty }}
+                                <br>
+                                <mat-icon (click)="RemoveProductFromCart(item, false)">remove_circle</mat-icon>
+                            </td>
+                            <td>{{ item.PName}}</td>
+                            <td>{{ item.Qty * item.UnitPrice | currency: 'BD '}} </td>
+                            <td title="remove from bag" class="td" (click)="RemoveFromCart(itemed)">{{ item.Close }}</td>
+                        </tr>
+                    </tbody>
                 </table>
-
-                <h5 class="text-center h5 " style="position: relative;top: 52px; ">
-                    <div class=" ">
-                        <mat-button-toggle-group (click)="PlaceOrder(totalItemsPrice) " color="accent " [totalPrice]="totalItemsPrice " name="fontStyle " aria-label="Font Style ">
-                            <mat-button-toggle value="italic " class="order ">
-                                Place Order </mat-button-toggle>
-                            <mat-button-toggle value="underline " class="price ">Tk. {{totalItemsPrice}}
-                            </mat-button-toggle>
-                        </mat-button-toggle-group>
-                    </div>
-                </h5>
             </div>
+            <div *ngIf="!totalItems" class="emptyCart">
+                <div>
+                    <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-504/Default/components/header/ShoppingCart/images/emptyShoppingBag.png?q=low&amp;webp=1&amp;alpha=1">
+                </div>
+                <span style="padding: 10px;">Your shopping bag is empty. Start shopping</span>
+            </div>
+
+
+            <h5 class="text-center h5 " style="position: relative;top: 52px; ">
+                <div class=" ">
+                    <mat-button-toggle-group (click)="PlaceOrder(totalAmounts) " color="accent " [totalPrice]="totalAmounts " name="fontStyle " aria-label="Font Style ">
+                        <mat-button-toggle value="italic " class="order ">
+                            Place Order </mat-button-toggle>
+                        <mat-button-toggle value="underline " class="price ">Tk. {{totalAmounts}}
+                        </mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+            </h5>
         </div>
     </mat-card>
 </div>
@@ -128,116 +112,36 @@
 
 
 
+<!-- <table mat-table [dataSource]="cartItems">
+
+                    <ng-container matColumnDef="Add">
+                        <th mat-header-cell *matHeaderCellDef> </th>
+                        <td mat-cell *matCellDef="let element" (click)="AddRowQty(element)"> {{element.Add}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="PName">
+                        <th mat-header-cell *matHeaderCellDef> PName </th>
+                        <td mat-cell *matCellDef="let element"> {{element.PName}} </td>
+                    </ng-container>
 
 
-<!-- 
-<div id="maincart" class="maincart">
-    <span style="font-size:30px;cursor:pointer " (click)="openCartNav() ">
-        <img style="width: 120px; height: 50px; " class=" " src="../assets/icon/next.png " alt="LG " fxLayoutAlign="space-around center ">        
-    </span>
-</div>
--->
-
-<!-- <div id="mySidepanel " class="sidepanel ">
-    <a href="javascript:void(0) " class="closebtn " (click)="closeNav() ">×</a>
-    <div class="mat-elevation-z8 ">
-        <h5 class="text-center h5 ">
-            <mat-icon matBadgeColor="warn ">directions_run </mat-icon> Express Delivery
-        </h5>
-        <h5 class="text-center ">
-            {{totalItemsCount}} Items | Total: Tk. {{totalItemsPrice}}
-        </h5>
-        <div *ngIf="totalItemsCount ">
-            <table mat-table [dataSource]="commercialModels ">
-
-                <ng-container matColumnDef="Add ">
-                    <th mat-header-cell *matHeaderCellDef> </th>
-                    <td mat-cell *matCellDef="let element " (click)="AddRowQty(element) "> {{element.Add}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="Name ">
-                    <th mat-header-cell *matHeaderCellDef> Name </th>
-                    <td mat-cell *matCellDef="let element "> {{element.Name}} </td>
-                </ng-container>
+                    <ng-container matColumnDef="Qty">
+                        <th mat-header-cell *matHeaderCellDef> Weight </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Qty}} </td>
+                    </ng-container>
 
 
-                <ng-container matColumnDef="Qty ">
-                    <th mat-header-cell *matHeaderCellDef> Weight </th>
-                    <td mat-cell *matCellDef="let element "> {{element.Qty}} </td>
-                </ng-container>
+                    <ng-container matColumnDef="UnitPrice">
+                        <th mat-header-cell *matHeaderCellDef> UnitPrice </th>
+                        <td mat-cell *matCellDef="let element"> {{element.UnitPrice}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Close">
+                        <th mat-header-cell *matHeaderCellDef> </th>
+                        <td mat-cell *matCellDef="let element" (click)="DeleteRow(element) "> {{element.Close}} </td>
+                    </ng-container>
 
 
-                <ng-container matColumnDef="UnitPrice ">
-                    <th mat-header-cell *matHeaderCellDef> UnitPrice </th>
-                    <td mat-cell *matCellDef="let element "> {{element.UnitPrice}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="Close ">
-                    <th mat-header-cell *matHeaderCellDef> </th>
-                    <td mat-cell *matCellDef="let element " (click)="DeleteRow(element) "> {{element.Close}} </td>
-                </ng-container>
-
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns "></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns; "></tr>
-            </table>
-
-            <h5 class="text-center h5 " style="position: relative;top: 52px; ">
-                <a href="/checkout ">
-                    <div class=" ">
-                        <mat-button-toggle-group color="accent " name="fontStyle " aria-label="Font Style ">
-                            <mat-button-toggle value="italic " class="order ">
-                                Place Order </mat-button-toggle>
-                            <mat-button-toggle value="underline " class="price ">Tk. {{totalItemsPrice}}
-                            </mat-button-toggle>
-                        </mat-button-toggle-group>
-                    </div>
-                </a>
-            </h5>
-        </div>
-    </div>
-</div>
-
-<button class="openbtn " (click)="openNav() ">
-    <img style="width: 20px; height: 50px; " class=" " src="../assets/icon/pre.png " alt="LG " fxLayoutAlign="space-around center ">
-</button> -->
-
-
-
-<!-- <div class="col-lg-2">
-                <mat-icon (click)="logout()"> </mat-icon>
-            </div> -->
-<!-- <mat-toolbar color="primary" class="mat-elevation-z1">
-                <button mat-icon-button id="menu" (click)="navService.openNav()">
-                  <mat-icon>menu</mat-icon>
-                </button>
-                <span>Dynamic Expanding Nav Drawer Example</span>
-            </mat-toolbar> -->
-
-<!-- <mat-drawer-container class="example-container " autosize>
-        <mat-drawer #drawer class="example-sidenav " mode="side ">
-            <div class="mat-elevation-z8 " *ngIf="totalItemsCount ">
-                <mat-card class="card-picture ">
-                    <nav class="nav nav-info ">
-                        <h3 class="text-center ">
-                            <img src="../assets/img/member/Mahatab.png " *ngIf="!imgURL " class="rounded-circle " alt="... ">
-                        </h3>
-                    </nav>
-
-                    <nav class="nav flex-column ">
-                        <a class="nav-link " [routerLink]="[ '/home'] " routerLinkActive="router-link-active "> Home </a>
-                        <a class="nav-link " [routerLink]="[ '/addnew'] "> Add New </a>
-                        <a class="nav-link " [routerLink]="[ '/signup'] "> Logout </a>
-                        <a class="nav-link " [routerLink]="[ '/login'] "> Login </a>
-                        <a class="nav-link " [routerLink]="[ '/product'] "> Product </a>
-                    </nav>
-                </mat-card>
-            </div>
-        </mat-drawer>
-
-        <div class="example-sidenav-content ">
-            <button type="button " mat-button (click)="drawer.toggle() ">
-                <mat-icon fxFlex="5% "> list </mat-icon>
-            </button>
-        </div>
-    </mat-drawer-container> -->
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns "></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns; "></tr>
+                </table> -->

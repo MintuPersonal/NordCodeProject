@@ -14,6 +14,7 @@ import { PhoneLoginComponent } from './components/admin/phone-login/phone-login.
 import { AlertHomeComponent } from './test/alert-home';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SignupComponent } from './components/admin/signup/signup.component';
+import { DialogComponent } from './components/common/dialog/dialog.component';
 
 const routes: Routes = [
   { path: '', component: ProductListComponent}, //, pathMatch: 'full' 
@@ -29,9 +30,10 @@ const routes: Routes = [
   { path: 'product', component: ProductComponent },
   { path: 'productdetails/:productId', component: ProductdetailsComponent },
   { path: 'commercial', component: CommercialComponent },  
-  { path: 'checkout/:price', component: CheckoutComponent },  
+  { path: 'checkout', component: CheckoutComponent },  
   { path: 'phonelogin', component: PhoneLoginComponent },
   { path: 'alerthome', component: AlertHomeComponent },
+  { path: 'logindialog', component: DialogComponent },
 
   { path: '**', redirectTo: '' }
 

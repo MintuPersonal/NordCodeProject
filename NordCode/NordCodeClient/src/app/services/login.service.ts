@@ -13,6 +13,12 @@ export class LoginService {
   _url = '';
 
   constructor(private _http: HttpClient) { }
+  SetLoginUserInfo(phoneNumber: any){
+    localStorage.setItem('user', null);
+    localStorage.setItem('user', phoneNumber);  
+   // return null;  
+  }
+  
   getUser(user: User) {
     debugger;
     this._url = this._baseUrl + "getuser?Username=" + user.Username + "&Password=" + user.Password;

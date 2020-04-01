@@ -147,8 +147,7 @@ for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
 	knex migrate:latest	
 	https://www.youtube.com/watch?v=qexy4Ph66JE
 	https://www.youtube.com/watch?v=KLCcCTFivhM
-	https://mladenplavsic.github.io/bootstrap-navbar-sidebar/
-	
+	https://mladenplavsic.github.io/bootstrap-navbar-sidebar/	
 	https://www.youtube.com/watch?v=srPXMt1Q0nY
 	
 	https://github.com/jainpiyus/furniture-ecomm-webapp  For ecom

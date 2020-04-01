@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WindowService } from '../../../services/window.service';
-
 import * as firebase from 'firebase';
 
 export class PhoneNumber {
@@ -57,6 +56,7 @@ export class PhoneLoginComponent implements OnInit {
     const num = this.phoneNumber.e164;
     firebase.auth().signInWithPhoneNumber(num, appVerifier)
       .then(result => {
+        debugger;
         this.windowRef.confirmationResult = result;
       }).catch(error => console.log(error));
   }
