@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Ecom_Commercial } from 'src/app/models/Commercial';
-import { ProductListService } from '../../product-list.service';
+//import { Ecom_Commercial } from 'src/app/models/Product';
+import { ProductListService } from '../../../../services/product-list.service';
+import { InteractionService } from 'src/app/services/interaction.service';
+import { Ecom_Commercial } from 'src/app/models/Ecom_Commercial';
 
 @Component({
   selector: 'app-product-item',
@@ -23,12 +25,12 @@ export class ProductItemComponent implements OnInit {
   close = 'X';
   add = 'A+';
 
+
+  //////////////// New Concept ////////
   @Input() featureItem: any;
-  constructor(private productService: ProductListService) { }
+  constructor(private productService: ProductListService, private _interactionService: InteractionService) { }
 
   ngOnInit() {
-    //localStorage.setItem('item', null);
-    //this.LoadItemTotal();
   }
   public LoadItemTotal() {
 
@@ -51,9 +53,7 @@ export class ProductItemComponent implements OnInit {
     }
   }
   public AddToBag(itemObj) {
-    debugger;
 
-   // this.headerComponent.UpdateItem();
     this.productService.AddtoItems(itemObj);
 
     //this.badgeCounter = 0;
@@ -74,9 +74,6 @@ export class ProductItemComponent implements OnInit {
       localStorage.setItem('item', JSON.stringify(this.itemState));
       this.LoadItemTotal();
     }
-  }
-  UpdateItem() {
-    
   }
   public AddExitsItem(existed) {
     this.itemState = [];
@@ -225,4 +222,16 @@ export class ProductItemComponent implements OnInit {
       alert('LocalStorage Is Null');
     }
   }
+
+  ////////////// Here New Concept  ///////////////
+
+  onAddToBag() {
+    this._interactionService.sendForAddtoCart(this.featureItem);
+  }
+
+  onRemoveFromBag() {
+    this._interactionService.sendForRemoveFromCart(this.featureItem);
+  }
+
+  ////////////// Here New Concept  ///////////////
 }

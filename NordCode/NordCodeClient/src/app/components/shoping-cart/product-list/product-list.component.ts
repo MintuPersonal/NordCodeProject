@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Ecom_Commercial } from 'src/app/models/Commercial';
+//import { Ecom_Commercial } from 'src/app/models/Product';
 import { CommercialService } from 'src/app/services/commercial.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Ecom_Commercial } from 'src/app/models/Ecom_Commercial';
 
 @Component({
   selector: 'app-product-list',
@@ -44,7 +45,7 @@ export class ProductListComponent implements OnInit {
         this.bannersModel = this._commercialModel['banners'];
         this.brandsModel = this._commercialModel['brands'];
         this.featuresModel = this._commercialModel['features'];
-        debugger;
+        //debugger;
       },
       (err: HttpErrorResponse) => {
         console.log(err.message);

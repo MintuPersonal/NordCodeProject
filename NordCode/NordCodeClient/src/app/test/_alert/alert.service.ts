@@ -15,8 +15,7 @@ export class AlertService {
     }
 
     // convenience methods
-    success(message: string, options?: any) {
-        debugger;
+    success(message: string, options?: any) {        
         this.alert(new Alert({ ...options, type: AlertType.Success, message }));
     }
 
