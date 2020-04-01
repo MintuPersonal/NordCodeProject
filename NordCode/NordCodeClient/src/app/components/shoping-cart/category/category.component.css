@@ -1,15 +1,11 @@
-/* a {
-    background: orange;
-    background: palegoldenrod;
-    background: palegreen;
-    background: peachpuff;
-    background: rosybrown;
-    background: salmon;
-    background: sandybrown;
-} */
+.mat-card-content {
+    /* height: 100%; */
+    width: 1000px;
+    text-align: center;
+    font-size: 23px;
+    color: white;
+}
 
-mat-card.mat-card {
-    width: 166px;
-    height: auto;
-    max-width: 100%;
+mat-icon {
+    color: white;
 }

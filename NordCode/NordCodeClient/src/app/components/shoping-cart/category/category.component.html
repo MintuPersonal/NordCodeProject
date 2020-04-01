@@ -1,62 +1,67 @@
-<style>
-    .carousel-inner:focus {
-        outline: none;
-    }
-    
-    ngb-carousel.carousel.slide.ng-star-inserted:focus {
-        outline: none;
-    }
-</style>
-
-<ngb-carousel *ngIf="images">
+<ngb-carousel *ngIf="images" interval="2000">
     <ng-template ngbSlide>
         <div class="row">
             <div class="picsum-img-wrapper col-lg-2">
                 <!-- <img [src]="images[2]" alt="Random first slide"> -->
-                <mat-card style="background: orange;border-radius: 10px; height: 100px;">
+                <mat-card style="background: orange;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[0]}} </mat-card-content>
+                        <mat-card-content>
+                            <mat-icon> fastfood </mat-icon>
+                            {{categories[0]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: palegoldenrod;border-radius: 10px; height: 100px;">
+                <mat-card style="background: palegoldenrod;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[1]}} </mat-card-content>
+                        <mat-card-content>
+                            <mat-icon> local_dining </mat-icon>
+                            {{categories[1]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: palegreen;border-radius: 10px; height: 100px;">
+                <mat-card style="background: palegreen;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[2]}} </mat-card-content>
+
+                        <mat-card-content>
+                            <mat-icon> fastfood </mat-icon>
+                            {{categories[2]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: peachpuff;border-radius: 10px; height: 100px;">
+                <mat-card style="background: peachpuff;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[3]}} </mat-card-content>
+
+                        <mat-card-content>
+                            <mat-icon> local_dining </mat-icon>
+                            {{categories[3]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: rosybrown;border-radius: 10px; height: 100px;">
+                <mat-card style="background: rosybrown;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[4]}} </mat-card-content>
+
+                        <mat-card-content>
+                            <mat-icon> local_dining </mat-icon>
+                            {{categories[4]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: salmon;border-radius: 10px; height: 100px;">
+                <mat-card style="background: salmon;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[5]}} </mat-card-content>
+                        <mat-card-content>
+                            <mat-icon> fastfood </mat-icon>
+                            {{categories[5]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -66,51 +71,67 @@
         <div class="row">
             <div class="picsum-img-wrapper col-lg-2">
                 <!-- <img [src]="images[2]" alt="Random first slide"> -->
-                <mat-card style="background: orange;border-radius: 10px; height: 100px;">
+                <mat-card style="background: orange;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[2]}} </mat-card-content>
+                        <mat-card-content>
+                            <mat-icon> fastfood </mat-icon>
+                            {{categories[2]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
 
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: palegreen;border-radius: 10px; height: 100px;">
+                <mat-card style="background: palegreen;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[4]}} </mat-card-content>
+
+                        <mat-card-content>
+                            <mat-icon> local_dining </mat-icon> {{categories[4]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: peachpuff;border-radius: 10px; height: 100px;">
+                <mat-card style="background: peachpuff;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[5]}} </mat-card-content>
+
+                        <mat-card-content>
+                            <mat-icon> fastfood </mat-icon>
+                            {{categories[5]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: rosybrown;border-radius: 10px; height: 100px;">
+                <mat-card style="background: rosybrown;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[6]}} </mat-card-content>
+
+                        <mat-card-content>
+                            <mat-icon> local_dining </mat-icon>
+                            {{categories[6]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: salmon;border-radius: 10px; height: 100px;">
+                <mat-card style="background: salmon;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[1]}} </mat-card-content>
+
+                        <mat-card-content>
+                            <mat-icon> fastfood </mat-icon>
+                            {{categories[1]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: palegoldenrod;border-radius: 10px; height: 100px;">
+                <mat-card style="background: palegoldenrod;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[3]}} </mat-card-content>
+
+                        <mat-card-content>
+                            <mat-icon> local_dining </mat-icon>
+                            {{categories[3]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -120,51 +141,69 @@
         <div class="row">
             <div class="picsum-img-wrapper col-lg-2">
                 <!-- <img [src]="images[2]" alt="Random first slide"> -->
-                <mat-card style="background: orange;border-radius: 10px; height: 100px;">
+                <mat-card style="background: orange;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[2]}} </mat-card-content>
+
+                        <mat-card-content>
+                            <mat-icon> local_dining </mat-icon>
+                            {{categories[2]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
 
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: palegreen;border-radius: 10px; height: 100px;">
+                <mat-card style="background: palegreen;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[4]}} </mat-card-content>
+
+                        <mat-card-content>
+                            <mat-icon> fastfood </mat-icon>
+                            {{categories[4]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: peachpuff;border-radius: 10px; height: 100px;">
+                <mat-card style="background: peachpuff;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[5]}} </mat-card-content>
+
+                        <mat-card-content>
+                            <mat-icon> local_dining </mat-icon>
+                            {{categories[5]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: rosybrown;border-radius: 10px; height: 100px;">
+                <mat-card style="background: rosybrown;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[6]}} </mat-card-content>
+
+                        <mat-card-content>
+                            <mat-icon> fastfood </mat-icon>
+                            {{categories[6]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: salmon;border-radius: 10px; height: 100px;">
+                <mat-card style="background: salmon;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[1]}} </mat-card-content>
+
+                        <mat-card-content>
+                            <mat-icon> local_dining </mat-icon>
+                            {{categories[1]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: palegoldenrod;border-radius: 10px; height: 100px;">
+                <mat-card style="background: palegoldenrod;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[3]}} </mat-card-content>
+
+                        <mat-card-content>
+                            <mat-icon> fastfood </mat-icon>
+                            {{categories[3]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -174,51 +213,63 @@
         <div class="row">
             <div class="picsum-img-wrapper col-lg-2">
                 <!-- <img [src]="images[2]" alt="Random first slide"> -->
-                <mat-card style="background: orangered;border-radius: 10px; height: 100px;">
+                <mat-card style="background: orangered;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[5]}} </mat-card-content>
+                        <mat-card-content>
+                            <mat-icon> fastfood </mat-icon>
+                            {{categories[5]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
 
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: goldenrod;border-radius: 10px; height: 100px;">
+                <mat-card style="background: goldenrod;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[4]}} </mat-card-content>
+                        <mat-card-content>
+                            <mat-icon> local_dining </mat-icon>
+                            {{categories[4]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: palevioletred;border-radius: 10px; height: 100px;">
+                <mat-card style="background: palevioletred;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[3]}} </mat-card-content>
+                        <mat-card-content>
+                            <mat-icon> fastfood </mat-icon>
+                            {{categories[3]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: royalblue;border-radius: 10px; height: 100px;">
+                <mat-card style="background: royalblue;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[2]}} </mat-card-content>
+                        <mat-card-content>
+                            <mat-icon> local_dining </mat-icon>
+                            {{categories[2]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: skyblue;border-radius: 10px; height: 100px;">
+                <mat-card style="background: skyblue;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[1]}} </mat-card-content>
+                        <mat-card-content>
+                            <mat-icon> fastfood </mat-icon>
+                            {{categories[1]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: palegreen;border-radius: 10px; height: 100px;">
+                <mat-card style="background: palegreen;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content> {{categories[0]}} </mat-card-content>
+                        <mat-card-content>
+                            <mat-icon> local_dining </mat-icon>
+                            {{categories[0]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -227,7 +278,7 @@
 </ngb-carousel>
 
 
-<!-- <mat-card  style="background: aquamarine;border-radius: 10px; height: 100px;">
+<!-- <mat-card  style="background: aquamarine;border-radius: 10px;">
     <mat-card-subtitle></mat-card-subtitle>
     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
         <mat-card-content> Baby Care </mat-card-content>
