@@ -1,12 +1,112 @@
     .footer {
-        /* background: #4abfbf; */
         height: 70px;
         padding: 10px 150px 10px 150px;
         color: whitesmoke;
         margin: 0px;
     }
     
+    #footer {
+        padding: 0px 15px 0px 15px;
+        background: ghostwhite;
+        padding: 10px;
+    }
+    
     .bg-info {
         /* //background-color: #17a2b8!important; */
         margin: 0px;
     }
+    
+    section {
+        padding: 40px 0px 40px 0px;
+    }
+    
+    img {
+        height: 50px;
+    }
+    
+    .phoone-icon {
+        height: 25px;
+    }
+    
+    .number {
+        padding-left: 15px;
+    }
+    
+    .email {
+        font-weight: bold;
+        padding-left: 5px;
+    }
+    
+    .social-section {
+        padding-left: 10px;
+    }
+    
+    .icon {
+        border: solid 1px lightgray;
+        border-radius: 15px;
+        margin: 1px;
+    }
+    
+    .right-area {
+        text-align: right;
+    }
+    
+    .footer-left {
+        float: left;
+        border-right: 1px solid #ececec;
+        padding-left: 20px;
+        padding-right: 10px;
+        margin-bottom: 30px;
+    }
+    
+    .phone-icon {
+        height: 20px;
+    }
+    
+    .wrap {
+        margin: 10px;
+        font-size: 30px;
+        font-weight: bolder;
+    }
+    /*     
+    #recipe .social-media-section {
+        width: 100%;
+        text-align: center;
+        margin: 40px 0;
+    }
+    
+    #footer {
+        margin: auto;
+        padding: 0 0 35px!important;
+        height: 100%;
+        font-size: 16px;
+        background-color: #f7f7f7;
+    }
+    
+    #footer .footer-banner .banner {
+        width: 100%;
+        float: left;
+        padding: 5px 20px;
+    }
+    
+    #footer .footer-banner {
+        margin-bottom: 0!important;
+        width: 100%;
+        color: #606060;
+        background: #f2f2f2;
+    }
+    
+    #footer .footer-banner .banner .left-area {
+        width: 55%;
+        float: left;
+    }
+    
+    #footer 
+    
+    #footer .footer-right {
+        width: 30%;
+        float: right;
+        border-left: 1px solid #f3f3f3;
+        padding-left: 10px;
+        padding-right: 20px;
+    } */
