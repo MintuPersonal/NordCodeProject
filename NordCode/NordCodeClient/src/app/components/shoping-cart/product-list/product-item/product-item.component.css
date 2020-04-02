@@ -165,6 +165,15 @@ mat-card.mat-card.card-picture {
     border-radius: 4px;
 }
 
+.overlay.text section.actionItems p.total {
+    color: #fff;
+}
+
+.overlay.text .actionItems .total {
+    font-size: 18px;
+    font-weight: 700;
+}
+
 .imageWrapper:hover .overlay.text {
     display: flex;
     flex-direction: column;
@@ -201,6 +210,61 @@ mat-card.mat-card.card-picture {
     font-size: 22px;
 }
 
+.overlay.text section.actionItems {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.overlay.text section.actionItems div {
+    padding: 0 4px;
+    overflow: hidden;
+    height: 75px;
+    margin: auto;
+}
+
+.overlay.text section.actionItems div .remove {
+    color: #fef3d5;
+    font-size: 35px;
+    border: 3px solid #fef3d5;
+    border-radius: 50%;
+    height: 28px;
+    width: 28px;
+    padding-top: 0;
+    margin-top: 0;
+    line-height: 19px;
+    padding-left: 1px;
+}
+
+.overlay.text section.actionItems div p {
+    float: left;
+}
+
+.overlay.text section.actionItems div .quantity {
+    font-size: 55px;
+    line-height: 0px;
+    width: 73px;
+    color: #fdd670;
+}
+
+.overlay.text section.actionItems div .add,
+div.product .imageWrapper .overlay.text section.actionItems div .remove {
+    color: #fef3d5;
+    font-size: 28px;
+    border: 3px solid #fef3d5;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    padding-top: 0;
+    margin-top: 0;
+    line-height: 21px;
+    padding-left: 1px;
+}
+
+.overlay.text .actionItems {
+    font-size: 40px;
+}
+
 .btnShowDetails {
     display: block;
     position: absolute;
@@ -218,6 +282,24 @@ mat-card.mat-card.card-picture {
     padding: 3px;
     text-decoration: none;
     line-height: 20px;
+}
+
+.overlay.text p.inBag {
+    clear: both;
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+}
+
+.overlay.text p.addText {
+    height: 100px;
+    width: 125px;
+    margin: 30px auto 0;
+    color: #fff;
+    font-size: 22px;
+    line-height: 34px;
 }
 
 th.mat-header-cell {

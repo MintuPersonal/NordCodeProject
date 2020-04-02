@@ -5,7 +5,7 @@
             <mat-card-subtitle class="round"> ID#{{("00000000"+featureItem.PID).slice(-7)}} </mat-card-subtitle>
         </mat-card-title>
         <div class="imageWrapper">
-            <div class="overlay text">
+            <!-- <div class="overlay text">
                 <div class="row">
                     <p class="addIcon">
                         <mat-icon class="hide" matBadgeColor="warn" style="color: whitesmoke;" (click)="onRemoveFromBag(featureItem)">indeterminate_check_box</mat-icon>
@@ -20,6 +20,41 @@
                         <span>Details</span>
                 <span> &gt;</span></a>
                 <a href="#" class="btnShowDetailsIcon"></a>
+                </span>
+            </div> -->
+
+            <!-- <div class="overlay text">
+                <section class="actionItems">
+                    <p class="total">
+                        <span>৳ </span>
+                        <span>480</span></p>
+                    <div>
+                        <p class="remove">-</p>
+                        <p class="quantity">
+                            <span>1</span></p>
+                        <p class="add">+</p>
+                    </div>
+                </section>
+                <p class="inBag">in bag</p>
+                <span>
+            <a href="#" class="btnShowDetails" >
+                <span >Details</span>
+                <span>  &gt;</span>
+                </a>
+                <a href="#" class="btnShowDetailsIcon">
+                </a>
+                </span>
+            </div> -->
+
+            <div class="stockout overlay text">
+                <p class="addText">OUT OF STOCK</p>
+                <span>
+                    <a href="#" class="btnShowDetails" >
+                        <span >Details</span>
+                <span>  &gt;</span>
+                </a>
+                <a href="#" class="btnShowDetailsIcon">
+                </a>
                 </span>
             </div>
         </div>
