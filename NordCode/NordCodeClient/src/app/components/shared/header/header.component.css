@@ -12,6 +12,15 @@
             font-size: 12px;
         }
         
+        h5.text-center.h-5 {
+            position: relative;
+            right: 0;
+            bottom: 0;
+            /* width: 100%; */
+            /* background-color: red; */
+            color: white;
+        }
+        
         #menucart {
             width: 80px;
             height: 85px;
