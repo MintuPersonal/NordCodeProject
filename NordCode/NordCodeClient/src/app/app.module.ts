@@ -44,6 +44,7 @@ import {
   MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatTabsModule,
   MatToolbarModule, MatTooltipModule, MatBadgeModule, MatPaginatorModule, MatFormFieldModule, MatTableModule
 } from '@angular/material';
+import { DialogpdetailsComponent } from './components/common/dialog/dialogpdetails/dialogpdetails.component';
 
 
 @NgModule({
@@ -51,7 +52,7 @@ import {
     FooterComponent, ProductListComponent, ProductItemComponent, CartComponent, LoginComponent, SignupComponent,
     NavbarComponent, AddnewComponent, HomeComponent, ProductComponent, ProductdetailsComponent, CommercialComponent,
     CheckoutComponent, OrderComponent, PaymentComponent, BannerComponent, ImageComponent, PhoneLoginComponent,
-    DialogComponent, AlertHomeComponent, TopNavComponent, MenuComponent, MenuComponent],
+    DialogComponent, AlertHomeComponent, TopNavComponent, MenuComponent, MenuComponent, DialogpdetailsComponent],
   imports: [
     RoutingModule, AlertModule, BrowserModule, NgbModule, BrowserAnimationsModule, HttpClientModule,
     FormsModule, ReactiveFormsModule, MatIconModule, MatInputModule, MatRadioModule, MatCheckboxModule,
