@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-//import { Ecom_Commercial } from 'src/app/models/Product';
-import { ProductListService } from '../../../../services/product-list.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { Ecom_Commercial } from 'src/app/models/Ecom_Commercial';
+import { DialogpdetailsComponent } from 'src/app/components/common/dialogpdetails/dialogpdetails.component';
+import { MatDialog } from '@angular/material';
+import { Ecom_Product } from 'src/app/models/Product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-item',
@@ -28,7 +30,12 @@ export class ProductItemComponent implements OnInit {
 
   //////////////// New Concept ////////
   @Input() featureItem: any;
-  constructor(private productService: ProductListService, private _interactionService: InteractionService) { }
+  name: string;
+  animal: string;
+  cartItems: any;
+  totalItems: any = 0;
+  totalAmounts: number;
+  constructor(private dialog: MatDialog, private productService: ProductService, private _interactionService: InteractionService) { }
 
   ngOnInit() {
   }
@@ -52,29 +59,6 @@ export class ProductItemComponent implements OnInit {
       this.commercialModels = [];
     }
   }
-  // public AddToBag(itemObj) {
-
-  //   this.productService.AddtoItems(itemObj);
-
-  //   //this.badgeCounter = 0;
-  //   if (Object.keys(itemObj).length !== 0) {
-  //     this.HasThisItem(itemObj);
-  //     this.itemState = [];
-  //     if (this.isItemLocalStorage) {
-  //       this.AddExitsItem(itemObj);
-  //     } else {
-  //       this.newline = new Ecom_Commercial(this.add, itemObj.PID, itemObj.PName, 1, itemObj.UnitPrice, this.close);
-  //       this.AddNewItem(this.newline);
-  //     }
-  //     this.LoadItemTotal();
-
-  //   } else {
-  //     this.newline = new Ecom_Commercial(this.add, itemObj.PId, itemObj.PName, 1, itemObj.UnitPrice, this.close);
-  //     this.itemState.push(this.newline);
-  //     localStorage.setItem('item', JSON.stringify(this.itemState));
-  //     this.LoadItemTotal();
-  //   }
-  // }
   public AddExitsItem(existed) {
     this.itemState = [];
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
@@ -225,11 +209,75 @@ export class ProductItemComponent implements OnInit {
 
   ////////////// Here New Concept  ///////////////
   onAddToBag() {
+    debugger;
     this._interactionService.sendForAddtoCart(this.featureItem);
+    this._getTotalAmounts();
   }
+
+  // public addProductToCart(product: Ecom_Product) {
+
+  //   let productExits = false;
+  //   this.cartItems = this.productService.cartItems;
+  //   for (let key in this.cartItems) {
+  //     if (this.cartItems[key].PID === product.PID) {
+  //       this.cartItems[key].Qty++;
+  //       productExits = true;
+  //       break;
+  //     }
+  //   }
+
+  //   if (!productExits) {
+  //     this.cartItems.push({
+  //       Add: '+', PID: product.PID, PName: product.PName, Qty: 1, UnitPrice: product.UnitPrice, Close: 'X'
+  //     });
+  //   }
+  //   this._getTotalAmounts();
+  // }
+
+
 
   onRemoveFromBag() {
     this._interactionService.sendForRemoveFromCart(this.featureItem);
+    this._getTotalAmounts();
   }
+
+  private _getTotalAmounts() {
+    this.cartItems = this.productService.cartItems;
+    this.totalItems = this.cartItems.length;
+    this.totalAmounts = 0;
+    this.cartItems.forEach((item) => {
+      this.totalAmounts += (item.Qty * item.UnitPrice);
+    });
+  }
+  openDialog(featureItem): void {
+    debugger;
+    const dialogRef = this.dialog.open(DialogpdetailsComponent, {
+      width: '950px', data: featureItem
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+
+
+  // public openDialog(): void {
+  //   //if (!this.condition) {
+  //   this.name = 'New Product'
+  //   this.animal = '10'
+  //   const dialogRef = this.dialog.open(DialogpdetailsComponent, { width: '950px', data: { name: this.name, animal: this.animal } });
+
+  //   dialogRef.afterClosed().subscribe(result => {
+
+  //   });
+  //   // } else {
+  //   //   firebase.auth().signOut().then((data) => {
+  //   //     this.condition = false;
+  //   //   });
+  //   // }
+  // }
   ////////////// Here New Concept  ///////////////
 }

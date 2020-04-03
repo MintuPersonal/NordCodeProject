@@ -1,7 +1,22 @@
-/* 
-.container {
-    max-width: 1820px;
-} */
+.mat-icon-left {
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    height: 24px;
+    width: 30px;
+    border-right: solid 1px;
+    height: 40px;
+}
+
+.mat-icon-right {
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    height: 24px;
+    width: 30px;
+    border-left: solid 1px;
+    height: 40px;
+}
 
 .search {
     background: #4abfbf;
@@ -9,12 +24,6 @@
     font-size: 30;
     padding: 10px;
 }
-
-
-/* .banner {
-    background: #ff3b00a6;
-    height: 250px;
-} */
 
 .category {
     margin: 0px 50px 0px 100px;
@@ -63,15 +72,18 @@ mat-card-content {
 }
 
 mat-card-footer {
-    background: #ff3b00a6;
+    background: #025b22;
     margin: 0px;
-    color: papayawhip;
+    color: white;
+    height: 40px;
+    border-radius: 2px;
 }
 
 mat-card-footer:hover {
     background: #ff5722;
     margin: 0px;
     color: papayawhip;
+    height: 40px;
 }
 
 label {
@@ -89,10 +101,10 @@ label {
 
 .round {
     transform: rotate(-90deg);
-    margin-bottom: 115px;
-    background: #4abfbf;
+    /* margin-bottom: 115px; */
+    background: #0bb247d9;
     color: white;
-    font-size: 20px;
+    /* font-size: 20px; */
 }
 
 mat-card-subtitle.round.mat-card-subtitle {
@@ -100,10 +112,10 @@ mat-card-subtitle.round.mat-card-subtitle {
     font-size: 15px;
     padding: 6px;
     position: relative;
-    right: -174px;
-    margin: 0;
+    right: -112px;
+    margin: 0px;
     width: 100px;
-    bottom: 128px;
+    bottom: 132px;
 }
 
 .h5 {
@@ -132,7 +144,7 @@ th.mat-header-cell:last-of-type {
     color: #fff;
     background-color: rgba(40, 40, 40, .75);
     text-align: center;
-    height: 76%;
+    height: 73%;
     width: 100%;
     border: 1px solid #CCC;
     -moz-box-sizing: border-box;
@@ -195,19 +207,18 @@ mat-card.mat-card.card-picture {
     border-radius: 4px;
 }
 
-.overlay.text p.addText {
-    height: 100px;
-    width: 125px;
+.addText {
     color: #fff;
-    font-size: 22px;
-    line-height: 34px;
+    /* padding: 20px;
+    line-height: 34px; */
+    font-size: 2em;
 }
 
 .overlay.text p.addIcon {
     height: 64px;
-    margin: 75px auto 0;
+    margin: 100px auto 0;
     color: #fff;
-    font-size: 22px;
+    /* font-size: 2em; */
 }
 
 .overlay.text section.actionItems {
@@ -293,14 +304,18 @@ div.product .imageWrapper .overlay.text section.actionItems div .remove {
     margin: 0;
 }
 
-.overlay.text p.addText {
-    height: 100px;
-    width: 125px;
-    margin: 30px auto 0;
-    color: #fff;
-    font-size: 22px;
-    line-height: 34px;
+.qty {
+    padding-top: 35px;
+    font-size: 2em;
+    width: 80px;
 }
+
+
+/* 
+.overlay.text p.addText {
+    color: #fff;
+    font-size: 2em;
+} */
 
 th.mat-header-cell {
     text-align: left;
@@ -327,8 +342,8 @@ table {
 
 .features {
     border-top-left-radius: 2em;
-    height: 195px;
-    width: 242px;
+    height: 200px;
+    width: 180px;
     position: relative;
     top: 35px;
 }

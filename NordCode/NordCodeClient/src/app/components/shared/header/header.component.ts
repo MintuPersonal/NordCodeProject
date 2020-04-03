@@ -60,8 +60,6 @@ export class HeaderComponent implements OnInit {
         this._getTotalAmounts();
         this.productService.fromproductlist = false;
       }
-
-
     });
     ////////////// Here New Concept  ///////////////
   }

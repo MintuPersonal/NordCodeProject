@@ -36,6 +36,7 @@ import { MenuComponent } from './components/shared/menu/menu.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { NavbarService } from './services/navbar.service';
 import { SignupComponent } from './components/admin/signup/signup.component';
+import { DialogpdetailsComponent } from './components/common/dialogpdetails/dialogpdetails.component';
 
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule,
@@ -44,7 +45,6 @@ import {
   MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatTabsModule,
   MatToolbarModule, MatTooltipModule, MatBadgeModule, MatPaginatorModule, MatFormFieldModule, MatTableModule
 } from '@angular/material';
-import { DialogpdetailsComponent } from './components/common/dialog/dialogpdetails/dialogpdetails.component';
 
 
 @NgModule({

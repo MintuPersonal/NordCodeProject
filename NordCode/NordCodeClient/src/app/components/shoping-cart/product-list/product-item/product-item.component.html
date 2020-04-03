@@ -5,7 +5,65 @@
             <mat-card-subtitle class="round"> ID#{{("00000000"+featureItem.PID).slice(-7)}} </mat-card-subtitle>
         </mat-card-title>
         <div class="imageWrapper">
-            <!-- <div class="overlay text">
+
+            <div *ngIf="totalItems == 0" class="overlay text">
+                <div class="row">
+                    <p class="addText" (click)="onAddToBag(featureItem)"> Add to Shopping Bag </p>
+                </div>
+                <span>                   
+                    <button class="btnShowDetails" (click)="openDialog(featureItem)">
+                        <span > Details </span> <span>  &gt;&gt;  </span>
+                </button>
+                </span>
+            </div>
+
+            <div *ngIf="totalItems" class="overlay text">
+                <div class="column-list">
+                    <p class="addText"> ৳ 200 </p>
+                    <p class="addText">
+                        <i class="fa fa-minus-square" (click)="onAddToBag(featureItem)"></i> &nbsp; &nbsp; &nbsp;{{totalItems}} &nbsp; &nbsp; &nbsp;
+                        <i class="fa fa-plus-square" (click)="onAddToBag(featureItem)"> </i>
+                    </p>
+                    <p class="addText"> in bag </p>
+                </div>
+                <span>                   
+                    <button class="btnShowDetails" (click)="openDialog(featureItem)">
+                        <span >Details</span> <span>  &gt;&gt;  </span>
+                </button>
+                </span>
+            </div>
+
+        </div>
+        <mat-card-footer fxLayoutAlign="space-around center">
+            <div *ngIf="totalItems == 0">
+                <mat-icon matBadgeColor="warn" style="color: whitesmoke;" (click)="onAddToBag(featureItem)"> directions_run</mat-icon>
+                <span *ngIf="totalItems > 0">{{totalItems}} in bag </span> <span (click)="onAddToBag(featureItem)"> add to bag </span>
+            </div>
+            <div *ngIf="totalItems">
+                <span>
+                <mat-icon class="mat-icon-left" (click)="onRemoveFromBag(featureItem)"> remove </mat-icon>
+                </span>
+                <span *ngIf="totalItems > 0"> &nbsp; &nbsp; &nbsp;{{totalItems}}  in bag  &nbsp; &nbsp; &nbsp;</span>
+                <span>
+                <mat-icon class="mat-icon-right" (click)="onAddToBag(featureItem)"> add </mat-icon>
+            </span>
+            </div>
+        </mat-card-footer>
+
+
+    </mat-card>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="overlay text">
                 <div class="row">
                     <p class="addIcon">
                         <mat-icon class="hide" matBadgeColor="warn" style="color: whitesmoke;" (click)="onRemoveFromBag(featureItem)">indeterminate_check_box</mat-icon>
@@ -16,14 +74,26 @@
                     </p>
                 </div>
                 <span>
-                    <a href="#" class="btnShowDetails">
-                        <span>Details</span>
-                <span> &gt;</span></a>
-                <a href="#" class="btnShowDetailsIcon"></a>
+                    <mat-form-field>
+                        <mat-label>What's your name?</mat-label>
+                        <input matInput [(ngModel)]="name">
+                        <input matInput [(ngModel)]="unitprice">
+                    </mat-form-field>
+                    <li *ngIf="data">
+                        You chose: <i>{{data.animal}}</i>
+                    </li>
+                    <button class="btnShowDetails" (click)="openDialog(featureItem)">
+                        <span >Details</span> <span>  &gt;&gt;  </span>
+                </button>
                 </span>
+                <span>
+                    <a href="#" class="btnShowDetails"><span> Details </span><span> &gt;&gt; </span></a>
             </div> -->
 
-            <!-- <div class="overlay text">
+
+
+<!-- <div class="overlay text">
+
                 <section class="actionItems">
                     <p class="total">
                         <span>৳ </span>
@@ -40,30 +110,39 @@
             <a href="#" class="btnShowDetails" >
                 <span >Details</span>
                 <span>  &gt;</span>
-                </a>
-                <a href="#" class="btnShowDetailsIcon">
-                </a>
+                </a>                
                 </span>
             </div> -->
 
-            <div class="stockout overlay text">
+<!-- <div class="stockout overlay text">
                 <p class="addText">OUT OF STOCK</p>
                 <span>
-                    <a href="#" class="btnShowDetails" >
-                        <span >Details</span>
-                <span>  &gt;</span>
-                </a>
-                <a href="#" class="btnShowDetailsIcon">
-                </a>
+                    <mat-form-field>
+                        <mat-label>What's your name?</mat-label>
+                        <input matInput [(ngModel)]="name">
+                        <input matInput [(ngModel)]="unitprice">
+                    </mat-form-field>
+                    <li *ngIf="data">
+                        You chose: <i>{{data.animal}}</i>
+                    </li>
+                    <button class="btnShowDetails" (click)="openDialog(featureItem)">
+                        <span >Details</span> <span>  &gt;&gt;  </span>
+                </button>
                 </span>
-            </div>
-        </div>
-        <mat-card-footer fxLayoutAlign="space-around center">
-            <!-- class="card-body" -->
-            <mat-icon matBadgeColor="warn" style="color: whitesmoke;" (click)="onRemoveFromBag(featureItem)"> indeterminate_check_box</mat-icon>
-            <mat-icon matBadgeColor="warn" style="color: whitesmoke;" (click)="onAddToBag(featureItem)"> directions_run</mat-icon>
-            <span>{{individualItemCount}} in bag </span> <span (click)="onAddToBag(featureItem)"> add to bag </span>
-        </mat-card-footer>
+            </div> -->
 
-    </mat-card>
-</div>
+
+<!-- <i class="addText fa fa-minus-square" (click)="onAddToBag(featureItem)">  </i>
+                    <p class="addText" (click)="onAddToBag(featureItem)"> {{totalItems}} </p>
+                    <i class="addText fa fa-plus-square" (click)="onAddToBag(featureItem)"> + </i> -->
+
+<!-- <p class="addIcon">
+                        <mat-icon class="hide" matBadgeColor="warn" style="color: whitesmoke;" (click)="onRemoveFromBag(featureItem)">remove_circle_outline</mat-icon>
+                    </p>
+                    <span class="qty">৳ 200
+                    <p class="addText" > {{totalItems}} </p>
+                    </span>
+                    <p class="addIcon">
+                        <mat-icon class="hide" matBadgeColor="warn" style="color: whitesmoke;" (click)="onAddToBag(featureItem)"> add_circle_outline
+                        </mat-icon>
+                    </p> -->
