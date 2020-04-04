@@ -151,11 +151,19 @@ label {
 }
 
 .round {
-    transform: rotate(-90deg);
-    margin-bottom: 115px;
-    background: #4abfbf;
+    background: #0bb247d9;
     color: white;
-    font-size: 20px;
+    padding: 5px;
+}
+
+h4 {
+    font-weight: 900;
+    font-size: 2.125rem;
+    letter-spacing: 0.015625rem;
+    text-transform: none;
+    line-height: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 mat-card-subtitle.round.mat-card-subtitle {
@@ -387,10 +395,16 @@ table {
     font-weight: 900;
 }
 
+.details {
+    height: 500px;
+    width: 400px;
+}
+
 .features {
-    border-top-left-radius: 2em;
-    height: 195px;
-    width: 242px;
-    position: relative;
-    top: 35px;
+    height: 70px;
+    width: 50px;
+    border: solid 1px lightgray;
+    border-radius: 6px;
+    padding: 3px;
+    margin: 5px;
 }

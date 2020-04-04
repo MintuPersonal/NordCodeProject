@@ -38,6 +38,11 @@ export class ProductItemComponent implements OnInit {
   constructor(private dialog: MatDialog, private productService: ProductService, private _interactionService: InteractionService) { }
 
   ngOnInit() {
+    ////////////// Here New Concept  ///////////////
+    // this._interactionService.getForAddtoCart().subscribe((product: Ecom_Product) => {
+    //     this._getTotalAmounts(product.PID);
+    // });
+    ////////////// Here New Concept  ///////////////
   }
   public LoadItemTotal() {
 
@@ -209,50 +214,54 @@ export class ProductItemComponent implements OnInit {
 
   ////////////// Here New Concept  ///////////////
   onAddToBag() {
-    debugger;
+    
     this._interactionService.sendForAddtoCart(this.featureItem);
-    this._getTotalAmounts();
+    this._getTotalAmounts(this.featureItem.PID);
   }
-
-  // public addProductToCart(product: Ecom_Product) {
-
-  //   let productExits = false;
-  //   this.cartItems = this.productService.cartItems;
-  //   for (let key in this.cartItems) {
-  //     if (this.cartItems[key].PID === product.PID) {
-  //       this.cartItems[key].Qty++;
-  //       productExits = true;
-  //       break;
-  //     }
-  //   }
-
-  //   if (!productExits) {
-  //     this.cartItems.push({
-  //       Add: '+', PID: product.PID, PName: product.PName, Qty: 1, UnitPrice: product.UnitPrice, Close: 'X'
-  //     });
-  //   }
-  //   this._getTotalAmounts();
-  // }
-
-
 
   onRemoveFromBag() {
     this._interactionService.sendForRemoveFromCart(this.featureItem);
-    this._getTotalAmounts();
+    this._getTotalAmounts(this.featureItem.PID);
   }
+  public addProductToCart(product: Ecom_Product) {
 
-  private _getTotalAmounts() {
+    let productExits = false;
     this.cartItems = this.productService.cartItems;
-    this.totalItems = this.cartItems.length;
+    for (let key in this.cartItems) {
+      if (this.cartItems[key].PID === product.PID) {
+        this.cartItems[key].Qty++;
+        productExits = true;
+        break;
+      }
+    }
+
+    if (!productExits) {
+      this.cartItems.push({
+        Add: '+', PID: product.PID, ImgPath: product.ImgPath, PName: product.PName, Qty: 1, UnitPrice: product.UnitPrice, Close: 'X'
+      });
+    }
+
+    this._getTotalAmounts(product.PID);
+  }
+  public _getTotalAmounts(pid) {
+    this.cartItems = this.productService.cartItems;
+    //this.totalItems = this.cartItems.length;
     this.totalAmounts = 0;
     this.cartItems.forEach((item) => {
       this.totalAmounts += (item.Qty * item.UnitPrice);
+      if (item.PID == pid) {
+        this.totalItems = item.Qty;
+        this.featureItem.totalItems = item.Qty
+      }
     });
   }
-  openDialog(featureItem): void {
+  openDialog(feature_Item): void {
     debugger;
+    this._getTotalAmounts(feature_Item.PID);
+    feature_Item.Qty = this.totalItems;
     const dialogRef = this.dialog.open(DialogpdetailsComponent, {
-      width: '950px', data: featureItem
+      panelClass: 'custom-dialog-container',
+      autoFocus: false, maxHeight: '90vh', width: '800px', data: feature_Item
 
     });
 
@@ -262,22 +271,5 @@ export class ProductItemComponent implements OnInit {
     });
   }
 
-
-
-  // public openDialog(): void {
-  //   //if (!this.condition) {
-  //   this.name = 'New Product'
-  //   this.animal = '10'
-  //   const dialogRef = this.dialog.open(DialogpdetailsComponent, { width: '950px', data: { name: this.name, animal: this.animal } });
-
-  //   dialogRef.afterClosed().subscribe(result => {
-
-  //   });
-  //   // } else {
-  //   //   firebase.auth().signOut().then((data) => {
-  //   //     this.condition = false;
-  //   //   });
-  //   // }
-  // }
   ////////////// Here New Concept  ///////////////
 }

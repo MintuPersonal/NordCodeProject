@@ -36,6 +36,7 @@ router.get('/gethome', (req, res, next) => {
 
     feature.findAll().then(features => {
         homeobj.features = features;
+        console.log(features);
         res.json({
             status: true,
             msg: 'Data has been loaded successfully',

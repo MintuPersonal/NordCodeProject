@@ -1,47 +1,74 @@
-<div class="container p-3">
+<div class="container">
     <!-- <div class="pull-right">
         <button mat-button [mat-dialog-close]="data" cdkFocusInitial> close </button>
     </div> -->
 
     <div class="row">
-        <div class=" col-6">
-            <img class="features" src="https://cdn.chaldal.net/_mpimage/beauty-formulas-bikini-razors-3-pcs?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D41804&amp;q=low&amp;v=1&amp;w=200&amp;webp=1">
+        <div class="col-6">
+            <img class="details" src="../assets/img/product/feature/{{data.ImgPath}}">
+            <div class="row">
+                <img class="features" src="../assets/img/product/feature/{{data.ImgPath}}">
+                <img class="features" src="../assets/img/product/feature/{{data.ImgPath}}">
+                <img class="features" src="../assets/img/product/feature/{{data.ImgPath}}">
+                <img class="features" src="../assets/img/product/feature/{{data.ImgPath}}">
+                <img class="features" src="../assets/img/product/feature/{{data.ImgPath}}">
+                <img class="features" src="../assets/img/product/feature/{{data.ImgPath}}">
+            </div>
         </div>
+
         <div class="row col-6">
             <div mat-dialog-content>
-
+                <mat-label class="round"> ID#{{("00000000"+data.PID).slice(-7)}} </mat-label>
                 <h4 at-dialog-title>{{data.PName}}</h4>
                 <mat-label>{{data.Weight}}</mat-label>
                 <p class="price">{{data.UnitPrice}}</p>
                 <section>
                     <div class="quantityEditor">
-                        <button class="removeButton outer">–</button>
+                        <button class="removeButton outer" (click)="onRemoveFromBag(data)">–</button>
                         <div class="QuantityTextContainer">
                             <div class="quantity">
-                                <span>{{data.Qty | json}}</span></div>
+                                <span>{{data.UnitsInStock | json}}</span></div>
                             <div>in bag</div>
                         </div>
-                        <button class="addButton outer">+</button>
+                        <button class="addButton outer" (click)="onAddToBag(data)">+</button>
                     </div>
                     <button id="buyNowButton" [mat-dialog-close]="data" cdkFocusInitial> Buy Now</button>
                 </section>
-                <!-- <mat-card-footer fxLayoutAlign="space-around center">
-                        <mat-icon matBadgeColor="warn" style="color: whitesmoke;" (click)="onRemoveFromBag(featureItem)"> - </mat-icon>
-                        <span>{{data.UnitPrice}} in bag </span> <span (click)="onAddToBag(featureItem)"> add to bag </span>
-                        <mat-icon matBadgeColor="warn" style="color: whitesmoke;" (click)="onAddToBag(featureItem)"> + </mat-icon>
-                    </mat-card-footer> -->
+                <h4> Product summary </h4>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi quo deleniti magnam molestias praesentium</p>
+
             </div>
-            <!-- <div mat-dialog-actions>
-                <button mat-button (click)="onNoClick()">No Thanks</button>
-                <button mat-button [mat-dialog-close]="data" cdkFocusInitial color="warm"> Buy Now </button>
-            </div> -->
+
         </div>
     </div>
+    <hr>
+    <p>{{data.Description}}</p>
+    <h4> Product Details </h4>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi quo deleniti magnam molestias praesentium natus sit aut earum dolore. Aliquam nisi inventore ipsam ea maiores, quo ut incidunt labore iusto.</p>
+    <hr>
 </div>
 <app-footer></app-footer>
 
 
 
+
+
+
+
+
+
+
+
+
+<!-- <div mat-dialog-actions>
+                <button mat-button (click)="onNoClick()">No Thanks</button>
+                <button mat-button [mat-dialog-close]="data" cdkFocusInitial color="warm"> Buy Now </button>
+            </div> -->
+<!-- <mat-card-footer fxLayoutAlign="space-around center">
+                        <mat-icon matBadgeColor="warn" style="color: whitesmoke;" (click)="onRemoveFromBag(featureItem)"> - </mat-icon>
+                        <span>{{data.UnitPrice}} in bag </span> <span (click)="onAddToBag(featureItem)"> add to bag </span>
+                        <mat-icon matBadgeColor="warn" style="color: whitesmoke;" (click)="onAddToBag(featureItem)"> + </mat-icon>
+                    </mat-card-footer> -->
 
 
 <!-- <div class="lightbox" data-reactid=".mikpkot9hg.6.2.0.0.0.0.2.4.1.0:$p15634.4.0"><button class="close" data-reactid=".mikpkot9hg.6.2.0.0.0.0.2.4.1.0:$p15634.4.0.0"></button>

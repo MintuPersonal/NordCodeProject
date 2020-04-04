@@ -11,8 +11,12 @@ const home = db.sequelize.define('Ecom_Feature', {
     PName_BN: db.Sequelize.STRING,
     Brand: db.Sequelize.STRING,
     Brand_BN: db.Sequelize.STRING,
+    Description: db.Sequelize.STRING,
+    Description_BN: db.Sequelize.STRING,
     ImgPath: db.Sequelize.STRING,
-    UnitPrice: db.Sequelize.INTEGER,
+    UnitPrice: db.Sequelize.FLOAT,
+    OfferPrice: db.Sequelize.FLOAT,
+    UnitsInStock: db.Sequelize.INTEGER,
 
     TrackedId: db.Sequelize.STRING,
     CreateBy: db.Sequelize.STRING,

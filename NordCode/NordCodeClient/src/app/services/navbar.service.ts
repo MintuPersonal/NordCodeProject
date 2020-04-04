@@ -41,8 +41,7 @@ export class NavbarService {
       document.getElementById("cartnav").style.width = "350px";
       this.isOpen = true;
     } else {
-      document.getElementById("cartnav").style.width = "0";
-      document.getElementById("cartnav").style.height = "350px";
+      document.getElementById("cartnav").style.width = "0";     
       this.isOpen = false;
     }
   }  

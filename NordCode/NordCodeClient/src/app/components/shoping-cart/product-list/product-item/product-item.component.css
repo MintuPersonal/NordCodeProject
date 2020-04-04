@@ -71,7 +71,7 @@ mat-card-content {
     display: flex;
 }
 
-mat-card-footer {
+.mat-card-footer {
     background: #025b22;
     margin: 0px;
     color: white;
@@ -79,11 +79,26 @@ mat-card-footer {
     border-radius: 2px;
 }
 
-mat-card-footer:hover {
-    background: #ff5722;
+.mat-card-footer {
+    background: lightgrey;
+    margin: 0px;
+    color: white;
+    height: 40px;
+    border-radius: 2px;
+}
+
+.mat-card-footer:hover {
+    background: gray;
+    margin: 0px;
+    color: white;
+    height: 40px;
+    border-radius: 2px;
+}
+
+.mat-card-footer-con {
+    background: #ff4500d9;
     margin: 0px;
     color: papayawhip;
-    height: 40px;
 }
 
 label {
@@ -158,6 +173,29 @@ th.mat-header-cell:last-of-type {
     opacity: 0;
 }
 
+.overlay.text.stockout {
+    font-size: 20px;
+    position: absolute;
+    top: 34px;
+    left: 0;
+    padding-top: 0;
+    color: #fff;
+    background-color: rgba(161, 159, 159, 0.75);
+    text-align: center;
+    height: 73%;
+    width: 100%;
+    border: 1px solid #CCC;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    padding-bottom: 55px;
+    opacity: 0;
+}
+
 .overlay.text {
     border-top-left-radius: 3em!important;
 }
@@ -212,6 +250,14 @@ mat-card.mat-card.card-picture {
     /* padding: 20px;
     line-height: 34px; */
     font-size: 2em;
+}
+
+.addToBag {
+    color: #fff;
+    font-size: 2em;
+    line-height: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .overlay.text p.addIcon {
@@ -309,13 +355,6 @@ div.product .imageWrapper .overlay.text section.actionItems div .remove {
     font-size: 2em;
     width: 80px;
 }
-
-
-/* 
-.overlay.text p.addText {
-    color: #fff;
-    font-size: 2em;
-} */
 
 th.mat-header-cell {
     text-align: left;

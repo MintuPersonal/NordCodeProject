@@ -78,7 +78,7 @@ export class HeaderComponent implements OnInit {
 
     if (!productExits) {
       this.cartItems.push({
-        Add: '+', PID: product.PID, PName: product.PName, Qty: 1, UnitPrice: product.UnitPrice, Close: 'X'
+        Add: '+', PID: product.PID, ImgPath: product.ImgPath, PName: product.PName, Qty: 1, UnitPrice: product.UnitPrice, Close: 'X'
       });
     }
 
@@ -135,7 +135,7 @@ export class HeaderComponent implements OnInit {
   }
   public openDialog(): void {
     if (!this.condition) {
-      const dialogRef = this.dialog.open(DialogComponent, { width: '450px', data: { name: this.name, animal: this.animal } });
+      const dialogRef = this.dialog.open(DialogComponent, { width: '850px', data: { name: this.name, animal: this.animal } });
       dialogRef.afterClosed().subscribe(result => {
       });
     } else {
