@@ -19,7 +19,9 @@ export class Ecom_Orders {
     CreateDate: Date;
     Delete: boolean;
     Active: boolean;
-    
+    TotalPrice: number;
+    PaymentModeId: number;
+
 
     // constructor(oid, orderid, customerid, couponid, paymentid, discount, reason, active, productid,
     //     unitprice, qty, netprice, address, aria, deliveryTime) {

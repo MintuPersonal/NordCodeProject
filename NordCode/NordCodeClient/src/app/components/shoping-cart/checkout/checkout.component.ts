@@ -2,6 +2,8 @@ import { Component, OnInit, Input, SystemJsNgModuleLoader } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Ecom_Orders } from '../../../models/order';
+import { ProductService } from 'src/app/services/product.service';
+import { environment } from 'src/environments/environment';
 //import { Ecom_Orders } from 'src/app/order/order';
 
 @Component({
@@ -14,15 +16,19 @@ export class CheckoutComponent implements OnInit {
   CustomerId: number;
   UnitPrice: number;
   OrderNo: string;
+  _totalAmounts: any;
 
-  constructor(private route: ActivatedRoute, private _customerService: CustomerService) { }
-
-  // @Input() totalItemsPrice: any;
+  constructor(private route: ActivatedRoute, private productService : ProductService, private _customerService: CustomerService) { }
+  @Input() totalAmounts: any;
+  @Input() totalItemsPrice: any;
 
   ngOnInit() {
-    this.UnitPrice = parseInt(this.route.snapshot.paramMap.get("price"));
+    this.TotalPrice = parseInt(this.route.snapshot.paramMap.get("total"));
     this.CustomerId = 2020888; // + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds());
     this.OrderNo = '2020555';
+    //this.TotalPrice = this.TotalPrice; 
+    debugger;
+    //this.productService.getCartItemsFromLocal();
   }
 
   public LoadItemTotal() {
@@ -46,21 +52,22 @@ export class CheckoutComponent implements OnInit {
     var order = new Ecom_Orders();
     order.OID = 0;
     order.OrderNo = this.OrderNo;
-    order.CustomerId = this.CustomerId + this.UnitPrice;
+    order.CustomerId = this.CustomerId + this.TotalPrice;
     order.CouponId = 3333;
-    order.PaymentId = 1;
+    order.PaymentModeId = 1;
     order.Discount = 20;
     order.Reason = _product.Reason;
     order.Active = true;
-    order.UnitPrice = this.UnitPrice;
     order.Qty = 5;
+    order.UnitPrice = this.UnitPrice;   
     order.NetPrice = this.UnitPrice;
+    order.TotalPrice = this.TotalPrice; 
     order.Address = _product.Address;
     order.Aria = _product.Aria;
     order.DeliveryTime = _product.DeliveryTime;
 
-    order.TrackedId = '127';
-    order.CreateBy = 11;
+    order.TrackedId = environment.baseurl;
+    order.CreateBy = environment.currentuserId; 
     order.CreateDate = new Date();
     order.Active = true;
     order.Delete = false;

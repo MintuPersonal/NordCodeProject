@@ -71,16 +71,8 @@ mat-card-content {
     display: flex;
 }
 
-.mat-card-footer {
+mat-card-footer {
     background: #025b22;
-    margin: 0px;
-    color: white;
-    height: 40px;
-    border-radius: 2px;
-}
-
-.mat-card-footer {
-    background: lightgrey;
     margin: 0px;
     color: white;
     height: 40px;
@@ -94,6 +86,16 @@ mat-card-content {
     height: 40px;
     border-radius: 2px;
 }
+
+
+/* .mat-card-footer {
+    background: lightgrey;
+    margin: 0px;
+    color: white;
+    height: 40px;
+    border-radius: 2px;
+}
+*/
 
 .mat-card-footer-con {
     background: #ff4500d9;

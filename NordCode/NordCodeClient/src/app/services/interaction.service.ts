@@ -10,6 +10,7 @@ export class InteractionService {
 
   private _teacherMessageSource = new Subject<Ecom_Product>();
   constructor(private productService: ProductService) { }
+  
   ////////////// Here New Concept  ///////////////
   sendForAddtoCart(featureItem: Ecom_Product) {
     this._teacherMessageSource.next(featureItem);

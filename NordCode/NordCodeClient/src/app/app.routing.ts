@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'product', component: ProductComponent },
   { path: 'productdetails/:productId', component: ProductdetailsComponent },
   { path: 'commercial', component: CommercialComponent },  
-  { path: 'checkout', component: CheckoutComponent },  
+  { path: 'checkout/:total', component: CheckoutComponent },  
   { path: 'phonelogin', component: PhoneLoginComponent },
   { path: 'alerthome', component: AlertHomeComponent },
   { path: 'logindialog', component: DialogComponent },

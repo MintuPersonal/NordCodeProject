@@ -13,7 +13,7 @@
                 </mat-form-field>
             </form>
             <div class="col-lg-1 signin-cart">
-                <mat-icon (click)="navService.openNavCart()" [matBadge]="totalItems" matBadgeColor="warn">add_shopping_cart</mat-icon>
+                <mat-icon (click)="navService.openNavCart()" [matBadge]="_totalItem" matBadgeColor="warn">add_shopping_cart</mat-icon>
                 <span class="cdk-visually-hidden" (click)="navService.openNavCart()"> </span>
             </div>
             <div class="enbn  col-lg-1">
@@ -38,7 +38,7 @@
         <div id="menucart" mat-icon-button (click)="navService.openNavCart()">
             <mat-icon> shopping_basket </mat-icon>
             <br>
-            <label> {{totalItems}} items </label>
+            <label> {{_totalItem}} items </label>
             <div class="pricecrt">
                 <label> Tk. {{totalAmounts}} </label>
             </div>
@@ -47,8 +47,8 @@
 </div>
 
 <!-- <app-cart></app-cart> -->
-<div id="cartnav" class="sidepanel addcart" style="Z-INDEX: 9999;position:relative;right: 100%; margin-top: 30px;">
-    <mat-label class="mat-lebal">{{totalItems}} Items</mat-label>
+<div id="cartnav" class="sidepanel addcart" style="position:relative;right: 100%; margin-top: 30px;">
+    <mat-label class="mat-lebal">{{_totalItem}} Items</mat-label>
     <a href=" javascript:void(0)" class="closebtn" (click)="navService.openNavCart()">&times;</a>
     <mat-card class="card-picture ">
         <nav class="nav nav-info ">
@@ -58,7 +58,7 @@
             <h5 class="h5">
                 <mat-icon matBadgeColor="warn">directions_run </mat-icon> Express Delivery
             </h5>
-            <div *ngIf="totalItems">
+            <div *ngIf="_totalItem">
                 <table>
                     <thead>
                         <tr class="tr">
@@ -67,7 +67,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of cartItems; index as itemed" class="tr">
+                        <tr *ngFor="let item of _cartItems; index as itemed" class="tr">
 
                             <td title="add one more to bag" class="td">
                                 <mat-icon (click)="addProductToCart(item)">add_circle</mat-icon>
@@ -85,7 +85,7 @@
                     </tbody>
                 </table>
             </div>
-            <div *ngIf="!totalItems" class="emptyCart">
+            <div *ngIf="!_totalItem" class="emptyCart">
                 <div>
                     <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-504/Default/components/header/ShoppingCart/images/emptyShoppingBag.png?q=low&amp;webp=1&amp;alpha=1">
                 </div>

@@ -9,34 +9,31 @@ import { environment } from 'src/environments/environment';
 
 export class ProductService {
   ////////////// Here New Concept  ///////////////
-  cartItems = [];  
+  _cartItems = [];
   fromproductlist: boolean = false;
-  constructor(private _http: HttpClient) { }
-  
+  constructor(private _http: HttpClient) { 
+    this._cartItems = JSON.parse(localStorage.getItem('item'));
+  }
+
   public RemoveProductFromCart(product, fromproductlist) {
- this.fromproductlist = fromproductlist;
+    this.fromproductlist = fromproductlist;
     let productExits = false;
-    for (let key in this.cartItems) {
-      if (this.cartItems[key].PID === product.PID && this.cartItems[key].Qty > 1) {
-        this.cartItems[key].Qty--;
+    for (let key in this._cartItems) {
+      if (this._cartItems[key].PID === product.PID && this._cartItems[key].Qty > 1) {
+        this._cartItems[key].Qty--;
         productExits = true;
         break;
       }
-    }
-
-    // this.totalItems = this.cartItems.length;
-    // this.totalAmounts = 0
-    // this.cartItems.forEach((item) => {
-    //   this.totalAmounts += (item.Qty * item.UnitPrice);
-    // });
+    }    
   }
   public RemoveFromCart(index: number) {
     if (index !== -1) {
-      this.cartItems.splice(index, 1);
-      //this.totalItems = this.cartItems.length;
-      // this.totalAmounts = 0
-      // this.cartItems.forEach((item) => { this.totalAmounts += (item.Qty * item.UnitPrice); });
+      this._cartItems.splice(index, 1);
+     
     }
+  }
+  getCartItemsFromLocal() {
+    return JSON.parse(localStorage.getItem('item'));
   }
   ////////////// Here New Concept  ///////////////
 
@@ -44,16 +41,16 @@ export class ProductService {
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
     if (hasitemdata != null && Object.keys(hasitemdata).length !== 0) {
       hasitemdata.push(product);
-      return hasitemdata;      
+      return hasitemdata;
     }
   }
   getProduct(_product: Ecom_Product) {
-    return this._http.get(environment.baseurl+'getproductall');
+    return this._http.get(environment.baseurl + 'getproductall');
   };
   setProduct(_product: Ecom_Product) {
-    return this._http.post<any>(environment.baseurl+'createProduct', _product);
+    return this._http.post<any>(environment.baseurl + 'createProduct', _product);
   };
   deleteProduct(pid: any) {
-    return this._http.get(environment.baseurl+'deleteProduct?pid=' + pid)
+    return this._http.get(environment.baseurl + 'deleteProduct?pid=' + pid)
   };
 };

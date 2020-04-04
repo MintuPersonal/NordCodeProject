@@ -4,7 +4,7 @@
 
         <!-- Product Entry -->
         <mat-card class="card-picture">
-            <h5 class="h5"> Total Price: {{UnitPrice}} </h5>
+            <h5 class="h5"> Total Price: {{TotalPrice}} </h5>
             <br>
             <form class="example-form" #orderModel="ngForm" (ngSubmit)="onSubmit(orderModel)">
                 <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
@@ -160,7 +160,7 @@
                             <mat-button-toggle-group (click)="onSubmit(orderModel)" [disabled]="orderModel.form.invalid" color="accent" name="fontStyle" aria-label="Font Style">
                                 <mat-button-toggle type="submit" class="btn-large" value="submit" class="order"> Process
                                 </mat-button-toggle>
-                                <mat-button-toggle type="submit" value="submit" class="price">Tk. {{UnitPrice}}
+                                <mat-button-toggle type="submit" #Reason='ngModel' name="TotalPrice" [(ngModel)]="orderModel.TotalPrice" value="submit" class="price">Tk. {{TotalPrice}}
                                 </mat-button-toggle>
                             </mat-button-toggle-group>
                             <br>

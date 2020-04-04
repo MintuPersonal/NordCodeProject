@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Ecom_Product } from 'src/app/models/Product';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
@@ -9,8 +9,6 @@ import { NavbarService } from '../../../services/navbar.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { ProductService } from 'src/app/services/product.service';
 import { Ecom_Commercial } from 'src/app/models/Ecom_Commercial';
-import { LoginService } from 'src/app/services/login.service';
-
 
 @Component({
   selector: 'app-header',
@@ -23,15 +21,19 @@ export class HeaderComponent implements OnInit {
     autoClose: true,
     keepAfterRouteChange: false
   };
-  totalItems: number = 0;
+  _cartItems = [];
+  _totalItem: number = 0;
+
   totalAmounts: number;
-  cartItems = [];
   condition: boolean;
   animal: any;
   name: any;
   newline: Ecom_Commercial;
   itemState: any[];
   commercialModels: any;
+
+  //@Output() RefObject = new EventEmitter();
+  
   constructor(private router: Router, private dialog: MatDialog,
     protected alertService: AlertService, public navService: NavbarService,
     private _interactionService: InteractionService, private productService: ProductService) {
@@ -61,34 +63,36 @@ export class HeaderComponent implements OnInit {
         this.productService.fromproductlist = false;
       }
     });
+    this._getTotalAmounts();
     ////////////// Here New Concept  ///////////////
   }
 
   public addProductToCart(product: Ecom_Product) {
 
     let productExits = false;
-    this.cartItems = this.productService.cartItems;
-    for (let key in this.cartItems) {
-      if (this.cartItems[key].PID === product.PID) {
-        this.cartItems[key].Qty++;
+    this._cartItems = this.productService._cartItems;
+    for (let key in this._cartItems) {
+      if (this._cartItems[key].PID === product.PID) {
+        this._cartItems[key].Qty++;
         productExits = true;
         break;
       }
     }
 
     if (!productExits) {
-      this.cartItems.push({
+      this._cartItems.push({
         Add: '+', PID: product.PID, ImgPath: product.ImgPath, PName: product.PName, Qty: 1, UnitPrice: product.UnitPrice, Close: 'X'
       });
     }
-
     this._getTotalAmounts();
   }
   private _getTotalAmounts() {
-    this.cartItems = this.productService.cartItems;
-    this.totalItems = this.cartItems.length;
+    this._cartItems = this.productService._cartItems;
+    localStorage.setItem('item', JSON.stringify(this._cartItems));
+    this._totalItem = this._cartItems.length;
+    debugger;
     this.totalAmounts = 0;
-    this.cartItems.forEach((item) => {
+    this._cartItems.forEach((item) => {
       this.totalAmounts += (item.Qty * item.UnitPrice);
     });
   }
@@ -101,10 +105,11 @@ export class HeaderComponent implements OnInit {
     this.productService.RemoveFromCart(index);
     this._getTotalAmounts();
   }
-  public PlaceOrder(totalPrice) {
-    var data = this.CheckUserSession();
-    if (data) {
-      this.router.navigate(['/checkout'])
+  public PlaceOrder(totalPrice : any) {
+    var data = true; //this.CheckUserSession();
+    if (data) {       
+      //this.RefObject.emit(totalPrice)  
+      this.router.navigate(['/checkout', totalPrice])
     } else {
       this.router.navigate(['/logindialog'])
     }
@@ -135,7 +140,7 @@ export class HeaderComponent implements OnInit {
   }
   public openDialog(): void {
     if (!this.condition) {
-      const dialogRef = this.dialog.open(DialogComponent, { width: '850px', data: { name: this.name, animal: this.animal } });
+      const dialogRef = this.dialog.open(DialogComponent, { width: '950px', data: { name: this.name, animal: this.animal } });
       dialogRef.afterClosed().subscribe(result => {
       });
     } else {
@@ -145,10 +150,10 @@ export class HeaderComponent implements OnInit {
     }
   }
   public logout() {
-    localStorage.setItem('currentUser', JSON.stringify('')); 
-    this.CheckUserSession();    
+    localStorage.setItem('currentUser', JSON.stringify(''));
+    this.CheckUserSession();
     this.router.navigate(['/']);
-    
+
   }
 
   ////////////// Here New Concept  ///////////////
@@ -162,55 +167,55 @@ export class HeaderComponent implements OnInit {
 
 
 
-  public LoadItemTotal() {
-    var hasitemdata = JSON.parse(localStorage.getItem('item'));
-    if (hasitemdata != null && Object.keys(hasitemdata).length !== 0) {
-      var _totalItemsPrice = 0;
-      Object.keys(hasitemdata).forEach(key => {
-        const iteming = hasitemdata[key];
-        const intervale = Object.keys(iteming).map(key => iteming[key]);
-        _totalItemsPrice = _totalItemsPrice + intervale[4];
-      });
-      // alert('Total Price is Final :'+ _totalItemsPrice);
-      this.setTotalPrice(_totalItemsPrice);
-      this.totalItems = hasitemdata.length;
-      this.commercialModels = hasitemdata;
-    } else {
-      this.setTotalPrice(0);
-      this.totalItems = 0;
-      this.commercialModels = [];
-    }
-  }
-  public setTotalPrice(totalItemsPrice) {
-    this.totalAmounts = totalItemsPrice;
-  }
-  public DeleteRow(item) {
-    //alert('hi')
-    var hasitemdata = JSON.parse(localStorage.getItem('item'));
-    if (Object.keys(hasitemdata).length !== 0 && hasitemdata != null) {
-      this.itemState = [];
-      const deleteItem = Object.keys(item).map(key => item[key]);
-      Object.keys(hasitemdata).forEach(key => {
-        const iteming = hasitemdata[key];
-        const storageItem = Object.keys(iteming).map(mapper => iteming[mapper]);
-        if (storageItem[0] != deleteItem[0]) {
-          this.newline = new Ecom_Commercial(storageItem[0], storageItem[1], storageItem[2], storageItem[3], 'X', 'A+');
-          this.itemState.push(this.newline);
-          //localStorage.setItem('item', JSON.stringify(this.itemState));
-        }
-      });
-      localStorage.setItem('item', JSON.stringify(this.itemState));
-    }
-    this.LoadItemTotal();
-  }
-  public openNav() {
-    document.getElementById("mySidepanel").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-  }
-  public closeNav() {
-    document.getElementById("mySidepanel").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
-  }
+  // public LoadItemTotal() {
+  //   var hasitemdata = JSON.parse(localStorage.getItem('item'));
+  //   if (hasitemdata != null && Object.keys(hasitemdata).length !== 0) {
+  //     var _totalItemsPrice = 0;
+  //     Object.keys(hasitemdata).forEach(key => {
+  //       const iteming = hasitemdata[key];
+  //       const intervale = Object.keys(iteming).map(key => iteming[key]);
+  //       _totalItemsPrice = _totalItemsPrice + intervale[4];
+  //     });
+  //     // alert('Total Price is Final :'+ _totalItemsPrice);
+  //     this.setTotalPrice(_totalItemsPrice);
+  //     this._totalItem = hasitemdata.length;
+  //     this.commercialModels = hasitemdata;
+  //   } else {
+  //     this.setTotalPrice(0);
+  //     this._totalItem = 0;
+  //     this.commercialModels = [];
+  //   }
+  // }
+  // public setTotalPrice(totalItemsPrice) {
+  //   this.totalAmounts = totalItemsPrice;
+  // }
+  // public DeleteRow(item) {
+  //   //alert('hi')
+  //   var hasitemdata = JSON.parse(localStorage.getItem('item'));
+  //   if (Object.keys(hasitemdata).length !== 0 && hasitemdata != null) {
+  //     this.itemState = [];
+  //     const deleteItem = Object.keys(item).map(key => item[key]);
+  //     Object.keys(hasitemdata).forEach(key => {
+  //       const iteming = hasitemdata[key];
+  //       const storageItem = Object.keys(iteming).map(mapper => iteming[mapper]);
+  //       if (storageItem[0] != deleteItem[0]) {
+  //         this.newline = new Ecom_Commercial(storageItem[0], storageItem[1], storageItem[2], storageItem[3], 'X', 'A+');
+  //         this.itemState.push(this.newline);
+  //         //localStorage.setItem('item', JSON.stringify(this.itemState));
+  //       }
+  //     });
+  //     localStorage.setItem('item', JSON.stringify(this.itemState));
+  //   }
+  //   this.LoadItemTotal();
+  // }
+  // public openNav() {
+  //   document.getElementById("mySidepanel").style.width = "250px";
+  //   document.getElementById("main").style.marginLeft = "250px";
+  // }
+  // public closeNav() {
+  //   document.getElementById("mySidepanel").style.width = "0";
+  //   document.getElementById("main").style.marginLeft = "0";
+  // }
 
 }
 

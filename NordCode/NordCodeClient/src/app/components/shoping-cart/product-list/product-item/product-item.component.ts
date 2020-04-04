@@ -32,7 +32,7 @@ export class ProductItemComponent implements OnInit {
   @Input() featureItem: any;
   name: string;
   animal: string;
-  cartItems: any;
+  _cartItems: any;
   totalItems: any = 0;
   totalAmounts: number;
   constructor(private dialog: MatDialog, private productService: ProductService, private _interactionService: InteractionService) { }
@@ -214,29 +214,29 @@ export class ProductItemComponent implements OnInit {
 
   ////////////// Here New Concept  ///////////////
   onAddToBag() {
-    
+    debugger;
     this._interactionService.sendForAddtoCart(this.featureItem);
     this._getTotalAmounts(this.featureItem.PID);
+    
   }
-
   onRemoveFromBag() {
     this._interactionService.sendForRemoveFromCart(this.featureItem);
     this._getTotalAmounts(this.featureItem.PID);
   }
   public addProductToCart(product: Ecom_Product) {
-
+    debugger;
     let productExits = false;
-    this.cartItems = this.productService.cartItems;
-    for (let key in this.cartItems) {
-      if (this.cartItems[key].PID === product.PID) {
-        this.cartItems[key].Qty++;
+    this._cartItems = this.productService._cartItems;
+    for (let key in this._cartItems) {
+      if (this._cartItems[key].PID === product.PID) {
+        this._cartItems[key].Qty++;
         productExits = true;
         break;
       }
     }
 
     if (!productExits) {
-      this.cartItems.push({
+      this._cartItems.push({
         Add: '+', PID: product.PID, ImgPath: product.ImgPath, PName: product.PName, Qty: 1, UnitPrice: product.UnitPrice, Close: 'X'
       });
     }
@@ -244,24 +244,23 @@ export class ProductItemComponent implements OnInit {
     this._getTotalAmounts(product.PID);
   }
   public _getTotalAmounts(pid) {
-    this.cartItems = this.productService.cartItems;
-    //this.totalItems = this.cartItems.length;
-    this.totalAmounts = 0;
-    this.cartItems.forEach((item) => {
+    this._cartItems = this.productService._cartItems;
+    debugger;
+    this.totalAmounts = 0;    
+    this._cartItems.forEach((item) => {      
       this.totalAmounts += (item.Qty * item.UnitPrice);
       if (item.PID == pid) {
-        this.totalItems = item.Qty;
-        this.featureItem.totalItems = item.Qty
+         //this.totalItems = item.Qty;         
+         this.featureItem.totalItems = item.Qty
       }
     });
   }
-  openDialog(feature_Item): void {
-    debugger;
+  openDialog(feature_Item): void {    
     this._getTotalAmounts(feature_Item.PID);
     feature_Item.Qty = this.totalItems;
     const dialogRef = this.dialog.open(DialogpdetailsComponent, {
       panelClass: 'custom-dialog-container',
-      autoFocus: false, maxHeight: '90vh', width: '800px', data: feature_Item
+      autoFocus: false, maxHeight: '90vh', width: '950px', data: feature_Item
 
     });
 

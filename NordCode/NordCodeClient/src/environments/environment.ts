@@ -2,9 +2,12 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+//import { currentId } from 'async_hooks';
+
 export const environment = {
   production: false,
-  baseurl: 'http://localhost:3000/api/' //'http://10.11.1.6:3000/api/'
+  baseurl: 'http://localhost:3000/api/', //'http://10.11.1.6:3000/api/'
+  currentuserId: '11'
 };
 
 /*
