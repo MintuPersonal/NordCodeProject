@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Ecom_Product } from '../models/products';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Cart } from '../models/Cart';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,9 @@ import { environment } from 'src/environments/environment';
 
 export class ProductService {
   ////////////// Here New Concept  ///////////////
-  _cartItems = [];
+  //_cartItems = [];
   fromproductlist: boolean = false;
+  _cartItems: Cart[] = [];
   constructor(private _http: HttpClient) { 
     this._cartItems = JSON.parse(localStorage.getItem('item'));
   }

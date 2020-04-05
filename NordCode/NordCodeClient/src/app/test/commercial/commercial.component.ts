@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommercialService } from '../../services/commercial.service';
 //import { Ecom_Commercial } from '../../models/Product';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Ecom_Commercial } from 'src/app/models/Ecom_Commercial';
+import { Ecom_Commercial } from 'src/app/models/Commercial';
 
 @Component({
   selector: 'app-commercial',

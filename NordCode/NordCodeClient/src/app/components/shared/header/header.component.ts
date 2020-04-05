@@ -1,5 +1,4 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { Ecom_Product } from 'src/app/models/Product';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { MatDialog } from '@angular/material';
@@ -8,7 +7,8 @@ import { AlertService } from 'src/app/test/_alert';
 import { NavbarService } from '../../../services/navbar.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { ProductService } from 'src/app/services/product.service';
-import { Ecom_Commercial } from 'src/app/models/Ecom_Commercial';
+import { Ecom_Commercial } from 'src/app/models/Commercial';
+import { Cart } from 'src/app/models/Cart';
 
 @Component({
   selector: 'app-header',
@@ -55,7 +55,7 @@ export class HeaderComponent implements OnInit {
     this.loginStatus();
     this.condition = this.CheckUserSession();
     ////////////// Here New Concept  ///////////////
-    this._interactionService.getForAddtoCart().subscribe((product: Ecom_Product) => {
+    this._interactionService.getForAddtoCart().subscribe((product: Cart) => {
       if (!this.productService.fromproductlist) {
         this.addProductToCart(product);
       } else {
@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit {
     ////////////// Here New Concept  ///////////////
   }
 
-  public addProductToCart(product: Ecom_Product) {
+  public addProductToCart(product: Cart) {
 
     let productExits = false;
     this._cartItems = this.productService._cartItems;
@@ -97,24 +97,14 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  public RemoveProductFromCart(product: Ecom_Product, fromproductlist: boolean) {
+  public RemoveProductFromCart(product: Cart, fromproductlist: boolean) {
     this.productService.RemoveProductFromCart(product, fromproductlist)
     this._getTotalAmounts();
   }
   public RemoveFromCart(index: number) {
     this.productService.RemoveFromCart(index);
     this._getTotalAmounts();
-  }
-  public PlaceOrder(totalPrice : any) {
-    var data = true; //this.CheckUserSession();
-    if (data) {       
-      //this.RefObject.emit(totalPrice)  
-      this.router.navigate(['/checkout', totalPrice])
-    } else {
-      this.router.navigate(['/logindialog'])
-    }
-  }
-
+  }  
   public CheckUserSession() {
     var user = JSON.parse(localStorage.getItem('currentUser'));
     if (user == "" || user == "undefined") {
@@ -155,7 +145,16 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/']);
 
   }
-
+  public PlaceOrder(totalPrice : any) {
+    var data = true; //this.CheckUserSession();
+    if (data) {       
+      //this.RefObject.emit(totalPrice)  
+      this.router.navigate(['/checkout', totalPrice])
+    } else {
+      this.router.navigate(['/logindialog'])
+    }
+  }
+  
   ////////////// Here New Concept  ///////////////
 
 

@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { InteractionService } from 'src/app/services/interaction.service';
-import { Ecom_Commercial } from 'src/app/models/Ecom_Commercial';
+import { Ecom_Commercial } from 'src/app/models/Commercial';
 import { DialogpdetailsComponent } from 'src/app/components/common/dialogpdetails/dialogpdetails.component';
 import { MatDialog } from '@angular/material';
-import { Ecom_Product } from 'src/app/models/Product';
+import { Cart } from 'src/app/models/Cart';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -223,12 +223,12 @@ export class ProductItemComponent implements OnInit {
     this._interactionService.sendForRemoveFromCart(this.featureItem);
     this._getTotalAmounts(this.featureItem.PID);
   }
-  public addProductToCart(product: Ecom_Product) {
+  public addProductToCart(cart: Cart) {
     debugger;
     let productExits = false;
     this._cartItems = this.productService._cartItems;
     for (let key in this._cartItems) {
-      if (this._cartItems[key].PID === product.PID) {
+      if (this._cartItems[key].PID === cart.PID) {
         this._cartItems[key].Qty++;
         productExits = true;
         break;
@@ -237,11 +237,11 @@ export class ProductItemComponent implements OnInit {
 
     if (!productExits) {
       this._cartItems.push({
-        Add: '+', PID: product.PID, ImgPath: product.ImgPath, PName: product.PName, Qty: 1, UnitPrice: product.UnitPrice, Close: 'X'
+        Add: '+', PID: cart.PID, ImgPath: cart.ImgPath, PName: cart.PName, Qty: 1, UnitPrice: cart.UnitPrice, Close: 'X'
       });
     }
 
-    this._getTotalAmounts(product.PID);
+    this._getTotalAmounts(cart.PID);
   }
   public _getTotalAmounts(pid) {
     this._cartItems = this.productService._cartItems;

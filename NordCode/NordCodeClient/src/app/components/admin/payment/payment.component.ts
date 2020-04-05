@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../../services/customer.service';
 import { ActivatedRoute } from '@angular/router';
 import { Ecom_Orders } from '../../../models/order';
-import { Ecom_Commercial } from 'src/app/models/Ecom_Commercial';
+import { Ecom_Commercial } from 'src/app/models/Commercial';
 
 @Component({
   selector: 'app-payment',

@@ -48,7 +48,7 @@ export class CheckoutComponent implements OnInit {
     }
   };
 
-  onSubmit(_product: Ecom_Orders) {
+  onSubmit(_order: Ecom_Orders) {
     var order = new Ecom_Orders();
     order.OID = 0;
     order.OrderNo = this.OrderNo;
@@ -56,15 +56,15 @@ export class CheckoutComponent implements OnInit {
     order.CouponId = 3333;
     order.PaymentModeId = 1;
     order.Discount = 20;
-    order.Reason = _product.Reason;
+    order.Reason = _order.Reason;
     order.Active = true;
     order.Qty = 5;
     order.UnitPrice = this.UnitPrice;   
     order.NetPrice = this.UnitPrice;
     order.TotalPrice = this.TotalPrice; 
-    order.Address = _product.Address;
-    order.Aria = _product.Aria;
-    order.DeliveryTime = _product.DeliveryTime;
+    order.Address = _order.Address;
+    order.Aria = _order.Aria;
+    order.DeliveryTime = _order.DeliveryTime;
 
     order.TrackedId = environment.baseurl;
     order.CreateBy = environment.currentuserId; 
@@ -73,6 +73,7 @@ export class CheckoutComponent implements OnInit {
     order.Delete = false;
     debugger;
     var data = this._customerService.setOrder(order);
+    debugger;
 
   }
   onClear() {

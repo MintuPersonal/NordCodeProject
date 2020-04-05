@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { ProductService } from 'src/app/services/product.service';
-import { Ecom_Product } from 'src/app/models/Product';
+import { Cart } from 'src/app/models/Cart';
 
 // export interface DialogData {
 //   animal: string;
@@ -18,12 +18,12 @@ import { Ecom_Product } from 'src/app/models/Product';
 export class DialogpdetailsComponent implements OnInit {
   
   @Input() feature_Item: any;
-  cartItems: any[];
+  _cartItems: any[];
   totalAmounts: number;
   totalItems: any;
   constructor( private productService : ProductService, private _interactionService : InteractionService,
     public dialogRef: MatDialogRef<DialogpdetailsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Ecom_Product) {}
+    @Inject(MAT_DIALOG_DATA) public data: Cart) {}
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -42,8 +42,8 @@ export class DialogpdetailsComponent implements OnInit {
     this._getTotalAmounts(featureItem.PID);
   }
   private _getTotalAmounts(pid) {
-    this.cartItems = this.productService.cartItems;    
-    this.cartItems.forEach((item) => {
+    this._cartItems = this.productService._cartItems;    
+    this._cartItems.forEach((item) => {
       this.totalAmounts += (item.Qty * item.UnitPrice);
       if (item.PID == pid) {
         this.data.Qty = item.Qty;

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Ecom_Product } from '../models/Product';
+import { Cart } from '../models/Cart';
 import { ProductService } from './product.service';
 
 @Injectable({
@@ -8,14 +8,14 @@ import { ProductService } from './product.service';
 })
 export class InteractionService {
 
-  private _teacherMessageSource = new Subject<Ecom_Product>();
+  private _teacherMessageSource = new Subject<Cart>();
   constructor(private productService: ProductService) { }
   
   ////////////// Here New Concept  ///////////////
-  sendForAddtoCart(featureItem: Ecom_Product) {
+  sendForAddtoCart(featureItem: Cart) {
     this._teacherMessageSource.next(featureItem);
   }
-  sendForRemoveFromCart(featureItem: Ecom_Product) {   
+  sendForRemoveFromCart(featureItem: Cart) {   
     this.productService.RemoveProductFromCart(featureItem, true); 
     this._teacherMessageSource.next(featureItem);   
   }

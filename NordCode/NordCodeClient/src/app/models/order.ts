@@ -1,3 +1,5 @@
+import { Cart } from './Cart';
+
 export class Ecom_Orders {
     OID: any;
     OrderNo: string;
@@ -21,7 +23,7 @@ export class Ecom_Orders {
     Active: boolean;
     TotalPrice: number;
     PaymentModeId: number;
-
+    cartItems: Cart[];
 
     // constructor(oid, orderid, customerid, couponid, paymentid, discount, reason, active, productid,
     //     unitprice, qty, netprice, address, aria, deliveryTime) {

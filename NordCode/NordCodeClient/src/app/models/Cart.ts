@@ -1,4 +1,4 @@
-export class Ecom_Product {
+export class Cart {
     Add: any;
     PID: string;
     Qty: number;
