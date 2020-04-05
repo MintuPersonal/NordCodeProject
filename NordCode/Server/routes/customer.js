@@ -4,9 +4,9 @@ const router = express.Router();
 
 router.get('/getaddtocart', (req, res, next) => {
     //var customerid = req.body.customerid; for x-www-urlencoded 
-    var customerid = req.query.customerid;
-    console.log(customerid);
-    customer.findAll({ where: { CID: customerid } }).then(customer => {
+    var cmobileno = req.query.cmobileno;
+    console.log(cmobileno);
+    customer.findAll({ where: { MobileNo: cmobileno } }).then(customer => {
         res.json(customer);
     }).catch(err => {
         console.log('Error ' + err);
