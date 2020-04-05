@@ -23,7 +23,7 @@ Drop Table Ecom_Carts
 Select * into Ecom_Carts from Ecom_ShoppingCarts_bak
  
 update Ecom_Products set UnitPrice=150, Unit=1, FileUrl = 'OIP.jpg', ImgPath ='Images/Products/OIP.jpg' where UnitPrice=0
-
+https://www.youtube.com/watch?v=kUNEpdrIP68&list=PLjfaBzlo-EiSBxKizxwQQbNBuTpv1x14e&index=6
 
 Select * from Ecom_Carts
 Select * from Ecom_Orders

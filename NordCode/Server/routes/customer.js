@@ -3,9 +3,11 @@ const customer = require('../models/Customer.js')
 const router = express.Router();
 
 router.get('/getaddtocart', (req, res, next) => {
-    var cid = 1; //req.body.CID;
-    customer.findAll({ where: { CID: cid } }).then(order => {
-        res.json(order);
+    //var customerid = req.body.customerid; for x-www-urlencoded 
+    var customerid = req.query.customerid;
+    console.log(customerid);
+    customer.findAll({ where: { CID: customerid } }).then(customer => {
+        res.json(customer);
     }).catch(err => {
         console.log('Error ' + err);
     });

@@ -27,7 +27,7 @@ app.listen(PORT, function() {
     console.log('Server running on localhost port :' + PORT);
 });
 
-app.use('/api', auth, user, home, product, order, cart, task, customer, menu);
+app.use('/api', auth, home, product, order, task, customer, menu);
 
 
 

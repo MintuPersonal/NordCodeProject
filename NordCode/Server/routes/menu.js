@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/getmenus', (req, res, next) => {
     var Role = req.body.Role;
-
+    console.log(Role);
     menu.findAll().then(menus => { //{ where: { Role: Role } }
         //res.json(menus);
     }).catch(err => {

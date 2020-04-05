@@ -1,12 +1,8 @@
 const db = require('../database/db.js');
 
 const customer = db.sequelize.define('Ecom_Customers', {
-    Id: {
-        type: db.Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-    },
-    CID: db.Sequelize.INTEGER,
+    Id: { type: db.Sequelize.INTEGER, primaryKey: true, autoIncrement: true, },
+    CID: { type: db.Sequelize.STRING, unique: true },
     TONumber: db.Sequelize.STRING,
     Name: db.Sequelize.STRING,
     Address: db.Sequelize.STRING,
@@ -14,12 +10,14 @@ const customer = db.sequelize.define('Ecom_Customers', {
 
     MobileNo: db.Sequelize.STRING,
     PhoneNo: db.Sequelize.STRING,
-    Priority: db.Sequelize.DATE,
+    Priority: db.Sequelize.STRING,
     HostAddress: db.Sequelize.STRING,
 
     TrackedId: db.Sequelize.STRING,
     CreateBy: db.Sequelize.STRING,
     CreateDate: db.Sequelize.DATE,
+    UpdateBy: db.Sequelize.STRING,
+    UpdateDate: db.Sequelize.DATE,
     Delete: db.Sequelize.BOOLEAN,
     Active: db.Sequelize.BOOLEAN,
 });
@@ -27,20 +25,23 @@ const customer = db.sequelize.define('Ecom_Customers', {
 db.sequelize.sync({ force: true })
     .then(() => {
         product.create({
-            CID: 0,
-            TONumber: 888888,
+            CID: '1911788888',
+            TONumber: '880',
             Name: 'Md Karim',
             Address: 'Houser # 11, Road# 11, Mirpur, Dhaka',
             Aria: 'Mirpur',
-            MobileNo: '01911788888',
+
+            MobileNo: '1911788888',
             PhoneNo: '02888888',
             Priority: 'Top',
             HostAddress: '127.0.0.1',
 
+            TrackedId: '127',
             CreateBy: '11',
             CreateDate: new Date().toLocaleTimeSTRING(),
-            IsDelete: false,
-            TrackedId: '127',
+            UpdateBy: '11',
+            UpdateDate: new Date().toLocaleTimeSTRING(),
+            Delete: 0,
             Active: 1,
         });
     }).catch(err => {
