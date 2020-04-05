@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 //import { Ecom_Commercial } from '../../../models/Product';
 import { CustomerService } from '../../../services/customer.service';
 import { ActivatedRoute } from '@angular/router';
-import { Ecom_Orders } from '../../../models/order';
+import { Ecom_Orders } from '../../../models/Order';
 import { Ecom_Commercial } from 'src/app/models/Commercial';
 
 @Component({

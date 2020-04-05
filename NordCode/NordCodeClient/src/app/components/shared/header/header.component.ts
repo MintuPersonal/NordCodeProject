@@ -9,6 +9,10 @@ import { InteractionService } from 'src/app/services/interaction.service';
 import { ProductService } from 'src/app/services/product.service';
 import { Ecom_Commercial } from 'src/app/models/Commercial';
 import { Cart } from 'src/app/models/Cart';
+import { CustomerService } from 'src/app/services/customer.service';
+import { Ecom_Orders } from 'src/app/models/Order';
+import { environment } from 'src/environments/environment';
+import { Ecom_OrderDetails } from 'src/app/models/OrderDetails';
 
 @Component({
   selector: 'app-header',
@@ -31,12 +35,14 @@ export class HeaderComponent implements OnInit {
   newline: Ecom_Commercial;
   itemState: any[];
   commercialModels: any;
+  customerId: number = 0;
 
   //@Output() RefObject = new EventEmitter();
-  
+
   constructor(private router: Router, private dialog: MatDialog,
     protected alertService: AlertService, public navService: NavbarService,
-    private _interactionService: InteractionService, private productService: ProductService) {
+    private _interactionService: InteractionService, private productService: ProductService,
+    private customerService: CustomerService) {
 
   }
 
@@ -90,7 +96,6 @@ export class HeaderComponent implements OnInit {
     this._cartItems = this.productService._cartItems;
     localStorage.setItem('item', JSON.stringify(this._cartItems));
     this._totalItem = this._cartItems.length;
-    debugger;
     this.totalAmounts = 0;
     this._cartItems.forEach((item) => {
       this.totalAmounts += (item.Qty * item.UnitPrice);
@@ -104,7 +109,7 @@ export class HeaderComponent implements OnInit {
   public RemoveFromCart(index: number) {
     this.productService.RemoveFromCart(index);
     this._getTotalAmounts();
-  }  
+  }
   public CheckUserSession() {
     var user = JSON.parse(localStorage.getItem('currentUser'));
     if (user == "" || user == "undefined") {
@@ -145,16 +150,70 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/']);
 
   }
-  public PlaceOrder(totalPrice : any) {
+  public PlaceOrder(totalPrice: any) {
     var data = true; //this.CheckUserSession();
-    if (data) {       
-      //this.RefObject.emit(totalPrice)  
-      this.router.navigate(['/checkout', totalPrice])
-    } else {
-      this.router.navigate(['/logindialog'])
-    }
+    var cartItems = this.productService._cartItems;
+    var order = this._getOrder(cartItems);
+    var orderNumber = this.customerService.setOrder(order);
   }
-  
+
+  private _getOrder(cartItems): Ecom_Orders {
+    var order = new Ecom_Orders();
+    //var cmobileno = '01911788115'
+    // this.customerService.getCustomer(cmobileno).subscribe((customer: any) => {
+    //   this.customerId = customer[0].Id;
+    //   debugger;
+    var orderno = environment.currentuserId + '_' + Math.random().toString().slice(2,11);
+    var OrderDetails = [];
+    cartItems.forEach((item: Cart) => {
+      var orderdetail = new Ecom_OrderDetails();
+      orderdetail.OrderId = 0;
+      orderdetail.ProductId = item.PID;
+      orderdetail.TONumber = orderno;
+      orderdetail.PName = item.PName;
+      orderdetail.PQty = item.Qty;
+      orderdetail.ItemQty = item.Qty;
+      orderdetail.UnitPrice = item.UnitPrice;
+      orderdetail.NetPrice = item.UnitPrice;
+      orderdetail.HostAddress = environment.baseurl;
+      orderdetail.TrackedId = environment.baseurl;
+      orderdetail.CreateBy = environment.currentuserId;
+      orderdetail.CreateDate = new Date();
+      orderdetail.UpdateBy = '';
+      orderdetail.UpdateDate = new Date();
+      orderdetail.Delete = false;
+      orderdetail.Active = true;
+      OrderDetails.push(orderdetail);
+
+    });
+
+    order.OID = 0;
+    order.OrderNo = orderno;
+    order.CustomerId = 6; //this.customerId;
+    order.CouponId = 3333;
+    order.PaymentModeId = 1;
+    order.Discount = 20;
+    order.Reason = '_orderReason';
+    order.Active = true;
+    order.Qty = 5;
+    order.UnitPrice = 5000;
+    order.NetPrice = 6000;
+    order.TotalPrice = 2000;
+    order.Address = 'DDDD';
+    order.Aria = '_orderAria';
+    order.DeliveryTime = new Date();
+
+    order.TrackedId = environment.baseurl;
+    order.CreateBy = environment.currentuserId;
+    order.CreateDate = new Date();
+    order.Active = true;
+    order.Delete = false;
+    order.OrderDetails = OrderDetails;
+
+    // });
+    return order;
+  }
+
   ////////////// Here New Concept  ///////////////
 
 
