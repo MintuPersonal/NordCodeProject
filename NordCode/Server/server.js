@@ -1,5 +1,8 @@
+require('dotenv').config({ encoding: 'latin1' });
+const config = require('./database/config/config.json')
 const express = require('express');
 const cors = require('cors');
+
 const bodyParser = require('body-parser');
 
 const auth = require('../Server/auth/auth.js');
@@ -17,13 +20,14 @@ const menu = require('../Server/routes/menu.js');
 // const login = require('../Server/routes/login.js');
 // const article = require('../Server/routes/article.js');
 
-const PORT = 3000;
+const PORT = process.env.PORT;
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(PORT, function() {
+    //console.log(config.production.host)
     console.log('Server running on localhost port :' + PORT);
 });
 

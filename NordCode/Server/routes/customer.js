@@ -2,7 +2,7 @@ const express = require('express');
 const customer = require('../models/Customer.js')
 const router = express.Router();
 
-router.get('/getcustomer', (req, res, next) => {
+router.get(process.env.api_get_customer, (req, res, next) => {
     //var customerid = req.body.customerid; for x-www-urlencoded 
     var cmobileno = req.query.cmobileno;
     console.log(cmobileno);
@@ -13,7 +13,7 @@ router.get('/getcustomer', (req, res, next) => {
     });
 });
 
-router.post('/setcustomer', (req, res, next) => {
+router.post(process.env.api_set_customer, (req, res, next) => {
     if (!req.body) {
         res.status(400);
         res.json({ error: 'Bad data request' + req.body });
