@@ -2,11 +2,11 @@ const express = require('express');
 const customer = require('../models/Customer.js')
 const router = express.Router();
 
-router.get('/getaddtocart', (req, res, next) => {
+router.get('/getcustomer', (req, res, next) => {
     //var customerid = req.body.customerid; for x-www-urlencoded 
     var cmobileno = req.query.cmobileno;
     console.log(cmobileno);
-    customer.findAll({ where: { MobileNo: cmobileno } }).then(customer => {
+    customer.findAll({ where: { MobileNo: cmobileno }, limit: 1 }).then(customer => {
         res.json(customer);
     }).catch(err => {
         console.log('Error ' + err);
