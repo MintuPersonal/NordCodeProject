@@ -18,7 +18,7 @@ import { DialogComponent } from './components/common/dialog/dialog.component';
 
 const routes: Routes = [
   { path: '', component: ProductListComponent}, //, pathMatch: 'full' 
-  { path: 'profile', component: SignupComponent },
+  { path: 'myprofile', component: SignupComponent },
   { path: 'myorders', component: OrderComponent },
   { path: 'payment/:order/:price', component: PaymentComponent },
 
