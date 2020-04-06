@@ -21,7 +21,21 @@ Select * into Ecom_Orders from Ecom_Orders_bak
   
 Drop Table Ecom_Carts
 Select * into Ecom_Carts from Ecom_ShoppingCarts_bak
+
+Drop Table Ecom_Customers
+Select * into Ecom_Customers from Ecom_Customers_bak
  
+ Select * from Ecom_Customers
+ Select * from Ecom_Orders
+ Select * from Ecom_OrderDetails
+
+
+
+
+
+
+
+
 update Ecom_Products set UnitPrice=150, Unit=1, FileUrl = 'OIP.jpg', ImgPath ='Images/Products/OIP.jpg' where UnitPrice=0
 https://www.youtube.com/watch?v=kUNEpdrIP68&list=PLjfaBzlo-EiSBxKizxwQQbNBuTpv1x14e&index=6
 

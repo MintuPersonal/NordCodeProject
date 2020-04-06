@@ -13,7 +13,7 @@
                 <hr>
                 <div>
                     <table>
-                        <tbody *ngFor="let item of orsers; index as itemed">
+                        <tbody *ngFor="let item of orsers; index as itemed" class="tbody">
                             <tr class="clearfix">
                                 .
                             </tr>
@@ -26,7 +26,7 @@
                             <tr class="tr">
                                 <div class="amount"> {{ item.UnitPrice | currency: 'BD '}} </div>
                             </tr>
-                            <tr class="tr" (click)="RemoveFromCart(itemed)">
+                            <tr class="tr">
                                 <div class="details" (click)="OrderDetails(item)"> Details >>> </div>
                             </tr>
                         </tbody>
@@ -46,8 +46,17 @@
                 <hr>
                 <div>
                     <table>
-                        <tbody>
+                        <thead>
+                            <tr class="tr">
+                                <!-- <th colspan="2"> Order # {{ item.OrderNo }} </th> -->
+                                <th colspan="6">&nbsp;
+                                    <div class="address" (click)="OrderDetails(item)"> Details Address </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody style="border-bottom: solid 1px #f8f891;;">
                             <tr *ngFor="let item of orserdetails; index as itemed" class="tr">
+                                <td>{{ item.OrderNo }}</td>
                                 <td> <img class="img-cart" src="../assets/img/product/feature/{{item.ImgPath}}"></td>
                                 <td>{{ item.PName}}</td>
                                 <td>{{ item.ItemQty}} </td>
@@ -55,6 +64,7 @@
                                 <td>{{ item.PQty | currency: 'BD '}} </td>
                             </tr>
                         </tbody>
+                        <hr>
                     </table>
                 </div>
                 <!-- <div class="emptyCart">

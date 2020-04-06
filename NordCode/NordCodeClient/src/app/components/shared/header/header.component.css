@@ -451,6 +451,10 @@
             border-radius: 15px;
             margin: 1px;
         }
+        
+        mat-icon.mat-icon.notranslate.routeIcon.material-icons.mat-icon-no-color {
+            font-size: 18px;
+        }
         /* .mat-badge {
             position: relative;
             padding: 10px;
@@ -840,7 +844,3 @@
             position: relative;
             top: 10px;
         } */
-        
-        mat-icon.mat-icon.notranslate.routeIcon.material-icons.mat-icon-no-color {
-            font-size: 18px;
-        }

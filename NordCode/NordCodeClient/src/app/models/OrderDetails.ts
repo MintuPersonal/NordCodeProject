@@ -3,7 +3,7 @@ export class Ecom_OrderDetails {
     ProductId: any;
     TONumber: string;
     PName: string;
-    
+
     PQty: number;
     ItemQty: number;
     UnitPrice: number;
@@ -17,4 +17,5 @@ export class Ecom_OrderDetails {
     UpdateDate: Date;
     Delete: boolean;
     Active: boolean;
+    ImgPath: string;
 }

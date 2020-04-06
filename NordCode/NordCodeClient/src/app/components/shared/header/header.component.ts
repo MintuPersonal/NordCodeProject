@@ -176,6 +176,7 @@ export class HeaderComponent implements OnInit {
       orderdetail.UnitPrice = item.UnitPrice;
       orderdetail.NetPrice = item.UnitPrice;
       orderdetail.HostAddress = environment.baseurl;
+      orderdetail.ImgPath = item.ImgPath;
       orderdetail.TrackedId = environment.baseurl;
       orderdetail.CreateBy = environment.currentuserId;
       orderdetail.CreateDate = new Date();

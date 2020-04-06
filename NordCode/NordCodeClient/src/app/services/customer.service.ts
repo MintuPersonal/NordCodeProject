@@ -30,8 +30,7 @@ export class CustomerService {
 
   setOrder(order: Ecom_Orders) {
     return this._http.post<any>(environment.baseurl + 'setorder', order).subscribe((order: any) => {
-      if (order.status) {
-        
+      if (order.status) {        
         this.router.navigate(['/payment', order.Number, order.TotalPrice]);
       }
       else {
@@ -50,6 +49,7 @@ export class CustomerService {
       }
     });
   };
+
   getCommercial() {
     return this._http.get(environment.baseurl + 'gethomes');
   }
