@@ -15,8 +15,8 @@ const order = db.sequelize.define('Ecom_Order', {
     Reason: db.Sequelize.STRING,
 
     ProductId: db.Sequelize.INTEGER,
+    TotalItem: db.Sequelize.INTEGER,
     UnitPrice: db.Sequelize.INTEGER,
-    Qty: db.Sequelize.INTEGER,
     NetPrice: db.Sequelize.INTEGER,
     Address: db.Sequelize.STRING,
     Aria: db.Sequelize.STRING,

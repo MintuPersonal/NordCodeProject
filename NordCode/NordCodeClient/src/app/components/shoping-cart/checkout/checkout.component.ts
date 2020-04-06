@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, SystemJsNgModuleLoader } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
-import { Ecom_Orders } from '../../../models/order';
+import { Ecom_Orders } from '../../../models/Order';
 import { ProductService } from 'src/app/services/product.service';
 import { environment } from 'src/environments/environment';
 //import { Ecom_Orders } from 'src/app/order/order';
@@ -72,7 +72,7 @@ export class CheckoutComponent implements OnInit {
     order.Active = true;
     order.Delete = false;
     debugger;
-    var data = this._customerService.setOrder(order);
+    var data = this._customerService.updateOrder(order);
     debugger;
 
   }

@@ -11,9 +11,28 @@
                     <span fxFlex="100%" class="text-center"> Order List </span>
                 </mat-card-title>
                 <hr>
-                <h5 class="text-right">
-                    >>>
-                </h5>
+                <div>
+                    <table>
+                        <tbody *ngFor="let item of orsers; index as itemed">
+                            <tr class="clearfix">
+                                .
+                            </tr>
+                            <tr>
+                                <div class="completed"> Complete </div>
+                            </tr>
+                            <tr class="tr">
+                                <div class="orderNo">Order # {{ item.OrderNo }} </div>
+                            </tr>
+                            <tr class="tr">
+                                <div class="amount"> {{ item.UnitPrice | currency: 'BD '}} </div>
+                            </tr>
+                            <tr class="tr" (click)="RemoveFromCart(itemed)">
+                                <div class="details" (click)="OrderDetails(item)"> Details >>> </div>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </form>
         </mat-card>
 
@@ -25,9 +44,25 @@
                     <span fxFlex="100%" class="text-center bg-maroon"> Add all items to Shopping Bag </span>
                 </mat-card-title>
                 <hr>
-
-
-
+                <div>
+                    <table>
+                        <tbody>
+                            <tr *ngFor="let item of orserdetails; index as itemed" class="tr">
+                                <td> <img class="img-cart" src="../assets/img/product/feature/{{item.ImgPath}}"></td>
+                                <td>{{ item.PName}}</td>
+                                <td>{{ item.ItemQty}} </td>
+                                <td>{{ item.UnitPrice | currency: 'BD '}} </td>
+                                <td>{{ item.PQty | currency: 'BD '}} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- <div class="emptyCart">
+                    <div>
+                        <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-504/Default/components/header/ShoppingCart/images/emptyShoppingBag.png?q=low&amp;webp=1&amp;alpha=1">
+                    </div>
+                    <span style="padding: 10px;">Your shopping bag is empty. Start shopping</span>
+                </div> -->
             </form>
         </mat-card>
 
