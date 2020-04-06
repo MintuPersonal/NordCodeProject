@@ -19,6 +19,10 @@
     width: 200px;
 }
 
+.tr {
+    border-bottom: solid 1px #f8f891;
+}
+
 .th {
     width: 30px;
 }

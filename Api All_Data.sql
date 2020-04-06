@@ -1,5 +1,4 @@
 
-select * from Ecom_Products brands
 
 drop table Ecom_Features
 Select * into Ecom_Features from Ecom_Features_bak
@@ -25,6 +24,8 @@ Select * into Ecom_Carts from Ecom_ShoppingCarts_bak
 Drop Table Ecom_Customers
 Select * into Ecom_Customers from Ecom_Customers_bak
  
+
+
  Select * from Ecom_Customers
  Select * from Ecom_Orders
  Select * from Ecom_OrderDetails
@@ -36,33 +37,33 @@ Select * into Ecom_Customers from Ecom_Customers_bak
 
 
 
-update Ecom_Products set UnitPrice=150, Unit=1, FileUrl = 'OIP.jpg', ImgPath ='Images/Products/OIP.jpg' where UnitPrice=0
-https://www.youtube.com/watch?v=kUNEpdrIP68&list=PLjfaBzlo-EiSBxKizxwQQbNBuTpv1x14e&index=6
+--update Ecom_Products set UnitPrice=150, Unit=1, FileUrl = 'OIP.jpg', ImgPath ='Images/Products/OIP.jpg' where UnitPrice=0
+--https://www.youtube.com/watch?v=kUNEpdrIP68&list=PLjfaBzlo-EiSBxKizxwQQbNBuTpv1x14e&index=6
 
-Select * from Ecom_Carts
-Select * from Ecom_Orders
-Select * from Ecom_Offers
-Select * from Ecom_Customers
+--Select * from Ecom_Carts
+--Select * from Ecom_Orders
+--Select * from Ecom_Offers
+--Select * from Ecom_Customers
 
-Select * from Ecom_Features
-Select * from Ecom_Brands
-Select * from Ecom_Banners
-Select * from Ecom_Tasks
+--Select * from Ecom_Features
+--Select * from Ecom_Brands
+--Select * from Ecom_Banners
+--Select * from Ecom_Tasks
 
-Select * from Ecom_Products
+--Select * from Ecom_Products
 
 
-Select * from Ecom_Carts_bak
-Select * from Ecom_Orders_bak
-Select * from Ecom_Offers_bak
-Select * from Ecom_Customers_bak
+--Select * from Ecom_Carts_bak
+--Select * from Ecom_Orders_bak
+--Select * from Ecom_Offers_bak
+--Select * from Ecom_Customers_bak
 
-Select * from Ecom_Features_bak
-Select * from Ecom_Brands_bak
-Select * from Ecom_Banners_bak
-Select * from Ecom_Tasks_bak
+--Select * from Ecom_Features_bak
+--Select * from Ecom_Brands_bak
+--Select * from Ecom_Banners_bak
+--Select * from Ecom_Tasks_bak
 
-Select * from Ecom_Products_bak
+--Select * from Ecom_Products_bak
 
 
 --drop table Ecom_Carts

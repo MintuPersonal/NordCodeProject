@@ -15,7 +15,8 @@ export class Ecom_Orders {
     Address: any;
     Aria: any;
     DeliveryTime: any;
-
+    OrderStatus: number;
+    
     TrackedId: any;
     CreateBy: any;
     CreateDate: Date;

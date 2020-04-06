@@ -1,6 +1,6 @@
 const db = require('../database/db.js');
 
-const cart = db.sequelize.define('Ecom_OrderDetails', {
+const OrderDetails = db.sequelize.define('Ecom_OrderDetails', {
     Id: { type: db.Sequelize.INTEGER, primaryKey: true, autoIncrement: true, },
     OrderId: db.Sequelize.INTEGER,
     ProductId: db.Sequelize.INTEGER,
@@ -23,4 +23,4 @@ const cart = db.sequelize.define('Ecom_OrderDetails', {
 });
 
 db.sequelize.sync({ force: true });
-module.exports = cart;
+module.exports = OrderDetails;

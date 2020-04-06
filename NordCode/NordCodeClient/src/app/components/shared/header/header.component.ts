@@ -95,11 +95,13 @@ export class HeaderComponent implements OnInit {
   private _getTotalAmounts() {
     this._cartItems = this.productService._cartItems;
     localStorage.setItem('item', JSON.stringify(this._cartItems));
-    this._totalItem = this._cartItems.length;
-    this.totalAmounts = 0;
-    this._cartItems.forEach((item) => {
-      this.totalAmounts += (item.Qty * item.UnitPrice);
-    });
+    if (this._cartItems != null) {
+      this._totalItem = this._cartItems.length;
+      this.totalAmounts = 0;
+      this._cartItems.forEach((item) => {
+        this.totalAmounts += (item.Qty * item.UnitPrice);
+      });
+    };
   }
 
   public RemoveProductFromCart(product: Cart, fromproductlist: boolean) {
@@ -163,7 +165,7 @@ export class HeaderComponent implements OnInit {
     // this.customerService.getCustomer(cmobileno).subscribe((customer: any) => {
     //   this.customerId = customer[0].Id;
     //   debugger;
-    var orderno = environment.currentuserId + '_' + Math.random().toString().slice(2,11);
+    var orderno = environment.currentuserId + '_' + Math.random().toString().slice(2, 11);
     var OrderDetails = [];
     cartItems.forEach((item: Cart) => {
       var orderdetail = new Ecom_OrderDetails();
@@ -203,6 +205,7 @@ export class HeaderComponent implements OnInit {
     order.Address = 'DDDD';
     order.Aria = '_orderAria';
     order.DeliveryTime = new Date();
+    order.OrderStatus = 1;
 
     order.TrackedId = environment.baseurl;
     order.CreateBy = environment.currentuserId;

@@ -78,17 +78,19 @@ router.post(process.env.api_set_order, (req, res, next) => {
         }).catch(err => {
             console.log('Error :' + err);
         });
-
-        var product = req.body.OrderDetails[0];
-        product.OrderId = orderId;
-        OrderDetails.create(product).then(product => {
-            console.log(product.lenght)
-            res.json({
-                data: homeobj,
-                status: true,
-                msg: 'Order submitted successfully'
-            });
+        console.log(req.body.OrderDetails.length + ' Product Total')
+        req.body.OrderDetails.forEach(product => {
+            OrderDetails.create(product).then(product => {});
         });
+
+        // res.json({
+        //     data: homeobj,
+        //     status: true,
+        //     msg: 'Order submitted successfully'
+        // });
+        // var product = req.body.OrderDetails[0];
+        // product.OrderId = orderId;
+
     };
 });
 
