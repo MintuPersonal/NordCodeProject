@@ -137,7 +137,7 @@ export class HeaderComponent implements OnInit {
   }
   public openDialog(): void {
     if (!this.condition) {
-      const dialogRef = this.dialog.open(DialogComponent, { width: '950px', data: { name: this.name, animal: this.animal } });
+      const dialogRef = this.dialog.open(DialogComponent, { width: '500px', data: { name: this.name, animal: this.animal } });
       dialogRef.afterClosed().subscribe(result => {
       });
     } else {

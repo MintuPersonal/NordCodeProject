@@ -31,6 +31,8 @@ Select * into Ecom_Customers from Ecom_Customers_bak
  Select * from Ecom_OrderDetails
 
 
+ --4LJObSajctQhXrvE2Z11qSwWpuz2---
+
 
 
 

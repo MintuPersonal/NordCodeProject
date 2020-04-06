@@ -1,4 +1,4 @@
-<div style="padding: 13px;" class="container">
+<div class="col-12 top-55">
     <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }} </div>
     <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
 
@@ -61,7 +61,7 @@
                                 <td>{{ item.PName}}</td>
                                 <td>{{ item.ItemQty}} </td>
                                 <td>{{ item.UnitPrice | currency: 'BD '}} </td>
-                                <td>{{ item.PQty | currency: 'BD '}} </td>
+                                <td>{{ item.PQty }} Pic </td>
                             </tr>
                         </tbody>
                         <hr>

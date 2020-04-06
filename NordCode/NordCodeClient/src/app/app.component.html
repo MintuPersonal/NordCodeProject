@@ -1,21 +1,18 @@
 <app-header></app-header>
-<mat-sidenav-container style="margin-top: 50px; height: 93.25vh;">
+<mat-sidenav-container>
     <mat-sidenav #appDrawer mode="over" opened="false">
-        <!-- {{media.isActive('gt-sm') ? 'side' : 'over'}} -->
         <mat-nav-list>
             <app-menu *ngFor="let item of navItems" [item]="item"> </app-menu>
         </mat-nav-list>
     </mat-sidenav>
-    <alert></alert>
+
     <router-outlet></router-outlet>
-    <div fxFlex>
-        <!-- <button (click)="greetStudent()"> Greet Student </button>
-        <button (click)="appreciateStudent()"> Appreciate Student </button> -->
-    </div>
+    <div class="clearfix"></div>
     <app-footer></app-footer>
+    <alert></alert>
 </mat-sidenav-container>
 
-
+<!-- {{media.isActive('gt-sm') ? 'side' : 'over'}} -->
 
 
 

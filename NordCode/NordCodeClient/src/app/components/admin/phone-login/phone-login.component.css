@@ -1,0 +1,23 @@
+.app-phone-login {
+    margin-top: 55px;
+}
+
+.facebookLogin .loginButton {
+    background-color: #49639F;
+    border-color: #3E4E7C;
+}
+
+.h4 {
+    letter-spacing: 0.015625rem;
+    text-transform: none;
+    line-height: 2.5rem;
+    margin-bottom: 0;
+}
+
+.actions {
+    margin-top: 25px;
+}
+
+.card-picture {
+    width: 30%;
+}

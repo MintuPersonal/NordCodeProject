@@ -132,6 +132,12 @@ th.mat-header-cell {
     float: right
 }
 
+.category {
+    background: white;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
 .brand {
     background: white;
     margin-top: 10px;

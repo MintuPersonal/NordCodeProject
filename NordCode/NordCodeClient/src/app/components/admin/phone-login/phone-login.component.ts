@@ -26,6 +26,7 @@ export class PhoneLoginComponent implements OnInit {
   constructor(private win: WindowService) { }
 
   ngOnInit() {
+    this.loginStatus();
     var firebaseConfig = {
       apiKey: "AIzaSyAABTcunn62aKYHkJGkfnr5JhXA-D9Ztak",
       authDomain: "otp-ecommerce.firebaseapp.com",
@@ -33,9 +34,12 @@ export class PhoneLoginComponent implements OnInit {
       projectId: "otp-ecommerce",
       storageBucket: "otp-ecommerce.appspot.com",
       messagingSenderId: "932041012966",
-      appId: "1:932041012966:web:9936106c9ea4e508e42d27"     
+      appId: "1:932041012966:web:9936106c9ea4e508e42d27"
     };
-    firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+    //firebase.initializeApp(firebaseConfig);
     //alert(window.location.host)
     this.windowRef = this.win.windowRef
     this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier("recaptcha-container", {
@@ -47,8 +51,7 @@ export class PhoneLoginComponent implements OnInit {
     })
     //new firebase.auth.RecaptchaVerifier('recaptcha-container')
     this.windowRef.recaptchaVerifier.render()
-
-    this.loginStatus();
+    
   }
 
   sendLoginCode() {
@@ -63,6 +66,7 @@ export class PhoneLoginComponent implements OnInit {
 
   verifyLoginCode() {
     this.windowRef.confirmationResult.confirm(this.verificationCode).then(result => {
+      debugger;
       this.user = result.user;
       console.log(result.user)
     })
@@ -72,7 +76,9 @@ export class PhoneLoginComponent implements OnInit {
   loginStatus() {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
+        this.user = user;
         const condition = true;
+        debugger;
         console.log("USER LOGGED IN" + user.phoneNumber);
         //debugger;
       } else {
