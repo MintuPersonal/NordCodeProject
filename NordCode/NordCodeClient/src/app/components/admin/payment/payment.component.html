@@ -49,7 +49,8 @@
                         <form id="braintreeCheckout">
                             <div id="payment-container"></div>
                         </form>
-                    </section><br>
+                    </section>
+                    <br>
 
                 </div>
                 <hr>
@@ -57,8 +58,13 @@
 
                 <br>
                 <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
-                    <mat-card class="card-picture">
-                        <mat-label>{{Address}}</mat-label>
+                    <mat-card class="card-picture" style="text-align: center;">
+                        <mat-card-title> Delevery Address </mat-card-title>
+                        <mat-card-content>
+                            <p> {{Address}} </p>
+                        </mat-card-content>
+                        <!-- <mat-title> Delevery Address </mat-title>
+                        <mat-label></mat-label> -->
                         <!-- <table mat-ta<le [dataSource]="orderModels" style="width: 100%;">
 
                             <ng-container matColumnDef="Add">
@@ -108,9 +114,9 @@
                             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                         </table>
                     </mat-card>
-
-
                 </div>
+
+                <br>
                 <mat-card class="card-picture">
                     <div class="col-lg-12">
                         <div class="row">

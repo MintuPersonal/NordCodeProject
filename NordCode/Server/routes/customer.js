@@ -162,15 +162,10 @@ router.post(process.env.api_set_order, (req, res, next) => {
         req.body.OrderDetails.forEach(product => {
             OrderDetails.create(product).then(product => {});
         });
-
-        // res.json({
-        //     data: homeobj,
-        //     status: true,
-        //     msg: 'Order submitted successfully'
-        // });
-        // var product = req.body.OrderDetails[0];
-        // product.OrderId = orderId;
-
+        res.json({
+            status: true,
+            msg: 'Order submitted successfully'
+        });
     };
 });
 
