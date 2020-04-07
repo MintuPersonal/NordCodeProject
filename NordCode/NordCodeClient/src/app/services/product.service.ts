@@ -9,14 +9,25 @@ import { Cart } from '../models/Cart';
 })
 
 export class ProductService {
+  
   ////////////// Here New Concept  ///////////////
   //_cartItems = [];
   fromproductlist: boolean = false;
-  _cartItems: Cart[] = [];
-  constructor(private _http: HttpClient) { 
-    this._cartItems = JSON.parse(localStorage.getItem('item'));
+  _cartItems: Cart[];
+  _customerPonne: string;
+  constructor(private _http: HttpClient) {
+    
+    //this._cartItems = JSON.parse(localStorage.getItem('item'));
+    var data = localStorage.getItem("item");
+    if (data == 'undefined' || data == "null") {
+      this._cartItems = []
+    } else {
+      this._cartItems = JSON.parse(localStorage.getItem('item'|| "null"));
+    }    
   }
-
+  SetEmptyCart(): Cart[] {
+    return this._cartItems = [];
+  }
   public RemoveProductFromCart(product, fromproductlist) {
     this.fromproductlist = fromproductlist;
     let productExits = false;
@@ -26,12 +37,12 @@ export class ProductService {
         productExits = true;
         break;
       }
-    }    
+    }
   }
   public RemoveFromCart(index: number) {
     if (index !== -1) {
       this._cartItems.splice(index, 1);
-     
+
     }
   }
   getCartItemsFromLocal() {

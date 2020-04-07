@@ -17,9 +17,9 @@
                 </span>
             </div>
 
-            <div *ngIf="featureItem.UnitsInStock > 0 " class="overlay text">
+            <div *ngIf="featureItem.UnitsInStock !== 0 " class="overlay text">
                 <div class="row">
-                    <p class="addToBag" (click)="onAddToBag(featureItem)"> Add to Shopping Bag </p>
+                    <p class="addToBag" (click)="addProductToCart(featureItem)"> Add to Shopping Bag </p>
                 </div>
                 <span>                   
                     <button class="btnShowDetails" (click)="openDialog(featureItem)">

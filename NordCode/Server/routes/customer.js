@@ -9,13 +9,13 @@ router.get(process.env.api_get_customer, (req, res, next) => {
     var cid = parseInt(cmobileno);
     var toNomber = '+880';
     Customer.findAll({ where: { MobileNo: cmobileno }, limit: 1 }).then(customer => {
-        console.log(JSON.stringify('DDD ' + customer.length));
+        //console.log(JSON.stringify('DDD ' + customer.length));
         if (customer.length == 0) {
             customerobj = { CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }
             Customer.create(customerobj).then(data => {
                 res.json({
                     status: true,
-                    msg: 'User Create successfully',
+                    msg: 'User create successfully',
                     customer: [{ CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }]
                 });
             }).catch(err => {
@@ -28,26 +28,27 @@ router.get(process.env.api_get_customer, (req, res, next) => {
                 customer: customer
             });
         }
-
-        // if (!customer.length) {
-        //     const [customer, created] = Customer.findOrCreate({
-        //         where: { MobileNo: cmobileno },
-        //         defaults: { CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }
-        //     });
-        //     res.json({
-        //         status: true,
-        //         msg: 'User Create successfully',
-        //         customer: [{ CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }]
-        //     });
-        // }
-        res.json({
-            status: true,
-            msg: 'User Create successfully',
-            customer: [{ CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }]
-        });
     }).catch(err => {
         console.log('Error ' + err);
     });
+
+    // if (!customer.length) {
+    //     const [customer, created] = Customer.findOrCreate({
+    //         where: { MobileNo: cmobileno },
+    //         defaults: { CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }
+    //     });
+    //     res.json({
+    //         status: true,
+    //         msg: 'User Create successfully',
+    //         customer: [{ CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }]
+    //     });
+    // }
+    // res.json({
+    //     status: true,
+    //     msg: 'User Create successfully',
+    //     customer: [{ CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }]
+    // });
+
 
     // const [customer, created] = Customer.findOrCreate({
     //     where: { MobileNo: cmobileno },
@@ -118,12 +119,15 @@ router.get(process.env.api_get_orders, (req, res, next) => {
     });
 });
 router.get(process.env.api_get_order, (req, res, next) => {
-    var customerid = ''; //req.body.customerid; for x-www-urlencoded 
-    var cmobileno = req.query.cmobileno;
-    console.log(cmobileno);
-
-    order.findAll({ where: { CustomerId: customerid }, limit: 1 }).then(order => {
-        res.json(order);
+    //var customerid = ''; //req.body.customerid; for x-www-urlencoded 
+    var orderNo = req.query.orderNo;
+    //console.log(cmobileno);
+    order.findAll({ where: { OrderNo: orderNo }, limit: 1 }).then(order => {
+        res.json({
+            status: true,
+            msg: 'Order find successfully',
+            order
+        });
     }).catch(err => {
         console.log('Error ' + err);
     });

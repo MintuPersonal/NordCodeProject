@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { WindowService } from '../../../services/window.service';
 import * as firebase from 'firebase';
+import { Router } from '@angular/router';
 
 export class PhoneNumber {
   country: string;
   line: string;
   get e164() {
-    return `+${this.line}`;
+    return `+880${this.line}`;
   }
 }
 
@@ -22,11 +23,15 @@ export class PhoneLoginComponent implements OnInit {
   phoneNumber = new PhoneNumber();
   verificationCode: string;
   user: any;
+  loggged: boolean;
 
-  constructor(private win: WindowService) { }
+  constructor(private win: WindowService, private router: Router) { }
 
   ngOnInit() {
     this.loginStatus();
+    // if(!this.loginStatus){
+    //   this.router.navigate(['/']);
+    // }
     var firebaseConfig = {
       apiKey: "AIzaSyAABTcunn62aKYHkJGkfnr5JhXA-D9Ztak",
       authDomain: "otp-ecommerce.firebaseapp.com",
@@ -51,40 +56,43 @@ export class PhoneLoginComponent implements OnInit {
     })
     //new firebase.auth.RecaptchaVerifier('recaptcha-container')
     this.windowRef.recaptchaVerifier.render()
-    
+
   }
 
   sendLoginCode() {
+
     const appVerifier = this.windowRef.recaptchaVerifier;
     const num = this.phoneNumber.e164;
     firebase.auth().signInWithPhoneNumber(num, appVerifier)
       .then(result => {
-        debugger;
+
         this.windowRef.confirmationResult = result;
       }).catch(error => console.log(error));
   }
 
   verifyLoginCode() {
     this.windowRef.confirmationResult.confirm(this.verificationCode).then(result => {
-      debugger;
       this.user = result.user;
       console.log(result.user)
-    })
-      .catch(error => console.log(error, "Incorrect code entered?"));
+    }).catch(error => console.log(error, "Incorrect code entered?"));
+    if (this.user) {
+      this.router.navigate(['/']);
+    }
   }
 
   loginStatus() {
+    this.loggged = false;
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         this.user = user;
-        const condition = true;
-        debugger;
+        this.loggged = true;
         console.log("USER LOGGED IN" + user.phoneNumber);
-        //debugger;
+        localStorage.setItem('currentUser', JSON.stringify(user.phoneNumber));
       } else {
         // No user is signed in.
         console.log("USER NOT LOGGED IN");
       }
     });
+    return this.loggged;
   }
 }

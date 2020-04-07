@@ -89,14 +89,14 @@
             </div>
             <div *ngIf="!_totalItem" class="emptyCart">
                 <div>
-                    <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-504/Default/components/header/ShoppingCart/images/emptyShoppingBag.png?q=low&amp;webp=1&amp;alpha=1">
+                    <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-504/Default/components/header/ShoppingCart/images/emptyShoppingBag.png?q=low&webp=1&alpha=1">
                 </div>
                 <span style="padding: 10px;">Your shopping bag is empty. Start shopping</span>
             </div>
         </div>
     </mat-card>
 
-    <h6 class="text-center">
+    <h6 *ngIf="_totalItem" class="text-center">
         <div>
             <mat-button-toggle-group (click)="PlaceOrder(totalAmounts)" color="accent" [totalPrice]="totalAmounts " name="fontStyle " aria-label="Font Style ">
                 <mat-button-toggle value="italic" class="order">

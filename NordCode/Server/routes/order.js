@@ -2,7 +2,6 @@ const db = require('../database/db.js');
 const coupon = require('../models/Coupon.js');
 
 
-
 const router = db.Express.Router();
 router.get('/setcoupon', (req, res, next) => {
     var couponNo = req.body.CouponNo;

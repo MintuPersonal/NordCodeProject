@@ -11,13 +11,16 @@ import { Ecom_Commercial } from 'src/app/models/Commercial';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
-  itemState: any[];
+  itemState: Ecom_Orders[];
   newline: Ecom_Commercial;
-  OrderNo: number;
+  OrderNo: string;
   Address: any;
+  TOOrderNumber: string;
+  Order: Ecom_Orders[];
+  OrderObj: object[];
   constructor(private _customerService: CustomerService, private route: ActivatedRoute, ) { }
   displayedColumn: string[] = ['Address'];
-  displayedColumns: string[] = ['Add','OrderNo', 'Qty', 'UnitPrice', 'Close'];
+  displayedColumns: string[] = ['Add', 'OrderNo', 'Qty', 'UnitPrice', 'Close'];
 
 
   orderModels: Ecom_Orders[];
@@ -30,11 +33,22 @@ export class PaymentComponent implements OnInit {
     //this.itemState=this.newline);
     //this.itemState.push(this.newline);
 
-    this.OrderNo = parseInt(this.route.snapshot.paramMap.get("order"));
+    this.OrderNo = this.route.snapshot.paramMap.get("order");
     // const orderModel = new Ecom_Orders();
     // orderModel.OrderNo = this.OrderNo.toString();
 
-    var data = this._customerService.getOrder(this.OrderNo).subscribe((orderModel: Ecom_Orders[]) => {
+    var data = this._customerService.getOrder(this.OrderNo).subscribe((orderModel) => {
+      
+      this.OrderObj = orderModel as object[];	 // FILL THE ARRAY WITH DATA.
+      this.Order = this.OrderObj['order'];
+      debugger;
+      if (this.Order.length) {
+        this.itemState = [];
+        this.itemState = this.Order;
+        this.Address = this.Order[0].Address;
+        this.TOOrderNumber = this.Order[0].OrderNo.toString().slice(3, 12);
+      }
+
       // var newline = new Ecom_Orders();
       // newline.OId;
       // newline.OId;
@@ -52,11 +66,7 @@ export class PaymentComponent implements OnInit {
       // newline.Address;
       // newline.Aria;
       // newline.DeliveryTime;
-      // this.itemState.push(newline);
-      this.Address = orderModel[0].Address;
-      this.itemState = [];
-
-      this.itemState = orderModel;
+      // this.itemState.push(newline);      
       //console.log(this.orderModels);
       //debugger;
     });

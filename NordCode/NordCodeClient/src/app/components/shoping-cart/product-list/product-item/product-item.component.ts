@@ -213,18 +213,16 @@ export class ProductItemComponent implements OnInit {
   }
 
   ////////////// Here New Concept  ///////////////
-  onAddToBag() {
-    debugger;
+  onAddToBag() {    
     this._interactionService.sendForAddtoCart(this.featureItem);
     this._getTotalAmounts(this.featureItem.PID);
-    
   }
   onRemoveFromBag() {
     this._interactionService.sendForRemoveFromCart(this.featureItem);
     this._getTotalAmounts(this.featureItem.PID);
   }
   public addProductToCart(cart: Cart) {
-    debugger;
+    
     let productExits = false;
     this._cartItems = this.productService._cartItems;
     for (let key in this._cartItems) {
@@ -236,26 +234,28 @@ export class ProductItemComponent implements OnInit {
     }
 
     if (!productExits) {
-      this._cartItems.push({
-        Add: '+', PID: cart.PID, ImgPath: cart.ImgPath, PName: cart.PName, Qty: 1, UnitPrice: cart.UnitPrice, Close: 'X'
-      });
+      this._cartItems.push({ Add: '+', PID: cart.PID, ImgPath: cart.ImgPath, PName: cart.PName, Qty: 0, UnitPrice: cart.UnitPrice, Close: 'X' });
+      console.log(JSON.stringify(this._cartItems));
     }
-
+    
+    this._interactionService.sendForAddtoCart(this.featureItem);
     this._getTotalAmounts(cart.PID);
   }
   public _getTotalAmounts(pid) {
     this._cartItems = this.productService._cartItems;
-    debugger;
-    this.totalAmounts = 0;    
-    this._cartItems.forEach((item) => {      
-      this.totalAmounts += (item.Qty * item.UnitPrice);
-      if (item.PID == pid) {
-         //this.totalItems = item.Qty;         
-         this.featureItem.totalItems = item.Qty
-      }
-    });
+    
+    this.totalAmounts = 0;
+    if (this._cartItems != null) {
+      this._cartItems.forEach((item) => {
+        this.totalAmounts += (item.Qty * item.UnitPrice);
+        if (item.PID == pid) {
+          //this.totalItems = item.Qty;         
+          this.featureItem.totalItems = item.Qty
+        }
+      });
+    }
   }
-  openDialog(feature_Item): void {    
+  openDialog(feature_Item): void {
     this._getTotalAmounts(feature_Item.PID);
     feature_Item.Qty = this.totalItems;
     const dialogRef = this.dialog.open(DialogpdetailsComponent, {

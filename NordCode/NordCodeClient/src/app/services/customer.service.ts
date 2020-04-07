@@ -10,7 +10,7 @@ import { ProductService } from './product.service';
   providedIn: 'root'
 })
 export class CustomerService {
- 
+  
   constructor(private _http: HttpClient, private router: Router, private productService: ProductService) { }
   
   getOrderDetails(OrderNo: string) {
@@ -25,19 +25,24 @@ export class CustomerService {
   }  
 
   getOrder(OrderNo) {
-    return this._http.get(environment.baseurl + 'getorder?OrderNo=' + OrderNo);
+    return this._http.get(environment.baseurl + 'getorder?orderNo=' + OrderNo);
   }  
 
   setOrder(order: Ecom_Orders) {
-    return this._http.post<any>(environment.baseurl + 'setorder', order).subscribe((order: any) => {
-      if (order.status) {        
-        this.router.navigate(['/payment', order.Number, order.TotalPrice]);
-      }
-      else {
-        this.router.navigate(['/checkout', order.TotalPrice]);
-      }
-    });
+    return this._http.post<any>(environment.baseurl + 'setorder', order)
+    //.subscribe((order: any) => {
+      // if (order.status) {        
+      //   this.router.navigate(['/payment', order.Number, order.TotalPrice]);
+      // }
+      // else {
+      //   this.router.navigate(['/checkout', order.TotalPrice]);
+      // }
+    //});
   };
+  // createTask(_task: Task) {
+  //   return this._http.post<any>(environment.baseurl + "createtask", _task);
+  // };
+ 
 
   updateOrder(order: Ecom_Orders) {
     return this._http.post<any>(environment.baseurl + 'updateorder', order).subscribe((data: any) => {
