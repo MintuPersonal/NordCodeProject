@@ -1,25 +1,101 @@
 const express = require('express');
-const customer = require('../models/Customer.js');
+const Customer = require('../models/Customer.js');
 const order = require('../models/Order.js');
 const OrderDetails = require('../models/OrderDetails.js');
 const router = express.Router();
 
 router.get(process.env.api_get_customer, (req, res, next) => {
-    //var customerid = req.body.customerid; for x-www-urlencoded 
     var cmobileno = req.query.cmobileno;
-    console.log(cmobileno);
-    customer.findAll({ where: { MobileNo: cmobileno }, limit: 1 }).then(customer => {
-        res.json(customer);
+    var cid = parseInt(cmobileno);
+    var toNomber = '+880';
+    Customer.findAll({ where: { MobileNo: cmobileno }, limit: 1 }).then(customer => {
+        console.log(JSON.stringify('DDD ' + customer.length));
+        if (customer.length == 0) {
+            customerobj = { CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }
+            Customer.create(customerobj).then(data => {
+                res.json({
+                    status: true,
+                    msg: 'User Create successfully',
+                    customer: [{ CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }]
+                });
+            }).catch(err => {
+                console.log('Error :' + err);
+            });
+        } else {
+            res.json({
+                status: true,
+                msg: 'User find successfully',
+                customer: customer
+            });
+        }
+
+        // if (!customer.length) {
+        //     const [customer, created] = Customer.findOrCreate({
+        //         where: { MobileNo: cmobileno },
+        //         defaults: { CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }
+        //     });
+        //     res.json({
+        //         status: true,
+        //         msg: 'User Create successfully',
+        //         customer: [{ CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }]
+        //     });
+        // }
+        res.json({
+            status: true,
+            msg: 'User Create successfully',
+            customer: [{ CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }]
+        });
     }).catch(err => {
         console.log('Error ' + err);
     });
+
+    // const [customer, created] = Customer.findOrCreate({
+    //     where: { MobileNo: cmobileno },
+    //     defaults: { CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }
+    // }).then(customer => {
+    //     res.json({
+    //         status: true,
+    //         msg: 'User Create successfully',
+    //         customer: [{ CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }]
+    //     });
+    // }).catch(err => {
+    //     console.log('Error ' + err);
+    // });
+    // Customer.findAll({ where: { MobileNo: cmobileno }, limit: 1 }).then(customer => {
+    //     res.json(customer);
+    // }).catch(err => {
+    //     console.log('Error ' + err);
+    // });
+    //res.json(customer);
+
+
+
+
+    // if (created) {
+    //     console.log('Some thing ' + customer.Id); // This will certainly be 'Technical Lead JavaScript'
+    // }
+    // Customer.findAll({ where: { MobileNo: cmobileno }, limit: 1 }).then(customer => {
+    //     res.json(customer);
+    // }).catch(err => {
+    //     console.log('Error ' + err);
+    // });
+    // console.log('CID ' + customer.CID); // 'sdepold'
+    // console.log('Mobile ' + customer.MobileNo); // This may or may not be 'Technical Lead JavaScript'
+    // console.log(created); // The boolean indicating whether this instance was just created
+    // if (created) {
+    //     console.log(customer.Id); // This will certainly be 'Technical Lead JavaScript'
+    // }
+    //var customerid = req.body.customerid; for x-www-urlencoded 
+    // var cmobileno = req.query.cmobileno;
+    // console.log(cmobileno);
+
 });
 router.post(process.env.api_set_customer, (req, res, next) => {
     if (!req.body) {
         res.status(400);
         res.json({ error: 'Bad data request' + req.body });
     } else {
-        customer.create(req.body).then(data => {
+        Customer.create(req.body).then(data => {
             res.json({
                 status: true,
                 msg: 'Add to cart successfully'

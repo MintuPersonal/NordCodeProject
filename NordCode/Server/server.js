@@ -1,6 +1,7 @@
 require('dotenv').config({ encoding: 'latin1' });
 const config = require('./database/config/config.json')
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 
 const bodyParser = require('body-parser');
@@ -21,8 +22,10 @@ const menu = require('../Server/routes/menu.js');
 // const article = require('../Server/routes/article.js');
 
 const PORT = process.env.PORT;
+//var ip = process.env.ip
 const app = express();
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'assets')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
