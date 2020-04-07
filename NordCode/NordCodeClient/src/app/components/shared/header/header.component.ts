@@ -36,6 +36,8 @@ export class HeaderComponent implements OnInit {
   itemState: any[];
   commercialModels: any;
   customerId: number = 0;
+  featureItem: Cart;
+  data: any;
 
   //@Output() RefObject = new EventEmitter();
 
@@ -127,6 +129,7 @@ export class HeaderComponent implements OnInit {
         console.log("USER LOGGED IN" + user.phoneNumber);
         localStorage.setItem('currentUser', JSON.stringify(user.phoneNumber));
         this.condition = true;
+
       } else {
         // No user is signed in.
         this.condition = false;
@@ -153,18 +156,22 @@ export class HeaderComponent implements OnInit {
 
   }
   public PlaceOrder(totalPrice: any) {
-    var data = true; //this.CheckUserSession();
-    var cartItems = this.productService._cartItems;
-    var order = this._getOrder(cartItems);
-    var orderNumber = this.customerService.setOrder(order);
+    if (this.CheckUserSession()) {
+      var cartItems = this.productService._cartItems;
+      var order = this._getOrder(cartItems);
+      this.customerService.setOrder(order).subscribe();
+      this.productService.SetEmptyCart();;
+      this._getTotalAmounts();
+      localStorage.setItem('item', null)
+      debugger;
+      this.router.navigate(['/payment', order.OrderNo, order.TotalPrice]);
+    } else {
+      this.router.navigate(['/phonelogin']);
+    }
   }
 
   private _getOrder(cartItems): Ecom_Orders {
     var order = new Ecom_Orders();
-    //var cmobileno = '01911788115'
-    // this.customerService.getCustomer(cmobileno).subscribe((customer: any) => {
-    //   this.customerId = customer[0].Id;
-    //   debugger;
     var orderno = environment.currentuserId + '_' + Math.random().toString().slice(2, 11);
     var OrderDetails = [];
     cartItems.forEach((item: Cart) => {
@@ -187,7 +194,6 @@ export class HeaderComponent implements OnInit {
       orderdetail.Delete = false;
       orderdetail.Active = true;
       OrderDetails.push(orderdetail);
-
     });
 
     order.OID = 0;
