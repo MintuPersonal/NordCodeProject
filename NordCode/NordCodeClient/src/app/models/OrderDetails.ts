@@ -1,6 +1,6 @@
 export class Ecom_OrderDetails {
     OrderId: any;
-    ProductId: any;
+    PID: any;
     TONumber: string;
     PName: string;
 

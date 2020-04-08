@@ -47,7 +47,7 @@ export class CustomerService {
   updateOrder(order: Ecom_Orders) {
     return this._http.post<any>(environment.baseurl + 'updateorder', order).subscribe((data: any) => {
       if (data.status) {
-        this.router.navigate(['/payment', order.OrderNo, order.TotalPrice]);
+        this.router.navigate(['/payment', order.TONumber, order.TotalPrice]);
       }
       else {
         this.router.navigate(['/checkout', order.TotalPrice]);

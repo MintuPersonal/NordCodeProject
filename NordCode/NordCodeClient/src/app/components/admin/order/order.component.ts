@@ -29,7 +29,7 @@ export class OrderComponent implements OnInit {
   }
 
   public OrderDetails(order: Ecom_Orders) {
-    this.customerService.getOrderDetails(order.OrderNo).subscribe((orserdetails: Ecom_OrderDetails[]) => {     
+    this.customerService.getOrderDetails(order.TONumber).subscribe((orserdetails: Ecom_OrderDetails[]) => {     
       this.orserdetails = orserdetails;
     });
   }

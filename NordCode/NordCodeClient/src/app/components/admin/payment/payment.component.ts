@@ -46,7 +46,7 @@ export class PaymentComponent implements OnInit {
         this.itemState = [];
         this.itemState = this.Order;
         this.Address = this.Order[0].Address;
-        this.TOOrderNumber = this.Order[0].OrderNo.toString().slice(3, 12);
+        this.TOOrderNumber = this.Order[0].TONumber.toString().slice(3, 12);
       }
 
       // var newline = new Ecom_Orders();

@@ -163,8 +163,8 @@ export class HeaderComponent implements OnInit {
       this.productService.SetEmptyCart();;
       this._getTotalAmounts();
       localStorage.setItem('item', null)
-      debugger;
-      this.router.navigate(['/payment', order.OrderNo, order.TotalPrice]);
+
+      this.router.navigate(['/payment', order.TONumber, order.TotalPrice]);
     } else {
       this.router.navigate(['/phonelogin']);
     }
@@ -177,8 +177,9 @@ export class HeaderComponent implements OnInit {
     cartItems.forEach((item: Cart) => {
       var orderdetail = new Ecom_OrderDetails();
       orderdetail.OrderId = 0;
-      orderdetail.ProductId = item.PID;
       orderdetail.TONumber = orderno;
+
+      orderdetail.PID = item.PID;
       orderdetail.PName = item.PName;
       orderdetail.PQty = item.Qty;
       orderdetail.ItemQty = item.Qty;
@@ -186,6 +187,7 @@ export class HeaderComponent implements OnInit {
       orderdetail.NetPrice = item.UnitPrice;
       orderdetail.HostAddress = environment.baseurl;
       orderdetail.ImgPath = item.ImgPath;
+
       orderdetail.TrackedId = environment.baseurl;
       orderdetail.CreateBy = environment.currentuserId;
       orderdetail.CreateDate = new Date();
@@ -197,16 +199,17 @@ export class HeaderComponent implements OnInit {
     });
 
     order.OID = 0;
-    order.OrderNo = orderno;
+    order.TONumber = orderno;
     order.CustomerId = 6; //this.customerId;
+    order.PaymentId = 0;
     order.CouponId = 3333;
     order.PaymentModeId = 1;
     order.Discount = 20;
     order.Reason = '_orderReason';
     order.Active = true;
-    order.Qty = 5;
-    order.UnitPrice = 5000;
+    order.TotalItemQty = 5;
     order.NetPrice = 6000;
+    order.DeliveryCharge = 20;
     order.TotalPrice = 2000;
     order.Address = 'DDDD';
     order.Aria = '_orderAria';
@@ -219,8 +222,6 @@ export class HeaderComponent implements OnInit {
     order.Active = true;
     order.Delete = false;
     order.OrderDetails = OrderDetails;
-
-    // });
     return order;
   }
 
