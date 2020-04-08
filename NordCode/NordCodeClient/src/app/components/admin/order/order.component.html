@@ -21,10 +21,10 @@
                                 <div class="completed"> Complete </div>
                             </tr>
                             <tr class="tr">
-                                <div class="orderNo">Order # {{ item.OrderNo }} </div>
+                                <div class="orderNo">Order # {{ item.TONumber }} </div>
                             </tr>
                             <tr class="tr">
-                                <div class="amount"> {{ item.UnitPrice | currency: 'BD '}} </div>
+                                <div class="amount"> {{ item.TotalPrice | currency: 'BD '}} </div>
                             </tr>
                             <tr class="tr">
                                 <div class="details" (click)="OrderDetails(item)"> Details >>> </div>

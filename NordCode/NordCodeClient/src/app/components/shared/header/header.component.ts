@@ -207,6 +207,7 @@ export class HeaderComponent implements OnInit {
     order.Discount = 20;
     order.Reason = '_orderReason';
     order.Active = true;
+    
     order.TotalItemQty = 5;
     order.NetPrice = 6000;
     order.DeliveryCharge = 20;

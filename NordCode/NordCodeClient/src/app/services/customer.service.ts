@@ -13,8 +13,8 @@ export class CustomerService {
   
   constructor(private _http: HttpClient, private router: Router, private productService: ProductService) { }
   
-  getOrderDetails(OrderNo: string) {
-    return this._http.get(environment.baseurl + 'getorderdetails?orderno=' + OrderNo);
+  getOrderDetails(TOnumber: string) {
+    return this._http.get(environment.baseurl + 'getorderdetails?TONumber=' + TOnumber);
   }
   getCustomer(cmobileno) {
     return this._http.get(environment.baseurl + 'getcustomer?cmobileno=' + cmobileno);

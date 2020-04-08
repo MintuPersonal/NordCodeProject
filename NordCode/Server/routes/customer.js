@@ -120,9 +120,9 @@ router.get(process.env.api_get_orders, (req, res, next) => {
 });
 router.get(process.env.api_get_order, (req, res, next) => {
     //var customerid = ''; //req.body.customerid; for x-www-urlencoded 
-    var orderNo = req.query.orderNo;
+    var TOnumber = req.query.TONumber;
     //console.log(cmobileno);
-    order.findAll({ where: { OrderNo: orderNo }, limit: 1 }).then(order => {
+    order.findAll({ where: { TONumber: TOnumber }, limit: 1 }).then(order => {
         res.json({
             status: true,
             msg: 'Order find successfully',
@@ -134,10 +134,9 @@ router.get(process.env.api_get_order, (req, res, next) => {
 });
 
 router.get(process.env.api_get_orderdetails, (req, res, next) => {
-    var orderno = req.query.orderno;
-    console.log(orderno);
-
-    OrderDetails.findAll({ where: { TONumber: orderno } }).then(order => {
+    var TOnumber = req.query.TONumber;
+    //console.log(TOnumber);
+    OrderDetails.findAll({ where: { TONumber: TOnumber } }).then(order => {
         res.json(order);
     }).catch(err => {
         console.log('Error ' + err);

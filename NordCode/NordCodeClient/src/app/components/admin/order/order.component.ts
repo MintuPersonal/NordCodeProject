@@ -19,7 +19,7 @@ export class OrderComponent implements OnInit {
   ngOnInit() {
     var cmobileno = '01911788115'
     this.customerService.getCustomer(cmobileno).subscribe((customer: any) => {
-      this.customerId = customer[0].Id;
+      this.customerId = customer.customer[0].Id;
 
       this.customerService.getOrders(this.customerId).subscribe((orsers: Ecom_Orders[]) => {
         //this.ordertotal = orsers.length;
