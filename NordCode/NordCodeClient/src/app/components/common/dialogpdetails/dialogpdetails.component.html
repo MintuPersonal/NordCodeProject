@@ -21,14 +21,14 @@
                 <mat-label class="round"> ID#{{("00000000"+data.PID).slice(-7)}} </mat-label>
                 <h4 at-dialog-title>{{data.PName}}</h4>
                 <mat-label>{{data.Weight}}</mat-label>
-                <p class="price">{{data.UnitPrice}}</p>
+                <p class="price"> ৳ {{data.UnitPrice}}</p>
                 <section>
                     <div class="quantityEditor">
                         <button class="removeButton outer" (click)="onRemoveFromBag(data)">–</button>
                         <div class="QuantityTextContainer">
                             <div class="quantity">
-                                <span>{{data.UnitsInStock | json}}</span></div>
-                            <div>in bag</div>
+                                <span>{{data.totalItems | json}}</span></div>
+                            <div> in bag</div>
                         </div>
                         <button class="addButton outer" (click)="onAddToBag(data)">+</button>
                     </div>

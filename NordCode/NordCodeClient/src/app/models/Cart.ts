@@ -2,10 +2,11 @@ export class Cart {
     Add: any;
     PID: string;
     Qty: number;
-    UnitPrice: number;
-    Close: any;
+    UnitPrice: number;    
     PName: any;
     ImgPath: string;
+    totalItems: any;
+    Close: any;
 
 
     // constructor( add, pid, pname, qty, unitprice, Close) {

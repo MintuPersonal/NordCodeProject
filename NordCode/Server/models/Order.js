@@ -54,7 +54,7 @@ const Order = db.sequelize.define('Ecom_Order', {
 // });
 
 //OrderDetails.belongsTo(Order, { as: 'Order', foreignKey: 'OrderId' });
-db.sequelize.sync({ force: true }); //{ force: true }
+//.sequelize.sync({ force: true }); //{ force: true }
 
 // .then(() => {
 //     product.create();

@@ -72,7 +72,7 @@
                         <tr *ngFor="let item of _cartItems; index as itemed" class="tr">
 
                             <td title="add one more to bag" class="td">
-                                <mat-icon (click)="addProductToCart(item)">add_circle</mat-icon>
+                                <mat-icon (click)="onAddToBag(item)">add_circle</mat-icon>
                                 <br> {{ item.Qty }}
                                 <br>
                                 <mat-icon (click)="RemoveProductFromCart(item, false)">remove_circle</mat-icon>

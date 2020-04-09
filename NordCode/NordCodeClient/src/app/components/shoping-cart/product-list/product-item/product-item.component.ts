@@ -228,6 +228,7 @@ export class ProductItemComponent implements OnInit {
     for (let key in this._cartItems) {
       if (this._cartItems[key].PID === cart.PID) {
         this._cartItems[key].Qty++;
+        this._cartItems[key].totalItems++;
         productExits = true;
         break;
       }

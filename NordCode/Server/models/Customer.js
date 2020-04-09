@@ -23,30 +23,30 @@ const customer = db.sequelize.define('Ecom_Customers', {
 });
 
 
-db.sequelize.sync({ force: true })
-    .then(() => {
-        product.create({
-            CID: '1911788888',
-            TONumber: '880',
-            Name: 'Md Karim',
-            Address: 'Houser # 11, Road# 11, Mirpur, Dhaka',
-            Aria: 'Mirpur',
+// db.sequelize.sync({ force: true })
+//     .then(() => {
+//         product.create({
+//             CID: '1911788888',
+//             TONumber: '880',
+//             Name: 'Md Karim',
+//             Address: 'Houser # 11, Road# 11, Mirpur, Dhaka',
+//             Aria: 'Mirpur',
 
-            MobileNo: '1911788888',
-            PhoneNo: '02888888',
-            Priority: 'Top',
-            HostAddress: '127.0.0.1',
+//             MobileNo: '1911788888',
+//             PhoneNo: '02888888',
+//             Priority: 'Top',
+//             HostAddress: '127.0.0.1',
 
-            TrackedId: '127',
-            CreateBy: '11',
-            CreateDate: new Date().toLocaleTimeSTRING(),
-            UpdateBy: '11',
-            UpdateDate: new Date().toLocaleTimeSTRING(),
-            Delete: 0,
-            Active: 1,
-        });
-    }).catch(err => {
-        console.log('Error : ' + err);
-    });
+//             TrackedId: '127',
+//             CreateBy: '11',
+//             CreateDate: new Date().toLocaleTimeSTRING(),
+//             UpdateBy: '11',
+//             UpdateDate: new Date().toLocaleTimeSTRING(),
+//             Delete: 0,
+//             Active: 1,
+//         });
+//     }).catch(err => {
+//         console.log('Error : ' + err);
+//     });
 
 module.exports = customer;

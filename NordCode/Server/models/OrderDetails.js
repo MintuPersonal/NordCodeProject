@@ -21,5 +21,5 @@ const OrderDetails = db.sequelize.define('Ecom_OrderDetails', {
     Active: db.Sequelize.BOOLEAN,
 });
 
-db.sequelize.sync({ force: true });
+//db.sequelize.sync({ force: true });
 module.exports = OrderDetails;

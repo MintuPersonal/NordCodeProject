@@ -24,28 +24,28 @@ const user = db.sequelize.define('Ecom_User', {
     Active: db.Sequelize.BOOLEAN,
 });
 
-db.sequelize.sync({ force: true })
-    .then(() => {
-        user.create({
-            UID: 1,
-            Name: 'Md Mahafuzul Huq',
-            Email: 'gmsanzid@gmail.com',
-            Birthday: new Date().toLocaleDateString(),
-            Username: 'gmsanzid@gmail.com',
-            Password: '1qaz@WSX',
+// db.sequelize.sync({ force: true })
+//     .then(() => {
+//         user.create({
+//             UID: 1,
+//             Name: 'Md Mahafuzul Huq',
+//             Email: 'gmsanzid@gmail.com',
+//             Birthday: new Date().toLocaleDateString(),
+//             Username: 'gmsanzid@gmail.com',
+//             Password: '1qaz@WSX',
 
-            FileUrl: 'db.Sequelize.STRING',
-            FileExtension: '.jpg',
-            FileImage: 'db.Sequelize.STRING',
+//             FileUrl: 'db.Sequelize.STRING',
+//             FileExtension: '.jpg',
+//             FileImage: 'db.Sequelize.STRING',
 
-            TrackedId: 'Noc Desktop',
-            CreateBy: 11,
-            CreateDate: new Date().toLocaleDateString(),
-            Delete: false,
-            Active: true,
-        })
-    }).catch(err => {
-        console.log('Error : ' + err);
-    })
+//             TrackedId: 'Noc Desktop',
+//             CreateBy: 11,
+//             CreateDate: new Date().toLocaleDateString(),
+//             Delete: false,
+//             Active: true,
+//         })
+//     }).catch(err => {
+//         console.log('Error : ' + err);
+//     })
 
 module.exports = user;

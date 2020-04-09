@@ -7,6 +7,7 @@
         </div>
         <div fxLayout="row" fxLayoutAlign="space-evenly center" class="category">
             <div class="col-lg-12">
+
                 <label class=" font-weight-bold " style="font-size: 35px; padding: 5px; ">  Category </label>
                 <app-category></app-category>
             </div>
@@ -21,13 +22,14 @@
 
         <div fxLayout="row " fxLayoutAlign="space-evenly center ">
             <div class="row col-lg-11 ">
+                <input type="text" [(ngModel)]="pCategoryName" #myInput (input)="Search()">{{binding}}
                 <label class="col-lg-12 font-weight-bold " style="font-size: 35px; padding-top: 20px; "> Popular
-                    <a mat-raised-button btn-sm routerLink=". " class="text-right more ">More....</a>
+                    <a mat-raised-button btn-sm routerLink="" class="text-right more ">More....</a>
                     </label>
-                <app-product-item [featureItem]="featureItem " *ngFor="let featureItem of featuresModel "></app-product-item>
+                <app-product-item [featureItem]="featureItem" *ngFor="let featureItem of featuresModel"></app-product-item>
 
                 <label class="col-lg-12 font-weight-bold " style="font-size: 35px; padding-top: 20px; ">  House Hold
-                    <a mat-raised-button btn-sm routerLink=". " class="text-right more ">More....</a>
+                    <a mat-raised-button btn-sm routerLink="" class="text-right more ">More....</a>
                     </label>
                 <app-product-item [featureItem]="featureItem " *ngFor="let featureItem of featuresModel "></app-product-item>
             </div>

@@ -21,5 +21,5 @@ const cart = db.sequelize.define('Ecom_Cart', {
     Active: db.Sequelize.BOOLEAN,
 });
 
-db.sequelize.sync({ force: true });
+//db.sequelize.sync({ force: true });
 module.exports = cart;

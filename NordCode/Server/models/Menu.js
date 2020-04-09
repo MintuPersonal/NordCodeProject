@@ -25,7 +25,7 @@ const menu = db.sequelize.define('Ecom_Menu_bak', {
     Delete: db.Sequelize.BOOLEAN,
     Active: db.Sequelize.BOOLEAN,
 });
-db.sequelize.sync({ force: true }); //{ force: true }
+//db.sequelize.sync({ force: true }); //{ force: true }
 
 // .then(() => {
 //     product.create();

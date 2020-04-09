@@ -31,7 +31,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(PORT, function() {
     //console.log(config.production.host)
-    console.log('Server running on localhost port :' + PORT);
+    var url = path.join(__dirname, 'assets');
+    console.log('Server running on' + url + PORT);
 });
 
 app.use('/api', auth, home, product, order, task, customer, menu);

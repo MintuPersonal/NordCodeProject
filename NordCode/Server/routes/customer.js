@@ -137,7 +137,11 @@ router.get(process.env.api_get_orderdetails, (req, res, next) => {
     var TOnumber = req.query.TONumber;
     //console.log(TOnumber);
     OrderDetails.findAll({ where: { TONumber: TOnumber } }).then(order => {
-        res.json(order);
+        res.json({
+            "status": true,
+            "msg": "Order find successfully",
+            OrderDetails: order
+        });
     }).catch(err => {
         console.log('Error ' + err);
     });

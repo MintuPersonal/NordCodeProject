@@ -11,13 +11,13 @@ const article = db.sequelize.define('user_articles', {
 });
 
 db.sequelize.sync({ force: true })
-    .then(() => {
-        article.create({
-            title: 'db.Sequelize.STRING',
-            body: 'db.Sequelize.STRING'
-        });
-    }).catch(err => {
-        console.log('Error :' + err);
-    });
+    //     .then(() => {
+    //         article.create({
+    //             title: 'db.Sequelize.STRING',
+    //             body: 'db.Sequelize.STRING'
+    //         });
+    //     }).catch(err => {
+    //         console.log('Error :' + err);
+    //     });
 
 module.exports = article;

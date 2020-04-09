@@ -46,6 +46,8 @@ export class DialogpdetailsComponent implements OnInit {
     this._cartItems.forEach((item) => {
       this.totalAmounts += (item.Qty * item.UnitPrice);
       if (item.PID == pid) {
+        debugger;
+        this.data.totalItems = item.Qty;
         this.data.Qty = item.Qty;
       }
     });

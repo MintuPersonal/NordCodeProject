@@ -14,4 +14,14 @@ export class CommercialService {
   getAddtoCart() {    
     return this._http.get(environment.baseurl + 'getaddtocart');
   }
+
+  Search() {
+    // if (this.pCategoryName != "") {
+    //   this.featuresModel = this.featuresModel.filter(res => {
+    //     return res.PName.toLocaleLowerCase().match(this.pCategoryName.toLocaleLowerCase())
+    //   });
+    // } else {
+    //   this.ngOnInit();
+    // }
+  }
 }

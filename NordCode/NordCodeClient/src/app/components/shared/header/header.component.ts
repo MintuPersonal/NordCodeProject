@@ -75,6 +75,12 @@ export class HeaderComponent implements OnInit {
     ////////////// Here New Concept  ///////////////
   }
 
+  onAddToBag(featureItem) {   
+    debugger; 
+    featureItem.totalItems = featureItem.Qty;
+    this._interactionService.sendForAddtoCart(featureItem);
+    this._getTotalAmounts(); //featureItem.PID
+  }
   public addProductToCart(product: Cart) {
 
     let productExits = false;
@@ -92,6 +98,7 @@ export class HeaderComponent implements OnInit {
         Add: '+', PID: product.PID, ImgPath: product.ImgPath, PName: product.PName, Qty: 1, UnitPrice: product.UnitPrice, Close: 'X'
       });
     }
+
     this._getTotalAmounts();
   }
   private _getTotalAmounts() {

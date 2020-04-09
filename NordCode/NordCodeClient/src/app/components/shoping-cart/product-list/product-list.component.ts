@@ -27,6 +27,7 @@ export class ProductListComponent implements OnInit {
   itemCount: number = 0;
   newline: Ecom_Commercial;
   isItemLocalStorage: any;
+  pCategoryName: any;
 
   constructor(private _commercialService: CommercialService) { }
 
@@ -34,7 +35,7 @@ export class ProductListComponent implements OnInit {
   _commercialModel: Object[];
   commercialModels = [] //Ecom_Commercial[];
 
-  ngOnInit() {   
+  ngOnInit() {
     //localStorage.setItem('item', null);
     this._commercialService.getCommercial().subscribe(
       data => {
@@ -54,5 +55,13 @@ export class ProductListComponent implements OnInit {
     // this.HasThisItem({});
   }
 
-  
+  Search() {
+    if (this.pCategoryName != "") {
+      this.featuresModel = this.featuresModel.filter(res => {
+        return res.PName.toLocaleLowerCase().match(this.pCategoryName.toLocaleLowerCase())
+      });
+    } else {
+      this.ngOnInit();
+    }
+  }
 }

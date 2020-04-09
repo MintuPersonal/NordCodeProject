@@ -16,5 +16,5 @@ const home = db.sequelize.define('Ecom_Brand', {
     Delete: db.Sequelize.BOOLEAN,
     Active: db.Sequelize.BOOLEAN,
 });
-db.sequelize.sync({ force: true });
+//db.sequelize.sync({ force: true });
 module.exports = home;
