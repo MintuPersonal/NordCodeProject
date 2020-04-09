@@ -10,14 +10,14 @@ const article = db.sequelize.define('user_articles', {
     body: db.Sequelize.TEXT
 });
 
-db.sequelize.sync({ force: true })
-    //     .then(() => {
-    //         article.create({
-    //             title: 'db.Sequelize.STRING',
-    //             body: 'db.Sequelize.STRING'
-    //         });
-    //     }).catch(err => {
-    //         console.log('Error :' + err);
-    //     });
+//db.sequelize.sync({ force: true })
+//     .then(() => {
+//         article.create({
+//             title: 'db.Sequelize.STRING',
+//             body: 'db.Sequelize.STRING'
+//         });
+//     }).catch(err => {
+//         console.log('Error :' + err);
+//     });
 
 module.exports = article;
