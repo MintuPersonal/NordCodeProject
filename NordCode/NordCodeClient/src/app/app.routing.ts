@@ -15,22 +15,24 @@ import { AlertHomeComponent } from './test/alert-home';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SignupComponent } from './components/admin/signup/signup.component';
 import { DialogComponent } from './components/common/dialog/dialog.component';
+import { SearchComponent } from './components/shoping-cart/search/search.component';
 
 const routes: Routes = [
-  { path: '', component: ProductListComponent}, //, pathMatch: 'full' 
+  { path: '', component: ProductListComponent }, //, pathMatch: 'full' 
   { path: 'myprofile', component: SignupComponent },
   { path: 'myorders', component: OrderComponent },
   { path: 'payment/:order/:price', component: PaymentComponent },
 
+  { path: 'search/:filter', component: SearchComponent },
   { path: 'cart', component: CartComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'addnew', component: AddnewComponent },  
+  { path: 'addnew', component: AddnewComponent },
   { path: 'login', component: LoginComponent },
   { path: 'product', component: ProductComponent },
   { path: 'productdetails/:productId', component: ProductdetailsComponent },
-  { path: 'commercial', component: CommercialComponent },  
-  { path: 'checkout/:total', component: CheckoutComponent },  
+  { path: 'commercial', component: CommercialComponent },
+  { path: 'checkout/:total', component: CheckoutComponent },
   { path: 'phonelogin', component: PhoneLoginComponent },
   { path: 'alerthome', component: AlertHomeComponent },
   { path: 'logindialog', component: DialogComponent },
@@ -39,4 +41,4 @@ const routes: Routes = [
 
 ];
 
-export const RoutingModule = RouterModule.forRoot(routes);
+export const RoutingModule = RouterModule.forRoot(routes); //, { onSameUrlNavigation: 'reload' }

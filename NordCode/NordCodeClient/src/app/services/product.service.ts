@@ -9,23 +9,24 @@ import { Cart } from '../models/Cart';
 })
 
 export class ProductService {
-  
+
   ////////////// Here New Concept  ///////////////
   //_cartItems = [];
   fromproductlist: boolean = false;
   _cartItems: Cart[];
   _customerPonne: string;
+  pCategoryName: any = '';
   constructor(private _http: HttpClient) {
-    
+
     //this._cartItems = JSON.parse(localStorage.getItem('item'));
     var data = localStorage.getItem("item");
     if (data == 'undefined' || data == "null") {
       this._cartItems = []
     } else {
-      this._cartItems = JSON.parse(localStorage.getItem('item'|| "null"));
-    }    
+      this._cartItems = JSON.parse(localStorage.getItem('item' || "null"));
+    }
   }
-  SetEmptyCart(): Cart[] {
+  public SetEmptyCart(): Cart[] {
     return this._cartItems = [];
   }
   public RemoveProductFromCart(product, fromproductlist) {
@@ -45,8 +46,11 @@ export class ProductService {
 
     }
   }
-  getCartItemsFromLocal() {
+  public getCartItemsFromLocal() {
     return JSON.parse(localStorage.getItem('item'));
+  }
+  public SetProductScearchFilter(categoryname) {
+    this.pCategoryName = categoryname;
   }
   ////////////// Here New Concept  ///////////////
 

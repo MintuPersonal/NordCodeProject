@@ -6,13 +6,15 @@
                     <mat-icon mat-icon-button id="menu" (click)="navService.openNav()"> menu </mat-icon>
                     <a routerLink=""><img class="img" src="../assets/img/product/header/Logo.jpg"></a>
                 </div>
-                <form class="col-lg-7">
+                <input [pCategoryName]="pCategoryName" [(ngModel)]="pCategoryName" #myInput (input)="Search()" class="col-lg-7" type="text" placeholder="Search for products (e.g. eggs, milk, alu)">
+
+                <!-- <form class="col-lg-7">
                     <mat-form-field class="example-full-width search">
                         <mat-label> Search Item </mat-label>
                         <input matInput placeholder="Search for products (e.g. eggs, milk, alu)">
                         <mat-error> </mat-error>
                     </mat-form-field>
-                </form>
+                </form> -->
                 <div class="col-lg-1 signin-cart">
                     <mat-icon (click)="navService.openNavCart()" [matBadge]="_totalItem" matBadgeColor="warn">add_shopping_cart</mat-icon>
                     <span class="cdk-visually-hidden" (click)="navService.openNavCart()"> </span>

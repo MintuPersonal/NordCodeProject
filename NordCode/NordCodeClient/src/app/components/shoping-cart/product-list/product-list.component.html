@@ -1,37 +1,82 @@
-<div class="col-12">
-    <div class="row">
-        <div class="col-12">
-            <app-banner></app-banner>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="space-evenly center" class="category">
-        </div>
-        <div fxLayout="row" fxLayoutAlign="space-evenly center" class="category">
-            <div class="col-lg-12">
-
-                <label class=" font-weight-bold " style="font-size: 35px; padding: 5px; ">  Category </label>
-                <app-category></app-category>
+<!-- <div class="row">
+    <div class="col-12">
+        <div class="header">
+            <div class="row" fxLayoutAlign="space-evenly">
+                <div class="col-lg-2">
+                    <mat-icon mat-icon-button id="menu" (click)="navService.openNav()"> menu </mat-icon>
+                    <a routerLink=""><img class="img" src="../assets/img/product/header/Logo.jpg"></a>
+                </div>
+                <input class="col-lg-7" type="text" [(ngModel)]="pCategoryName" #myInput (input)="Search()" placeholder="Search for products (e.g. eggs, milk, alu)"> {{binding}}
+                <div class="col-lg-1 signin-cart">
+                    <mat-icon (click)="navService.openNavCart()" [matBadge]="_totalItem" matBadgeColor="warn">add_shopping_cart</mat-icon>
+                    <span class="cdk-visually-hidden" (click)="navService.openNavCart()"> </span>
+                </div>
+                <div class="enbn  col-lg-1">
+                    <span> En | Bn </span>
+                </div>
+                <div class="col-lg-1 signin">
+                    <span *ngIf="!condition" (click)="openDialog()"> Signin </span>
+                    <span *ngIf="condition" class="dropdown">                    
+                    <i class="fa fa-user-circle"> </i>  <span> {{userName}} </span>
+                    <div class="dropdown-content text-left">
+                        <button class="btn btn-success m-1" (click)="alertService.success('Success!!', options)">Success</button>
+                        <a href="myprofile" class="fa fa-user-circle"> &nbsp; My Profile </a>
+                        <a href="myorders" class="fa fa-reorder"> &nbsp; My Orders </a>
+                        <a href="account-history" class="fa fa-history"> &nbsp; Payment Histry</a>
+                        <a href="customer/changepassword" class="fa fa-key"> &nbsp; Change Password</a>
+                        <a href="/" class="fa fa-sign-out" (click)="logout()"> &nbsp; Logout </a>
+                    </div>
+                    </span>
+                </div>
+            </div>
+            <div id="menucart" mat-icon-button (click)="navService.openNavCart()">
+                <mat-icon> shopping_basket </mat-icon>
+                <br>
+                <label> {{_totalItem}} items </label>
+                <div class="pricecrt">
+                    <label> Tk. {{totalAmounts}} </label>
+                </div>
             </div>
         </div>
+    </div>
+</div> -->
 
-        <div fxLayout="row" fxLayoutAlign="space-evenly center " class="brand ">
-            <div class="col-lg-12">
-                <label class="col-lg-12 font-weight-bold " style="font-size: 35px; padding: 5px; "> Brand </label>
-                <app-brand></app-brand>
+<div style="margin-top: 65px;">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12">
+                <app-banner></app-banner>
             </div>
-        </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center" class="category">
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center" class="category">
+                <div class="col-lg-12">
 
-        <div fxLayout="row " fxLayoutAlign="space-evenly center ">
-            <div class="row col-lg-11 ">
-                <input type="text" [(ngModel)]="pCategoryName" #myInput (input)="Search()">{{binding}}
-                <label class="col-lg-12 font-weight-bold " style="font-size: 35px; padding-top: 20px; "> Popular
+                    <label class=" font-weight-bold " style="font-size: 35px; padding: 5px; ">  Category </label>
+                    <app-category></app-category>
+                </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-evenly center " class="brand ">
+                <div class="col-lg-12">
+                    <label class="col-lg-12 font-weight-bold " style="font-size: 35px; padding: 5px; "> Brand </label>
+                    <app-brand></app-brand>
+                </div>
+            </div>
+
+            <div fxLayout="row " fxLayoutAlign="space-evenly center ">
+                <div class="row col-lg-11 ">
+
+                    <label class="col-lg-12 font-weight-bold" style="font-size: 35px; padding-top: 20px; "> Popular
                     <a mat-raised-button btn-sm routerLink="" class="text-right more ">More....</a>
                     </label>
-                <app-product-item [featureItem]="featureItem" *ngFor="let featureItem of featuresModel"></app-product-item>
+                    <app-product-item [featureItem]="featureItem" *ngFor="let featureItem of featuresModel"></app-product-item>
 
-                <label class="col-lg-12 font-weight-bold " style="font-size: 35px; padding-top: 20px; ">  House Hold
+                    <label class="col-lg-12 font-weight-bold" style="font-size: 35px; padding-top: 20px; ">  House Hold
                     <a mat-raised-button btn-sm routerLink="" class="text-right more ">More....</a>
                     </label>
-                <app-product-item [featureItem]="featureItem " *ngFor="let featureItem of featuresModel "></app-product-item>
+                    <app-product-item [featureItem]="featureItem" *ngFor="let featureItem of featuresModel "></app-product-item>
+                </div>
             </div>
         </div>
     </div>

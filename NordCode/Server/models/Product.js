@@ -29,6 +29,7 @@ const product = db.sequelize.define('Ecom_Product', {
     FileUrl: db.Sequelize.STRING,
     FileExtension: db.Sequelize.STRING,
     FileImage: db.Sequelize.STRING,
+    RankId: db.Sequelize.INTEGER,
 
     TrackedId: db.Sequelize.STRING,
     CreateBy: db.Sequelize.STRING,

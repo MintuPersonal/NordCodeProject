@@ -38,6 +38,8 @@ export class HeaderComponent implements OnInit {
   customerId: number = 0;
   featureItem: Cart;
   data: any;
+  pCategoryName: string;
+  featuresModel: any;
 
   //@Output() RefObject = new EventEmitter();
 
@@ -231,6 +233,26 @@ export class HeaderComponent implements OnInit {
     order.Delete = false;
     order.OrderDetails = OrderDetails;
     return order;
+  }
+
+  Search() {
+    this.router.navigate(['/']);
+    if (this.pCategoryName != "") {      
+      debugger;
+      this.productService.SetProductScearchFilter(this.pCategoryName);      
+      this.router.navigate(['/search', this.pCategoryName]);
+    }
+    else{
+      this.router.navigate(['/']);
+    }
+    
+    // if (this.pCategoryName != "") {
+    //   this.featuresModel = this.featuresModel.filter(res => {
+    //     return res.PName.toLocaleLowerCase().match(this.pCategoryName.toLocaleLowerCase())
+    //   });
+    // } else {
+    //   this.ngOnInit();
+    // }
   }
 
   ////////////// Here New Concept  ///////////////

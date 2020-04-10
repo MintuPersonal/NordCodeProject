@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { NavItem } from './models/nav-item';
 import { NavbarService } from './services/navbar.service';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 
 
@@ -364,14 +365,27 @@ export class AppComponent implements AfterViewInit {
   //   }
   // ];
   menuItems: object[];
-  constructor(private navService: NavbarService,) {
+  mySubscription: any;
+
+  constructor(private navService: NavbarService,private router: Router, private activatedRoute: ActivatedRoute) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.mySubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {       
+         this.router.navigated = false;
+      }
+    }); 
+
     navService.getmenus('admin').subscribe((menus: any) => {
       this.navItems = menus.data as NavItem[];
       //console.log(environment.production);
     })
     this.logMessage(this.navItems)
   }
-
+  ngOnDestroy(){
+    if (this.mySubscription) {
+      this.mySubscription.unsubscribe();
+    }
+  }
   title = 'BardCode';
   logMessage(value) {
     //debugger;
