@@ -66,15 +66,14 @@ export class CheckoutComponent implements OnInit {
     order.Aria = _order.Aria;
     order.DeliveryTime = _order.DeliveryTime;
 
-    order.TrackedId = environment.baseurl;
-    order.CreateBy = environment.currentuserId; 
+    order.TrackedId = 'http://americantmartbd.com/api/'; //environment.baseurl;
+    order.CreateBy = '11' //environment.currentuserId; 
     order.CreateDate = new Date();
     order.Active = true;
     order.Delete = false;
     
-    debugger;
     var data = this._customerService.updateOrder(order);
-    debugger;
+    
 
   }
   onClear() {

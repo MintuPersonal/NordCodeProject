@@ -8,6 +8,7 @@ import {
 import { NavItem } from './models/nav-item';
 import { NavbarService } from './services/navbar.service';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Ecom_Menu } from './models/Menu';
 
 
 
@@ -19,6 +20,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements AfterViewInit {
+
   @ViewChild('appDrawer') appDrawer: ElementRef;
   @ViewChild('appDrawerRight') appDrawerRight: ElementRef;
   navItems: NavItem[];
@@ -364,29 +366,147 @@ export class AppComponent implements AfterViewInit {
   //     ]
   //   }
   // ];
-  menuItems: object[];
+  menuItems: object;
   mySubscription: any;
-
-  constructor(private navService: NavbarService,private router: Router, private activatedRoute: ActivatedRoute) {
+  title = 'BardCode';
+  menuObj: Object[];
+  aMenu: Ecom_Menu;
+  newitem: Ecom_Menu[];
+  newnav: NavItem;
+  constructor(private navService: NavbarService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.mySubscription = this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {       
-         this.router.navigated = false;
+      if (event instanceof NavigationEnd) {
+        this.router.navigated = false;
       }
-    }); 
+    });
 
     navService.getmenus('admin').subscribe((menus: any) => {
-      this.navItems = menus.data as NavItem[];
-      //console.log(environment.production);
+      this.newitem = menus.data as Ecom_Menu[];
+      this.RenderMenu(this.newitem);
+      //debugger;
+      //this.navItems = this.newitem;
     })
     this.logMessage(this.navItems)
   }
-  ngOnDestroy(){
+
+  RenderMenu(list: Ecom_Menu[]) {
+    this.navItems = [];
+    list.forEach(item => {
+      item.children = []
+      this.newnav = new NavItem();
+      this.newnav.parentId = item.ParentId;
+      this.newnav.displayName = item.displayName;
+      this.newnav.iconName = item.iconName;
+      this.newnav.route = item.route;
+      this.navItems.push(this.newnav);
+
+    });
+    this._setChild(this.navItems);
+    // console.log(this.newitem);
+  }
+  _setChild(navItems: NavItem[]) {
+    navItems.forEach(navItem => {
+      if (navItem.parentId !== '0') {
+        this.navItems[navItem.parentId].children = navItem;
+      }
+    })
+
+  };
+  //function list_to_tree(list) {
+  // var map = {}, node, roots = [], i;
+  // for (i = 0; i < list.length; i += 1) {
+  //   map[list[i].PID] = i; // initialize the map
+  //   list[i].children = []; // initialize the children
+  // }
+  // debugger;
+  // node = list[i];
+  // for (i = 0; i < list.length; i += 1) {
+  //   var items = list[i]
+  //   if (items.ParentId !== "0") {
+  //     var itemobj = map[items.ParentId];
+  //    // var ch = {children: itemobj};
+  //     list[itemobj].children[{itemobj}] =  ;
+  //     //var c = list[id].children.push();
+  //     //c.push();
+  //   } else {
+  //     roots.push(items);
+  //   }
+  // }
+  //return roots;
+  //}
+
+  // var entries = [
+  //     {
+  //         "id": "12",
+  //         "parentId": "0",
+  //         "text": "Man",
+  //         "level": "1"
+  //     }, { /*...*/ }
+  // ];
+
+  // "id": "12",
+  // "parentId": "0",
+  // "text": "Man",
+  // "level": "1",
+  // "children": null
+
+  //console.log(list_to_tree(entries));
+
+
+  //   navItems.filter(data=>{}).forEach(item => {
+  //     this.aMenu = new Ecom_Menu();
+  //     this.aMenu.displayName = 'home Apparel';
+  //     this.aMenu.iconName = 'recent_actors';
+  //     this.aMenu.route = 'product';
+  //     this.aMenu.children = []
+  //   })
+
+  //return this.aMenu;
+
+  //createTreeView(data, 0,0,-1);
+  //function createTreeView(data, currentParent, currLevel = 0, prevLevel = -1) {
+
+
+  // for ( var i=0; i< data.length; i++) {
+
+  // if (currentParent == data[i].parentid) {     
+
+  //     if (currLevel > prevLevel) 
+  //     %>
+  //      <ul> <%
+
+  //     if (currLevel == prevLevel) 
+  //     %> </li>
+
+  //     <li> <label><%= data[i].PName %><a href="/admin/CategoryEdit/<%= data[i].PID %>"> Edit</a></label>;
+  //       <%
+  //     if (currLevel > prevLevel) { prevLevel = currLevel; }
+
+  //     currLevel++; 
+
+  //     createTreeView (data, data[i].PID, currLevel, prevLevel);
+
+  //     currLevel--;               
+  //     }   
+
+  // }
+
+  // if (currLevel == prevLevel)
+  //  %> </li>  </ul> <%   
+
+  //}   
+
+
+  //}
+
+
+  ngOnDestroy() {
     if (this.mySubscription) {
       this.mySubscription.unsubscribe();
     }
   }
-  title = 'BardCode';
+
   logMessage(value) {
     //debugger;
     console.log(value);

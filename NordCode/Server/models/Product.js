@@ -11,6 +11,8 @@ const product = db.sequelize.define('Ecom_Product', {
     PName_BN: db.Sequelize.STRING,
     Brand: db.Sequelize.STRING,
     Brand_BN: db.Sequelize.STRING,
+    Discount: db.Sequelize.FLOAT,
+    MRP: db.Sequelize.FLOAT,
     UnitPrice: db.Sequelize.FLOAT,
     Unit: db.Sequelize.FLOAT,
     UnitsInStock: db.Sequelize.INTEGER,

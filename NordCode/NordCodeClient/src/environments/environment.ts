@@ -6,7 +6,7 @@
 
 export const environment = {
   production: false,
-  baseurl: 'http://localhost:3000/api/', //'http://10.11.1.6:3000/api/' demo.one-ict.com
+  baseurl: 'http://americantmartbd.com/api/', //'http://10.11.1.6:3000/api/' demo.one-ict.com
   currentuserId: '11'
 };
 

@@ -181,7 +181,7 @@ export class HeaderComponent implements OnInit {
 
   private _getOrder(cartItems): Ecom_Orders {
     var order = new Ecom_Orders();
-    var orderno = environment.currentuserId + '_' + Math.random().toString().slice(2, 11);
+    var orderno = '11_' + Math.random().toString().slice(2, 11);
     var OrderDetails = [];
     cartItems.forEach((item: Cart) => {
       var orderdetail = new Ecom_OrderDetails();
@@ -197,8 +197,8 @@ export class HeaderComponent implements OnInit {
       orderdetail.HostAddress = environment.baseurl;
       orderdetail.ImgPath = item.ImgPath;
 
-      orderdetail.TrackedId = environment.baseurl;
-      orderdetail.CreateBy = environment.currentuserId;
+      orderdetail.TrackedId = 'http://demo.one-ict.com:3000/api/'; //environment.baseurl;
+      orderdetail.CreateBy = '11';//environment.currentuserId;
       orderdetail.CreateDate = new Date();
       orderdetail.UpdateBy = '';
       orderdetail.UpdateDate = new Date();
@@ -226,8 +226,8 @@ export class HeaderComponent implements OnInit {
     order.DeliveryTime = new Date();
     order.OrderStatus = 1;
 
-    order.TrackedId = environment.baseurl;
-    order.CreateBy = environment.currentuserId;
+    order.TrackedId = 'http://demo.one-ict.com:3000/api/'; //environment.baseurl;
+    order.CreateBy = '11'; //environment.currentuserId;
     order.CreateDate = new Date();
     order.Active = true;
     order.Delete = false;
