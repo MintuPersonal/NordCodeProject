@@ -171,9 +171,8 @@ export class HeaderComponent implements OnInit {
       this.customerService.setOrder(order).subscribe();
       this.productService.SetEmptyCart();;
       this._getTotalAmounts();
-      localStorage.setItem('item', null)
-
-      this.router.navigate(['/payment', order.TONumber, order.TotalPrice]);
+      localStorage.setItem('item', null)      
+      this.router.navigate(['/checkout', order.TotalPrice]);      
     } else {
       this.router.navigate(['/phonelogin']);
     }

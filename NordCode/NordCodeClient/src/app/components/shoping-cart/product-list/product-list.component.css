@@ -134,14 +134,14 @@ th.mat-header-cell {
 
 .category {
     background: white;
-    margin-top: 10px;
+    margin: 10px 0 10px 0;
     border-radius: 5px;
 }
 
 .brand {
     background: white;
-    margin-top: 10px;
-    padding: 30px;
+    /* margin-top: 10px; */
+    /* padding: 30px; */
     border-radius: 5px;
 }
 
