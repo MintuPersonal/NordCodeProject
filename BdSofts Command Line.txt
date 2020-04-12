@@ -27,9 +27,33 @@ for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
 	for Publish
 	https://www.youtube.com/watch?v=8cf7f3L6Sr0
 	
-	========= For Deployment ===========
+	========= For Deployment ===========	
 	ng build --prod
-	--==================
+	C:\Program Files\OpenSSL-Win64\bin\openssl.cfg
+	http://programmerblog.net/nodejs-https-server/ 
+	
+	--======= For Node js Deployment===========
+	https://medium.com/@binyamin/creating-a-node-express-webpack-app-with-dev-and-prod-builds-a4962ce51334 !most Impotance
+	npm install --save-dev webpack webpack-cli webpack-node-externals
+	npm install --save-dev @babel/core @babel/preset-env babel-loader
+	npx babel-upgrade --write
+	npm install --save-dev html-loader html-webpack-plugin
+	npm install --save-dev css-loader file-loader style-loader
+	===========================================
+	
+	
+	
+	
+	
+	https://medium.com/@binyamin/creating-a-node-express-webpack-app-with-dev-and-prod-builds-a4962ce51334 !most Impotance
+	https://www.youtube.com/watch?v=oykl1Ih9pMg&list=RDCMUC29ju8bIPH5as8OGnQzwJyA&index=2  !Most impotant
+	npm install -g webpack
+	npm install webpack webpack-cli --save-dev
+	"build": "webpack"
+	create new file webpack.config.js //https://medium.com/bb-tutorials-and-thoughts/how-to-write-production-ready-node-js-rest-api-javascript-version-db64d3941106
+	npm run build
+	npm install tedious
+	
 
 	-- express server run 
 	--Open in Teminal

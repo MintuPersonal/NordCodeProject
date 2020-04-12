@@ -1,32 +1,45 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body": "^5.1.0",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mysql": "^2.17.1",
-    "mysql2": "^2.1.0",
-    "nodemon": "^2.0.2",
-    "npm": "^6.14.3",
-    "pg": "^7.18.2",
-    "pg-hstore": "^2.3.3",
-    "sequelizer": "^1.1.4",
-    "tedious": "^8.0.1",
-    "update": "^0.7.4"
-  },
-  "devDependencies": {},
-  "description": ""
+    "name": "server",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "rimraf instead dist && webpack --mode development",
+        "start": "node ./dist/server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@azure/ms-rest-nodeauth": "^3.0.3",
+        "bcryptjs": "^2.4.3",
+        "body": "^5.1.0",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "jsonwebtoken": "^8.5.1",
+        "mssql": "^6.2.0",
+        "mysql": "^2.17.1",
+        "mysql2": "^2.1.0",
+        "nodemon": "^2.0.2",
+        "npm": "^6.14.3",
+        "pg": "^7.18.2",
+        "pg-hstore": "^2.3.3",
+        "request": "^2.88.2",
+        "resolve-url": "^0.2.1",
+        "sequelize": "^5.21.6",
+        "sqlite": "^4.0.5",
+        "tedious": "^8.2.0",
+        "update": "^0.7.4"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.9.0",
+        "@babel/preset-env": "^7.9.5",
+        "babel-loader": "^8.1.0",
+        "html-loader": "^1.1.0",
+        "html-webpack-plugin": "^4.2.0",
+        "webpack": "^4.42.1",
+        "webpack-cli": "^3.3.11",
+        "webpack-node-externals": "^1.7.2"
+    },
+    "description": ""
 }

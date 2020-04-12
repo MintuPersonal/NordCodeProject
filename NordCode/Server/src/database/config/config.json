@@ -1,0 +1,29 @@
+{
+    "development": {
+        "host": "103.106.236.90",
+        "database": "ERP",
+        "username": "sa",
+        "password": "Oneict@123",
+        "dialect": "mssql",
+        "operatorsAliases": false,
+        "ip": "127.0.0.1"
+    },
+    "stage": {
+        "host": "103.106.236.90",
+        "database": "ERP",
+        "username": "sa",
+        "password": "Oneict@123",
+        "dialect": "mssql",
+        "operatorsAliases": false,
+        "ip": "127.0.0.1"
+    },
+    "production": {
+        "host": "103.106.236.90",
+        "database": "ERP",
+        "username": "sa",
+        "password": "Oneict@123",
+        "dialect": "mssql",
+        "operatorsAliases": false,
+        "ip": "127.0.0.1"
+    }
+}
