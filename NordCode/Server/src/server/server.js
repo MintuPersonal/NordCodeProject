@@ -5,7 +5,6 @@ const https = require('https');
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
-
 const bodyParser = require('body-parser');
 
 const auth = require('../auth/auth.js');
@@ -17,7 +16,6 @@ const cart = require('../routes/cart.js');
 
 const task = require('../routes/task.js');
 const customer = require('../routes/customer.js');
-
 const menu = require('../routes/menu.js');
 // const user = require('../Server/routes/user.js');
 // const login = require('../Server/routes/login.js');
