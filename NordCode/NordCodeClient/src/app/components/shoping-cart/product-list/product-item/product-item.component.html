@@ -1,66 +1,68 @@
 <div class="p-3">
-    <mat-card class="card-picture" style="border-top-left-radius:3em; padding: 0px;">
-        <mat-card-title style="display: grid;">
-            <img class="features" src="../assets/img/product/feature/{{featureItem.ImgPath}}">
-            <mat-card-subtitle class="round"> ID#{{("00000000"+featureItem.PID).slice(-7)}} </mat-card-subtitle>
-        </mat-card-title>
-        <div class="imageWrapper">
+    <a href="/" onclick="return false;">
+        <mat-card class="card-picture" style="border-top-left-radius:3em; padding: 0px;">
+            <mat-card-title style="display: grid;">
+                <img class="features" src="../assets/img/product/feature/{{featureItem.ImgPath}}">
+                <mat-card-subtitle class="round"> ID#{{("00000000"+featureItem.PID).slice(-7)}} </mat-card-subtitle>
+            </mat-card-title>
+            <div class="imageWrapper">
 
-            <div *ngIf="featureItem.UnitsInStock == 0" class="overlay text stockout" disabled="disabled">
-                <div class="row">
-                    <p class="addToBag"> OUT OF STOCK </p>
-                </div>
-                <span>                   
+                <div *ngIf="featureItem.UnitsInStock == 0" class="overlay text stockout" disabled="disabled">
+                    <div class="row">
+                        <p class="addToBag"> OUT OF STOCK </p>
+                    </div>
+                    <span>                   
                     <button class="btnShowDetails" (click)="openDialog(featureItem)">
                         <span > Details </span> <span>  &gt;&gt;  </span>
-                </button>
-                </span>
-            </div>
-
-            <div *ngIf="featureItem.UnitsInStock !== 0 " class="overlay text">
-                <div class="row">
-                    <p class="addToBag" (click)="addProductToCart(featureItem)"> Add to Shopping Bag </p>
+                    </button>
+                    </span>
                 </div>
-                <span>                   
+
+                <div *ngIf="featureItem.UnitsInStock !== 0 " class="overlay text">
+                    <div class="row">
+                        <p class="addToBag" (click)="addProductToCart(featureItem)"> Add to Shopping Bag </p>
+                    </div>
+                    <span>                   
                     <button class="btnShowDetails" (click)="openDialog(featureItem)">
                         <span > Details </span> <span>  &gt;&gt;  </span>
-                </button>
-                </span>
-            </div>
-
-            <div *ngIf="featureItem.totalItems > 0" class="overlay text">
-                <div class="column-list">
-                    <p class="addText"> ৳ {{featureItem.UnitPrice}}</p>
-                    <p class="addText">
-                        <i class="fa fa-minus-square" (click)="onRemoveFromBag(featureItem)"></i> &nbsp;{{featureItem.totalItems}} &nbsp;
-                        <i class="fa fa-plus-square" (click)="onAddToBag(featureItem)"> </i>
-                    </p>
-                    <p class="addText"> in bag </p>
+                    </button>
+                    </span>
                 </div>
-                <span>                   
+
+                <div *ngIf="featureItem.totalItems > 0" class="overlay text">
+                    <div class="column-list">
+                        <p class="addText"> ৳ {{featureItem.UnitPrice}}</p>
+                        <p class="addText">
+                            <i class="fa fa-minus-square" (click)="onRemoveFromBag(featureItem)"></i> &nbsp;{{featureItem.totalItems}} &nbsp;
+                            <i class="fa fa-plus-square" (click)="onAddToBag(featureItem)"> </i>
+                        </p>
+                        <p class="addText"> in bag </p>
+                    </div>
+                    <span>                   
                     <button class="btnShowDetails" (click)="openDialog(featureItem)">
                         <span >Details</span> <span>  &gt;&gt;  </span>
-                </button>
-                </span>
-            </div>
+                    </button>
+                    </span>
+                </div>
 
-        </div>
-        <mat-card-footer [ngClass]="{'mat-card-footer-con': featureItem.totalItems}" class="mat-card-footer" fxLayoutAlign="space-around center">
-            <div *ngIf="featureItem.UnitsInStock == 0" disabled="disabled">
-                <mat-icon matBadgeColor="warn" style="color: whitesmoke;"> store </mat-icon>
-                <span *ngIf="featureItem.UnitsInStock > 0"> </span> <span> Request Stock </span>
             </div>
-            <div *ngIf="featureItem.UnitsInStock > 0">
-                <span>
+            <mat-card-footer [ngClass]="{'mat-card-footer-con': featureItem.totalItems}" class="mat-card-footer" fxLayoutAlign="space-around center">
+                <div *ngIf="featureItem.UnitsInStock == 0" disabled="disabled">
+                    <mat-icon matBadgeColor="warn" style="color: whitesmoke;"> store </mat-icon>
+                    <span *ngIf="featureItem.UnitsInStock > 0"> </span> <span> Request Stock </span>
+                </div>
+                <div *ngIf="featureItem.UnitsInStock > 0">
+                    <span>
                 <mat-icon class="mat-icon-left" (click)="onRemoveFromBag(featureItem)"> remove </mat-icon>
                 </span>
-                <span *ngIf="featureItem.UnitsInStock > 0" (click)="onAddToBag(featureItem)"> &nbsp; &nbsp; &nbsp;{{featureItem.totalItems}}  in bag  &nbsp; &nbsp; &nbsp;</span>
-                <span>
+                    <span *ngIf="featureItem.UnitsInStock > 0" (click)="onAddToBag(featureItem)"> &nbsp; &nbsp; &nbsp;{{featureItem.totalItems}}  in bag  &nbsp; &nbsp; &nbsp;</span>
+                    <span>
                 <mat-icon class="mat-icon-right" (click)="onAddToBag(featureItem)"> add </mat-icon>
             </span>
-            </div>
-        </mat-card-footer>
-    </mat-card>
+                </div>
+            </mat-card-footer>
+        </mat-card>
+    </a>
 </div>
 
 

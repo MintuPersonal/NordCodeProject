@@ -6,8 +6,16 @@ const router = express.Router();
 
 router.get('/getmenus', (req, res, next) => {
     var Role = req.body.Role;
-    Product.findAll({ attributes: ['PID', 'Category', 'PName', 'ParentId', 'RankId'] }
-        //, { order: [['Category', 'ASC'], ['ParentId', 'ASC'] ]  }
+    Product.findAll({
+            order: [
+                ['Category', 'ASC'],
+            ],
+            attributes: [
+                ['PID', 'Id'], 'route', 'iconName', ['Category', 'Text'],
+                ['PName', 'Desc'], 'ParentId', 'RankId',
+                // Product.sequelize.literal("route || ' ' || Category"), 'route'
+            ]
+        }
 
     ).then(menus => {
         res.json({

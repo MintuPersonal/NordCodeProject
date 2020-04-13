@@ -382,136 +382,64 @@ export class AppComponent implements AfterViewInit {
     });
 
     navService.getmenus('admin').subscribe((menus: any) => {
-      this.newitem = menus.data as Ecom_Menu[];
-      this.RenderMenu(this.newitem);
-      //debugger;
-      //this.navItems = this.newitem;
+      const distinctThings = menus.data.filter(
+        (thing, i, arr) => arr.findIndex(t => t.Text === thing.Text) === i
+      );
+      debugger;
+      this.navItems = this.RenderMenu(distinctThings);
     })
     this.logMessage(this.navItems)
   }
+  private RenderMenu(data_off: any): NavItem[] {
 
-  RenderMenu(list: Ecom_Menu[]) {
-    this.navItems = [];
-    list.forEach(item => {
-      item.children = []
-      this.newnav = new NavItem();
-      this.newnav.parentId = item.ParentId;
-      this.newnav.displayName = item.displayName;
-      this.newnav.iconName = item.iconName;
-      this.newnav.route = item.route;
-      this.navItems.push(this.newnav);
+    // var data_off = [
+    //   { Id: 1, route: 'product', iconName: 'person', Text: 'What kind of apple is it?', Desc: '', ParentId: 0 },
+    //   { Id: 2, route: 'product', iconName: 'person', Text: 'Green Apple', Desc: '', ParentId: 1 },
+    //   { Id: 3, route: 'product', iconName: 'person', Text: 'Red Apple', Desc: '', ParentId: 1 },
+    //   { Id: 4, route: 'product', iconName: 'person', Text: 'Purple GMO Apple', Desc: '', ParentId: 1 },
+    //   { Id: 5, route: 'product', iconName: 'person', Text: 'What is the issue with the apple?', Desc: '', ParentId: 2 },
+    //   { Id: 6, route: 'product', iconName: 'person', Text: 'Spoiled.', Desc: '', ParentId: 0 },
+    //   { Id: 7, route: 'product', iconName: 'person', Text: 'Taste Bad.', Desc: '', ParentId: 5 },
+    //   { Id: 8, route: 'product', iconName: 'person', Text: 'Too Ripe.', Desc: '', ParentId: 5 },
+    //   { Id: 9, route: 'product', iconName: 'person', Text: 'Is not an apple.', Desc: '', ParentId: 5 },
+    //   { Id: 10, route: 'product', iconName: 'person', Text: 'The apple was not green.', Desc: '', ParentId: 5 },
+    //   { Id: 11, route: 'product', iconName: 'person', Text: 'Spoiled.', Desc: '', ParentId: 6 },
+    //   { Id: 12, route: 'product', iconName: 'person', Text: 'Taste Bad.', Desc: '', ParentId: 6 },
+    //   { Id: 13, route: 'product', iconName: 'person', Text: 'Too Ripe.', Desc: '', ParentId: 6 },
+    //   { Id: 14, route: 'product', iconName: 'person', Text: 'Is not an apple.', Desc: '', ParentId: 6 },
+    //   { Id: 15, route: 'product', iconName: 'person', Text: 'The apple was not green.', Desc: '', ParentId: 6 },
+    //   { Id: 16, route: 'product', iconName: 'person', Text: 'The apple was not green.', Desc: '', ParentId: 0 },
+    //   { Id: 17, route: 'product', iconName: 'person', Text: 'Is not an apple.', Desc: '', ParentId: 16 },
+    //   { Id: 18, route: 'product', iconName: 'person', Text: 'Is is child to child.', Desc: '', ParentId: 17 },
+    // ]
 
-    });
-    this._setChild(this.navItems);
-    // console.log(this.newitem);
+    var tree = function (data_off, root) {
+      const
+        next = { ChildAnswers: 'ChildAnswers', ChildQuestion: 'ChildAnswers' },
+        toggle = type => ({ children, ...o }) =>
+          Object.assign(o, children && { [type]: children.map(toggle(next[type])) }),
+        t = {};
+
+      data_off.forEach(o => {
+        Object.assign(t[o.Id] = t[o.Id] || {}, o);
+        t[o.ParentId] = t[o.ParentId] || {};
+        t[o.ParentId].children = t[o.ParentId].children || [];
+        t[o.ParentId].children.push(t[o.Id]);
+      });
+      return t[root].children.map(toggle('ChildAnswers'));
+    }(data_off, 0);
+    return tree;
+    
   }
-  _setChild(navItems: NavItem[]) {
-    navItems.forEach(navItem => {
-      if (navItem.parentId !== '0') {
-        this.navItems[navItem.parentId].children = navItem;
-      }
-    })
-
-  };
-  //function list_to_tree(list) {
-  // var map = {}, node, roots = [], i;
-  // for (i = 0; i < list.length; i += 1) {
-  //   map[list[i].PID] = i; // initialize the map
-  //   list[i].children = []; // initialize the children
-  // }
-  // debugger;
-  // node = list[i];
-  // for (i = 0; i < list.length; i += 1) {
-  //   var items = list[i]
-  //   if (items.ParentId !== "0") {
-  //     var itemobj = map[items.ParentId];
-  //    // var ch = {children: itemobj};
-  //     list[itemobj].children[{itemobj}] =  ;
-  //     //var c = list[id].children.push();
-  //     //c.push();
-  //   } else {
-  //     roots.push(items);
-  //   }
-  // }
-  //return roots;
-  //}
-
-  // var entries = [
-  //     {
-  //         "id": "12",
-  //         "parentId": "0",
-  //         "text": "Man",
-  //         "level": "1"
-  //     }, { /*...*/ }
-  // ];
-
-  // "id": "12",
-  // "parentId": "0",
-  // "text": "Man",
-  // "level": "1",
-  // "children": null
-
-  //console.log(list_to_tree(entries));
-
-
-  //   navItems.filter(data=>{}).forEach(item => {
-  //     this.aMenu = new Ecom_Menu();
-  //     this.aMenu.displayName = 'home Apparel';
-  //     this.aMenu.iconName = 'recent_actors';
-  //     this.aMenu.route = 'product';
-  //     this.aMenu.children = []
-  //   })
-
-  //return this.aMenu;
-
-  //createTreeView(data, 0,0,-1);
-  //function createTreeView(data, currentParent, currLevel = 0, prevLevel = -1) {
-
-
-  // for ( var i=0; i< data.length; i++) {
-
-  // if (currentParent == data[i].parentid) {     
-
-  //     if (currLevel > prevLevel) 
-  //     %>
-  //      <ul> <%
-
-  //     if (currLevel == prevLevel) 
-  //     %> </li>
-
-  //     <li> <label><%= data[i].PName %><a href="/admin/CategoryEdit/<%= data[i].PID %>"> Edit</a></label>;
-  //       <%
-  //     if (currLevel > prevLevel) { prevLevel = currLevel; }
-
-  //     currLevel++; 
-
-  //     createTreeView (data, data[i].PID, currLevel, prevLevel);
-
-  //     currLevel--;               
-  //     }   
-
-  // }
-
-  // if (currLevel == prevLevel)
-  //  %> </li>  </ul> <%   
-
-  //}   
-
-
-  //}
-
-
   ngOnDestroy() {
     if (this.mySubscription) {
       this.mySubscription.unsubscribe();
     }
   }
-
   logMessage(value) {
     //debugger;
     console.log(value);
   }
-
   ngAfterViewInit() {
     this.navService.appDrawer = this.appDrawer;
     this.navService.appDrawerRight = this.appDrawerRight;

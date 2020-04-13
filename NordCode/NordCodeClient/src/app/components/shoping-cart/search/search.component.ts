@@ -26,10 +26,11 @@ export class SearchComponent implements OnInit {
         this._commercialModel = this.commercialObj['homeobj'];
         this.featuresModel = this._commercialModel['features'];
         this.pCategoryName = this.productService.pCategoryName;
-        this.totalItems = this.featuresModel.length;
-        debugger;
+        this.totalItems = this.featuresModel.length;  
+            
         if (this.pCategoryName != "") {
           this.featuresModel = this.featuresModel.filter(res => {
+            debugger;
             return res.PName.toLocaleLowerCase().match(this.pCategoryName.toLocaleLowerCase())
           });
         }

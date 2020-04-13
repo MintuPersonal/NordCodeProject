@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { NavItem } from '../../../models/nav-item';
 import { NavbarService } from '../../../services/navbar.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-menu',
@@ -24,7 +25,7 @@ export class MenuComponent implements OnInit {
   @Input() item: NavItem;
   @Input() depth: number;
 
-  constructor(public navService: NavbarService,
+  constructor(public navService: NavbarService, private productService: ProductService,
     public router: Router) {
     if (this.depth === undefined) {
       this.depth = 0;
@@ -43,12 +44,14 @@ export class MenuComponent implements OnInit {
   }
 
   onItemSelected(item: NavItem) {
-    if (!item.children || !item.children.length) {
-      debugger;
-      this.router.navigate([item.route]);      
-      this.navService.closeNav();
+    if (!item.ChildAnswers || !item.ChildAnswers.length) {
+      if (item.Text != "") {
+        this.productService.SetProductScearchFilter(item.Text);
+        this.router.navigate([item.route + item.Text.toLocaleLowerCase()]);
+        this.navService.closeNav();
+      }
     }
-    if (item.children && item.children.length) {
+    if (item.ChildAnswers && item.ChildAnswers.length) {
       this.expanded = !this.expanded;
     }
   }
