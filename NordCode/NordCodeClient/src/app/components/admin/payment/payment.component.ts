@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 //import { Ecom_Commercial } from '../../../models/Product';
 import { CustomerService } from '../../../services/customer.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Ecom_Orders } from '../../../models/Order';
 import { Ecom_Commercial } from 'src/app/models/Commercial';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-payment',
@@ -18,27 +19,29 @@ export class PaymentComponent implements OnInit {
   TOOrderNumber: string;
   Order: Ecom_Orders[];
   OrderObj: object[];
-  constructor(private _customerService: CustomerService, private route: ActivatedRoute, ) { }
+  TONumber: string;
+  TotalPrice: number;
+  constructor(private _customerService: CustomerService, private route: ActivatedRoute,
+    private productService: ProductService, private router: Router) { }
   displayedColumn: string[] = ['Address'];
   displayedColumns: string[] = ['Add', 'OrderNo', 'Qty', 'UnitPrice', 'Close'];
 
 
   orderModels: Ecom_Orders[];
   ngOnInit() {
-    // debugger;
+    if (this.productService.GetStayThisPage()) {
+      this.TONumber = this.productService.TONumber;
+      this.TotalPrice = this.productService.TotalPrice;
+    } else {
+      this.router.navigate(['/']);
+    }
 
-    // var totalQty = 5//storageItem[2];
-    // var totalPrice = 500 //storageItem[3]
-    //this.newline = new Ecom_Commercial(5, 'TTTT', 20, 500, 'X', 'A+');
-    //this.itemState=this.newline);
-    //this.itemState.push(this.newline);
-
-    this.OrderNo = this.route.snapshot.paramMap.get("order");
+    //this.OrderNo = this.route.snapshot.paramMap.get("order");
     // const orderModel = new Ecom_Orders();
     // orderModel.OrderNo = this.OrderNo.toString();
 
     var data = this._customerService.getOrder(this.OrderNo).subscribe((orderModel) => {
-      
+
       this.OrderObj = orderModel as object[];	 // FILL THE ARRAY WITH DATA.
       this.Order = this.OrderObj['order'];
       debugger;

@@ -26,21 +26,14 @@
                             <mat-panel-description> Type your delivery address details </mat-panel-description>
                         </mat-expansion-panel-header>
 
-                        <!-- <mat-form-field [hidden]="false">
-                            <input matInput name="CustomerId" ngModel [(ngModel)]="orderModel.CustomerId">
-                            <input matInput name="UnitPrice" ngModel [(ngModel)]="orderModel.UnitPrice">
-                            <input matInput name="LoginFrom" ngModel [(ngModel)]="orderModel.LoginFrom">
-                            <input matInput name="TrackedId" ngModel [(ngModel)]="orderModel.TrackedId">
-                        </mat-form-field> -->
-
-                        <!-- <mat-form-field appearance="fill">
-                            <mat-label> OrderNo </mat-label>
-                            <input #OrderNo='ngModel' [(ngModel)]="orderModel.OrderNo" name="OrderNo" required matInput ngModel/>
-                        </mat-form-field> -->
                         <mat-form-field appearance="fill" fxFlex="50%">
                             <mat-label> Address </mat-label>
                             <textarea #Address='ngModel' [(ngModel)]="orderModel.Address" name="Address" required matInput ngModel></textarea>
                         </mat-form-field>
+                        <!-- <mat-form-field class="example-full-width">
+                            <input matInput #Username="ngModel" name="Username" ngModel type="email" required minlength="6" placeholder="EMAIL" [(ngModel)]="userModel.Username" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                            <mat-error *ngIf="Username.invalid"> Please erter an valid email. </mat-error>
+                        </mat-form-field> -->
                         <mat-form-field appearance="fill" class="offset-1">
                             <mat-label>Select an option</mat-label>
                             <mat-select [(ngModel)]="orderModel.Aria" name="time" required>
@@ -143,15 +136,6 @@
                     </mat-expansion-panel>
                     <br>
                     <mat-card>
-                        <!-- <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <mat-icon fxFlex=""> watch_later </mat-icon>
-                                Order Processing
-                            </mat-panel-title>
-                            <mat-panel-description>
-                                Currently I am {{panelOpenState ? 'open' : 'closed'}}
-                            </mat-panel-description>
-                        </mat-expansion-panel-header> -->
 
                         <mat-label class="example-full-width"> Payment options available on the next page <a class="text-center offset-1">৳ 20 Delivery charge included</a>
                         </mat-label>
@@ -169,6 +153,7 @@
                         </div>
                     </mat-card>
                 </mat-accordion>
+                <!-- <hr> {{orderModel | json}} -->
             </form>
         </mat-card>
 

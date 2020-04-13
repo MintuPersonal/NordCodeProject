@@ -1,4 +1,4 @@
-<ngb-carousel *ngIf="images" interval="20000">
+<ngb-carousel *ngIf="images" interval="2000">
     <ng-template ngbSlide>
         <div class="row">
             <div class="picsum-img-wrapper col-lg-2">
@@ -52,40 +52,45 @@
                 </a>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: rosybrown;border-radius: 10px;">
-                    <mat-card-subtitle></mat-card-subtitle>
-                    <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
+                <a [routerLink]="['search', categories[4]]">
+                    <mat-card style="background: rosybrown;border-radius: 10px;">
+                        <mat-card-subtitle></mat-card-subtitle>
+                        <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
 
-                        <mat-card-content>
-                            <mat-icon> local_dining </mat-icon>
-                            {{categories[4]}} </mat-card-content>
-                    </mat-card-title>
-                </mat-card>
+                            <mat-card-content>
+                                <mat-icon> local_dining </mat-icon>
+                                {{categories[4]}} </mat-card-content>
+                        </mat-card-title>
+                    </mat-card>
+                </a>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <mat-card style="background: salmon;border-radius: 10px;">
-                    <mat-card-subtitle></mat-card-subtitle>
-                    <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content>
-                            <mat-icon> fastfood </mat-icon>
-                            {{categories[5]}} </mat-card-content>
-                    </mat-card-title>
-                </mat-card>
+                <a [routerLink]="['search', categories[5]]">
+                    <mat-card style="background: salmon;border-radius: 10px;">
+                        <mat-card-subtitle></mat-card-subtitle>
+                        <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
+                            <mat-card-content>
+                                <mat-icon> fastfood </mat-icon>
+                                {{categories[5]}} </mat-card-content>
+                        </mat-card-title>
+                    </mat-card>
+                </a>
             </div>
         </div>
     </ng-template>
     <ng-template ngbSlide>
         <div class="row">
             <div class="picsum-img-wrapper col-lg-2">
-                <!-- <img [src]="images[2]" alt="Random first slide"> -->
-                <mat-card style="background: orange;border-radius: 10px;">
-                    <mat-card-subtitle></mat-card-subtitle>
-                    <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-                        <mat-card-content>
-                            <mat-icon> fastfood </mat-icon>
-                            {{categories[2]}} </mat-card-content>
-                    </mat-card-title>
-                </mat-card>
+                <a [routerLink]="['search', categories[3]]">
+                    <mat-card style="background: orange;border-radius: 10px;">
+                        <mat-card-subtitle></mat-card-subtitle>
+                        <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
+                            <mat-card-content>
+                                <mat-icon> fastfood </mat-icon>
+                                {{categories[2]}} </mat-card-content>
+                        </mat-card-title>
+                    </mat-card>
+                </a>
             </div>
 
             <div class="picsum-img-wrapper col-lg-2">

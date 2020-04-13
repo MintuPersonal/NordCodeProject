@@ -16,7 +16,7 @@
                     </mat-form-field>
                 </form> -->
                 <div class="col-lg-1 signin-cart">
-                    <mat-icon (click)="navService.openNavCart()" [matBadge]="_totalItem" matBadgeColor="warn">add_shopping_cart</mat-icon>
+                    <mat-icon (click)="navService.openNavCart()" [matBadge]="totalItem" matBadgeColor="warn">add_shopping_cart</mat-icon>
                     <span class="cdk-visually-hidden" (click)="navService.openNavCart()"> </span>
                 </div>
                 <div class="enbn  col-lg-1">
@@ -42,7 +42,7 @@
             <div id="menucart" mat-icon-button (click)="navService.openNavCart()">
                 <mat-icon> shopping_basket </mat-icon>
                 <br>
-                <label> {{_totalItem}} items </label>
+                <label> {{totalItem}} items </label>
                 <div class="pricecrt">
                     <label> Tk. {{totalAmounts}} </label>
                 </div>
@@ -53,7 +53,7 @@
 
 <!-- <app-cart></app-cart> -->
 <div id="cartnav" class="sidepanel addcart" style="position:relative;right: 100%; margin-top: 30px;">
-    <mat-label class="mat-lebal">{{_totalItem}} Items</mat-label>
+    <mat-label class="mat-lebal">{{totalItem}} Items</mat-label>
     <a href=" javascript:void(0)" class="closebtn" (click)="navService.openNavCart()">&times;</a>
     <mat-card class="card-picture ">
         <nav class="nav nav-info ">
@@ -63,7 +63,7 @@
             <h5 class="h5">
                 <mat-icon matBadgeColor="warn">directions_run </mat-icon> Express Delivery
             </h5>
-            <div *ngIf="_totalItem">
+            <div *ngIf="totalItem">
                 <table>
                     <thead>
                         <tr class="tr">
@@ -90,7 +90,7 @@
                     </tbody>
                 </table>
             </div>
-            <div *ngIf="!_totalItem" class="emptyCart">
+            <div *ngIf="!totalItem" class="emptyCart">
                 <div>
                     <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-504/Default/components/header/ShoppingCart/images/emptyShoppingBag.png?q=low&webp=1&alpha=1">
                 </div>
@@ -99,7 +99,7 @@
         </div>
     </mat-card>
 
-    <h6 *ngIf="_totalItem" class="text-center">
+    <h6 *ngIf="totalItem" class="text-center">
         <div>
             <mat-button-toggle-group (click)="PlaceOrder(totalAmounts)" color="accent" [totalPrice]="totalAmounts " name="fontStyle " aria-label="Font Style ">
                 <mat-button-toggle value="italic" class="order">

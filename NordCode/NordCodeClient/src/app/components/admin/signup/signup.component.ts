@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { SignupService } from '../../../services/signup.service';
 import { FormControl, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';

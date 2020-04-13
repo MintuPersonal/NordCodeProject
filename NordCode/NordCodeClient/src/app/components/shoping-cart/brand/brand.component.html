@@ -2,24 +2,35 @@
     <ng-template ngbSlide>
         <div class="row">
             <div class="picsum-img-wrapper col-lg-2">
-                <img [src]="brands[0]" alt="Random first slide">
+                <a [routerLink]="['search', brands[0]]">
+                    <img [src]="brands[0]" alt="Random first slide">
+                </a>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <img [src]="brands[2]" alt="Random first slide">
+                <a [routerLink]="['search', brands[2]]">
+                    <img [src]="brands[2]" alt="Random first slide">
+                </a>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <img [src]="brands[3]" alt="Random second slide">
+                <a [routerLink]="['search', brands[3]]">
+                    <img [src]="brands[3]" alt="Random second slide">
+                </a>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <img [src]="brands[4]" alt="Random first slide">
+                <a [routerLink]="['search', brands[4]]">
+                    <img [src]="brands[4]" alt="Random first slide">
+                </a>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <img [src]="brands[5]" alt="Random second slide">
+                <a [routerLink]="['search', brands[5]]">
+                    <img [src]="brands[5]" alt="Random second slide">
+                </a>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <img [src]="brands[6]" alt="Random first slide">
+                <a [routerLink]="['search', brands[6]]">
+                    <img [src]="brands[6]" alt="Random first slide">
+                </a>
             </div>
-
         </div>
     </ng-template>
     <ng-template ngbSlide>

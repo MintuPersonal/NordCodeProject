@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
     keepAfterRouteChange: false
   };
   _cartItems = [];
-  _totalItem: number = 0;
+  totalItem: number = 0;
 
   totalAmounts: number;
   condition: boolean;
@@ -77,8 +77,8 @@ export class HeaderComponent implements OnInit {
     ////////////// Here New Concept  ///////////////
   }
 
-  onAddToBag(featureItem) {   
-    debugger; 
+  onAddToBag(featureItem) {
+    debugger;
     featureItem.totalItems = featureItem.Qty;
     this._interactionService.sendForAddtoCart(featureItem);
     this._getTotalAmounts(); //featureItem.PID
@@ -107,7 +107,7 @@ export class HeaderComponent implements OnInit {
     this._cartItems = this.productService._cartItems;
     localStorage.setItem('item', JSON.stringify(this._cartItems));
     if (this._cartItems != null) {
-      this._totalItem = this._cartItems.length;
+      this.totalItem = this._cartItems.length;
       this.totalAmounts = 0;
       this._cartItems.forEach((item) => {
         this.totalAmounts += (item.Qty * item.UnitPrice);
@@ -124,7 +124,7 @@ export class HeaderComponent implements OnInit {
     this._getTotalAmounts();
   }
   public CheckUserSession() {
-    var user = JSON.parse(localStorage.getItem('currentUser'));
+    var user = JSON.parse(localStorage.getItem('currentUser'));    
     if (user == "" || user == "undefined") {
       return false;
     } else {
@@ -165,86 +165,90 @@ export class HeaderComponent implements OnInit {
 
   }
   public PlaceOrder(totalPrice: any) {
-    if (this.CheckUserSession()) {
-      var cartItems = this.productService._cartItems;
-      var order = this._getOrder(cartItems);
-      this.customerService.setOrder(order).subscribe();
-      this.productService.SetEmptyCart();;
-      this._getTotalAmounts();
-      localStorage.setItem('item', null)      
-      this.router.navigate(['/checkout', order.TotalPrice]);      
+    if (this.CheckUserSession()) {     
+      var order = this.productService.GetOrder();
+      this.totalAmounts = order.TotalPrice; 
+      this.totalItem = order.TotalItemQty;
+      //localStorage.setItem('TONumber', JSON.stringify(order.TONumber));
+      this.customerService.SetOrder(order).subscribe();     
+      this.productService.SetEmptyCart(); 
+      this.router.navigate(['/checkout', order.TotalPrice]);
     } else {
       this.router.navigate(['/phonelogin']);
     }
   }
 
-  private _getOrder(cartItems): Ecom_Orders {
-    var order = new Ecom_Orders();
-    var orderno = '11_' + Math.random().toString().slice(2, 11);
-    var OrderDetails = [];
-    cartItems.forEach((item: Cart) => {
-      var orderdetail = new Ecom_OrderDetails();
-      orderdetail.OrderId = 0;
-      orderdetail.TONumber = orderno;
+  // private GetOrder(cartItems): Ecom_Orders {
+  //   var order = new Ecom_Orders();
+  //   var orderno = '11_' + Math.random().toString().slice(2, 11);
+  //   var OrderDetails = [];
+  //   var TUnitPrice = 0;
+  //   var TNetPrice = 0;
+  //   cartItems.forEach((item: Cart) => {
+  //     var orderdetail = new Ecom_OrderDetails();
+  //     orderdetail.OrderId = 0;
+  //     orderdetail.TONumber = orderno;
 
-      orderdetail.PID = item.PID;
-      orderdetail.PName = item.PName;
-      orderdetail.PQty = item.Qty;
-      orderdetail.ItemQty = item.Qty;
-      orderdetail.UnitPrice = item.UnitPrice;
-      orderdetail.NetPrice = item.UnitPrice;
-      orderdetail.HostAddress = environment.baseurl;
-      orderdetail.ImgPath = item.ImgPath;
+  //     orderdetail.PID = item.PID;
+  //     orderdetail.PName = item.PName;
+  //     orderdetail.PQty = item.Qty;
+  //     orderdetail.ItemQty = item.Qty;
+  //     orderdetail.UnitPrice = item.UnitPrice;
+  //     orderdetail.NetPrice = item.NetPrice;
+  //     orderdetail.HostAddress = environment.baseurl;
+  //     orderdetail.ImgPath = item.ImgPath;
 
-      orderdetail.TrackedId = 'http://demo.one-ict.com:3000/api/'; //environment.baseurl;
-      orderdetail.CreateBy = '11';//environment.currentuserId;
-      orderdetail.CreateDate = new Date();
-      orderdetail.UpdateBy = '';
-      orderdetail.UpdateDate = new Date();
-      orderdetail.Delete = false;
-      orderdetail.Active = true;
-      OrderDetails.push(orderdetail);
-    });
+  //     orderdetail.TrackedId = 'http://demo.one-ict.com:3000/api/'; //environment.baseurl;
+  //     orderdetail.CreateBy = '11';//environment.currentuserId;
+  //     orderdetail.CreateDate = new Date();
+  //     orderdetail.UpdateBy = '';
+  //     orderdetail.UpdateDate = new Date();
+  //     orderdetail.Delete = false;
+  //     orderdetail.Active = true;
+  //     OrderDetails.push(orderdetail);
+  //     TUnitPrice = TUnitPrice + item.UnitPrice;
+  //     TNetPrice = TNetPrice + item.UnitPrice
+  //   });
 
-    order.OID = 0;
-    order.TONumber = orderno;
-    order.CustomerId = 6; //this.customerId;
-    order.PaymentId = 0;
-    order.CouponId = 3333;
-    order.PaymentModeId = 1;
-    order.Discount = 20;
-    order.Reason = '_orderReason';
-    order.Active = true;
-    
-    order.TotalItemQty = 5;
-    order.NetPrice = 6000;
-    order.DeliveryCharge = 20;
-    order.TotalPrice = 2000;
-    order.Address = 'DDDD';
-    order.Aria = '_orderAria';
-    order.DeliveryTime = new Date();
-    order.OrderStatus = 1;
+  //   order.OID = 0;
+  //   order.TONumber = orderno;
+  //   order.CustomerId = 6; //this.customerId;
+  //   order.PaymentId = 0;
+  //   order.CouponId = 3333;
+  //   order.PaymentModeId = 1;
+  //   order.Discount = 20;
+  //   order.Reason = '_orderReason';
+  //   order.Active = true;
 
-    order.TrackedId = 'http://demo.one-ict.com:3000/api/'; //environment.baseurl;
-    order.CreateBy = '11'; //environment.currentuserId;
-    order.CreateDate = new Date();
-    order.Active = true;
-    order.Delete = false;
-    order.OrderDetails = OrderDetails;
-    return order;
-  }
+  //   order.TotalItemQty = 5;
+  //   order.DeliveryCharge = 20;
+  //   order.TotalPrice = TUnitPrice;
+  //   order.NetPrice = TNetPrice;
+  //   order.Address = 'Address';
+  //   order.Aria = 'Area';
+  //   order.DeliveryTime = new Date();
+  //   order.OrderStatus = 1;
+
+  //   order.TrackedId = 'http://demo.one-ict.com:3000/api/'; //environment.baseurl;
+  //   order.CreateBy = '11'; //environment.currentuserId;
+  //   order.CreateDate = new Date();
+  //   order.Active = true;
+  //   order.Delete = false;
+  //   order.OrderDetails = OrderDetails;
+  //   return order;
+  // }
 
   Search() {
     this.router.navigate(['/']);
-    if (this.pCategoryName != "") {      
+    if (this.pCategoryName != "") {
       debugger;
-      this.productService.SetProductScearchFilter(this.pCategoryName);      
+      this.productService.SetProductScearchFilter(this.pCategoryName);
       this.router.navigate(['/search', this.pCategoryName]);
     }
-    else{
+    else {
       this.router.navigate(['/']);
     }
-    
+
     // if (this.pCategoryName != "") {
     //   this.featuresModel = this.featuresModel.filter(res => {
     //     return res.PName.toLocaleLowerCase().match(this.pCategoryName.toLocaleLowerCase())

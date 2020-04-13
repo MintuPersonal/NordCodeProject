@@ -1,6 +1,6 @@
 const express = require('express');
 const Customer = require('../models/Customer.js');
-const order = require('../models/Order.js');
+const Order = require('../models/Order.js');
 const OrderDetails = require('../models/OrderDetails.js');
 const router = express.Router();
 
@@ -112,7 +112,7 @@ router.get('/getorders', (req, res, next) => {
     var customerid = req.query.customerid;
     console.log(customerid);
 
-    order.findAll({ where: { CustomerId: customerid } }).then(order => {
+    Order.findAll({ where: { CustomerId: customerid } }).then(order => {
         res.json(order);
     }).catch(err => {
         console.log('Error ' + err);
@@ -122,7 +122,7 @@ router.get('/getorder', (req, res, next) => {
     //var customerid = ''; //req.body.customerid; for x-www-urlencoded 
     var TOnumber = req.query.TONumber;
     //console.log(cmobileno);
-    order.findAll({ where: { TONumber: TOnumber }, limit: 1 }).then(order => {
+    Order.findAll({ where: { TONumber: TOnumber }, limit: 1 }).then(order => {
         res.json({
             status: true,
             msg: 'Order find successfully',
@@ -155,7 +155,7 @@ router.post('/setorder', (req, res, next) => {
         res.status(400);
         res.json({ error: 'Bad data request' + req.body });
     } else {
-        order.create(req.body).then(order => {
+        Order.create(req.body).then(order => {
             homeobj.order = order;
             orderId = order.Id;
         }).catch(err => {
@@ -171,40 +171,5 @@ router.post('/setorder', (req, res, next) => {
         });
     };
 });
-
-
-
-// router.post(process.env.api_set_updateorder, (req, res, next) => {
-//     //console.log(req.body.OrderNo + ' test');
-//     var orderobj = {};
-//     if (!req.body) {
-//         res.status(400);
-//         res.json({ error: 'Bad data request' + req.body });
-//     } else {
-
-//         product.create(req.body).then(product => {
-//             console.log(product.lenght)
-//                 //orderobj.order.TotalItem = product.lenght;
-//                 // res.json({
-//                 //     data = orderobj,
-//                 //     status: true,
-//                 //     msg: 'Order submitted successfully'
-//                 // });
-//         });
-
-//         order.create(req.body).then(order => {
-//             res.json({
-//                 order: order,
-//                 status: true,
-//                 msg: 'Order submitted successfully'
-//             });
-//             // res.send(data);
-//             orderobj.order = order;
-//         }).catch(err => {
-//             console.log('Error :' + err);
-//         });
-
-//     };
-// });
 
 module.exports = router;

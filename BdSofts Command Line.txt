@@ -31,6 +31,9 @@ for Cors:: https://www.youtube.com/watch?v=jYvkMv7LzCw
 	ng build --prod
 	C:\Program Files\OpenSSL-Win64\bin\openssl.cfg
 	http://programmerblog.net/nodejs-https-server/ 
+	https://developerhandbook.com/webpack/how-to-create-a-production-ready-webpack-config/
+	https://www.a2hosting.com/kb/cpanel/cpanel-software/create-application-with-nodejs-selector
+	
 	
 	--======= For Node js Deployment===========
 	https://medium.com/@binyamin/creating-a-node-express-webpack-app-with-dev-and-prod-builds-a4962ce51334 !most Impotance

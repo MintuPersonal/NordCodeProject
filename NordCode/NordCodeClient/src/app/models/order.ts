@@ -14,8 +14,8 @@ export class Ecom_Orders {
     TotalItemQty: number;
     DeliveryCharge: number;
     TotalPrice: number;
-    Address: any;
-    Aria: any;
+    Address: string;
+    Aria: string;
     DeliveryTime: any;
     OrderStatus: number;
 
