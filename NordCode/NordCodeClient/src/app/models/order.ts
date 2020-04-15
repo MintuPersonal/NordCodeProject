@@ -15,7 +15,7 @@ export class Ecom_Orders {
     DeliveryCharge: number;
     TotalPrice: number;
     Address: string;
-    Aria: string;
+    Area: string;
     DeliveryTime: any;
     OrderStatus: number;
 
@@ -24,7 +24,8 @@ export class Ecom_Orders {
     CreateDate: Date;
     Delete: boolean;
     Active: boolean;
-    
+
     PaymentModeId: number;
     OrderDetails: Ecom_OrderDetails[];
+    Details: boolean = true;
 }

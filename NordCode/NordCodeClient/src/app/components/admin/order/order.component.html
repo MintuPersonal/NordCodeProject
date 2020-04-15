@@ -27,7 +27,8 @@
                                 <div class="amount"> {{ item.TotalPrice | currency: 'BD '}} </div>
                             </tr>
                             <tr class="tr">
-                                <div class="details" (click)="OrderDetails(item)"> Details >>> </div>
+                                <div class="details" *ngIf="item.Details" (click)="OrderDetails(item)"> {{item.Details}} Details >>> </div>
+                                <div class="details" *ngIf="!item.Details" (click)="OrderClose()"> {{item.Details}} Close >>> </div>
                             </tr>
                         </tbody>
                     </table>

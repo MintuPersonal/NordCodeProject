@@ -11,7 +11,7 @@
                         <div class="orderNum">
                             <span> Order Number
                             </span>
-                            <b><span># {{ TOOrderNumber }}</span></b></div>
+                            <b><span># {{ TONumber }}</span></b></div>
                         <div class="thankYou">
                             <div>Your order is on its way</div>
                             <div><span>please pay with <b>cash on delivery</b></span></div>
@@ -83,35 +83,33 @@
                     </mat-card>
 
                     <mat-card class="card-picture">
-                        <table mat-table [dataSource]="itemState" style="width: 100%;">
-
-                            <ng-container matColumnDef="Add">
-                                <th mat-header-cell *matHeaderCellDef> </th>
-                                <td mat-cell *matCellDef="let element" (click)="AddRowQty(element)"> {{element.Add}} </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="OrderNo">
-                                <th mat-header-cell *matHeaderCellDef> OrderNo </th>
-                                <td mat-cell *matCellDef="let element"> {{element.OrderNo}} </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="Qty">
-                                <th mat-header-cell *matHeaderCellDef> Qty </th>
-                                <td mat-cell *matCellDef="let element"> {{element.Qty}} </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="UnitPrice">
-                                <th mat-header-cell *matHeaderCellDef> UnitPrice </th>
-                                <td mat-cell *matCellDef="let element"> {{element.UnitPrice}} </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="Close">
-                                <th mat-header-cell *matHeaderCellDef> </th>
-                                <td mat-cell *matCellDef="let element" (click)="DeleteRow(element)"> {{element.Close}} </td>
-                            </ng-container>
-
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        <table>
+                            <thead>
+                                <tr class="tr">
+                                    <!-- <th colspan="2"> Order # {{ item.OrderNo }} </th> -->
+                                    <th colspan="6">&nbsp;
+                                        <div class="address" (click)="OrderDetails(item)"> Order Sammury </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of itemState; index as itemed" class="tr">
+                                    <td>{{ itemed + 1 }}</td>
+                                    <td> <img class="img-cart" src="../assets/img/product/feature/{{item.ImgPath}}"></td>
+                                    <td>{{ item.PName}}</td>
+                                    <td>{{ item.TotalItemQty}} </td>
+                                    <td>{{ item.UnitPrice | json }} </td>
+                                    <td>{{ item.PQty }} Pic </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="tr">
+                                    <th colspan="6"> &nbsp;
+                                        <div class="address"> Total Price : {{TotalPrice}} </div>
+                                    </th>
+                                </tr>
+                            </tfoot>
+                            <hr>
                         </table>
                     </mat-card>
                 </div>
@@ -126,10 +124,10 @@
                                     <h5 class="text-right">
                                         <a href="/order">
                                             <div class="output-size">
-                                                <mat-button-toggle-group color="accent" name="fontStyle" aria-label="Font Style">
+                                                <!-- <mat-button-toggle-group color="accent" name="fontStyle" aria-label="Font Style">
                                                     <mat-button-toggle class="btn-large" value="italic" class="order"> Submit
                                                     </mat-button-toggle>
-                                                </mat-button-toggle-group>
+                                                </mat-button-toggle-group> -->
                                             </div>
                                         </a>
                                     </h5>

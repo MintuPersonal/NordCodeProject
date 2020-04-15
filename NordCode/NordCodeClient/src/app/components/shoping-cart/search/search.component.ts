@@ -30,7 +30,7 @@ export class SearchComponent implements OnInit {
             
         if (this.pCategoryName != "") {
           this.featuresModel = this.featuresModel.filter(res => {
-            debugger;
+            
             return res.PName.toLocaleLowerCase().match(this.pCategoryName.toLocaleLowerCase())
           });
         }
@@ -45,15 +45,15 @@ export class SearchComponent implements OnInit {
   }
 
   // Search() {
-  //   debugger;
+  //   
   //   this.ngOnInit();
   //   if (this.pCategoryName != "") {
   //     this.featuresModel = this.featuresModel.filter(res => {
-  //       debugger;
+  //       
   //       return res.PName.toLocaleLowerCase().match(this.pCategoryName.toLocaleLowerCase())
   //     });
   //   } else {
-  //     debugger;
+  //     
   //     this.ngOnInit();
   //   }
   // }

@@ -8,7 +8,7 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class SignupService {
-  
+
   constructor(private _http: HttpClient, private router: Router) { }
   singUp(user: User) {
     return this._http.post<any>(environment.baseurl + 'createuser', user).subscribe((data: any) => {

@@ -36,7 +36,7 @@
                         </mat-form-field> -->
                         <mat-form-field appearance="fill" class="offset-1">
                             <mat-label>Select an option</mat-label>
-                            <mat-select [(ngModel)]="orderModel.Aria" name="time" required>
+                            <mat-select [(ngModel)]="orderModel.Area" name="time" required>
                                 <mat-option value="Adabor" data-reactid="$Adabor">Adabor</mat-option>
                                 <mat-option value="Aftabnagar" data-reactid="$Aftabnagar">Aftabnagar </mat-option>
                                 <mat-option value="Agargaon" data-reactid="$Agargaon">Agargaon </mat-option>
@@ -133,6 +133,10 @@
                             <mat-label>Note</mat-label>
                             <input #Reason='ngModel' [(ngModel)]="orderModel.Reason" name="Reason" required matInput ngModel/>
                         </mat-form-field>
+                        <mat-form-field [hidden]="true">
+                            <input matInput #Reason='ngModel' [(ngModel)]="orderModel.TotalPrice" name="TotalPrice">
+                        </mat-form-field>
+
                     </mat-expansion-panel>
                     <br>
                     <mat-card>
@@ -144,7 +148,7 @@
                             <mat-button-toggle-group (click)="onSubmit(orderModel)" [disabled]="orderModel.form.invalid" color="accent" name="fontStyle" aria-label="Font Style">
                                 <mat-button-toggle type="submit" class="btn-large" value="submit" class="order"> Process
                                 </mat-button-toggle>
-                                <mat-button-toggle type="submit" #Reason='ngModel' name="TotalPrice" [(ngModel)]="orderModel.TotalPrice" value="submit" class="price">Tk. {{TotalPrice}}
+                                <mat-button-toggle type="submit" value="submit" class="price">Tk. {{TotalPrice}}
                                 </mat-button-toggle>
                             </mat-button-toggle-group>
                             <br>

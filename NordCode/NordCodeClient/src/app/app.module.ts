@@ -46,6 +46,7 @@ import {
   MatToolbarModule, MatTooltipModule, MatBadgeModule, MatPaginatorModule, MatFormFieldModule, MatTableModule
 } from '@angular/material';
 import { SearchComponent } from './components/shoping-cart/search/search.component';
+import { ProfileComponent } from './components/admin/profile/profile.component';
 
 
 @NgModule({
@@ -53,7 +54,7 @@ import { SearchComponent } from './components/shoping-cart/search/search.compone
     FooterComponent, ProductListComponent, ProductItemComponent, CartComponent, LoginComponent, SignupComponent,
     NavbarComponent, AddnewComponent, HomeComponent, ProductComponent, ProductdetailsComponent, CommercialComponent,
     CheckoutComponent, OrderComponent, PaymentComponent, BannerComponent, ImageComponent, PhoneLoginComponent,
-    DialogComponent, AlertHomeComponent, TopNavComponent, MenuComponent, MenuComponent, DialogpdetailsComponent, SearchComponent],
+    DialogComponent, AlertHomeComponent, TopNavComponent, MenuComponent, MenuComponent, DialogpdetailsComponent, SearchComponent, ProfileComponent],
   imports: [
     RoutingModule, AlertModule, BrowserModule, NgbModule, BrowserAnimationsModule, HttpClientModule,
     FormsModule, ReactiveFormsModule, MatIconModule, MatInputModule, MatRadioModule, MatCheckboxModule,

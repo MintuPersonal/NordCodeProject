@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SignupService } from '../../../services/signup.service';
 import { FormControl, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
+import { ProductService } from 'src/app/services/product.service';
+import { CustomerService } from 'src/app/services/customer.service';
 
 
 @Component({
@@ -12,9 +14,10 @@ import { User } from 'src/app/models/user';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private _singUpService: SignupService) { }
+  constructor(private _singUpService: SignupService, private productService: ProductService,
+    private customerService: CustomerService) { }
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  
+
   userModel = new User();
   public imagePath;
   imgURL: any;
@@ -51,7 +54,12 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    debugger;
+    this.customerService.getcustomerinfo('01304045648').subscribe((userData: any) => {
+      //this.userModel = userData.customer;
+      debugger;
+      console.log(userData.customer);
+    });
   }
 
   //// Save Method ///
@@ -62,7 +70,7 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     this.userModel;
-    this.userModel.UID = '1';    
+    this.userModel.UID = '1';
     this.userModel.TrackedId = '127';
     this.userModel.CreateBy = '11';
     this.userModel.CreateDate = new Date;
@@ -70,9 +78,9 @@ export class SignupComponent implements OnInit {
     this.userModel.Active = true;
 
     var data = this._singUpService.singUp(this.userModel); //.subscribe((data: any)=>{    });
-    debugger; 
-    this.userModel = new User();      
-    
+    debugger;
+    this.userModel = new User();
+
   };
   onClear() {
     this.userModel = new User();

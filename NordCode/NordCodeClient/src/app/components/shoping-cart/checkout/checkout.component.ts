@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Ecom_Orders } from '../../../models/Order';
 import { ProductService } from 'src/app/services/product.service';
-import { FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -21,7 +20,7 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router,
     private productService: ProductService, private _customerService: CustomerService) { }
-    //emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  //emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   @Input() totalAmounts: any;
   @Input() totalItemsPrice: any;
@@ -37,10 +36,10 @@ export class CheckoutComponent implements OnInit {
         if (data.status) {
           var newcustomer = data.customer[0];
           this.orderModel.Address = newcustomer.Address;
-          this.orderModel.Aria = newcustomer.Aria;
+          this.orderModel.Area = newcustomer.Aria;
         }
         this.orderModel.Address = ''
-        this.orderModel.Aria = '';
+        this.orderModel.Area = '';
       });
 
     } else {
@@ -66,6 +65,9 @@ export class CheckoutComponent implements OnInit {
   };
 
   onSubmit(_order: Ecom_Orders) {
+    this.productService.Address = _order.Address;
+    this.productService.Area = _order.Area;
+
     var order = new Ecom_Orders();
     order.OID = 0;
     order.CustomerId = this.CustomerId;
@@ -73,7 +75,7 @@ export class CheckoutComponent implements OnInit {
     // order.TotalPrice = this.TotalPrice;
     // order.NetPrice = this.TotalPrice;
     order.Address = _order.Address;
-    order.Aria = _order.Aria;
+    order.Area = _order.Area;
     order.DeliveryTime = _order.DeliveryTime;
     order.Reason = _order.Reason;
 
@@ -91,7 +93,7 @@ export class CheckoutComponent implements OnInit {
 
     this._customerService.updateOrder(order).subscribe();
 
-    var TONumber = this.productService.TONumber;
+    var TONumber = this.productService.TONumber.slice(3, 15);
     var TotalPrice = this.productService.TotalPrice
     if (TONumber != "" && TotalPrice != 0) {
       this.router.navigate(['/payment', TONumber, TotalPrice]);

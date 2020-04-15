@@ -20,7 +20,7 @@ const Order = db.sequelize.define('Ecom_Order', {
     NetPrice: db.Sequelize.INTEGER,
     DeliveryTime: db.Sequelize.STRING,
     Address: db.Sequelize.STRING,
-    Aria: db.Sequelize.STRING,
+    Area: db.Sequelize.STRING,
     OrderStatus: db.Sequelize.INTEGER,
 
     TrackedId: db.Sequelize.STRING,

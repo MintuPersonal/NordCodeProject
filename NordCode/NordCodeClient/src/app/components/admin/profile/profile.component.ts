@@ -1,0 +1,100 @@
+import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { Customer } from 'src/app/models/Customer';
+import { environment } from 'src/environments/environment';
+import { ProductService } from 'src/app/services/product.service';
+import { CustomerService } from 'src/app/services/customer.service';
+
+@Component({
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
+})
+export class ProfileComponent implements OnInit {
+  disabled: boolean;
+  Birthday = new FormControl();
+
+  constructor(private productService: ProductService,
+    private customerService: CustomerService) { }
+  emailFormControl = new FormControl('',
+    [Validators.required, Validators.email]
+  );
+
+  customerModel = new Customer();
+  public imagePath;
+  public imgURL: any;
+  public message: string;
+
+  preview(files) {
+    debugger;
+    if (files.length === 0)
+      return;
+
+    this.customerModel.FileUrl = files[0].name;
+    this.customerModel.FileExtension = files[0].type;
+    this.customerModel.FileImage = files[0].size;
+    this.customerModel.TrackedId = window.location.hostname
+
+    if (this.customerModel.FileExtension.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return;
+    }
+    this.message = "";
+
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
+    }
+
+    console.log(files)
+  }
+  public EndDateChange(event): void {
+    debugger;
+    this.customerModel.Birthday = event.value;
+
+    console.log(this.customerModel.Birthday)
+  }
+
+  ngOnInit() {
+
+    var id = this.productService.GetCustomerIDFromLocal();
+    this.customerService.getcustomerinfo('01911788115').subscribe((userData: any) => {
+      this.customerModel = userData.customer[0];
+      this.customerModel.FileUrl += this.customerModel.FileImage;
+      if (userData.customer.length) {
+        this.disabled = true;
+        this.Birthday = new FormControl(this.customerModel.Birthday);
+      } else {
+        this.disabled = false;
+      }
+    });
+  }
+
+  //// Save Method ///
+
+  submitted = false;
+  errorMsg = '';
+  id = 0;
+
+  onSubmit() {
+    this.customerModel;
+    debugger;
+    this.customerModel.CID = Math.random().toString().slice(2, 11);
+    this.customerModel.TONumber = '11_' + Math.random().toString().slice(2, 11);
+    this.customerModel.TrackedId = environment.baseurl;
+    this.customerModel.CreateBy = this.productService.GetCustomerIDFromLocal();
+    this.customerModel.CreateDate = new Date;
+    this.customerModel.Delete = false;
+    this.customerModel.Active = true;
+    var data = this.customerService.getCustomer(this.customerModel); //.subscribe((data: any)=>{    });
+    debugger;
+    this.customerModel = new Customer();
+
+  };
+  onClear() {
+    this.customerModel = new Customer();
+  }
+
+}

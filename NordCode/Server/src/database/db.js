@@ -23,4 +23,4 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 db.Express = express;
 module.exports = db;
-//db.sequelize.sync({ force: true });
+/////db.sequelize.sync({ force: true });

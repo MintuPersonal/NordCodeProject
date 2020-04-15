@@ -77,3 +77,13 @@ h5 b {
     color: #39B87C;
     font-size: 20px;
 }
+
+.img-cart {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+}
+
+td {
+    padding: 0 10px 0 10px;
+}

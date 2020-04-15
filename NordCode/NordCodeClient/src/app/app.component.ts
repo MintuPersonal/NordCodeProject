@@ -385,7 +385,7 @@ export class AppComponent implements AfterViewInit {
       const distinctThings = menus.data.filter(
         (thing, i, arr) => arr.findIndex(t => t.Text === thing.Text) === i
       );
-      debugger;
+
       this.navItems = this.RenderMenu(distinctThings);
     })
     this.logMessage(this.navItems)
@@ -429,7 +429,7 @@ export class AppComponent implements AfterViewInit {
       return t[root].children.map(toggle('ChildAnswers'));
     }(data_off, 0);
     return tree;
-    
+
   }
   ngOnDestroy() {
     if (this.mySubscription) {
@@ -437,7 +437,6 @@ export class AppComponent implements AfterViewInit {
     }
   }
   logMessage(value) {
-    //debugger;
     console.log(value);
   }
   ngAfterViewInit() {

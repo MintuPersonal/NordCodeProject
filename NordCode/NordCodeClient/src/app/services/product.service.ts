@@ -22,7 +22,10 @@ export class ProductService {
   totalAmounts: number;
   TONumber: string = '';
   TotalPrice: number = 0;
-  MobileNo: string;
+  MobileNo: string = '';
+  CustomerID: number = 0;
+  Address: string ='Address';
+  Area: string ='Area'
   constructor(private _http: HttpClient) {
     this.TONumber = '';
     this.TotalPrice = 0;
@@ -40,7 +43,7 @@ export class ProductService {
     } else {
       this.MobileNo = JSON.parse(localStorage.getItem('currentUser' || "null"));
     }
-    
+
   }
   public SetEmptyCart(): Cart[] {
     localStorage.setItem('item', null);
@@ -73,7 +76,8 @@ export class ProductService {
     this.pCategoryName = categoryname;
   }
   public GetOrder(): Ecom_Orders {
-    localStorage.setItem('item', JSON.stringify(this._cartItems));
+    localStorage.setItem('item', JSON.stringify(this._cartItems));    
+    debugger;
     var order = new Ecom_Orders();
     this.TONumber = '11_' + Math.random().toString().slice(2, 11);
     this.TotalPrice = 0;
@@ -89,7 +93,7 @@ export class ProductService {
       orderdetail.PQty = item.Qty;
       orderdetail.ItemQty = item.Qty;
       orderdetail.UnitPrice = item.UnitPrice;
-      orderdetail.NetPrice = item.NetPrice;
+      orderdetail.NetPrice = item.NetPrice ? 0 : item.UnitPrice;
       orderdetail.HostAddress = environment.baseurl;
       orderdetail.ImgPath = item.ImgPath;
 
@@ -107,7 +111,7 @@ export class ProductService {
 
     order.OID = 0;
     order.TONumber = this.TONumber;
-    order.CustomerId = 6; //this.customerId;
+    order.CustomerId = this.CustomerID;
     order.PaymentId = 0;
     order.CouponId = 3333;
     order.PaymentModeId = 1;
@@ -119,8 +123,8 @@ export class ProductService {
     order.DeliveryCharge = 20;
     order.TotalPrice = this.TotalPrice;
     order.NetPrice = TNetPrice;
-    order.Address = 'Address';
-    order.Aria = 'Area';
+    order.Address = this.Address;
+    order.Area = this.Area;
     order.DeliveryTime = new Date();
     order.OrderStatus = 1;
 
@@ -132,7 +136,6 @@ export class ProductService {
     order.OrderDetails = OrderDetails;
     return order;
   }
-
   public GetStayThisPage(): boolean {
     if (this.TONumber == "" && this.TotalPrice == 0) {
       this.SetEmptyCart();
@@ -140,6 +143,9 @@ export class ProductService {
     } else {
       return true;
     }
+  }
+  public GetCustomerIDFromLocal(): number {    
+    return this.CustomerID = 6;
   }
 
   // public GetTotalAmounts(): number {

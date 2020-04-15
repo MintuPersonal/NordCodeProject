@@ -91,6 +91,28 @@ router.get('/getcustomer', (req, res, next) => {
     // console.log(cmobileno);
 
 });
+router.get('/getcustomerinfo', (req, res, next) => {
+    var cmobileno = req.query.cmobileno;
+    console.log(cmobileno);
+    Customer.findAll({ where: { MobileNo: cmobileno }, limit: 1 }).then(cust => {
+        console.log('total cust: ' + cust[0]);
+        if (cust) {
+            res.json({
+                status: true,
+                msg: 'User find successfully',
+                customer: cust
+            });
+        } else {
+            res.json({
+                status: false,
+                msg: 'User not found',
+                customer: []
+            });
+        }
+    }).catch(err => {
+        console.log('Error ' + err);
+    });
+});
 router.post('/updatecustomer', (req, res, next) => {
     if (!req.body) {
         res.status(400);

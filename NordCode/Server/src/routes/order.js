@@ -13,13 +13,13 @@ router.get('/setcoupon', (req, res, next) => {
 });
 
 router.post('/updateorder', (req, res, next) => {
-    console.log('Order Updated ' + req.body.Address);
+    console.log('Order Updated ' + req.body.Address + ' Area :' + req.body.Area);
     if (!req.body) {
         res.status(400);
         res.json({ error: 'Bad data request' + req.body });
     } else {
         Order.update({
-            Aria: req.body.Aria,
+            Area: req.body.Area,
             Address: req.body.Address
         }, {
             where: {

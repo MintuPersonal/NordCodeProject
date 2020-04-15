@@ -6,12 +6,20 @@ const customer = db.sequelize.define('Ecom_Customers', {
     TONumber: db.Sequelize.STRING,
     Name: db.Sequelize.STRING,
     Address: db.Sequelize.STRING,
-    Aria: db.Sequelize.STRING,
+    Area: db.Sequelize.STRING,
 
     MobileNo: db.Sequelize.STRING,
     PhoneNo: db.Sequelize.STRING,
+    Email: db.Sequelize.STRING,
+    Username: db.Sequelize.STRING,
+    Password: db.Sequelize.STRING,
     Priority: db.Sequelize.STRING,
     HostAddress: db.Sequelize.STRING,
+
+    FileUrl: db.Sequelize.STRING,
+    FileExtension: db.Sequelize.STRING,
+    FileImage: db.Sequelize.STRING,
+    Birthday: db.Sequelize.DATE,
 
     TrackedId: db.Sequelize.STRING,
     CreateBy: db.Sequelize.STRING,
@@ -20,6 +28,7 @@ const customer = db.sequelize.define('Ecom_Customers', {
     UpdateDate: db.Sequelize.DATE,
     Delete: db.Sequelize.BOOLEAN,
     Active: db.Sequelize.BOOLEAN,
+    Counted: db.Sequelize.INTEGER
 });
 
 

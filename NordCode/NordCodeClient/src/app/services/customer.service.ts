@@ -9,21 +9,23 @@ import { ProductService } from './product.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerService {
- 
+export class CustomerService { 
 
   constructor(private _http: HttpClient, private router: Router, private productService: ProductService) { }
 
   getCustomer(cmobileno) {
     return this._http.get(environment.baseurl + 'getcustomer?cmobileno=' + cmobileno);
-  }    
-   
+  } 
+  
+  getcustomerinfo(cmobileno) {
+    return this._http.get(environment.baseurl + 'getcustomerinfo?cmobileno=' + cmobileno);
+  }  
   getOrders(customerid) {
     return this._http.get(environment.baseurl + 'getorders?customerid=' + customerid);
   }
 
-  getOrder(OrderNo) {
-    return this._http.get(environment.baseurl + 'getorder?orderNo=' + OrderNo);
+  getOrder(TOnumber :string) {
+    return this._http.get(environment.baseurl + 'getorder?TONumber=' + TOnumber);
   }
   
   getOrderDetails(TOnumber: string) {

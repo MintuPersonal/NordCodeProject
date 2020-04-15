@@ -16,10 +16,11 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SignupComponent } from './components/admin/signup/signup.component';
 import { DialogComponent } from './components/common/dialog/dialog.component';
 import { SearchComponent } from './components/shoping-cart/search/search.component';
+import { ProfileComponent } from './components/admin/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: ProductListComponent }, //, pathMatch: 'full' 
-  { path: 'myprofile', component: SignupComponent },
+  { path: 'myprofile', component: ProfileComponent },
   { path: 'myorders', component: OrderComponent },
   { path: 'payment/:order/:price', component: PaymentComponent },
 
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'alerthome', component: AlertHomeComponent },
   { path: 'logindialog', component: DialogComponent },
 
+  { path: 'signup', component: SignupComponent },
   { path: '**', redirectTo: '' }
 
 ];
