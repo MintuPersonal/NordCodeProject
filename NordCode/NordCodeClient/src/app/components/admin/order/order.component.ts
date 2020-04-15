@@ -15,6 +15,7 @@ export class OrderComponent implements OnInit {
   orserdetails: Ecom_OrderDetails[];
   details: boolean = true;
   newOrders: Ecom_Orders[]
+  Address: string;
   constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
@@ -32,20 +33,33 @@ export class OrderComponent implements OnInit {
   public OrderDetails(order: Ecom_Orders) {
     this.customerService.getOrderDetails(order.TONumber).subscribe((orserdetails: any) => {
       if (orserdetails.OrderDetails.length) {
-        this.details = false;
+        this.Address = order.Address;
         this.orserdetails = orserdetails.OrderDetails;
-
+        this.newOrders = [];
         this.orsers.forEach(item => {
-          if (item.TONumber == order.TONumber)
-            item.Details = false;
-          this.newOrders.push(item);
+          if (item.TONumber == order.TONumber) {
+            item.Active = false;
+            this.newOrders.push(item);
+          } else {
+            item.Active = true;
+            this.newOrders.push(item);
+          }
         })
         this.orsers = this.newOrders;
       }
     });
   }
-  public OrderClose() {
-    this.details = true;
+
+  public OrderClose(order: Ecom_Orders) {
     this.orserdetails = [];
+    this.Address = '';
+    this.orsers.forEach(item => {
+      if (item.TONumber == order.TONumber) {
+        item.Active = true;
+        this.newOrders.push(item);
+      }
+    })
+    this.orsers = this.newOrders;
   }
 }
+
