@@ -14,23 +14,22 @@ export class SearchComponent implements OnInit {
   featuresModel: any;
   pCategoryName: string;
   totalItems: boolean = false;
+  productsModel: any;
 
-  constructor(private _commercialService: CommercialService, private productService: ProductService) {
-
-  }
+  constructor(private _commercialService: CommercialService, private productService: ProductService) { }
 
   ngOnInit() {
     this._commercialService.getCommercial().subscribe(
       data => {
         this.commercialObj = data as object[];	 // FILL THE ARRAY WITH DATA.
         this._commercialModel = this.commercialObj['homeobj'];
-        this.featuresModel = this._commercialModel['features'];
+        //this.featuresModel = this._commercialModel['features'];
+        this.productsModel = this._commercialModel['products'];
         this.pCategoryName = this.productService.pCategoryName;
-        this.totalItems = this.featuresModel.length;  
-            
+        this.totalItems = this.productsModel.length;
+
         if (this.pCategoryName != "") {
-          this.featuresModel = this.featuresModel.filter(res => {
-            
+          this.productsModel = this.productsModel.filter(res => {
             return res.PName.toLocaleLowerCase().match(this.pCategoryName.toLocaleLowerCase())
           });
         }
@@ -43,18 +42,4 @@ export class SearchComponent implements OnInit {
       }
     )
   }
-
-  // Search() {
-  //   
-  //   this.ngOnInit();
-  //   if (this.pCategoryName != "") {
-  //     this.featuresModel = this.featuresModel.filter(res => {
-  //       
-  //       return res.PName.toLocaleLowerCase().match(this.pCategoryName.toLocaleLowerCase())
-  //     });
-  //   } else {
-  //     
-  //     this.ngOnInit();
-  //   }
-  // }
 }

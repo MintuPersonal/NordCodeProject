@@ -30,7 +30,7 @@ export class PaymentComponent implements OnInit {
 
   orderModels: Ecom_Orders[];
   ngOnInit() {
-    debugger;
+    
     if (this.productService.GetStayThisPage()) {
       this.TOnumber = this.productService.TONumber
       this.TONumber = this.TOnumber.slice(3, 15);
@@ -39,8 +39,7 @@ export class PaymentComponent implements OnInit {
 
       this.customerService.getOrderDetails(this.TOnumber).subscribe((orderModel) => {
         this.OrderObj = orderModel as object[];	 // FILL THE ARRAY WITH DATA.
-        this.Order = this.OrderObj['OrderDetails'];
-        debugger;
+        this.Order = this.OrderObj['OrderDetails'];        
         if (this.Order.length) {
           this.itemState = [];
           this.itemState = this.Order;

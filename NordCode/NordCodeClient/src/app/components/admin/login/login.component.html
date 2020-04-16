@@ -7,13 +7,19 @@
 
             <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
 
+                <!-- 
                 <mat-form-field class="example-full-width">
                     <input matInput #username="ngModel" name="username" ngModel [(ngModel)]="userModel.Username" type="email" required minlength="6" placeholder="UserName" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                     <mat-error *ngIf="username.invalid"> Please enter an valid email. </mat-error>
+                </mat-form-field> -->
+
+                <mat-form-field class="example-full-width">
+                    <input matInput #mobileno="ngModel" name="mobileno" ngModel [(ngModel)]="userModel.Mobileno" type="email" required minlength="11" placeholder="User Mobile No">
+                    <mat-error *ngIf="mobileno.invalid"> Please enter a valid mobile number. </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="example-half-width">
-                    <input matInput #password="ngModel" name="password" ngModel [(ngModel)]="userModel.Password" type="password" required minlength="8" placeholder="Password">
+                    <input matInput #password="ngModel" name="password" ngModel [(ngModel)]="userModel.Password" type="password" required minlength="6" placeholder="Password">
                     <mat-error *ngIf="password.invalid"> Please enter an valid password. </mat-error>
                 </mat-form-field>
 

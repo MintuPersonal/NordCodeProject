@@ -20,7 +20,7 @@ import { Ecom_OrderDetails } from 'src/app/models/OrderDetails';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  userName: string = 'Mahafuz Huq'
+  userName: string = 'Login a Customer'
   options = {
     autoClose: true,
     keepAfterRouteChange: false
@@ -40,18 +40,19 @@ export class HeaderComponent implements OnInit {
   data: any;
   pCategoryName: string;
   featuresModel: any;
-
+  logincondition: boolean;
   //@Output() RefObject = new EventEmitter();
 
   constructor(private router: Router, private dialog: MatDialog,
     protected alertService: AlertService, public navService: NavbarService,
     private _interactionService: InteractionService, private productService: ProductService,
     private customerService: CustomerService) {
-
+    //this.logincondition = this.CheckUserSession();
   }
 
   ngOnInit() {
-
+    this.logincondition = this.CheckUserSession();
+    
     var firebaseConfig = {
       apiKey: "AIzaSyAABTcunn62aKYHkJGkfnr5JhXA-D9Ztak",
       authDomain: "otp-ecommerce.firebaseapp.com",
@@ -62,8 +63,8 @@ export class HeaderComponent implements OnInit {
       appId: "1:932041012966:web:9936106c9ea4e508e42d27"
     };
     firebase.initializeApp(firebaseConfig);
-    this.loginStatus();
-    this.condition = this.CheckUserSession();
+    //this.loginStatus();
+
     ////////////// Here New Concept  ///////////////
     this._interactionService.getForAddtoCart().subscribe((product: Cart) => {
       if (!this.productService.fromproductlist) {
@@ -78,7 +79,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onAddToBag(featureItem) {
-    debugger;
+    
     featureItem.totalItems = featureItem.Qty;
     this._interactionService.sendForAddtoCart(featureItem);
     this._getTotalAmounts(); //featureItem.PID
@@ -123,9 +124,11 @@ export class HeaderComponent implements OnInit {
     this.productService.RemoveFromCart(index);
     this._getTotalAmounts();
   }
-  public CheckUserSession() {
-    var user = JSON.parse(localStorage.getItem('currentUser'));    
-    if (user == "" || user == "undefined") {
+  public CheckUserSession(): boolean {
+    var user = JSON.parse(localStorage.getItem('currentUser'));
+
+    if (user == "" || user == "undefined" || user == null) {
+      this.userName = 'Login in 0' + user.toString();
       return false;
     } else {
       return true;
@@ -164,17 +167,21 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/']);
 
   }
+  public PhoneLogin() {
+
+    this.router.navigate(['/login']);
+  }
   public PlaceOrder(totalPrice: any) {
-    if (this.CheckUserSession()) {     
+    if (this.CheckUserSession()) {
       var order = this.productService.GetOrder();
-      this.totalAmounts = order.TotalPrice; 
+      this.totalAmounts = order.TotalPrice;
       this.totalItem = order.TotalItemQty;
       //localStorage.setItem('TONumber', JSON.stringify(order.TONumber));
-      this.customerService.SetOrder(order).subscribe();     
-      this.productService.SetEmptyCart(); 
+      this.customerService.SetOrder(order).subscribe();
+      this.productService.SetEmptyCart();
       this.router.navigate(['/checkout', order.TotalPrice]);
     } else {
-      this.router.navigate(['/phonelogin']);
+      this.router.navigate(['/login']);
     }
   }
 
@@ -241,7 +248,7 @@ export class HeaderComponent implements OnInit {
   Search() {
     this.router.navigate(['/']);
     if (this.pCategoryName != "") {
-      debugger;
+      
       this.productService.SetProductScearchFilter(this.pCategoryName);
       this.router.navigate(['/search', this.pCategoryName]);
     }

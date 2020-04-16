@@ -1,6 +1,7 @@
 
 export class Customer {
-    public CID: string;
+    public Id: number;
+    public CID: number;
     public TONumber: string;
     public Name: string;
     public Address: string;

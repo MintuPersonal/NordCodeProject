@@ -23,8 +23,8 @@
                     <span> En | Bn </span>
                 </div>
                 <div class="col-lg-1 signin">
-                    <span *ngIf="!condition" (click)="openDialog()"> Signin </span>
-                    <span *ngIf="condition" class="dropdown">
+                    <span *ngIf="!logincondition" (click)="PhoneLogin()"> Signin </span>
+                    <span *ngIf="logincondition" class="dropdown">
                     <!-- <mat-icon> person_pin </mat-icon>  -->
                     <i class="fa fa-user-circle"> </i>  <span> {{userName}} </span>
                     <div class="dropdown-content text-left">

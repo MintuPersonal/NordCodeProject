@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Cart } from '../models/Cart';
 import { Ecom_Orders } from '../models/Order';
 import { Ecom_OrderDetails } from '../models/OrderDetails';
+import { Customer } from '../models/Customer';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +25,10 @@ export class ProductService {
   TotalPrice: number = 0;
   MobileNo: string = '';
   CustomerID: number = 0;
-  Address: string ='Address';
-  Area: string ='Area'
+  Address: string = 'Address';
+  Area: string = 'Area'
+  logincondition: boolean;
+  customer: Customer;
   constructor(private _http: HttpClient) {
     this.TONumber = '';
     this.TotalPrice = 0;
@@ -37,14 +40,13 @@ export class ProductService {
       this._cartItems = JSON.parse(localStorage.getItem('item' || "null"));
     }
 
-    this._customerPonne = localStorage.getItem("currentUser");
-    if (this._customerPonne == 'undefined' || this._customerPonne == "null") {
-      this.MobileNo = ''
-    } else {
-      this.MobileNo = JSON.parse(localStorage.getItem('currentUser' || "null"));
-    }
-    
-    this.GetCustomerIDFromLocal();
+    // this._customerPonne = localStorage.getItem("currentUser");
+    // if (this._customerPonne == 'undefined' || this._customerPonne == "null") {
+    //   this.MobileNo = ''
+    // } else {
+    //   this.MobileNo = JSON.parse(localStorage.getItem('currentUser' || "null"));
+    // }    
+    this.GetCustomerID();
 
   }
   public SetEmptyCart(): Cart[] {
@@ -78,8 +80,9 @@ export class ProductService {
     this.pCategoryName = categoryname;
   }
   public GetOrder(): Ecom_Orders {
-    localStorage.setItem('item', JSON.stringify(this._cartItems));    
-    debugger;
+    localStorage.setItem('item', JSON.stringify(this._cartItems));
+    this.customer = JSON.parse(localStorage.getItem('customerInfo' || "null"));
+
     var order = new Ecom_Orders();
     this.TONumber = '11_' + Math.random().toString().slice(2, 11);
     this.TotalPrice = 0;
@@ -107,13 +110,13 @@ export class ProductService {
       orderdetail.Delete = false;
       orderdetail.Active = true;
       OrderDetails.push(orderdetail);
-      this.TotalPrice = this.TotalPrice + item.UnitPrice;
-      TNetPrice = TNetPrice + item.UnitPrice
+      this.TotalPrice = this.TotalPrice + (item.UnitPrice * item.Qty);
+      TNetPrice = TNetPrice + (item.UnitPrice * item.Qty);
     });
 
     order.OID = 0;
     order.TONumber = this.TONumber;
-    order.CustomerId = this.CustomerID;
+    order.CustomerId = this.customer.CID;
     order.PaymentId = 0;
     order.CouponId = 3333;
     order.PaymentModeId = 1;
@@ -125,8 +128,8 @@ export class ProductService {
     order.DeliveryCharge = 20;
     order.TotalPrice = this.TotalPrice;
     order.NetPrice = TNetPrice;
-    order.Address = this.Address;
-    order.Area = this.Area;
+    order.Address = this.customer.Address;
+    order.Area = this.customer.Area;
     order.DeliveryTime = new Date();
     order.OrderStatus = 1;
 
@@ -146,8 +149,16 @@ export class ProductService {
       return true;
     }
   }
-  public GetCustomerIDFromLocal(): number {    
-    return this.CustomerID = 6;
+  public GetCustomerID(): number {
+    if (!this.CustomerID) {
+      this.CustomerID = parseInt(JSON.parse(localStorage.getItem('currentUser')));
+    } else {
+      return this.CustomerID;
+    }
+
+  }
+  public SetCustomerID(cid: number) {
+    this.CustomerID = cid;
   }
 
   // public GetTotalAmounts(): number {

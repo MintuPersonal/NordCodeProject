@@ -43,4 +43,4 @@ const routes: Routes = [
 
 ];
 
-export const RoutingModule = RouterModule.forRoot(routes); //, { onSameUrlNavigation: 'reload' }
+export const RoutingModule = RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' }); //, { onSameUrlNavigation: 'reload' }

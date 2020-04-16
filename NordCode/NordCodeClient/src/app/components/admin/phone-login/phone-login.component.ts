@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { WindowService } from '../../../services/window.service';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
+import { CustomerService } from 'src/app/services/customer.service';
+import { Customer } from 'src/app/models/Customer';
+import { combineAll } from 'rxjs/operators';
+import { ProductService } from 'src/app/services/product.service';
 
 export class PhoneNumber {
   country: string;
@@ -24,12 +28,13 @@ export class PhoneLoginComponent implements OnInit {
   verificationCode: string;
   user: any;
   loggged: boolean;
-
-  constructor(private win: WindowService, private router: Router) { }
+  cid: number;
+  constructor(private win: WindowService, private router: Router, private customerService: CustomerService,
+    private productService: ProductService ) { }
 
   ngOnInit() {
-    this.loginStatus();
-    // if(!this.loginStatus){
+    //this.loginStatus();
+    // if (!this.loginStatus()) {
     //   this.router.navigate(['/']);
     // }
     var firebaseConfig = {
@@ -59,8 +64,10 @@ export class PhoneLoginComponent implements OnInit {
 
   }
 
-  sendLoginCode() {
-
+  sendLoginCode() {    
+    this.cid = this.getCustomerCID();
+    this.productService.SetCustomerID(this.cid);
+    debugger;
     const appVerifier = this.windowRef.recaptchaVerifier;
     const num = this.phoneNumber.e164;
     firebase.auth().signInWithPhoneNumber(num, appVerifier)
@@ -70,12 +77,28 @@ export class PhoneLoginComponent implements OnInit {
       }).catch(error => console.log(error));
   }
 
+  private getCustomerCID(): number {
+    var cMobileNo = this.phoneNumber.e164;
+    var cmobileno = cMobileNo.slice(3, 14);
+    debugger;
+    var data: Customer;
+    this.customerService.getCustomer(cmobileno).subscribe((customer: any) => {
+      if (customer.status) {
+        data = customer.customer[0];
+        console.log(data.CID + data.MobileNo);
+      }
+    });
+    return data.CID;
+  }
+
   verifyLoginCode() {
     this.windowRef.confirmationResult.confirm(this.verificationCode).then(result => {
       this.user = result.user;
       console.log(result.user)
     }).catch(error => console.log(error, "Incorrect code entered?"));
+
     if (this.user) {
+      debugger;
       this.router.navigate(['/']);
     }
   }

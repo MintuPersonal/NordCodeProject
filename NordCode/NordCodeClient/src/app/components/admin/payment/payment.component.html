@@ -96,10 +96,11 @@
                                 <tr *ngFor="let item of itemState; index as itemed" class="tr">
                                     <td>{{ itemed + 1 }}</td>
                                     <td> <img class="img-cart" src="../assets/img/product/feature/{{item.ImgPath}}"></td>
+
                                     <td>{{ item.PName}}</td>
-                                    <td>{{ item.TotalItemQty}} </td>
-                                    <td>{{ item.UnitPrice | json }} </td>
                                     <td>{{ item.PQty }} Pic </td>
+                                    <td>৳ {{ item.UnitPrice }} </td>
+                                    <td>৳ {{ item.ItemQty * item.UnitPrice }} </td>
                                 </tr>
                             </tbody>
                             <tfoot>

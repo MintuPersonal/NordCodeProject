@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Ecom_Orders } from 'src/app/models/Order';
 import { Ecom_OrderDetails } from 'src/app/models/OrderDetails';
+import { Customer } from 'src/app/models/Customer';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-order',
@@ -16,17 +18,14 @@ export class OrderComponent implements OnInit {
   details: boolean = true;
   newOrders: Ecom_Orders[]
   Address: string;
-  constructor(private customerService: CustomerService) { }
-
+  ordersOrgin: Ecom_Orders[];
+  constructor(private customerService: CustomerService, private productService: ProductService, ) { }
+  customerModel = new Customer();
   ngOnInit() {
-    var cmobileno = '01911788115'
-    this.customerService.getCustomer(cmobileno).subscribe((customer: any) => {
-      this.customerId = customer.customer[0].Id;
-
-      this.customerService.getOrders(this.customerId).subscribe((orsers: Ecom_Orders[]) => {
-        //this.ordertotal = orsers.length;
-        this.orsers = orsers;
-      });
+    this.customerModel.CID = this.productService.GetCustomerID();
+    this.customerModel.MobileNo = '0' + this.customerModel.CID;
+    this.customerService.getOrders(this.customerModel.CID).subscribe((orsers: Ecom_Orders[]) => {
+      this.orsers = orsers;     
     });
   }
 
@@ -34,6 +33,8 @@ export class OrderComponent implements OnInit {
     this.customerService.getOrderDetails(order.TONumber).subscribe((orserdetails: any) => {
       if (orserdetails.OrderDetails.length) {
         this.Address = order.Address;
+        this.productService.TotalPrice = order.TotalPrice;
+        this.productService.Address = order.Address;
         this.orserdetails = orserdetails.OrderDetails;
         this.newOrders = [];
         this.orsers.forEach(item => {
@@ -52,17 +53,9 @@ export class OrderComponent implements OnInit {
   }
 
   public OrderClose(order: Ecom_Orders) {
+    this.ngOnInit();
     this.orserdetails = [];
-    this.newOrders = [];
     this.Address = '';
-    this.orsers.forEach(item => {
-      if (item.TONumber == order.TONumber) {
-        item.Active = true;
-        this.newOrders.push(item);
-      }
-    })
-    this.orsers = [];
-    this.orsers = this.newOrders;
   }
 }
 

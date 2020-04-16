@@ -58,9 +58,9 @@
                                 <td>{{ item.OrderNo }}</td>
                                 <td> <img class="img-cart" src="../assets/img/product/feature/{{item.ImgPath}}"></td>
                                 <td>{{ item.PName}}</td>
-                                <td>{{ item.ItemQty}} </td>
-                                <td>{{ item.UnitPrice | currency: 'BD '}} </td>
                                 <td>{{ item.PQty }} Pic </td>
+                                <td>৳ {{ item.UnitPrice }} </td>
+                                <td>৳ {{ item.ItemQty * item.UnitPrice }} </td>
                             </tr>
                         </tbody>
                         <hr>

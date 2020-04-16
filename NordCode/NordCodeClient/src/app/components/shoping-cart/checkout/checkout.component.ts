@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Ecom_Orders } from '../../../models/Order';
 import { ProductService } from 'src/app/services/product.service';
+import { Customer } from 'src/app/models/Customer';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class CheckoutComponent implements OnInit {
   UnitPrice: number;
   TONumber: string;
   _totalAmounts: any;
+  Address: any;
   //orderModel: Ecom_Orders;
 
   constructor(private route: ActivatedRoute, private router: Router,
@@ -25,21 +27,25 @@ export class CheckoutComponent implements OnInit {
   @Input() totalAmounts: any;
   @Input() totalItemsPrice: any;
   orderModel = new Ecom_Orders();
-
+  customerModel = new Customer();
   ngOnInit() {
 
     if (this.productService.GetStayThisPage()) {
       this.TONumber = this.productService.TONumber;
       this.TotalPrice = this.productService.TotalPrice;
-
-      this._customerService.getCustomer(this.productService.MobileNo).subscribe((data: any) => {
+      this.customerModel.CID = this.productService.GetCustomerID();
+      this.customerModel.MobileNo = '0' + this.customerModel.CID;
+      
+      this._customerService.getCustomer(this.customerModel.MobileNo).subscribe((data: any) => {
         if (data.status) {
           var newcustomer = data.customer[0];
           this.orderModel.Address = newcustomer.Address;
+         // this.Address = newcustomer.Address;
           this.orderModel.Area = newcustomer.Aria;
-        }
-        this.orderModel.Address = ''
-        this.orderModel.Area = '';
+        }else{
+          this.orderModel.Address = ''
+          this.orderModel.Area = '';
+        }        
       });
 
     } else {
@@ -48,7 +54,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   public LoadItemTotal() {
-    debugger;
+    
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
     if (hasitemdata != null) {
       var _totalItemsPrice = 0;
@@ -71,9 +77,7 @@ export class CheckoutComponent implements OnInit {
     var order = new Ecom_Orders();
     order.OID = 0;
     order.CustomerId = this.CustomerId;
-    order.TONumber = this.TONumber;
-    // order.TotalPrice = this.TotalPrice;
-    // order.NetPrice = this.TotalPrice;
+    order.TONumber = this.TONumber;    
     order.Address = _order.Address;
     order.Area = _order.Area;
     order.DeliveryTime = _order.DeliveryTime;

@@ -21,27 +21,29 @@
                     </button>
                 </div>
                 <h4>MOBILE PHONE NUMBER {{ user?.phoneNumber }}</h4>
-                <span>
+                <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+                    <span>
                     <mat-form-field class="example-full-width col-lg-12">
                         <span matPrefix>+880&nbsp;</span>
-                <input type="tel" matInput placeholder="e.g.1704 164 912" #line="ngModel" name="line" ngModel [(ngModel)]="phoneNumber.line" minlength="10" maxlength="10" required>
-                <mat-icon matSuffix>add_to_home_screen</mat-icon>
-                <mat-error *ngIf="line.invalid"> Please enter 10 number. </mat-error>
-                </mat-form-field>
-                <div id="recaptcha-container"></div>
-                </span>
-                <hr>
-                <div class="actions">
-                    <button (click)="sendLoginCode()" class="btn btn-danger col-12">
+                    <input type="tel" matInput placeholder="e.g.1704 164 912" #line="ngModel" name="line" ngModel [(ngModel)]="phoneNumber.line" minlength="10" maxlength="10" required>
+                    <mat-icon matSuffix>add_to_home_screen</mat-icon>
+                    <mat-error *ngIf="line.invalid"> Please enter 10 number. </mat-error>
+                    </mat-form-field>
+                    <div id="recaptcha-container"></div>
+                    </span>
+                    <hr>
+                    <div class="actions">
+                        <button type="submit" [disabled]="userForm.form.invalid" (click)="sendLoginCode()" class="btn btn-danger col-12">
                         <mat-icon aria-hidden="false" aria-label="Example home icon"></mat-icon>
                         SIGN UP / LOGIN
                     </button>
-                </div>
+                    </div>
+                </form>
                 <hr>
                 <div class="actions">
                     <label for="code"> Enter your Verification Code Here </label><br>
                     <input type="text" #code="ngModel" name="code" ngModel [(ngModel)]="verificationCode">
-                    <button (click)="verifyLoginCode()" class="btn btn-info col-3">Verify</button>
+                    <button type="submit" [disabled]="userForm.form.invalid" (click)="verifyLoginCode()" class="btn btn-info col-3">Verify</button>
                 </div>
 
 

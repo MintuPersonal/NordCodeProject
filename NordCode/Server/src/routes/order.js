@@ -20,7 +20,9 @@ router.post('/updateorder', (req, res, next) => {
     } else {
         Order.update({
             Area: req.body.Area,
-            Address: req.body.Address
+            Address: req.body.Address,
+            DeliveryTime: req.body.DeliveryTime,
+            Reason: req.body.Reason
         }, {
             where: {
                 TONumber: req.body.TONumber

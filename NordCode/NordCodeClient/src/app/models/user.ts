@@ -16,6 +16,7 @@ export class User {
     public Delete: boolean;
     public Active: boolean;
     public IsCounted: Number;
+  Mobileno: any;
 
     // constructor(
     //     public FullName: string;

@@ -58,8 +58,9 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    var id = this.productService.GetCustomerIDFromLocal();
-    this.customerService.getcustomerinfo('01911788115').subscribe((userData: any) => {
+    this.customerModel.CID = this.productService.GetCustomerID();
+    this.customerModel.MobileNo = '0' + this.customerModel.CID;
+    this.customerService.getcustomerinfo(this.customerModel.MobileNo).subscribe((userData: any) => {
       this.customerModel = userData.customer[0];
       this.customerModel.FileUrl += this.customerModel.FileImage;
       if (userData.customer.length) {
@@ -78,16 +79,14 @@ export class ProfileComponent implements OnInit {
   id = 0;
 
   onSubmit() {
-    
-    this.customerModel;   
-    this.customerModel.CID = Math.random().toString().slice(2, 11);
+
+    this.customerModel;
     this.customerModel.TONumber = '11_' + Math.random().toString().slice(2, 11);
     this.customerModel.TrackedId = environment.baseurl;
-    this.customerModel.CreateBy = this.productService.GetCustomerIDFromLocal().toString();
+    this.customerModel.CreateBy = this.productService.GetCustomerID().toString();
     this.customerModel.CreateDate = new Date;
     this.customerModel.Delete = false;
     this.customerModel.Active = true;
-    debugger;
     var data = this.customerService.updateCustomer(this.customerModel); //.subscribe((data: any)=>{    });    
     this.customerModel = new Customer();
   };
