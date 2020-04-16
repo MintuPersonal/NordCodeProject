@@ -23,7 +23,7 @@
                 <mat-label>{{data.Weight}}</mat-label>
                 <p class="price"> ৳ {{data.UnitPrice}}</p>
                 <section>
-                    <div class="quantityEditor">
+                    <div *ngIf="data.UnitsInStock > 0" class="quantityEditor">
                         <button class="removeButton outer" (click)="onRemoveFromBag(data)">–</button>
                         <div class="QuantityTextContainer">
                             <div class="quantity">
@@ -32,7 +32,12 @@
                         </div>
                         <button class="addButton outer" (click)="onAddToBag(data)">+</button>
                     </div>
-                    <button id="buyNowButton" [mat-dialog-close]="data" cdkFocusInitial> Buy Now</button>
+                    <div *ngIf="!data.UnitsInStock > 0" disabled="disabled">
+                        <button id="requestStock" class="quantityEditor"> Request Stock </button>
+                    </div>
+                    <div>
+                        <button id="buyNowButton" [mat-dialog-close]="data" cdkFocusInitial> Buy Now</button>
+                    </div>
                 </section>
                 <h4> Product summary </h4>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi quo deleniti magnam molestias praesentium</p>

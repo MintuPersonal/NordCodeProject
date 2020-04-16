@@ -257,7 +257,7 @@ export class ProductItemComponent implements OnInit {
     }
   }
   openDialog(feature_Item): void {
-    this._getTotalAmounts(feature_Item.PID);
+    this._getTotalAmounts(feature_Item.PID);    
     feature_Item.Qty = this.totalItems;
     const dialogRef = this.dialog.open(DialogpdetailsComponent, {
       panelClass: 'custom-dialog-container',

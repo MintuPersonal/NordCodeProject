@@ -34,7 +34,7 @@
             background: radial-gradient(black, transparent);
             border: orange solid 1px;
             float: right;
-            /* position: relative; */
+            position: relative;
             top: 300px;
             color: white;
         }

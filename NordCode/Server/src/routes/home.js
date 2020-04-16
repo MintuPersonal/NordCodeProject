@@ -74,10 +74,13 @@ router.get('/gethomes', (req, res, next) => {
     Product.findAll({
             where: {
                 Active: 1,
-                UnitsInStock: null,
-                ParentId: {
-                    [Op.ne]: 0
-                }
+                Rol: 1,
+                // ParentId: {
+                //     [Op.ne]: 0
+                // },
+                // UnitsInStock: {
+                //     [Op.gt]: 0
+                // }
             }
         })
         .then(products => {
