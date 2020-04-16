@@ -45,6 +45,7 @@ export class OrderComponent implements OnInit {
             this.newOrders.push(item);
           }
         })
+        this.orsers = [];
         this.orsers = this.newOrders;
       }
     });
@@ -52,6 +53,7 @@ export class OrderComponent implements OnInit {
 
   public OrderClose(order: Ecom_Orders) {
     this.orserdetails = [];
+    this.newOrders = [];
     this.Address = '';
     this.orsers.forEach(item => {
       if (item.TONumber == order.TONumber) {
@@ -59,6 +61,7 @@ export class OrderComponent implements OnInit {
         this.newOrders.push(item);
       }
     })
+    this.orsers = [];
     this.orsers = this.newOrders;
   }
 }

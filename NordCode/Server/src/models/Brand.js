@@ -9,10 +9,13 @@ const home = db.sequelize.define('Ecom_Brand', {
     PID: db.Sequelize.INTEGER,
     Brand: db.Sequelize.STRING,
     Brand_BN: db.Sequelize.STRING,
+    ImgPath: db.Sequelize.STRING,
 
     TrackedId: db.Sequelize.STRING,
     CreateBy: db.Sequelize.STRING,
     CreateDate: db.Sequelize.DATE,
+    // UpdateBy: db.Sequelize.STRING,
+    // UpdateDate: db.Sequelize.DATE,
     Delete: db.Sequelize.BOOLEAN,
     Active: db.Sequelize.BOOLEAN,
 });

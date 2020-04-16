@@ -43,6 +43,8 @@ export class ProductService {
     } else {
       this.MobileNo = JSON.parse(localStorage.getItem('currentUser' || "null"));
     }
+    
+    this.GetCustomerIDFromLocal();
 
   }
   public SetEmptyCart(): Cart[] {

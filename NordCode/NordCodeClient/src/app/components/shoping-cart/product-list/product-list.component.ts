@@ -28,6 +28,8 @@ export class ProductListComponent implements OnInit {
   newline: Ecom_Commercial;
   isItemLocalStorage: any;
   pCategoryName: any;
+  productsModel: any;
+  count: any;
 
   constructor(private _commercialService: CommercialService) { }
 
@@ -46,7 +48,8 @@ export class ProductListComponent implements OnInit {
         this.bannersModel = this._commercialModel['banners'];
         this.brandsModel = this._commercialModel['brands'];
         this.featuresModel = this._commercialModel['features'];
-        //debugger;
+        this.productsModel = this._commercialModel['products'];
+        this.count = this.productsModel.lenght;
       },
       (err: HttpErrorResponse) => {
         console.log(err.message);

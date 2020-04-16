@@ -58,7 +58,6 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-
     var id = this.productService.GetCustomerIDFromLocal();
     this.customerService.getcustomerinfo('01911788115').subscribe((userData: any) => {
       this.customerModel = userData.customer[0];
@@ -79,19 +78,18 @@ export class ProfileComponent implements OnInit {
   id = 0;
 
   onSubmit() {
-    this.customerModel;
-    debugger;
+    
+    this.customerModel;   
     this.customerModel.CID = Math.random().toString().slice(2, 11);
     this.customerModel.TONumber = '11_' + Math.random().toString().slice(2, 11);
     this.customerModel.TrackedId = environment.baseurl;
-    this.customerModel.CreateBy = this.productService.GetCustomerIDFromLocal();
+    this.customerModel.CreateBy = this.productService.GetCustomerIDFromLocal().toString();
     this.customerModel.CreateDate = new Date;
     this.customerModel.Delete = false;
     this.customerModel.Active = true;
-    var data = this.customerService.getCustomer(this.customerModel); //.subscribe((data: any)=>{    });
     debugger;
+    var data = this.customerService.updateCustomer(this.customerModel); //.subscribe((data: any)=>{    });    
     this.customerModel = new Customer();
-
   };
   onClear() {
     this.customerModel = new Customer();

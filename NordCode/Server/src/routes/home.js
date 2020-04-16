@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const express = require('express');
 const jwt = require('jsonwebtoken');
 
@@ -6,6 +7,7 @@ const banner = require('../models/Banner.js');
 const brand = require('../models/Brand.js');
 const popular = require('../models/Popular.js');
 const feature = require('../models/Feature.js');
+const Product = require('../models/Product.js');
 
 const router = express.Router();
 
@@ -68,6 +70,19 @@ router.get('/gethomes', (req, res, next) => {
     brand.findAll().then(brands => {
         homeobj.brands = brands;
     }).catch(err => { res.send('Error :' + err) });
+
+    Product.findAll({
+            where: {
+                Active: 1,
+                UnitsInStock: null,
+                ParentId: {
+                    [Op.ne]: 0
+                }
+            }
+        })
+        .then(products => {
+            homeobj.products = products;
+        }).catch(err => { res.send('Error :' + err) });
 
     popular.findAll().then(populars => {
         homeobj.populars = populars;

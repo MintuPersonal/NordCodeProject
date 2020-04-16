@@ -7,12 +7,13 @@ const router = express.Router();
 router.get('/getmenus', (req, res, next) => {
     var Role = req.body.Role;
     Product.findAll({
+            where: { Active: 1 },
             order: [
                 ['Category', 'ASC'],
             ],
             attributes: [
-                ['PID', 'Id'], 'route', 'iconName', ['Category', 'Text'],
-                ['PName', 'Desc'], 'ParentId', 'RankId',
+                ['PID', 'Id'], 'route', 'iconName', ['PName', 'Text'], 'Description', 'ParentId', 'RankId',
+                //['PName', 'Desc'],
                 // Product.sequelize.literal("route || ' ' || Category"), 'route'
             ]
         }
