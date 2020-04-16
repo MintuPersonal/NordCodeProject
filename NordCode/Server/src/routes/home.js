@@ -71,18 +71,7 @@ router.get('/gethomes', (req, res, next) => {
         homeobj.brands = brands;
     }).catch(err => { res.send('Error :' + err) });
 
-    Product.findAll({
-            where: {
-                Active: 1,
-                Rol: 1,
-                // ParentId: {
-                //     [Op.ne]: 0
-                // },
-                // UnitsInStock: {
-                //     [Op.gt]: 0
-                // }
-            }
-        })
+    Product.findAll({ where: { Active: 1, Rol: 1, } })
         .then(products => {
             homeobj.products = products;
         }).catch(err => { res.send('Error :' + err) });

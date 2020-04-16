@@ -161,7 +161,7 @@ th.mat-header-cell:last-of-type {
     color: #fff;
     background-color: rgba(40, 40, 40, .75);
     text-align: center;
-    height: 73%;
+    height: 77%;
     width: 100%;
     border: 1px solid #CCC;
     -moz-box-sizing: border-box;
@@ -184,7 +184,7 @@ th.mat-header-cell:last-of-type {
     color: #fff;
     background-color: rgba(161, 159, 159, 0.75);
     text-align: center;
-    height: 73%;
+    height: 77%;
     width: 100%;
     border: 1px solid #CCC;
     -moz-box-sizing: border-box;
@@ -387,4 +387,17 @@ table {
     width: 180px;
     position: relative;
     top: 35px;
+}
+
+.unitPrice {
+    text-align: center;
+    color: black;
+    font-weight: 900;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.productName {
+    font-size: 11px;
+    text-align: center;
 }

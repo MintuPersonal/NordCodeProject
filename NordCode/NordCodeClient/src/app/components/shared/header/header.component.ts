@@ -127,8 +127,7 @@ export class HeaderComponent implements OnInit {
   public CheckUserSession(): boolean {
     var user = JSON.parse(localStorage.getItem('currentUser'));
 
-    if (user == "" || user == "undefined" || user == null) {
-      this.userName = 'Login in 0' + user.toString();
+    if (user == "" || user == "undefined" || user == null) {     
       return false;
     } else {
       return true;
