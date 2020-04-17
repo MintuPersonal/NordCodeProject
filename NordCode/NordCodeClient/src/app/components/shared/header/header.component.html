@@ -3,18 +3,11 @@
         <div class="header">
             <div class="row" fxLayoutAlign="space-evenly">
                 <div class="col-lg-2">
-                    <mat-icon mat-icon-button id="menu" (click)="navService.openNav()"> menu </mat-icon>
+                    <mat-icon mat-icon-button id="menu" (click)="navService.openNavMenu()"> menu </mat-icon>
                     <a routerLink=""><img class="img" src="../assets/img/product/header/Logo.jpg"></a>
                 </div>
                 <input [pCategoryName]="pCategoryName" [(ngModel)]="pCategoryName" #myInput (input)="Search()" class="col-lg-7" type="text" placeholder="Search for products (e.g. eggs, milk, alu)">
 
-                <!-- <form class="col-lg-7">
-                    <mat-form-field class="example-full-width search">
-                        <mat-label> Search Item </mat-label>
-                        <input matInput placeholder="Search for products (e.g. eggs, milk, alu)">
-                        <mat-error> </mat-error>
-                    </mat-form-field>
-                </form> -->
                 <div class="col-lg-1 signin-cart">
                     <mat-icon (click)="navService.openNavCart()" [matBadge]="totalItem" matBadgeColor="warn">add_shopping_cart</mat-icon>
                     <span class="cdk-visually-hidden" (click)="navService.openNavCart()"> </span>
@@ -109,6 +102,11 @@
             </mat-button-toggle-group>
         </div>
     </h6>
+</div>
+<div id="menunav" class="sidepanelmenu addcartMenu" style="width: 245px; margin-top: 50px;">
+    <mat-nav-list>
+        <app-menu *ngFor="let item of navItems" [item]="item"> </app-menu>
+    </mat-nav-list>
 </div>
 
 

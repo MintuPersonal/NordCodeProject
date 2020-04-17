@@ -52,6 +52,7 @@ export class MenuComponent implements OnInit {
       }
     }
     if (item.ChildAnswers && item.ChildAnswers.length) {
+      debugger;
       this.expanded = !this.expanded;
     }
   }

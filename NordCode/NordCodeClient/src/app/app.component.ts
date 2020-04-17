@@ -373,7 +373,7 @@ export class AppComponent implements AfterViewInit {
   aMenu: Ecom_Menu;
   newitem: Ecom_Menu[];
   newnav: NavItem;
-  constructor(private navService: NavbarService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private navService: NavbarService, private router: Router ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.mySubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {

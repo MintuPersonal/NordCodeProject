@@ -8,15 +8,14 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const auth = require('../auth/auth.js');
-const user = require('../routes/user.js');
 const home = require('../routes/home.js');
 const product = require('../routes/product.js');
 const order = require('../routes/order.js');
-const cart = require('../routes/cart.js');
 
 const task = require('../routes/task.js');
 const customer = require('../routes/customer.js');
 const menu = require('../routes/menu.js');
+const setting = require('../routes/setting.js');
 // const user = require('../Server/routes/user.js');
 // const login = require('../Server/routes/login.js');
 // const article = require('../Server/routes/article.js');
@@ -31,7 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/htts_home', express.static(path.join(__dirname, '..', directoryToServe)));
-app.use('/api', auth, home, product, order, task, customer, menu);
+app.use('/api', auth, home, product, order, task, customer, menu, setting);
 
 const httpsOptions = {
     cert: fs.readFileSync(path.join(__dirname, 'ssl', 'certificate.pem')),

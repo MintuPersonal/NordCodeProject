@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import * as firebase from 'firebase';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../../common/dialog/dialog.component';
@@ -10,9 +10,8 @@ import { ProductService } from 'src/app/services/product.service';
 import { Ecom_Commercial } from 'src/app/models/Commercial';
 import { Cart } from 'src/app/models/Cart';
 import { CustomerService } from 'src/app/services/customer.service';
-import { Ecom_Orders } from 'src/app/models/Order';
-import { environment } from 'src/environments/environment';
-import { Ecom_OrderDetails } from 'src/app/models/OrderDetails';
+import { Ecom_Menu } from 'src/app/models/Menu';
+import { NavItem } from 'src/app/models/nav-item';
 
 @Component({
   selector: 'app-header',
@@ -41,15 +40,59 @@ export class HeaderComponent implements OnInit {
   pCategoryName: string;
   featuresModel: any;
   logincondition: boolean;
-  //@Output() RefObject = new EventEmitter();
+  
+  navItems: NavItem[];  
+  menuItems: object;
+  mySubscription: any;
+  menuObj: Object[];
+  aMenu: Ecom_Menu;
+  newitem: Ecom_Menu[];
+  newnav: NavItem;
 
   constructor(private router: Router, private dialog: MatDialog,
     protected alertService: AlertService, public navService: NavbarService,
     private _interactionService: InteractionService, private productService: ProductService,
     private customerService: CustomerService) {
     //this.logincondition = this.CheckUserSession();
-  }
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.mySubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.router.navigated = false;
+      }
+    });
 
+    navService.getmenus('admin').subscribe((menus: any) => {
+      const distinctThings = menus.data.filter(
+        (thing, i, arr) => arr.findIndex(t => t.Text === thing.Text) === i
+      );
+
+      this.navItems = this.RenderMenu(distinctThings);
+    })
+    this.logMessage(this.navItems)
+  }
+  private RenderMenu(data_off: any): NavItem[] {
+
+    var tree = function (data_off, root) {
+      const
+        next = { ChildAnswers: 'ChildAnswers', ChildQuestion: 'ChildAnswers' },
+        toggle = type => ({ children, ...o }) =>
+          Object.assign(o, children && { [type]: children.map(toggle(next[type])) }),
+        t = {};
+
+      data_off.forEach(o => {
+        Object.assign(t[o.Id] = t[o.Id] || {}, o);
+        t[o.ParentId] = t[o.ParentId] || {};
+        t[o.ParentId].children = t[o.ParentId].children || [];
+        t[o.ParentId].children.push(t[o.Id]);
+      });
+      return t[root].children.map(toggle('ChildAnswers'));
+    }(data_off, 0);
+    return tree;
+
+  }
+  logMessage(value) {
+    console.log(value);
+  }
   ngOnInit() {
     this.logincondition = this.CheckUserSession();
     

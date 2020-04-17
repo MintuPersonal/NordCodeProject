@@ -10,17 +10,18 @@ export class NavbarService {
   public appDrawerRight: any;
   public currentUrl = new BehaviorSubject<string>(undefined);
   private opened: any;
-  private isOpen: any;   
+  private isOpen: any;
+  private isOpenMenu: any = true;
 
   constructor(private _http: HttpClient, private router: Router) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         this.currentUrl.next(event.urlAfterRedirects);
-        
+
       }
     });
-  }   
-  public getmenus(roleName) {    
+  }
+  public getmenus(roleName) {
     return this._http.get(environment.baseurl + 'getmenus?roleName=' + roleName);
   }
   public closeNav() {
@@ -35,14 +36,24 @@ export class NavbarService {
       this.appDrawer.open();
       this.opened = true;
     }
-  }  
-  public openNavCart() {    
+  }
+  public openNavCart() {
     if (!this.isOpen) {
       document.getElementById("cartnav").style.width = "350px";
       this.isOpen = true;
     } else {
-      document.getElementById("cartnav").style.width = "0";     
+      document.getElementById("cartnav").style.width = "0";
       this.isOpen = false;
     }
-  }  
+  }
+
+  public openNavMenu() {   
+    if (!this.isOpenMenu) {
+      document.getElementById("menunav").style.width = "245px";
+      this.isOpenMenu = true;
+    } else {
+      document.getElementById("menunav").style.width = "0";
+      this.isOpenMenu = false;
+    }
+  }
 }
