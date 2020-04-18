@@ -2,15 +2,15 @@
     <section class="container social-media-section">
         <div class="row social-button-field offset-3">
             <div class="social-button">
-                <a href="#" target="_blank">
+                <a href="{{Facebook}}" target="_blank">
                     <img class="summary-img" src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-518/Default/stores/chaldal/components/page/RecipeComponent/images/FB_Share_Button.png?q=best&amp;webp=1" data-reactid=".kw3nly7efy.6.2.0.0.6.0.$list0.0.0"></a>
             </div>
             <div class="social-button">
-                <a href="" target="_blank">
+                <a href="{{Twtter}}" target="_blank">
                     <img class="summary-img" src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-518/Default/stores/chaldal/components/page/RecipeComponent/images/Twitter_Share_Button.png?q=best&amp;webp=1" data-reactid=".kw3nly7efy.6.2.0.0.6.0.$list1.0.0"></a>
             </div>
             <div class="social-button">
-                <a href="#" target="_blank">
+                <a href="{{Whatapps}}" target="_blank">
                     <img class="summary-img" src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-518/Default/stores/chaldal/components/page/RecipeComponent/images/Whatsapp_Share_Button.png?q=best&amp;webp=1" data-reactid=".kw3nly7efy.6.2.0.0.6.0.$list2.0.0"></a>
             </div>
         </div>
@@ -42,10 +42,11 @@
         <div class="banner row">
             <div class="footer-left col-lg-8 col-md-6 col-sm-2">
                 <h3 class="footerLogo">
-                    <img class="icon" src="../assets/img/product/header/Logo.jpg" alt="Tmart.com">
+                    <a href="/" onclick="return false;">
+                        <img class="icon" src="../assets/img/product/header/Logo.jpg" alt="Tmart.com">
+                    </a>
                 </h3>
-                <p style="margin-top:10px;"> T Mart is an online shop in Dhaka, Bangladesh. We believe time is valuable to our fellow Dhaka residents, and that they should not have to waste hours in traffic, brave bad weather and wait in line just to buy basic necessities like eggs!
-                    This is why T Mart delivers everything you need right at your door-step and at no additional cost.</p>
+                <p style="margin-top:10px;">{{Text}}</p>
             </div>
             <hr>
             <div class="footer-right col-lg-4 col-md-3 col-sm-2">
@@ -61,7 +62,7 @@
                         <div class="app_store">
                             <a href="#">
                                 <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-517/Default/components/shared/NewFooter/images/app_store.png?q=low&amp;webp=1&amp;alpha=1" data-reactid=".20tlq6dugeo.6.2.0.0.c.2.0.0.1.0.1">
-                                <span data-reactid=".20tlq6dugeo.6.2.0.0.c.2.0.0.1.0.2"> </span>
+                                <span> </span>
                             </a>
                         </div>
                     </div>
@@ -70,71 +71,70 @@
                     <div class="phone-number">
                         <div class="wrap">
                             <img class="phoone-icon" src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-517/Default/components/shared/NewFooter/images/phone_icon.png?q=low&amp;webp=1&amp;alpha=1">
-                            <span class="number">0177-1234567</span>
+                            <span class="number">{{Mobile}}</span>
                         </div>
                     </div>
                     <div class="email-address"><span class="pre-text">or email</span>
-                        <span class="email">support@americaltmart.com</span></div>
+                        <span class="email">{{Support}}</span></div>
                 </div>
 
                 <div class="social-section row">
                     <div>
-                        <a href="" target="_blank">
+                        <a href="{{Youtube}}" target="_blank">
                             <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-517/Default/components/shared/NewFooter/images/Youtube.png?q=low&amp;webp=1&amp;alpha=1">
                         </a>
                     </div>
                     <div>
-                        <a href="#" target="_blank">
+                        <a href="{{Facebook}}" target="_blank">
                             <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-517/Default/components/shared/NewFooter/images/Facebook.png?q=low&amp;webp=1&amp;alpha=1" data-reactid=".20tlq6dugeo.6.2.0.0.c.2.2.0.$sl-https=2//www=1facebook=1com/chaldalcom.0.1">
                         </a>
                     </div>
                     <div>
-                        <a href="#" target="_blank">
+                        <a href="{{Twtter}}" target="_blank">
                             <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-517/Default/components/shared/NewFooter/images/twitter.png?q=low&amp;webp=1&amp;alpha=1">
                         </a>
                     </div>
                     <div>
-                        <a href="#" target="_blank">
-                            <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-517/Default/components/shared/NewFooter/images/Instagram.png?q=low&amp;webp=1&amp;alpha=1">
+                        <a href="{{Instagram}}" target="_blank">
+                            <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-517/Default/components/shared/NewFooter/images/Instagram.png?q=low&amp;webp=1&amp;alpha=1 ">
                         </a>
                     </div>
                     <div>{{SettingModel | json}}</div>
-
                 </div>
             </div>
         </div>
     </footer>
 
-    <div class="row col-lg-12 bg-info p-1 " fxLayoutAlign="space-evenly center">
-        <label class="col-lg-1">
-        <mat-icon fxFlex="5%" (click)="onClear()" style="color: whitesmoke;"> &nbsp; home </mat-icon>
+    <div class="row col-lg-12 bg-info p-1 " fxLayoutAlign="space-evenly center ">
+        <label class="col-lg-1 ">
+        <mat-icon fxFlex="5% " (click)="onClear() " style="color: whitesmoke; "> &nbsp; home </mat-icon>
         <br> 
          Home
     </label>
-        <label class="col-lg-1">
-        <mat-icon fxFlex="5%" (click)="onClear()" style="color: whitesmoke;"> &nbsp; &nbsp; message </mat-icon>
+        <label class="col-lg-1 ">
+        <mat-icon fxFlex="5% " (click)="onClear() " style="color: whitesmoke; "> &nbsp; &nbsp; message </mat-icon>
         <br>
         Message
     </label>
-        <label class="col-lg-1">
-        <mat-icon fxFlex="5%" (click)="onClear()" style="color: whitesmoke;"> &nbsp; add_shopping_cart </mat-icon>
+        <label class="col-lg-1 ">
+        <mat-icon fxFlex="5% " (click)="onClear() " style="color: whitesmoke; "> &nbsp; add_shopping_cart </mat-icon>
         <br>
         Card
     </label>
-        <label class="col-lg-1">
-        <mat-icon fxFlex="5%" (click)="onClear()" style="color: whitesmoke;"> &nbsp; &nbsp; account_circle
+        <label class="col-lg-1 ">
+        <mat-icon fxFlex="5% " (click)="onClear() " style="color: whitesmoke; "> &nbsp; &nbsp; account_circle
         </mat-icon>
         <br>
         Account
     </label>
 
         <small>
-        <span class="version-info">Current build version : {{version.full ? version.full : version}}</span> 
+        <span class="version-info ">Current build version : {{version.full ? version.full : version}}</span> 
         <br>       
         &copy; Copyright 2020, T Mart Corporation
     </small>
     </div>
-    <!-- <div class="footer">
+    <!-- <div class="footer ">
         <p>Footer</p>
     </div> -->
 </div>
