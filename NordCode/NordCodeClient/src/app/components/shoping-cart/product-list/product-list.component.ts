@@ -50,7 +50,7 @@ export class ProductListComponent implements OnInit {
         this.featuresModel = this._commercialModel['features'];
         this.productsModel = this._commercialModel['products'];
         
-        this.count = this.productsModel.length;
+        //this.count = this.productsModel.length;
       },
       (err: HttpErrorResponse) => {
         console.log(err.message);

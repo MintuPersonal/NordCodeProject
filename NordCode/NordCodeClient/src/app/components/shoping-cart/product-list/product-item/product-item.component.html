@@ -31,6 +31,7 @@
 
                 <div *ngIf="featureItem.totalItems > 0" class="overlay text">
                     <div class="column-list">
+
                         <p class="addText"> ৳ {{featureItem.UnitPrice}}</p>
                         <p class="addText">
                             <i class="fa fa-minus-square" (click)="onRemoveFromBag(featureItem)"></i> &nbsp;{{featureItem.totalItems}} &nbsp;
@@ -62,9 +63,19 @@
                 </div>
             </mat-card-footer>
             <div class="productName">{{featureItem.PName}}</div>
-            <p class="unitPrice"> ৳ {{featureItem.UnitPrice}} </p>
-        </mat-card>
 
+            <p class="unitPrice">
+                <span *ngIf="featureItem.Discount"> <span class="line" > ৳ {{featureItem.MRP}} </span> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>৳ {{featureItem.UnitPrice}} </span>
+            </p>
+            <!-- <p class="unitPrice" *ngIf="featureItem.Discount > 0">
+                <span style="float: left;" class="line"> <strike> ৳ {{featureItem.MRP}}</strike></span>
+                <span>৳ {{featureItem.UnitPrice}} </span>
+            </p>
+            <p class="unitPrice" *ngIf="featureItem.Discount == 0 || featureItem.Discount == null">
+                <span>৳ {{featureItem.UnitPrice}} </span>
+            </p> -->
+        </mat-card>
     </a>
 </div>
 

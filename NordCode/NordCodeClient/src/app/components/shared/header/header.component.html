@@ -1,35 +1,39 @@
 <div class="row">
     <div class="col-12">
         <div class="header">
-            <div class="row" fxLayoutAlign="space-evenly">
-                <div class="col-lg-2">
-                    <mat-icon mat-icon-button id="menu" (click)="navService.openNavMenu()"> menu </mat-icon>
-                    <a routerLink=""><img class="img" src="../assets/img/product/header/Logo.jpg"></a>
-                </div>
-                <input [pCategoryName]="pCategoryName" [(ngModel)]="pCategoryName" #myInput (input)="Search()" class="col-lg-7" type="text" placeholder="Search for products (e.g. eggs, milk, alu)">
+            <div class="over-line">
+                <div class="row " fxLayoutAlign="space-evenly">
+                    <div class="col-lg-2">
+                        <a routerLink="">
+                            <mat-icon mat-icon-button id="menu" (click)="navService.openNavMenu()"> menu </mat-icon>
+                        </a>
+                        <a routerLink=""><img class="img" src="../assets/img/product/header/Logo.jpg"></a>
+                    </div>
+                    <input [pCategoryName]="pCategoryName" [(ngModel)]="pCategoryName" #myInput (input)="Search()" class="col-lg-7" type="text" placeholder="Search for products (e.g. eggs, milk, alu)">
 
-                <div class="col-lg-1 signin-cart">
-                    <mat-icon (click)="navService.openNavCart()" [matBadge]="totalItem" matBadgeColor="warn">add_shopping_cart</mat-icon>
-                    <span class="cdk-visually-hidden" (click)="navService.openNavCart()"> </span>
-                </div>
-                <div class="enbn  col-lg-1">
-                    <span> En | Bn </span>
-                </div>
-                <div class="col-lg-1 signin">
-                    <span *ngIf="!logincondition" (click)="PhoneLogin()"> Signin </span>
-                    <span *ngIf="logincondition" class="dropdown">
+                    <div class="col-lg-1 signin-cart">
+                        <mat-icon (click)="navService.openNavCart()" [matBadge]="totalItem" matBadgeColor="warn">add_shopping_cart</mat-icon>
+                        <span class="cdk-visually-hidden" (click)="navService.openNavCart()"> </span>
+                    </div>
+                    <div class="enbn  col-lg-1">
+                        <span> En | Bn </span>
+                    </div>
+                    <div class="col-lg-1 signin">
+                        <span *ngIf="!logincondition" (click)="PhoneLogin()"> Signin </span>
+                        <span *ngIf="logincondition" class="dropdown">
                     <!-- <mat-icon> person_pin </mat-icon>  -->
                     <i class="fa fa-user-circle"> </i>  <span> {{userName}} </span>
-                    <div class="dropdown-content text-left">
-                        <!-- (click)="alertService.success('Success!!', options)" -->
-                        <button class="btn btn-success m-1">Success</button>
-                        <a href="myprofile" class="fa fa-user-circle"> &nbsp; My Profile </a>
-                        <a href="myorders" class="fa fa-reorder"> &nbsp; My Orders </a>
-                        <a href="account-history" class="fa fa-history"> &nbsp; Payment Histry</a>
-                        <a href="customer/changepassword" class="fa fa-key"> &nbsp; Change Password</a>
-                        <a href="/" class="fa fa-sign-out" (click)="logout()"> &nbsp; Logout </a>
+                        <div class="dropdown-content text-left">
+                            <!-- (click)="alertService.success('Success!!', options)" -->
+                            <button class="btn btn-success m-1">Success</button>
+                            <a href="myprofile" class="fa fa-user-circle"> &nbsp; My Profile </a>
+                            <a href="myorders" class="fa fa-reorder"> &nbsp; My Orders </a>
+                            <a href="account-history" class="fa fa-history"> &nbsp; Payment Histry</a>
+                            <a href="customer/changepassword" class="fa fa-key"> &nbsp; Change Password</a>
+                            <a href="/" class="fa fa-sign-out" (click)="logout()"> &nbsp; Logout </a>
+                        </div>
+                        </span>
                     </div>
-                    </span>
                 </div>
             </div>
             <div id="menucart" mat-icon-button (click)="navService.openNavCart()">
@@ -103,10 +107,27 @@
         </div>
     </h6>
 </div>
+
 <div id="menunav" class="sidepanelmenu addcartMenu" style="width: 245px; margin-top: 50px;">
     <mat-nav-list>
         <app-menu *ngFor="let item of navItems" [item]="item"> </app-menu>
     </mat-nav-list>
+    <!-- <br>
+    <hr>
+    <div>
+        HHHHHHHHH
+        <iui-treeview [items]="items" [controlStyle]="ctrlStyle">
+            <ng-template let-item>
+                <div (mouseenter)="hoverItem=item" (mouseleave)="hoverItem=null">
+                    <span [ngClass]="item.icon"></span>
+                    <span class="treeview-pec-item-content">{{item.text}}</span>
+                    <div class="treeview-pec-toolbar" *ngIf="item.locked || item==hoverItem">
+                        <span class="treeview-pec-item-button treeview-pec-item-button-lock" [ngClass]="{ 'treeview-pec-item-button-lock': item.locked, 'treeview-pec-item-button-unlock': !item.locked && item.items && item.items.length > 0 }" (click)="lock(item)"></span>
+                    </div>
+                </div>
+            </ng-template>
+        </iui-treeview>
+    </div> -->
 </div>
 
 

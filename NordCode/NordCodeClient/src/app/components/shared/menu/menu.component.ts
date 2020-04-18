@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { NavItem } from '../../../models/nav-item';
@@ -25,7 +25,7 @@ export class MenuComponent implements OnInit {
   @Input() item: NavItem;
   @Input() depth: number;
 
-  constructor(public navService: NavbarService, private productService: ProductService,
+  constructor(public navService: NavbarService, private productService: ProductService, public elm: ElementRef,
     public router: Router) {
     if (this.depth === undefined) {
       this.depth = 0;
@@ -47,12 +47,10 @@ export class MenuComponent implements OnInit {
     if (!item.ChildAnswers || !item.ChildAnswers.length) {
       if (item.Text != "") {
         this.productService.SetProductScearchFilter(item.Text);
-        this.router.navigate([item.route + item.Text.toLocaleLowerCase()]);
-        this.navService.closeNav();
+        this.router.navigate([item.route + item.Text.toLocaleLowerCase()]);        
       }
     }
-    if (item.ChildAnswers && item.ChildAnswers.length) {
-      debugger;
+    if (item.ChildAnswers && item.ChildAnswers.length) {     
       this.expanded = !this.expanded;
     }
   }

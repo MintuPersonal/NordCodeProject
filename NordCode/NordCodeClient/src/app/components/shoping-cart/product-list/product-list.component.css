@@ -136,6 +136,7 @@ th.mat-header-cell {
     background: white;
     margin: 10px 0 10px 0;
     border-radius: 5px;
+    width: 100%;
 }
 
 .brand {

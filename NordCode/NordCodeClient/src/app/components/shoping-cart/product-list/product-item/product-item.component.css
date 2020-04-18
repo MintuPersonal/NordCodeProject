@@ -401,3 +401,10 @@ table {
     font-size: 11px;
     text-align: center;
 }
+
+
+/* ======================= */
+
+.line {
+    text-decoration: line-through;
+}

@@ -4,7 +4,7 @@
             height: 50px;
             width: 99%;
             position: fixed;
-            z-index: 111;
+            z-index: 9999;
         }
         
         .row {
@@ -12,8 +12,10 @@
             display: flex;
             -ms-flex-wrap: wrap;
             flex-wrap: wrap;
-            /* margin-right: -15px;
-            margin-left: -15px; */
+        }
+        
+        .over-line {
+            z-index: 9999;
         }
         
         mat-card-content.mat-card-content {
@@ -22,13 +24,14 @@
         }
         
         .addcart {
-            z-index: 999;
+            z-index: 888;
             max-width: 850px;
             top: 25px !important;
             position: relative;
         }
         
         .addcartMenu {
+            z-index: 888;
             max-width: 850px;
             top: 25px !important;
             height: 87vmin;

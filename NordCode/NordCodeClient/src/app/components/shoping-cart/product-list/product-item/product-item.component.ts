@@ -35,6 +35,7 @@ export class ProductItemComponent implements OnInit {
   _cartItems: any;
   totalItems: any = 0;
   totalAmounts: number;
+  expression: boolean;
   constructor(private dialog: MatDialog, private productService: ProductService, private _interactionService: InteractionService) { }
 
   ngOnInit() {
@@ -43,6 +44,7 @@ export class ProductItemComponent implements OnInit {
     //     this._getTotalAmounts(product.PID);
     // });
     ////////////// Here New Concept  ///////////////
+    this.expression = false;
   }
   public LoadItemTotal() {
 

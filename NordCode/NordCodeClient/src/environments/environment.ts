@@ -6,10 +6,10 @@
 
 export const environment = {
   production: false,
-  baseurl: 'http://admin.americantmartbd.com:8000/api/', //'http://10.11.1.6:3000/api/' demo.one-ict.com http://admin.americantmartbd.com:8000/api/
-  currentuserId: '11'
+  baseurl: 'http://localhost:3000/api/',  currentuserId: '11'
 };
-
+//'http://admin.americantmartbd.com:8000/api/', //'http://10.11.1.6:3000/api/' demo.one-ict.com http://admin.americantmartbd.com:8000/api/
+ 
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

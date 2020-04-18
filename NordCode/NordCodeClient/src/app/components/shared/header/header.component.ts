@@ -40,14 +40,25 @@ export class HeaderComponent implements OnInit {
   pCategoryName: string;
   featuresModel: any;
   logincondition: boolean;
-  
-  navItems: NavItem[];  
+
+  navItems: NavItem[];
   menuItems: object;
   mySubscription: any;
   menuObj: Object[];
   aMenu: Ecom_Menu;
   newitem: Ecom_Menu[];
   newnav: NavItem;
+
+  // ===================
+  private items: any[];
+  private hoverItem: any = null;
+
+  private ctrlStyle: any = {
+    general: {
+      normal: 'treeview-pec-normal'
+    }
+  }
+  item: any[];
 
   constructor(private router: Router, private dialog: MatDialog,
     protected alertService: AlertService, public navService: NavbarService,
@@ -69,6 +80,7 @@ export class HeaderComponent implements OnInit {
       this.navItems = this.RenderMenu(distinctThings);
     })
     this.logMessage(this.navItems)
+    
   }
   private RenderMenu(data_off: any): NavItem[] {
 
@@ -95,7 +107,7 @@ export class HeaderComponent implements OnInit {
   }
   ngOnInit() {
     this.logincondition = this.CheckUserSession();
-    
+
     var firebaseConfig = {
       apiKey: "AIzaSyAABTcunn62aKYHkJGkfnr5JhXA-D9Ztak",
       authDomain: "otp-ecommerce.firebaseapp.com",
@@ -122,7 +134,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onAddToBag(featureItem) {
-    
+
     featureItem.totalItems = featureItem.Qty;
     this._interactionService.sendForAddtoCart(featureItem);
     this._getTotalAmounts(); //featureItem.PID
@@ -170,7 +182,7 @@ export class HeaderComponent implements OnInit {
   public CheckUserSession(): boolean {
     var user = JSON.parse(localStorage.getItem('currentUser'));
 
-    if (user == "" || user == "undefined" || user == null) {     
+    if (user == "" || user == "undefined" || user == null) {
       return false;
     } else {
       return true;
@@ -290,7 +302,7 @@ export class HeaderComponent implements OnInit {
   Search() {
     this.router.navigate(['/']);
     if (this.pCategoryName != "") {
-      
+
       this.productService.SetProductScearchFilter(this.pCategoryName);
       this.router.navigate(['/search', this.pCategoryName]);
     }

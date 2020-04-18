@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 export class SharedService {
 
   constructor(private _http: HttpClient) { }
-  getSettingAll() {
+  getSettingAll() {    
     return this._http.get(environment.baseurl + 'getsettingall');
   }
 }
