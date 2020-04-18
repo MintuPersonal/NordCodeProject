@@ -407,6 +407,14 @@ table {
 .details {
     height: 500px;
     width: 400px;
+    border-radius: 6px;
+}
+
+.details:hover {
+    height: 500px;
+    width: 400px;
+    border: solid 1px #ff5722;
+    border-radius: 6px;
 }
 
 .features {

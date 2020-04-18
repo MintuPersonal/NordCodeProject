@@ -35,7 +35,72 @@
                         </span>
                     </div>
                 </div>
+                <div style="display: none;" id="menucarthide" mat-icon-button (click)="navService.openNavCart()">
+                    <mat-icon> shopping_basket </mat-icon>
+                    <br>
+                    <label> {{totalItem}} items </label>
+                    <div class="pricecrt">
+                        <label> Tk. {{totalAmounts}} </label>
+                    </div>
+                </div>
+                <div id="cartnav" class="sidepanel addcart" style="position:relative;right: 100%;">
+                    <mat-label class="mat-lebal">{{totalItem}} Items</mat-label>
+                    <a href=" javascript:void(0)" class="closebtn" (click)="navService.openNavCart()">&times;</a>
+                    <mat-card class="card-picture ">
+                        <nav class="nav nav-info ">
+                        </nav>
 
+                        <div class="mat-elevation-z8 ">
+                            <h5 class="h5">
+                                <mat-icon matBadgeColor="warn">directions_run </mat-icon> Express Delivery
+                            </h5>
+                            <div *ngIf="totalItem">
+                                <table>
+                                    <thead>
+                                        <tr class="tr">
+                                            <th colspan="3">&nbsp; You have reduced delivery charge </th>
+                                            <th colspan="2"> 20 </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of _cartItems; index as itemed" class="tr">
+
+                                            <td title="add one more to bag" class="td">
+                                                <mat-icon (click)="onAddToBag(item)">add_circle</mat-icon>
+                                                <br> {{ item.Qty }}
+                                                <br>
+                                                <mat-icon (click)="RemoveProductFromCart(item, false)">remove_circle</mat-icon>
+                                            </td>
+                                            <td> <img class="img-cart" src="../assets/img/product/feature/{{item.ImgPath}}"></td>
+                                            <td>{{ item.PName}}</td>
+                                            <td>{{ item.Qty * item.UnitPrice | currency: 'BD '}} </td>
+                                            <td title="remove from bag" class="td" (click)="RemoveFromCart(itemed)">
+                                                <span class="icon"> {{ item.Close }} </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div *ngIf="!totalItem" class="emptyCart">
+                                <div>
+                                    <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-504/Default/components/header/ShoppingCart/images/emptyShoppingBag.png?q=low&webp=1&alpha=1">
+                                </div>
+                                <span style="padding: 10px;">Your shopping bag is empty. Start shopping</span>
+                            </div>
+                        </div>
+                    </mat-card>
+
+                    <h6 *ngIf="totalItem" class="text-center">
+                        <div>
+                            <mat-button-toggle-group (click)="PlaceOrder(totalAmounts)" color="accent" [totalPrice]="totalAmounts " name="fontStyle " aria-label="Font Style ">
+                                <mat-button-toggle value="italic" class="order">
+                                    Place Order </mat-button-toggle>
+                                <mat-button-toggle value="underline" class="price">Tk. {{totalAmounts}}
+                                </mat-button-toggle>
+                            </mat-button-toggle-group>
+                        </div>
+                    </h6>
+                </div>
                 <div id="menucart" mat-icon-button (click)="navService.openNavCart()">
                     <mat-icon> shopping_basket </mat-icon>
                     <br>
@@ -50,64 +115,7 @@
 </div>
 
 <!-- <app-cart></app-cart> -->
-<div id="cartnav" class="sidepanel addcart" style="position:relative;right: 100%; margin-top: 25px;">
-    <mat-label class="mat-lebal">{{totalItem}} Items</mat-label>
-    <a href=" javascript:void(0)" class="closebtn" (click)="navService.openNavCart()">&times;</a>
-    <mat-card class="card-picture ">
-        <nav class="nav nav-info ">
-        </nav>
 
-        <div class="mat-elevation-z8 ">
-            <h5 class="h5">
-                <mat-icon matBadgeColor="warn">directions_run </mat-icon> Express Delivery
-            </h5>
-            <div *ngIf="totalItem">
-                <table>
-                    <thead>
-                        <tr class="tr">
-                            <th colspan="3">&nbsp; You have reduced delivery charge </th>
-                            <th colspan="2"> 20 </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let item of _cartItems; index as itemed" class="tr">
-
-                            <td title="add one more to bag" class="td">
-                                <mat-icon (click)="onAddToBag(item)">add_circle</mat-icon>
-                                <br> {{ item.Qty }}
-                                <br>
-                                <mat-icon (click)="RemoveProductFromCart(item, false)">remove_circle</mat-icon>
-                            </td>
-                            <td> <img class="img-cart" src="../assets/img/product/feature/{{item.ImgPath}}"></td>
-                            <td>{{ item.PName}}</td>
-                            <td>{{ item.Qty * item.UnitPrice | currency: 'BD '}} </td>
-                            <td title="remove from bag" class="td" (click)="RemoveFromCart(itemed)">
-                                <span class="icon"> {{ item.Close }} </span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div *ngIf="!totalItem" class="emptyCart">
-                <div>
-                    <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-504/Default/components/header/ShoppingCart/images/emptyShoppingBag.png?q=low&webp=1&alpha=1">
-                </div>
-                <span style="padding: 10px;">Your shopping bag is empty. Start shopping</span>
-            </div>
-        </div>
-    </mat-card>
-
-    <h6 *ngIf="totalItem" class="text-center">
-        <div>
-            <mat-button-toggle-group (click)="PlaceOrder(totalAmounts)" color="accent" [totalPrice]="totalAmounts " name="fontStyle " aria-label="Font Style ">
-                <mat-button-toggle value="italic" class="order">
-                    Place Order </mat-button-toggle>
-                <mat-button-toggle value="underline" class="price">Tk. {{totalAmounts}}
-                </mat-button-toggle>
-            </mat-button-toggle-group>
-        </div>
-    </h6>
-</div>
 
 <div id="menunav" class="sidepanelmenu addcartMenu" style="width: 245px;">
     <mat-nav-list>
