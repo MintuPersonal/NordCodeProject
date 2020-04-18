@@ -13,7 +13,6 @@ import { Customer } from '../models/Customer';
 
 export class ProductService {
 
-
   ////////////// Here New Concept  ///////////////
   //_cartItems = [];
   fromproductlist: boolean = false;
@@ -30,6 +29,7 @@ export class ProductService {
   Area: string = 'Area'
   logincondition: boolean;
   customer: Customer;
+  productDetails = [];
   constructor(private _http: HttpClient) {
     this.TONumber = '';
     this.TotalPrice = 0;
@@ -195,5 +195,5 @@ export class ProductService {
   };
   public getProductDetails(pid: number) {
     return this._http.get(environment.baseurl + 'getproductdetail?PID=' + pid);
-  }
+  } 
 };

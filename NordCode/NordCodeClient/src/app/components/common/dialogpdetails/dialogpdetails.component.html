@@ -7,12 +7,11 @@
         <div class="col-6">
             <img class="details" src="../assets/img/product/feature/{{data.ImgPath}}">
             <div class="row">
-                <img class="features" src="../assets/img/product/feature/{{data.ImgPath}}">
-                <img class="features" src="../assets/img/product/feature/{{data.ImgPath}}">
-                <img class="features" src="../assets/img/product/feature/{{data.ImgPath}}">
-                <img class="features" src="../assets/img/product/feature/{{data.ImgPath}}">
-                <img class="features" src="../assets/img/product/feature/{{data.ImgPath}}">
-                <img class="features" src="../assets/img/product/feature/{{data.ImgPath}}">
+                <div *ngIf="data.productDetails">
+                    <span *ngFor="let item of data.productDetails">
+                        <img class="features" (click)="setBigImage(item.image)" src="../assets/img/product/feature/{{item.image}}">
+                    </span>
+                </div>
             </div>
         </div>
 

@@ -73,7 +73,7 @@ router.get('/getproductdetail', (req, res, next) => {
     //     ProductIamges = PImage;
     //     console.log('TTTT ' + PImage[0]);
     // });
-    var sqlquery = "Select image from Ecom_ProductIamges Where PID = " + ProductId + " And default_image=0"
+    var sqlquery = "Select image from Ecom_ProductIamges Where PID = " + ProductId;
     const ProductIamges = db.sequelize.query(sqlquery, { type: QueryTypes.SELECT });
     console.log(JSON.stringify(ProductIamges[0], null, 2));
 

@@ -261,21 +261,24 @@ export class ProductItemComponent implements OnInit {
   public openDialog(feature_Item): void {
     this._getTotalAmounts(feature_Item.PID);
     this.productService.getProductDetails(feature_Item.PID).subscribe((data: any) => {
-      if (data.isFulfilled) {
-        this.productDetailModel = data.fulfillmentValue
+      if (data) {        
+        feature_Item.Qty = this.totalItems;
+        feature_Item.productDetails = data.productdetail.Banner.fulfillmentValue;
+        this.newMethod(feature_Item);
       }
     });
-    feature_Item.Qty = this.totalItems;    
+  }
+
+
+  private newMethod(feature_Item: any) {
     const dialogRef = this.dialog.open(DialogpdetailsComponent, {
       panelClass: 'custom-dialog-container',
       autoFocus: false, maxHeight: '90vh', width: '950px', data: feature_Item
     });
-
     dialogRef.afterClosed().subscribe(result => {
       //console.log('The dialog was closed');
       this.animal = result;
     });
   }
-
   ////////////// Here New Concept  ///////////////
 }
