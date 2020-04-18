@@ -418,6 +418,21 @@ table {
     margin: 5px;
 }
 
+.features:hover {
+    height: 70px;
+    width: 50px;
+    border: solid 1px #ff5722;
+    border-radius: 6px;
+    padding: 3px;
+    margin: 5px;
+}
+
+.mat-dialog-content {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
 .line {
     text-decoration: line-through;
 }
