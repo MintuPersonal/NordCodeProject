@@ -13,6 +13,7 @@ import { Customer } from '../models/Customer';
 
 export class ProductService {
 
+
   ////////////// Here New Concept  ///////////////
   //_cartItems = [];
   fromproductlist: boolean = false;
@@ -160,7 +161,6 @@ export class ProductService {
   public SetCustomerID(cid: number) {
     this.CustomerID = cid;
   }
-
   // public GetTotalAmounts(): number {
   //   //this._cartItems = this.productService._cartItems;
   //   localStorage.setItem('item', JSON.stringify(this._cartItems));
@@ -177,20 +177,23 @@ export class ProductService {
 
   ////////////// Here New Concept  ///////////////
 
-  getCartItems(product) {
+  public getCartItems(product) {
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
     if (hasitemdata != null && Object.keys(hasitemdata).length !== 0) {
       hasitemdata.push(product);
       return hasitemdata;
     }
   }
-  getProduct(_product: Ecom_Product) {
+  public getProduct(_product: Ecom_Product) {
     return this._http.get(environment.baseurl + 'getproductall');
   };
-  setProduct(_product: Ecom_Product) {
+  public setProduct(_product: Ecom_Product) {
     return this._http.post<any>(environment.baseurl + 'createProduct', _product);
   };
-  deleteProduct(pid: any) {
+  public deleteProduct(pid: any) {
     return this._http.get(environment.baseurl + 'deleteProduct?pid=' + pid)
   };
+  public getProductDetails(pid: number) {
+    return this._http.get(environment.baseurl + 'getproductdetail?PID=' + pid);
+  }
 };

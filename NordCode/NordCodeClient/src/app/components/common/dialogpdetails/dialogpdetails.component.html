@@ -21,7 +21,13 @@
                 <mat-label class="round"> ID#{{("00000000"+data.PID).slice(-7)}} </mat-label>
                 <h4 at-dialog-title>{{data.PName}}</h4>
                 <mat-label>{{data.Weight}}</mat-label>
-                <p class="price"> ৳ {{data.UnitPrice}}</p>
+                <p class="price">
+                    <span *ngIf="data.Discount"> 
+                        <span class="line" > ৳ {{data.MRP}} </span> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                    <span>৳ {{data.UnitPrice}} </span>
+                </p>
+                <!-- <p class="price"> ৳ {{data.UnitPrice}}</p> -->
                 <section>
                     <div *ngIf="data.UnitsInStock > 0" class="quantityEditor">
                         <button class="removeButton outer" (click)="onRemoveFromBag(data)">–</button>
@@ -40,17 +46,14 @@
                     </div>
                 </section>
                 <h4> Product summary </h4>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi quo deleniti magnam molestias praesentium</p>
+                <p>{{data.Summary}}</p>
 
             </div>
 
         </div>
     </div>
     <hr>
-
     <h4> Product Details </h4>
-    <p>{{data.Description}}</p>
-    <p>{{data.Description}}</p>
     <p>{{data.Description}}</p>
     <hr>
 </div>

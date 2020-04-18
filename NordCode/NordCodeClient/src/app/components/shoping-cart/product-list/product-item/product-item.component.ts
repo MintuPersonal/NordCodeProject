@@ -36,6 +36,7 @@ export class ProductItemComponent implements OnInit {
   totalItems: any = 0;
   totalAmounts: number;
   expression: boolean;
+  productDetailModel: any;
   constructor(private dialog: MatDialog, private productService: ProductService, private _interactionService: InteractionService) { }
 
   ngOnInit() {
@@ -215,7 +216,7 @@ export class ProductItemComponent implements OnInit {
   }
 
   ////////////// Here New Concept  ///////////////
-  onAddToBag() {    
+  onAddToBag() {
     this._interactionService.sendForAddtoCart(this.featureItem);
     this._getTotalAmounts(this.featureItem.PID);
   }
@@ -224,7 +225,7 @@ export class ProductItemComponent implements OnInit {
     this._getTotalAmounts(this.featureItem.PID);
   }
   public addProductToCart(cart: Cart) {
-    
+
     let productExits = false;
     this._cartItems = this.productService._cartItems;
     for (let key in this._cartItems) {
@@ -240,35 +241,38 @@ export class ProductItemComponent implements OnInit {
       this._cartItems.push({ Add: '+', PID: cart.PID, ImgPath: cart.ImgPath, PName: cart.PName, Qty: 0, UnitPrice: cart.UnitPrice, Close: 'X' });
       console.log(JSON.stringify(this._cartItems));
     }
-    
+
     this._interactionService.sendForAddtoCart(this.featureItem);
     this._getTotalAmounts(cart.PID);
   }
   public _getTotalAmounts(pid) {
     this._cartItems = this.productService._cartItems;
-    
+
     this.totalAmounts = 0;
     if (this._cartItems != null) {
       this._cartItems.forEach((item) => {
         this.totalAmounts += (item.Qty * item.UnitPrice);
         if (item.PID == pid) {
-          //this.totalItems = item.Qty;         
           this.featureItem.totalItems = item.Qty
         }
       });
     }
   }
-  openDialog(feature_Item): void {
-    this._getTotalAmounts(feature_Item.PID);    
-    feature_Item.Qty = this.totalItems;
+  public openDialog(feature_Item): void {
+    this._getTotalAmounts(feature_Item.PID);
+    this.productService.getProductDetails(feature_Item.PID).subscribe((data: any) => {
+      if (data.isFulfilled) {
+        this.productDetailModel = data.fulfillmentValue
+      }
+    });
+    feature_Item.Qty = this.totalItems;    
     const dialogRef = this.dialog.open(DialogpdetailsComponent, {
       panelClass: 'custom-dialog-container',
       autoFocus: false, maxHeight: '90vh', width: '950px', data: feature_Item
-
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      //console.log('The dialog was closed');
       this.animal = result;
     });
   }

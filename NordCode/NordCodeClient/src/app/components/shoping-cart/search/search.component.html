@@ -1,22 +1,20 @@
-<div style="margin-top: 65px;">
-    <div class="col-12">
-        <div>
-            <div class="offset-1">
-                <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
-                    <div class="picsum-img-wrapper">
-                        <img class="features" src="../assets/img/product/banner/1200003.jpg">
-                    </div>
-                </a>
+<div style="margin-top: 50px;">
+    <div class="">
+        <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
+            <div class="picsum-img-wrapper">
+                <img class="features" src="../assets/img/product/banner/1200003.jpg">
             </div>
+        </a>
+    </div>
 
-            <div fxLayout="row" fxLayoutAlign="space-evenly center" *ngIf="totalItems">
-                <div class="row col-11">
-                    <label class="col-lg-12 font-weight-bold" style="font-size: 35px; padding-top: 20px; "> All products
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" *ngIf="totalItems">
+        <div class="row col-12">
+            <label class="col-lg-12 font-weight-bold" style="font-size: 35px; padding-top: 20px; "> All products
                         <a mat-raised-button btn-sm routerLink="" class="text-right more ">More....</a>
                         </label>
-                    <app-product-item [featureItem]="featureItem" *ngFor="let featureItem of productsModel"></app-product-item>
+            <app-product-item [featureItem]="featureItem" *ngFor="let featureItem of productsModel"></app-product-item>
 
-                    <!-- <label class="col-lg-12 font-weight-bold " style="font-size: 35px; padding-top: 20px; "> Popular
+            <!-- <label class="col-lg-12 font-weight-bold " style="font-size: 35px; padding-top: 20px; "> Popular
                     <a mat-raised-button btn-sm routerLink="" class="text-right more ">More....</a>
                     </label>
                     <app-product-item [featureItem]="featureItem" *ngFor="let featureItem of featuresModel"></app-product-item>
@@ -26,8 +24,7 @@
                     </label>
                     <app-product-item [featureItem]="featureItem " *ngFor="let featureItem of featuresModel "></app-product-item>
                 -->
-                </div>
-            </div>
         </div>
     </div>
+
 </div>

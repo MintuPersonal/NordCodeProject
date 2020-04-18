@@ -400,7 +400,7 @@ table {
 
 .price {
     border: none;
-    font-size: 2.5em;
+    font-size: 2em;
     font-weight: 900;
 }
 
@@ -416,4 +416,8 @@ table {
     border-radius: 6px;
     padding: 3px;
     margin: 5px;
+}
+
+.line {
+    text-decoration: line-through;
 }

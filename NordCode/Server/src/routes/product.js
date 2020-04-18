@@ -1,10 +1,10 @@
-
 const express = require('express');
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
+const db = require('../database/db.js');
+const { QueryTypes } = require('sequelize');
 
 const product = require('../models/Product.js');
-
 const router = express.Router();
 router.get('/getproductall', (req, res, next) => {
     var name = req.query.Name;
@@ -18,8 +18,25 @@ router.get('/getproducts', (req, res, next) => {
     var name = req.query.Name
     product.findAll({
         where: {
-            [Op.or]: [{ PName: { [Op.like]: '%' + name + '%', } }, { Brand: { [Op.like]: '%' + name + '%', } },
-            { Category: { [Op.like]: '%' + name + '%', } }, { Description: { [Op.like]: '%' + name + '%', } }]
+            [Op.or]: [{
+                    PName: {
+                        [Op.like]: '%' + name + '%',
+                    }
+                }, {
+                    Brand: {
+                        [Op.like]: '%' + name + '%',
+                    }
+                },
+                {
+                    Category: {
+                        [Op.like]: '%' + name + '%',
+                    }
+                }, {
+                    Description: {
+                        [Op.like]: '%' + name + '%',
+                    }
+                }
+            ]
         }
     }).then(products => {
         res.json(products);
@@ -29,8 +46,19 @@ router.get('/getproducts', (req, res, next) => {
 });
 router.get('/getproductsbyparam', (req, res, next) => {
     var name = req.query.Name;
-    product.findAll({ where: { [Op.or]: [{ Brand: { [Op.like]: '%' + name + '%', } }, { Category: { [Op.like]: '%' + name + '%', } }] } }
-    ).then(products => {
+    product.findAll({
+        where: {
+            [Op.or]: [{
+                Brand: {
+                    [Op.like]: '%' + name + '%',
+                }
+            }, {
+                Category: {
+                    [Op.like]: '%' + name + '%',
+                }
+            }]
+        }
+    }).then(products => {
         res.json(products);
     }).catch(err => {
         console.log('Error ' + err);
@@ -40,18 +68,48 @@ router.get('/getproductdetail', (req, res, next) => {
     var productdetailobj = {};
     var ProductId = req.query.PID;
     var name = '';
+    //var ProductIamges;
+    // ProductIamges.findAll({ Where: { PID: ProductId } }).then(PImage => {
+    //     ProductIamges = PImage;
+    //     console.log('TTTT ' + PImage[0]);
+    // });
+    var sqlquery = "Select image from Ecom_ProductIamges Where PID = " + ProductId + " And default_image=0"
+    const ProductIamges = db.sequelize.query(sqlquery, { type: QueryTypes.SELECT });
+    console.log(JSON.stringify(ProductIamges[0], null, 2));
+
     product.findByPk(ProductId).then(products => {
         console.log(products.Category);
         name = products.Category;
-        var imgUrl = products.Img_Path
-        productdetailobj.Banner = [imgUrl, 'One_' + imgUrl, 'Two_' + imgUrl, 'Three_' + imgUrl, 'Four_' + imgUrl];
+        //var imgUrl = products.ImgPath
+        productdetailobj.Banner = ProductIamges; //[imgUrl, 'One_' + imgUrl, 'Two_' + imgUrl, 'Three_' + imgUrl, 'Four_' + imgUrl];
         productdetailobj.Product = products;
+        var status = false;
+        if (products.length) {
+            status = true;
+        }
+        res.json({
+            status: status,
+            msg: 'Data loaded successfully',
+            productdetail: productdetailobj
+        });
+
     }).catch(err => {
         console.log('Error ' + err);
     });
 
-    product.findAll({ where: { [Op.or]: [{ Brand: { [Op.like]: '%' + name + '%', } }, { Category: { [Op.like]: '%' + name + '%', } }] } }
-    ).then(reproduces => {
+    product.findAll({
+        where: {
+            [Op.or]: [{
+                Brand: {
+                    [Op.like]: '%' + name + '%',
+                }
+            }, {
+                Category: {
+                    [Op.like]: '%' + name + '%',
+                }
+            }]
+        }
+    }).then(reproduces => {
         productdetailobj.Recommended = reproduces;
         res.json({
             status: true,
@@ -67,8 +125,7 @@ router.post('/createProduct', (req, res, next) => {
     if (!req.body) {
         res.status(400);
         res.json({ error: 'Bad data request' + req.body });
-    }
-    else {
+    } else {
         var pid = req.body.PID;
         console.log(req.body.PID);
         if (pid == 0) {
@@ -93,8 +150,7 @@ router.get('/deleteProduct', (req, res, next) => {
     if (pid = 0) {
         res.status(400);
         res.json({ error: 'Bad Request' + req.params });
-    }
-    else {
+    } else {
         product.destroy({ where: { PID: req.query.pid } })
             .then(data => {
                 res.send(data);
