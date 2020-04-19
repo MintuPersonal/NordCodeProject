@@ -1,6 +1,13 @@
 .details {
     background: lightgreen;
-    border: solid 1px lightgreen;
+    border: solid 1px green;
+    width: 33vw;
+    text-align: center;
+}
+
+.details:hover {
+    border: solid 1px #ff5722;
+    background: lightgreen;
     width: 33vw;
     text-align: center;
 }
@@ -10,13 +17,74 @@
     text-align: center;
 }
 
+.submited {
+    background: #ff5722c7;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    border-radius: 3px;
+    width: 200px;
+    border: solid 1px orangered;
+}
+
+.submited:hover {
+    background: #ff5722;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    border-radius: 3px;
+    width: 200px;
+    border: solid 1px orangered;
+}
+
+.onway {
+    background: lightgreen;
+    color: black;
+    padding: 5px;
+    text-align: center;
+    border-radius: 3px;
+    width: 200px;
+    border: solid 1px green;
+}
+
+.onway:hover {
+    border: solid 1px #ff5722;
+    background: lightgreen;
+    color: black;
+    padding: 5px;
+    text-align: center;
+    border-radius: 3px;
+    width: 200px;
+}
+
 .completed {
+    background: green;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    border-radius: 3px;
+    width: 200px;
+    border: solid 1px lightgreen;
+}
+
+.completed:hover {
+    border: solid 1px #ff5722;
     background: lightgreen;
     color: white;
     padding: 5px;
     text-align: center;
     border-radius: 3px;
     width: 200px;
+}
+
+.cancled {
+    background: lightgray;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    border-radius: 3px;
+    width: 200px;
+    border: solid 1px gray;
 }
 
 .top-55 {

@@ -3,7 +3,21 @@
         <!-- [routerLink]="['category', categoryItem.Category]" -->
         <mat-card class="card-picture" style="border-top-left-radius:3em; padding: 0px;">
             <mat-card-title style="display: grid;">
-                <img class="category" src="../assets/img/product/feature/{{categoryItem.ImgPath}}">
+                <!-- <img class="category" src="../assets/img/product/feature/{{categoryItem.ImgPath}}"> -->
+
+                <div class="flip-box">
+                    <div class="flip-box-inner">
+                        <div class="flip-box-front">
+                            <img src="../assets/img/product/feature/{{categoryItem.ImgPath}}" alt="Paris" style="width:300px;height:200px">
+                        </div>
+                        <div class="flip-box-back">
+                            <h2>{{categoryItem.PName}}</h2>
+                            <p>What an amazing {{categoryItem.PName}}</p>
+                            <img src="../assets/img/product/feature/{{categoryItem.ImgPath}}" alt="Paris" style="width:300px;height:200px">
+
+                        </div>
+                    </div>
+                </div>
             </mat-card-title>
         </mat-card>
     </a>

@@ -16,7 +16,10 @@
                         <tbody *ngFor="let item of orsers; index as itemed" class="tbody">
                             <tr class="clearfix"> . </tr>
                             <tr>
-                                <div class="completed"> Complete </div>
+                                <div *ngIf="item.OrderStatus == 1" class="submited"> Submited</div>
+                                <div *ngIf="item.OrderStatus == 2" class="onway"> On The Way </div>
+                                <div *ngIf="item.OrderStatus == 3" class="completed"> Completed </div>
+                                <div *ngIf="item.OrderStatus == 4" class="cancled"> Cancled </div>
                             </tr>
                             <tr class="tr">
                                 <div class="orderNo">Order # {{ item.TONumber }} </div>

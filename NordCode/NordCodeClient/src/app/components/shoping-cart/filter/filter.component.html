@@ -9,6 +9,9 @@
 
     <div fxLayout="row" fxLayoutAlign="space-evenly center">
         <div class="row col-12">
+            <label class="col-lg-12 font-weight-bold" style="font-size: 35px; padding-top: 20px; "> Special Offers
+                <a mat-raised-button btn-sm routerLink="" class="text-right more ">More....</a>
+                </label>
             <app-category-item [categoryItem]="categoryItem" *ngFor="let categoryItem of categoriesModel"></app-category-item>
         </div>
     </div>

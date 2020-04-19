@@ -7,14 +7,14 @@
         </div>
         <div fxLayout="row" fxLayoutAlign="space-evenly center" class="category">
             <div class="col-lg-12">
-                <label class=" font-weight-bold " style="font-size: 35px; margin: 10px 0 15px 0;">  Category </label>
+                <label class=" font-weight-bold " style="font-size: 30px; margin: 10px 0 15px 0;"> Our Product Categories </label>
                 <app-category></app-category>
             </div>
         </div>
 
         <div fxLayout="row" fxLayoutAlign="space-evenly center" class="brand">
             <div class="col-lg-12">
-                <label class="col-lg-12 font-weight-bold " style="font-size: 35px; padding: 5px;"> Brand </label>
+                <label class="col-lg-12 font-weight-bold " style="font-size: 30px; padding: 5px;"> Our Popular Brand </label>
                 <app-brand></app-brand>
             </div>
         </div>
@@ -22,7 +22,7 @@
         <div fxLayout="row " fxLayoutAlign="space-evenly center ">
             <div class="row col-lg-11">
 
-                <label class="col-lg-12 font-weight-bold" style="font-size: 35px; padding-top: 20px; "> All products
+                <label class="col-lg-12 font-weight-bold" style="font-size: 30px; padding-top: 20px; "> Popular Products
                         <a mat-raised-button btn-sm routerLink="" class="text-right more ">More....</a>
                         </label>
                 <app-product-item [featureItem]="featureItem" *ngFor="let featureItem of productsModel"></app-product-item>
