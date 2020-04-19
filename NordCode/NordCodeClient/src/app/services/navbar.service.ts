@@ -40,9 +40,11 @@ export class NavbarService {
   public openNavCart() {
     if (!this.isOpen) {
       document.getElementById("cartnav").style.width = "350px";
+      document.getElementById("menucart").style.visibility = "hidden";
       this.isOpen = true;
     } else {
       document.getElementById("cartnav").style.width = "0";
+      document.getElementById("menucart").style.visibility = "visible";      
       this.isOpen = false;
     }
   }

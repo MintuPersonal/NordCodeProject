@@ -456,3 +456,8 @@ mat-card-title {
     color: white;
     transform: rotateY(180deg);
 }
+
+.img {
+    height: 300px;
+    width: 100%;
+}

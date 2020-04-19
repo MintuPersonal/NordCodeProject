@@ -105,36 +105,36 @@
         </div>
     </footer>
 
-    <div class="row col-lg-12 bg-info p-1 " fxLayoutAlign="space-evenly center ">
-        <label class="col-lg-1 ">
-        <mat-icon fxFlex="5% " (click)="onClear() " style="color: whitesmoke; "> &nbsp; home </mat-icon>
-        <br> 
-         Home
-    </label>
-        <label class="col-lg-1 ">
-        <mat-icon fxFlex="5% " (click)="onClear() " style="color: whitesmoke; "> &nbsp; &nbsp; message </mat-icon>
-        <br>
-        Message
-    </label>
-        <label class="col-lg-1 ">
-        <mat-icon fxFlex="5% " (click)="onClear() " style="color: whitesmoke; "> &nbsp; add_shopping_cart </mat-icon>
-        <br>
-        Card
-    </label>
-        <label class="col-lg-1 ">
-        <mat-icon fxFlex="5% " (click)="onClear() " style="color: whitesmoke; "> &nbsp; &nbsp; account_circle
-        </mat-icon>
-        <br>
-        Account
-    </label>
+    <div class="row col-lg-12 bg-info p-1" fxLayoutAlign="space-evenly center">
+        <label class="col-3">
+        <h5>Customer Service</h5>
+         <br> 
+        <a routerLink="tmart/contactus"> Contact us </a>
+         <br> 
+         <a routerLink="tmart/paq"> FAQ </a>
+         </label>
 
+        <label class="col-2">
+            <h5> About Chaldal </h5>
+            <br> 
+           <a routerLink="/tmart"> Privacy Policy </a>
+            <br> 
+            <a routerLink="tmart/termsofuse"> Terms of Use </a>
+        </label>
+
+        <label class="col-2"> 
+            <h5> For Business </h5>
+            <br> 
+           <a routerLink="tmart/corporate"> Corporate </a>
+            <br> 
+            <a routerLink="tmart/termsofuse"> Terms of Use </a>          
+    </label>
+        <label class="col-3">  
         <small>
         <span class="version-info ">Current build version : {{version.full ? version.full : version}}</span> 
         <br>       
         &copy; Copyright 2020, T Mart Corporation
-    </small>
+        </small>
+    </label>
     </div>
-    <!-- <div class="footer ">
-        <p>Footer</p>
-    </div> -->
 </div>

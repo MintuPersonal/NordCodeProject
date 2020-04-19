@@ -49,6 +49,7 @@ import { SearchComponent } from './components/shoping-cart/search/search.compone
 import { ProfileComponent } from './components/admin/profile/profile.component';
 import { CategoryItemComponent } from './components/shoping-cart/filter/category-item/category-item/category-item.component';
 import { FilterComponent } from './components/shoping-cart/filter/filter.component';
+import { BusinesspolicyComponent } from './components/common/tmart/businesspolicy/businesspolicy.component';
 
 
 @NgModule({
@@ -57,7 +58,7 @@ import { FilterComponent } from './components/shoping-cart/filter/filter.compone
     NavbarComponent, AddnewComponent, HomeComponent, ProductComponent, ProductdetailsComponent, CommercialComponent,
     CheckoutComponent, OrderComponent, PaymentComponent, BannerComponent, ImageComponent, PhoneLoginComponent,
     DialogComponent, AlertHomeComponent, TopNavComponent, MenuComponent, MenuComponent, DialogpdetailsComponent, 
-    SearchComponent, ProfileComponent, CategoryItemComponent, FilterComponent],
+    SearchComponent, ProfileComponent, CategoryItemComponent, FilterComponent, BusinesspolicyComponent],
   imports: [
     RoutingModule, AlertModule, BrowserModule, NgbModule, BrowserAnimationsModule, HttpClientModule,
     FormsModule, ReactiveFormsModule, MatIconModule, MatInputModule, MatRadioModule, MatCheckboxModule,

@@ -18,6 +18,7 @@ import { DialogComponent } from './components/common/dialog/dialog.component';
 import { SearchComponent } from './components/shoping-cart/search/search.component';
 import { ProfileComponent } from './components/admin/profile/profile.component';
 import { FilterComponent } from './components/shoping-cart/filter/filter.component';
+import { BusinesspolicyComponent } from './components/common/tmart/businesspolicy/businesspolicy.component';
 
 const routes: Routes = [
   { path: '', component: ProductListComponent }, //, pathMatch: 'full' 
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'phonelogin', component: PhoneLoginComponent },
   { path: 'alerthome', component: AlertHomeComponent },
   { path: 'logindialog', component: DialogComponent },
+  { path: 'tmart', component: BusinesspolicyComponent },
 
   { path: 'signup', component: SignupComponent },
   { path: '**', redirectTo: '' }

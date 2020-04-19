@@ -1,0 +1,70 @@
+div.topicPage {
+    margin: 0 20px;
+    min-height: 900px;
+}
+
+div.page-bg-image {
+    position: relative;
+    display: block;
+    margin: auto;
+    max-width: 1200px;
+}
+
+div.topicPage .page-bg-image .link-section {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 25px;
+}
+
+blockquote,
+body,
+code,
+dd,
+div,
+dl,
+dt,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+li,
+ol,
+p,
+pre,
+td,
+textarea,
+th,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+user agent stylesheet div {
+    display: block;
+}
+
+body {
+    font-family: 'Segoe UI', Helvetica, 'Droid Sans', Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
+    font-size: 12px;
+    color: #615e58;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    line-height: normal;
+}

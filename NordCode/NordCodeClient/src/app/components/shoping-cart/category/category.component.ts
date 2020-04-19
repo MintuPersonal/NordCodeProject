@@ -35,10 +35,10 @@ export class CategoryComponent implements OnInit {
         this.categoriesModel = this.commercialModel['categories'];
         this.categoriesModel = this.categoriesModel.filter(res => {
           if (res.ParentId == 0) {
-            return res 
-          } 
+            return res
+          }
         });
-        debugger;
+        
         if (this.categoriesModel.length) {
           this.length = Math.round(this.categoriesModel.length / 6);
         }
@@ -53,7 +53,7 @@ export class CategoryComponent implements OnInit {
             if (l + j == this.categoriesModel.length) {
               l = 0;
             }
-            
+
             if (j != tlength) {
               m = j;
             }
@@ -69,7 +69,6 @@ export class CategoryComponent implements OnInit {
   }
 
   public SetRouteValue(text: string) {
-    debugger;
     this.productService.SetProductScearchFilter(text);
   }
 }
