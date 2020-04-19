@@ -47,6 +47,8 @@ import {
 } from '@angular/material';
 import { SearchComponent } from './components/shoping-cart/search/search.component';
 import { ProfileComponent } from './components/admin/profile/profile.component';
+import { CategoryItemComponent } from './components/shoping-cart/filter/category-item/category-item/category-item.component';
+import { FilterComponent } from './components/shoping-cart/filter/filter.component';
 
 
 @NgModule({
@@ -54,7 +56,8 @@ import { ProfileComponent } from './components/admin/profile/profile.component';
     FooterComponent, ProductListComponent, ProductItemComponent, CartComponent, LoginComponent, SignupComponent,
     NavbarComponent, AddnewComponent, HomeComponent, ProductComponent, ProductdetailsComponent, CommercialComponent,
     CheckoutComponent, OrderComponent, PaymentComponent, BannerComponent, ImageComponent, PhoneLoginComponent,
-    DialogComponent, AlertHomeComponent, TopNavComponent, MenuComponent, MenuComponent, DialogpdetailsComponent, SearchComponent, ProfileComponent],
+    DialogComponent, AlertHomeComponent, TopNavComponent, MenuComponent, MenuComponent, DialogpdetailsComponent, 
+    SearchComponent, ProfileComponent, CategoryItemComponent, FilterComponent],
   imports: [
     RoutingModule, AlertModule, BrowserModule, NgbModule, BrowserAnimationsModule, HttpClientModule,
     FormsModule, ReactiveFormsModule, MatIconModule, MatInputModule, MatRadioModule, MatCheckboxModule,

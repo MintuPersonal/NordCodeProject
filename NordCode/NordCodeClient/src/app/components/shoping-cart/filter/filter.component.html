@@ -1,1 +1,15 @@
-<p>filter works!</p>
+<div style="margin-top: 50px;">
+    <div class="">
+        <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
+            <div class="picsum-img-wrapper">
+                <img class="features" src="../assets/img/product/banner/1200003.jpg">
+            </div>
+        </a>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-evenly center">
+        <div class="row col-12">
+            <app-category-item [categoryItem]="categoryItem" *ngFor="let categoryItem of categoriesModel"></app-category-item>
+        </div>
+    </div>
+</div>

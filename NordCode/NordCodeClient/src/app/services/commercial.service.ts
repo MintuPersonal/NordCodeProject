@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 
 export class CommercialService {
   constructor(private _http: HttpClient) { }
-  getCommercial() {
+  public getCommercial() {
     return this._http.get(environment.baseurl + 'gethomes');
   }
   getAddtoCart() {    

@@ -9,3 +9,7 @@
 mat-icon {
     color: white;
 }
+
+a.carousel-control-prev.ng-star-inserted {
+    width: 35px;
+}

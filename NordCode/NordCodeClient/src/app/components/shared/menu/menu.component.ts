@@ -44,14 +44,26 @@ export class MenuComponent implements OnInit {
   }
 
   onItemSelected(item: NavItem) {
-    if (!item.ChildAnswers || !item.ChildAnswers.length) {
-      if (item.Text != "") {
+
+    if (item.ParentId != 0) {
+      if (!item.ChildAnswers || !item.ChildAnswers.length) {
         this.productService.SetProductScearchFilter(item.Text);
-        this.router.navigate([item.route + item.Text.toLocaleLowerCase()]);        
+        this.router.navigate(['search/' + item.Text.toLocaleLowerCase()]);       
       }
-    }
-    if (item.ChildAnswers && item.ChildAnswers.length) {     
-      this.expanded = !this.expanded;
+      if (item.ChildAnswers && item.ChildAnswers.length) {
+        this.expanded = !this.expanded;
+      }
+    } else {
+
+      if (!item.ChildAnswers || !item.ChildAnswers.length) {
+        this.productService.SetProductScearchFilter(item.Text);
+        this.router.navigate(['category/' + item.Text.toLocaleLowerCase()]);      
+      }
+      if (item.ChildAnswers && item.ChildAnswers.length) { 
+        this.expanded = !this.expanded;
+         // this.productService.SetProductScearchFilter(item.Text);
+         //this.router.navigate(['category/' + item.Text.toLocaleLowerCase()]); 
+      }
     }
   }
 }

@@ -1,93 +1,96 @@
 <ngb-carousel *ngIf="images" interval="2000">
-    <ng-template ngbSlide>
+    <ng-template ngbSlide *ngFor="let item of categories">
         <div class="row">
             <div class="picsum-img-wrapper col-lg-2">
-                <a [routerLink]="['search', categories[1]]">
+                <a [routerLink]="['category', item[0]]">
                     <mat-card style="background: orange;border-radius: 10px;">
                         <mat-card-subtitle></mat-card-subtitle>
                         <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
                             <mat-card-content>
                                 <mat-icon> fastfood </mat-icon>
-                                {{categories[0]}}
+                                {{item[0]}}
                             </mat-card-content>
                         </mat-card-title>
                     </mat-card>
                 </a>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <a [routerLink]="['search', categories[1]]">
+                <a [routerLink]="['category', item[1]]">
                     <mat-card style="background: palegoldenrod;border-radius: 10px;">
                         <mat-card-subtitle></mat-card-subtitle>
                         <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
                             <mat-card-content>
                                 <mat-icon> local_dining </mat-icon>
-                                {{categories[1]}} </mat-card-content>
+                                {{item[1]}} </mat-card-content>
                         </mat-card-title>
                     </mat-card>
                 </a>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <a [routerLink]="['search', categories[2]]">
+                <a [routerLink]="['category', item[2]]">
                     <mat-card style="background: palegreen;border-radius: 10px;">
                         <mat-card-subtitle></mat-card-subtitle>
                         <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
 
                             <mat-card-content>
                                 <mat-icon> fastfood </mat-icon>
-                                {{categories[2]}} </mat-card-content>
+                                {{item[2]}} </mat-card-content>
                         </mat-card-title>
                     </mat-card>
                 </a>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <a [routerLink]="['search', categories[3]]">
+                <a [routerLink]="['category', item[3]]">
                     <mat-card style="background: peachpuff;border-radius: 10px;">
                         <mat-card-subtitle></mat-card-subtitle>
                         <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
                             <mat-card-content>
                                 <mat-icon> local_dining </mat-icon>
-                                {{categories[3]}} </mat-card-content>
+                                {{item[3]}} </mat-card-content>
                         </mat-card-title>
                     </mat-card>
                 </a>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <a [routerLink]="['search', categories[4]]">
+                <a [routerLink]="['category', item[4]]">
                     <mat-card style="background: rosybrown;border-radius: 10px;">
                         <mat-card-subtitle></mat-card-subtitle>
                         <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
 
                             <mat-card-content>
                                 <mat-icon> local_dining </mat-icon>
-                                {{categories[4]}} </mat-card-content>
+                                {{item[4]}} </mat-card-content>
                         </mat-card-title>
                     </mat-card>
                 </a>
             </div>
             <div class="picsum-img-wrapper col-lg-2">
-                <a [routerLink]="['search', categories[5]]">
+                <a [routerLink]="['category', item[5]]">
                     <mat-card style="background: salmon;border-radius: 10px;">
                         <mat-card-subtitle></mat-card-subtitle>
                         <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
                             <mat-card-content>
                                 <mat-icon> fastfood </mat-icon>
-                                {{categories[5]}} </mat-card-content>
+                                {{item[5]}} </mat-card-content>
                         </mat-card-title>
                     </mat-card>
                 </a>
             </div>
         </div>
     </ng-template>
-    <ng-template ngbSlide>
+
+</ngb-carousel>
+
+<!-- <ng-template ngbSlide>
         <div class="row">
             <div class="picsum-img-wrapper col-lg-2">
-                <a [routerLink]="['search', categories[3]]">
+                <a [routerLink]="['search', item[3]]">
                     <mat-card style="background: orange;border-radius: 10px;">
                         <mat-card-subtitle></mat-card-subtitle>
                         <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
                             <mat-card-content>
                                 <mat-icon> fastfood </mat-icon>
-                                {{categories[2]}} </mat-card-content>
+                                {{item[2]}} </mat-card-content>
                         </mat-card-title>
                     </mat-card>
                 </a>
@@ -99,7 +102,7 @@
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
 
                         <mat-card-content>
-                            <mat-icon> local_dining </mat-icon> {{categories[4]}} </mat-card-content>
+                            <mat-icon> local_dining </mat-icon> {{item[4]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -110,7 +113,7 @@
 
                         <mat-card-content>
                             <mat-icon> fastfood </mat-icon>
-                            {{categories[5]}} </mat-card-content>
+                            {{item[5]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -121,7 +124,7 @@
 
                         <mat-card-content>
                             <mat-icon> local_dining </mat-icon>
-                            {{categories[6]}} </mat-card-content>
+                            {{item[6]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -132,7 +135,7 @@
 
                         <mat-card-content>
                             <mat-icon> fastfood </mat-icon>
-                            {{categories[1]}} </mat-card-content>
+                            {{item[1]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -143,7 +146,7 @@
 
                         <mat-card-content>
                             <mat-icon> local_dining </mat-icon>
-                            {{categories[3]}} </mat-card-content>
+                            {{item[3]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -151,15 +154,14 @@
     </ng-template>
     <ng-template ngbSlide>
         <div class="row">
-            <div class="picsum-img-wrapper col-lg-2">
-                <!-- <img [src]="images[2]" alt="Random first slide"> -->
+            <div class="picsum-img-wrapper col-lg-2">              
                 <mat-card style="background: orange;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
 
                         <mat-card-content>
                             <mat-icon> local_dining </mat-icon>
-                            {{categories[2]}} </mat-card-content>
+                            {{item[2]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -171,7 +173,7 @@
 
                         <mat-card-content>
                             <mat-icon> fastfood </mat-icon>
-                            {{categories[4]}} </mat-card-content>
+                            {{item[4]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -182,7 +184,7 @@
 
                         <mat-card-content>
                             <mat-icon> local_dining </mat-icon>
-                            {{categories[5]}} </mat-card-content>
+                            {{item[5]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -193,7 +195,7 @@
 
                         <mat-card-content>
                             <mat-icon> fastfood </mat-icon>
-                            {{categories[6]}} </mat-card-content>
+                            {{item[6]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -204,7 +206,7 @@
 
                         <mat-card-content>
                             <mat-icon> local_dining </mat-icon>
-                            {{categories[1]}} </mat-card-content>
+                            {{item[1]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -215,7 +217,7 @@
 
                         <mat-card-content>
                             <mat-icon> fastfood </mat-icon>
-                            {{categories[3]}} </mat-card-content>
+                            {{item[3]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -223,14 +225,13 @@
     </ng-template>
     <ng-template ngbSlide>
         <div class="row">
-            <div class="picsum-img-wrapper col-lg-2">
-                <!-- <img [src]="images[2]" alt="Random first slide"> -->
+            <div class="picsum-img-wrapper col-lg-2">               
                 <mat-card style="background: orangered;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
                         <mat-card-content>
                             <mat-icon> fastfood </mat-icon>
-                            {{categories[5]}} </mat-card-content>
+                            {{item[5]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -241,7 +242,7 @@
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
                         <mat-card-content>
                             <mat-icon> local_dining </mat-icon>
-                            {{categories[4]}} </mat-card-content>
+                            {{item[4]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -251,7 +252,7 @@
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
                         <mat-card-content>
                             <mat-icon> fastfood </mat-icon>
-                            {{categories[3]}} </mat-card-content>
+                            {{item[3]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -261,7 +262,7 @@
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
                         <mat-card-content>
                             <mat-icon> local_dining </mat-icon>
-                            {{categories[2]}} </mat-card-content>
+                            {{item[2]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -271,7 +272,7 @@
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
                         <mat-card-content>
                             <mat-icon> fastfood </mat-icon>
-                            {{categories[1]}} </mat-card-content>
+                            {{item[1]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
@@ -281,18 +282,9 @@
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
                         <mat-card-content>
                             <mat-icon> local_dining </mat-icon>
-                            {{categories[0]}} </mat-card-content>
+                            {{item[0]}} </mat-card-content>
                     </mat-card-title>
                 </mat-card>
             </div>
         </div>
-    </ng-template>
-</ngb-carousel>
-
-
-<!-- <mat-card  style="background: aquamarine;border-radius: 10px;">
-    <mat-card-subtitle></mat-card-subtitle>
-    <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
-        <mat-card-content> Baby Care </mat-card-content>
-    </mat-card-title>
-</mat-card> -->
+    </ng-template> -->

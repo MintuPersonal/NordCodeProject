@@ -44,7 +44,7 @@ export class ProductListComponent implements OnInit {
         this.commercialObj = data as object[];	 // FILL THE ARRAY WITH DATA.
         this._commercialModel = this.commercialObj['homeobj'];
 
-        this.categoriesModel = this._commercialModel['categories'];
+        this.categoriesModel = this._commercialModel['categories']; 
         this.bannersModel = this._commercialModel['banners'];
         this.brandsModel = this._commercialModel['brands'];
         this.featuresModel = this._commercialModel['features'];

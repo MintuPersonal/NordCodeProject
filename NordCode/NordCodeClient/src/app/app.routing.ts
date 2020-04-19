@@ -17,6 +17,7 @@ import { SignupComponent } from './components/admin/signup/signup.component';
 import { DialogComponent } from './components/common/dialog/dialog.component';
 import { SearchComponent } from './components/shoping-cart/search/search.component';
 import { ProfileComponent } from './components/admin/profile/profile.component';
+import { FilterComponent } from './components/shoping-cart/filter/filter.component';
 
 const routes: Routes = [
   { path: '', component: ProductListComponent }, //, pathMatch: 'full' 
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'myorders', component: OrderComponent },
   { path: 'payment/:order/:price', component: PaymentComponent },
 
+  { path: 'category/:filter', component: FilterComponent },
   { path: 'search/:filter', component: SearchComponent },
   { path: 'cart', component: CartComponent },
   { path: 'navbar', component: NavbarComponent },

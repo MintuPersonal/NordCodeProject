@@ -23,9 +23,7 @@
                 </span>
             </p>
             <hr>
-
             <form class="example-form" #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)">
-
                 <mat-form-field [hidden]="true">
                     <input matInput name="FileUrl" ngModel [(ngModel)]="customerModel.FileUrl">
                     <input matInput name="FileImage" ngModel [(ngModel)]="customerModel.FileImage">
@@ -58,7 +56,7 @@
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
-                <hr> {{customerModel | json}}
+                <!-- <hr> {{customerModel | json}} -->
                 <div class="example-button-row">
                     <!-- [disabled]="customerModel.form.invalid" -->
                     <button mat-raised-button color="primary" class="material-cust-large-button"> Create </button>
@@ -69,26 +67,7 @@
                         <b>
                             &nbsp; Sign In </b> </a>
                 </div>
-
             </form>
         </mat-card>
     </div>
 </div>
-
-
-
-
-
-<!-- <mat-form-field class="example-full-width">
-                    <input matInput #Username="ngModel" [(ngModel)]="customerModel.Username" name="Username" ngModel type="email" required minlength="6" placeholder="EMAIL" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-                    <mat-error *ngIf="Username.invalid"> Please erter an valid email. </mat-error>
-                </mat-form-field>
-
-                <mat-form-field class="example-full-width">
-                    <input matInput #Password="ngModel" [(ngModel)]="customerModel.Password" name="Password" ngModel type="Password" required minlength="6" placeholder="Password">
-                    <mat-error *ngIf="Password.invalid"> Please erter six character. </mat-error>
-                </mat-form-field>
-                <mat-form-field class="example-full-width">
-                    <input matInput #confirmPassword="ngModel" [(ngModel)]="customerModel.ConfirmPassword" name="confirmPassword" ngModel type="Password" required minlength="6" placeholder="CONFIRM Password">
-                    <mat-error *ngIf="confirmPassword.invalid"> Password Mismatch. </mat-error>
-                </mat-form-field> -->
