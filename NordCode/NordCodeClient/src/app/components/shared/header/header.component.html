@@ -4,7 +4,8 @@
             <div class="over-line">
                 <div class="row " fxLayoutAlign="space-evenly">
                     <div class="col-lg-2">
-                        <a routerLink="/" onclick="return false;">
+                        <a href="javascript:void(0)">
+                            <!-- javascript:void(0) -->
                             <mat-icon mat-icon-button id="menu" (click)="navService.openNavMenu()"> menu </mat-icon>
                         </a>
                         <a routerLink=""><img class="img" src="../assets/img/product/header/Logo.jpg"></a>
@@ -12,20 +13,25 @@
                     <input [pCategoryName]="pCategoryName" [(ngModel)]="pCategoryName" #myInput (input)="Search()" class="col-lg-7" type="text" placeholder="Search for products (e.g. eggs, milk, alu)">
 
                     <div class="col-lg-1 signin-cart">
-                        <mat-icon (click)="navService.openNavCart()" [matBadge]="totalItem" matBadgeColor="warn">add_shopping_cart</mat-icon>
-                        <span class="cdk-visually-hidden" (click)="navService.openNavCart()"> </span>
+                        <a href="javascript:void(0)">
+                            <mat-icon (click)="navService.openNavCart()" [matBadge]="totalItem" matBadgeColor="warn">add_shopping_cart</mat-icon>
+                            <span class="cdk-visually-hidden" (click)="navService.openNavCart()"> </span>
+                        </a>
                     </div>
                     <div class="enbn  col-lg-1">
                         <span> En | Bn </span>
                     </div>
-                    <div class="col-lg-1 signin">
-                        <span *ngIf="!logincondition" (click)="PhoneLogin()"> Signin </span>
-                        <span *ngIf="logincondition" class="dropdown">
-                    <!-- <mat-icon> person_pin </mat-icon>  -->
-                    <i class="fa fa-user-circle"> </i>  <span> {{userName}} </span>
-                        <div class="dropdown-content text-left">
+                    <div class="col-lg-1 signin enbn">
+                        <a href="javascript:void(0)">
+                            <span *ngIf="!logincondition" (click)="PhoneLogin()"> Signin </span>
+                        </a>
+                        <span *ngIf="logincondition" class="dropdown">  
+                                            
+                    <i class="fa fa-user-circle"> </i>  
+                    <span> {{userName}} </span>
+                        <div class="dropdown-content text-left" style="z-index: 9999;">
                             <!-- (click)="alertService.success('Success!!', options)" -->
-                            <button class="btn btn-success m-1">Success</button>
+                            <!-- <button class="btn btn-success m-1">Success</button> -->
                             <a href="myprofile" class="fa fa-user-circle"> &nbsp; My Profile </a>
                             <a href="myorders" class="fa fa-reorder"> &nbsp; My Orders </a>
                             <a href="account-history" class="fa fa-history"> &nbsp; Payment Histry</a>
@@ -35,14 +41,14 @@
                         </span>
                     </div>
                 </div>
-                <div style="display: none;" id="menucarthide" mat-icon-button (click)="navService.openNavCart()">
+                <!-- <div style="display: none;" id="menucarthide" mat-icon-button (click)="navService.openNavCart()">
                     <mat-icon> shopping_basket </mat-icon>
                     <br>
                     <label> {{totalItem}} items </label>
                     <div class="pricecrt">
                         <label> Tk. {{totalAmounts}} </label>
                     </div>
-                </div>
+                </div> -->
                 <div id="cartnav" class="sidepanel addcart" style="position:relative;right: 100%;">
                     <mat-label class="mat-lebal">{{totalItem}} Items</mat-label>
                     <a href=" javascript:void(0)" class="closebtn" (click)="navService.openNavCart()">&times;</a>
@@ -59,7 +65,7 @@
                                     <thead>
                                         <tr class="tr">
                                             <th colspan="3">&nbsp; You have reduced delivery charge </th>
-                                            <th colspan="2"> 20 </th>
+                                            <th colspan="2">&nbsp; 20 </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -75,7 +81,7 @@
                                             <td>{{ item.PName}}</td>
                                             <td>{{ item.Qty * item.UnitPrice | currency: 'BD '}} </td>
                                             <td title="remove from bag" class="td" (click)="RemoveFromCart(itemed)">
-                                                <span class="icon"> {{ item.Close }} </span>
+                                                &nbsp; <span class="icon"> {{ item.Close }} </span>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -113,9 +119,6 @@
         </div>
     </div>
 </div>
-
-<!-- <app-cart></app-cart> -->
-
 
 <div id="menunav" class="sidepanelmenu addcartMenu" style="width: 245px;">
     <mat-nav-list>

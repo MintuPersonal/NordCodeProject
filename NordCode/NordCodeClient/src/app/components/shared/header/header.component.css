@@ -24,10 +24,8 @@
         }
         
         .addcart {
-            z-index: 888;
             max-width: 850px;
-            top: 25px !important;
-            position: relative;
+            height: 95vh;
         }
         
         .addcartMenu {
@@ -302,7 +300,7 @@
             float: right;
             z-index: 999;
             background: white;
-            padding-top: 20px;
+            padding-top: 10px;
             width: 0px;
         }
         
@@ -327,7 +325,6 @@
         }
         
         .mat-lebal {
-            margin-left: 130px;
             font-size: 25px;
         }
         

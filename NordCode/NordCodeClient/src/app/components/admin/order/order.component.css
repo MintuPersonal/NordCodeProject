@@ -68,6 +68,14 @@
 }
 
 .completed:hover {
+    cursor: pointer;
+}
+
+.details {
+    cursor: pointer;
+}
+
+.completed:hover {
     border: solid 1px #ff5722;
     background: lightgreen;
     color: white;

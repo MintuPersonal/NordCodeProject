@@ -1,4 +1,6 @@
-﻿import { Routes, RouterModule } from '@angular/router';
+﻿import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
 import { ProductListComponent } from './components/shoping-cart/product-list/product-list.component';
 import { CartComponent } from './components/shoping-cart/cart/cart.component';
 import { HomeComponent } from './components/admin/home/home.component';
@@ -18,7 +20,14 @@ import { DialogComponent } from './components/common/dialog/dialog.component';
 import { SearchComponent } from './components/shoping-cart/search/search.component';
 import { ProfileComponent } from './components/admin/profile/profile.component';
 import { FilterComponent } from './components/shoping-cart/filter/filter.component';
-import { BusinesspolicyComponent } from './components/common/tmart/businesspolicy/businesspolicy.component';
+import { FaqComponent } from './components/common/tmart/faq/faq.component';
+import { StoryComponent } from './components/common/tmart/story/story.component';
+import { ContactComponent } from './components/common/tmart/contact/contact.component';
+import { PolicyComponent } from './components/common/tmart/policy/policy.component';
+import { TermsComponent } from './components/common/tmart/terms/terms.component';
+import { TmartComponent } from './components/common/tmart/tmart.component';
+import { CorporateComponent } from './components/common/tmart/corporate/corporate.component';
+
 
 const routes: Routes = [
   { path: '', component: ProductListComponent }, //, pathMatch: 'full' 
@@ -40,11 +49,27 @@ const routes: Routes = [
   { path: 'phonelogin', component: PhoneLoginComponent },
   { path: 'alerthome', component: AlertHomeComponent },
   { path: 'logindialog', component: DialogComponent },
-  { path: 'tmart', component: BusinesspolicyComponent },
 
+  { path: 'corporate', component: CorporateComponent },
+  { path: 'tmart/faq', component: FaqComponent},
+  { path: 'tmart/story', component:  StoryComponent},
+  { path: 'tmart/contact', component: ContactComponent},
+  { path: 'tmart/policy', component: PolicyComponent},
+  { path: 'tmart/terms', component:  TermsComponent},
+  
   { path: 'signup', component: SignupComponent },
   { path: '**', redirectTo: '' }
 
 ];
 
 export const RoutingModule = RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' }); //, { onSameUrlNavigation: 'reload' }
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes),
+    CommonModule
+  ],
+  exports: [ RouterModule ],
+  declarations: []
+})
+export class AppRoutingModule  { }

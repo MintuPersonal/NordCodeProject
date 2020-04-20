@@ -58,4 +58,14 @@ export class NavbarService {
       this.isOpenMenu = false;
     }
   }
+
+  // public openNavCart() {
+  //   if (!this.isOpen) {
+  //     document.getElementById("cartnav").style.display = "block";
+  //     this.isOpen = true;
+  //   } else {
+  //     document.getElementById("cartnav").style.display = "none";
+  //     this.isOpen = false;
+  //   }
+  // }
 }

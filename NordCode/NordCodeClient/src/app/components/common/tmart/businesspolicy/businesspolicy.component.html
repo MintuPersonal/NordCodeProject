@@ -1,19 +1,368 @@
-<div class="topicPage" style="margin-top: 50px;">
-    <div class="page-bg-image" data-reactid=".2e5stz39ouw.6.2.0.0.0.0">
-        <div style="background-image: url('https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-611/Default/components/page/Topic/images/contact2.png?q=best&webp=1&alpha=1')"> </div>
-        <div class="page-image" style="background-image: url('https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-611/Default/components/page/Topic/images/contact2.png?q=best&webp=1&alpha=1'); background-size: cover; background-position: center center; background-repeat: no-repeat;"></div>
-        <div class="page-title" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.1">Contact Us</div>
-        <div class="link-section" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2">
-            <ul class="page-link" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0">
-                <li class="links" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_0"><a class="itemLinks" href="/t/Help" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_0.0">FAQ</a><span class="itemUnderline" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_0.1"></span></li>
-                <li class="links" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_1"><a class="itemLinks" href="/t/AboutUs" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_1.0">Our Story</a><span class="itemUnderline" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_1.1"></span></li>
-                <li class="links" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_2"><a class="itemLinks" href="/t/Team" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_2.0">Team</a><span class="itemUnderline" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_2.1"></span></li>
-                <li class="links" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_3"><a class="itemLinks" href="/t/Career" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_3.0">Career</a><span class="itemUnderline" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_3.1"></span></li>
-                <li class="links selectedLink" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_4"><a class="itemLinks" href="/t/ContactUs" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_4.0">Contact Us</a><span class="itemUnderline" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_4.1"></span></li>
-                <li class="links" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_5"><a class="itemLinks" href="/t/PrivacyInfo" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_5.0">Privacy Policy</a><span class="itemUnderline" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_5.1"></span></li>
-                <li class="links" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_6"><a class="itemLinks" href="/t/TermsOfUse" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_6.0">Terms of Use</a><span class="itemUnderline" data-reactid=".2e5stz39ouw.6.2.0.0.0.0.2.0.$link_6.1"></span></li>
+<div class="alert alert-danger" *ngIf="errorMsg"> {{ errorMsg }} </div>
+<div class="contains">
+    <mat-card *ngIf="!submitted">
+        <p class="text-center" style="height: 100px;">
+            <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-611/Default/components/page/Topic/images/terms2.png?q=best&webp=1&alpha=1" *ngIf="!imgURL" alt="{{message}}">
+        </p>
+        <h4 class="text-center"> Contact Us </h4>
+
+        <hr>
+        <br>
+        <br>
+        <br>
+        <div id="navigation">
+            <ul>
+                <li><a href="tmart/home"><span>Home</span></a></li>
+                <li><a href="#"><span>About</span></a></li>
+                <li><a href="#"><span>Our Work</span></a></li>
+                <li><a href="#"><span>Products</span></a></li>
+                <li class="last"><a href="#"><span>Contact Us</span></a></li>
             </ul>
         </div>
+        <!-- <div class="offset-3">
+            <mat-tab-group>
+                <mat-tab label="First"> Content 1 </mat-tab>
+                <mat-tab label="Second"> Content 2 </mat-tab>
+                <mat-tab label="Third"> Content 3 </mat-tab>
+            </mat-tab-group>
+        </div> -->
+    </mat-card>
+
+</div>
+
+
+<div class="m-5">
+    <!-- <div style="background-image: image('https://cdn.Tmart.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-611/Default/components/page/Topic/images/contact2.png?q=best&webp=1&alpha=1');"> -->
+    <!-- <img class="banner" src="https://cdn.Tmart.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-611/Default/components/page/Topic/images/contact2.png?q=best&webp=1&alpha=1"> -->
+    <!-- <img class="banner" src="../assets/img/product/banner/faq.jpg"> -->
+    <div style="background: transparent;">
+        <mat-tab-group>
+            <mat-tab label="FAQ">
+
+                <div class="body needHelpItemBody">
+                    <div>
+                        <strong>
+                            <br>Q. How does the site work?
+                        </strong>&nbsp;
+                        <br>
+                        <br>
+                    </div>
+                    <div><br>A. You can browse the site or use our search engine to find your desired products. You can then add them to your shopping bag and click on place order. You let us know your address, select a delivery time – and voila, you are done.&nbsp;
+                        A Tmart representative will then deliver your order right to your home or office.&nbsp;<br><br></div>
+                    <div><strong><br>Q. How much do deliveries cost?</strong>&nbsp;<br><br></div>
+                    <div><br>A. There is a BDT 29 delivery fee if the order value is BDT 300 or more. If the order value is less than BDT 300, we charge BDT 49 delivery fee.&nbsp;<br><br></div>
+                    <div><strong><br>Q. How can I contact you?</strong>&nbsp;<br><br></div>
+                    <div><br>A. You can always call <strong>+880-17571-234567</strong> or mail us at support@Tmart.com.&nbsp;<br><br></div>
+                    <div><strong><br>Q. How long do the deliveries take?</strong>&nbsp;<br><br></div>
+                    <div><br>A. We are serving with 1 Hour Delivery Service to Azimpur, Badda, Banani, Banasree, Baridhara, Bashundhara RA, Cantonment, DOHS Banani, DOHS Baridhara, DOHS Mohakhali, Dhaka University, Dhanmondi, Eskaton, Farmgate, Gulshan, Kakrail,
+                        Kalabagan, Khilgaon, Mirpur, Mohakhali, Moghbazaar, Mohammadpur, Motijheel, Niketon, Nikunja, Pallabi, Paltan, Ramna, Rampura, Tejgaon, Uttara, DOHS Mirpur, Adabor, Shaymoli, Paikpara, Malibag, Gabtoli, Kallyanpur, Agargaon, Wari,
+                        Pink City, Uttar Khan, Dakshin Khan. For the rest of the Dhaka city, we are currently delivering within 4-7 hours timeframe.&nbsp; You can also specify a convenient time and we will send the products during that time.&nbsp;<br><br></div>
+                    <div><strong><br>Q. What are your delivery hours?</strong>&nbsp;<br><br></div>
+                    <div><br>A. We deliver from 8 am to 10 pm every day. You can choose from available slots to find something that is convenient to you.&nbsp;<br><br></div>
+                    <div><strong><br>Q. How do I know when my order is here?</strong>&nbsp;<br><br></div>
+                    <div><br>A. A Tmart representative will call you as soon as they are at your house to let you know about your delivery.&nbsp;<br><br></div>
+                    <div><strong><br>Q. How do I pay?</strong>&nbsp;<br><br></div>
+                    <div><br>A. We accept cash on delivery and we also have Online Credit Card and Online Bkash service. Don’t worry, our Tmart representatives should always carry enough change.&nbsp;<br><br></div>
+                    <div><strong><br>Q. Do you serve my area?</strong>&nbsp;<br><br></div>
+                    <div><br>A. We are currently serving all of Dhaka city, except certain parts of Old town.&nbsp;<br><br></div>
+                    <div><strong><br>Q. I can’t find the product I am looking for. What do I do?</strong>&nbsp;<br><br></div>
+                    <div><br>A. We are always open to new suggestions and will add an item to our inventory just for you. There is a "Product Request" feature that you can use to inform us of your requirement. You can also call +880-1757-1234-567 or mail us
+                        at support@Tmart.com to add an item to our inventory.&nbsp;<br><br></div>
+                    <div><strong><br>Q. My order is wrong. What do I do?</strong>&nbsp;<br><br></div>
+                    <div><br>A. Please Immediately call +880-175-1234-567 and let us know the problem.&nbsp;<br><br></div>
+                    <div><strong><br>Q. What if the item is out of stock?</strong>&nbsp;<br><br></div>
+                    <div><br>A. We hold our own inventory in 9 of our warehouses, so we rarely run of out stock. However, we will try our best to source what you need. If we cannot find it, we will SMS/call you and let you know what substitutes are available.&nbsp;<br><br></div>
+                    <div><strong><br>Q. What happens during a hartal?</strong>&nbsp;<br><br></div>
+                    <div><br>A. We work during hartals. That’s how dedicated we are.&nbsp;<br><br></div>
+                    <div><strong><br>Q. Why should we buy from you when I have a store nearby?</strong>&nbsp;<br><br></div>
+                    <div><br>A. Well, that is up to you but you can also be a couch potato like our founders and have your items delivered to your house for free. Our prices are sometimes lower than that of major superstores in the city. We also carry a larger
+                        variety than the average corner-store. So, there is really no reason to not buy from us.&nbsp;<br><br></div>
+                    <div><strong><br>Q. What about the prices?</strong>&nbsp;<br><br></div>
+                    <div><br>A. Our prices are our own but we try our best to offer them to you at or below market prices. Our prices are the same as the local market and we are working hard to get them even lower! If you feel that any product is priced unfairly,
+                        please let us know.&nbsp;<br><br></div>
+                    <div><strong><br>Q. How do you deliver?</strong>&nbsp;<br><br></div>
+                    <div><br>A. We use our own fleet to deliver. Our goal is to deliver the products to your place on time.&nbsp;<br><br></div>
+                    <div><strong><br>Q. What is your policy on refunds?</strong>&nbsp;<br><br></div>
+                    <div><br>A. You may get a refund within ten (10) days on unopened or spoilt packaged products. For diapers and perishable products, such as milk, fruits and fresh vegetables, we have a one (1) day return policy. We will not accept any diaper
+                        items as return if more than 20% of the pack has been used. We reserve the right to refuse a refund. Please contact us at +880-175-1234-567 if you want to return an item.&nbsp;<br><br></div>
+                    <div><strong><br>Q. Can I get a refund via cash?</strong>&nbsp;<br><br></div>
+                    <div><br>A. No, for any sort of issue, we will update the credit to your Tmart account. If requested, we will refund through card/ bKash/ mobile recharge.&nbsp;<br><br></div>
+                    <div><strong><br>Q. What is your discounting policy?</strong>&nbsp;<br><br></div>
+                    <div><br>A. We try to provide the best deals in Dhaka and many of our products are already discounted below the maximum retail price (MRP). We also offer discount codes under special circumstances, which are applied on the MRP. On any given
+                        product, we can only apply one type of discount. We always consider the best discount available to the customer. For example: If the MRP of a product is Tk. 100 and our list price is Tk. 92 -- the product is already sold at a 8%
+                        discount. This means that if user applies a discount code for 5% discount, we will still consider the best discount available to the user and sell the product at Tk. 92.&nbsp;<br><br></div>
+                    <div><strong><br>Q.&nbsp; Can I order over the phone?</strong>&nbsp;<br><br></div>
+                    <div><br>A. Absolutely. Our hotline is +880-175-1234-567.&nbsp;<br><br></div>
+                    <div><strong><br>Q. What about quality?</strong>&nbsp;<br><br></div>
+                    <div><br>A. We try our best to source the best quality items for you but if you are dissatisfied, you can always send them back with the delivery person. If you forget to do that, you can call us within 3 days and we will replace the item
+                        for free.&nbsp;<br><br></div>
+                    <div><strong><br>Q. How are you sourcing your products?</strong>&nbsp;<br><br></div>
+                    <div><br>A. We have deals with whole-sellers, manufacturers and importers. We only sell authentic products.&nbsp;<br><br></div>
+                    <div><strong><br>Q. Should I tip the delivery representative?</strong>&nbsp;<br><br></div>
+                    <div><br>A. Tips are not required. But our delivery team members appreciate recognition for their hard work. Delivery representatives keep the entire tip amount.<br><br></div>
+                </div>
+
+            </mat-tab>
+            <mat-tab label="Our Story">
+                <div class="body needHelpItemBody" data-reactid=".11u8ycziz68.6.2.0.0.0.1.0">
+                    <div><strong>Our Story</strong></div>
+                    <div>Tmart.com is an online shop in Dhaka, Bangladesh. We believe time is valuable to our fellow Dhaka residents, and that they should not have to waste hours in traffic, brave harsh weather and wait in line just to buy necessities like
+                        eggs!&nbsp; This is why we deliver every day needs to our customers’ door-steps across Dhaka.<br><br></div>
+                    <div>Tmart is a work in progress, and we hope to get better over time. We are firm believers in using technology and education to improve Bangladesh, and we will continue to invest all our effort in pushing the boundaries of technology.</div>
+                    <div>If you have ideas on how we can improve, we would love to hear from you. Please do email us at <a href="mailto:founders@Tmart.com"><strong>info@Tmart.com</strong></a>.</div>
+                    <div><br><strong>Waseem (Founder &amp; CEO)<br></strong>Before Tmart, Waseem worked at Sigfig, a Silicon Valley financial technology startup. At Sigfig, he led the development of a web-based portfolio management software. He designed algorithms
+                        to monitor over $100 billion in brokerage assets held by retail investors.He aspires to change the culture in Bangladesh so that people value investment in bold ideas and are more accepting of new technology. Waseem graduated from
+                        the Wharton School, University of Pennsylvania with a degree in Finance and Entrepreneurship.<br><br><strong>Zia (Founder &amp; COO)<br></strong>Zia brings in experience from the field of management and marketing. Prior to Tmart,
+                        he was the Head of Operations at a ready-made garments factory in Bangladesh. He managed over 1000 employees and oversaw all facets of the business including merchandising, production, commercial design and marketing. Zia has an
+                        autistic brother, and he hopes to provide proper care and education to all autistic children. He also believes that a university degree is no measure of a person’s merit.&nbsp; Zia holds a BBA in Marketing from North South University.<br><br><strong>Tejas (Founder &amp; CTO)<br></strong>Tejas
+                        is a full stack engineer. Prior to Tmart he worked at Sigfig where he was in charge of tech infrastructure.His hobby includes research on Lisp machines and how we can develop better software. Tejas has a degree in Computer Science
+                        from National University of Singapore. He invites you to read more about <a href="https://Tmart.tech"><strong>Tmart Engineering</strong></a>.<br><br><strong>Arun Ramamurthy (Senior Software Engineer)<br></strong>Arun is a full
+                        stack engineer who has previously worked at Broadcom. He has a Masters in Computer Engineering from the University of British Columbia.&nbsp;</div>
+                </div>
+
+            </mat-tab>
+            <mat-tab label="Contact Us">
+                <br>
+                <div class="body needHelpItemBody" data-reactid=".11u8ycziz68.6.2.0.0.0.1.0">
+                    <p>Feel free to contact us anytime at <strong>+880-175-1234567</strong>.</p>
+                    <p>Or if you prefer, you can drop us a note using the form below. You'll always get a response from a real person — with a real name — within 48 hours.</p>
+                </div>
+                <br>
+                <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }} </div>
+
+                <div>
+                    <mat-card *ngIf="!submitted">
+                        <h4 class="text-center"> Contact Us </h4>
+                        <!-- <hr>
+                        <p class="text-center" style="height: 100px;">
+                            <img [src]="imgURL" height="200" width="90px" *ngIf="imgURL" alt="" class="rounded-circle img-fluid">
+                            <img src="../assets/img/product/header/Logo.jpg" *ngIf="!imgURL" class="rounded-circle" alt="{{message}}">
+
+                        </p> -->
+                        <hr>
+                        <br>
+                        <form class="example-form" #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)" class="">
+                            <!-- <mat-form-field [hidden]="true">
+                                <input matInput name="FileUrl" ngModel [(ngModel)]="customerModel.FileUrl">
+                                <input matInput name="FileImage" ngModel [(ngModel)]="customerModel.FileImage">
+                                <input matInput name="FileExtension" ngModel [(ngModel)]="customerModel.FileExtension">
+                                <input matInput name="TrackedId" ngModel [(ngModel)]="customerModel.TrackedId">
+                            </mat-form-field> -->
+
+                            <mat-form-field class="example-full-width">
+                                <input #Name='ngModel' [(ngModel)]="customerModel.Name" name="Name" required matInput ngModel type="text" placeholder="Full Name">
+                                <mat-error *ngIf="Name.invalid"> Please enter minimum three letter. </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field class="example-full-width">
+                                <input matInput #Email="ngModel" [(ngModel)]="customerModel.Email" name="Email" ngModel type="email" required minlength="6" placeholder="EMAIL" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                                <mat-error *ngIf="Email.invalid"> Please erter an valid email. </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field class="example-full-width">
+                                <input matInput #MobileNo="ngModel" [(ngModel)]="customerModel.MobileNo" name="MobileNo" ngModel type="text" required minlength="6" placeholder="Password">
+                                <mat-error *ngIf="MobileNo.invalid"> Please erter six character. </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field class="example-full-width">
+                                <textarea #Address='ngModel' [(ngModel)]="customerModel.Address" name="Address" required matInput ngModel type="text" placeholder="Details Address"></textarea>
+                                <mat-error *ngIf="Address.invalid"> Please enter details address. </mat-error>
+                            </mat-form-field>
+
+                            <!-- <mat-form-field class="example-full-width">
+                                <input matInput [matDatepicker]="picker" [formControl]="Birthday" placeholder="BIRTHDAY" (dateChange)="EndDateChange($event)">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field> -->
+                            <hr>
+                            <div class="example-button-row">
+                                <!-- [disabled]="customerModel.form.invalid" -->
+                                <button mat-raised-button color="primary" class="material-cust-large-button"> Create </button>
+                            </div>
+                            <br> {{customerModel | json}}
+                        </form>
+                        <div class="callUs">
+                            <span>Or call us</span>
+                            <span>: </span>
+                            <span>0175-1234567</span>
+                        </div>
+                    </mat-card>
+                </div>
+
+            </mat-tab>
+            <mat-tab label="Privacy Policy">
+                <br>
+                <div class="body needHelpItemBody" class="text-justify">
+                    <p>When you use our Website, we collect and store your personal information which is provided by you from time to time. Our primary goal in doing so is to provide you a safe, efficient, smooth and customized experience. This allows us
+                        to provide services and features that most likely meet your needs, and to customize our website to make your experience safer and easier. More importantly, while doing so, we collect personal information from you that we consider
+                        necessary for achieving this purpose.
+                    </p>
+                    <br>
+                    <p>Below are some of the ways in which we collect and store your information:<b></b></p>
+
+                    <ul>
+                        <li>We receive and store any information you enter on our website or give us in any other way.&nbsp;We use the information that you provide for such purposes as responding to your requests, customizing future shopping for you, improving
+                            our stores, and communicating with you.</li>
+                        <li>We also store certain types of information whenever you interact with us. For example, like many websites, we use "cookies," and we obtain certain types of information when your web browser accesses Tmart.com or advertisements
+                            and other content served by or on behalf of Tmart.com on other websites.</li>
+                        <li>To help us make e-mails more useful and interesting, we often receive a confirmation when you open e-mail from Tmart if your computer supports such capabilities.</li>
+                    </ul>
+                    <br>
+                    <p>Information about our customers is an important part of our business, and we are not in the business of selling it to others.&nbsp;</p>
+                    <br>
+                    <p>We release account and other personal information when we believe release is appropriate to comply with the law; enforce or apply our&nbsp;Terms of Use&nbsp;and other agreements; or protect the rights, property, or safety of Tmart.com,
+                        our users, or others. This includes exchanging information with other companies and organizations for fraud protection.</p>
+                </div>
+            </mat-tab>
+            <mat-tab label="Terms of Use">
+                <br>
+                <div class="body needHelpItemBody" data-reactid=".11u8ycziz68.6.2.0.0.0.1.0">
+                    <div><strong>1.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Terms of Use</strong>&nbsp;</div>
+                    <div><br>1.1&nbsp; &nbsp; &nbsp; &nbsp;Welcome to Tmart.com. Tmart Limited (“<strong>Tmart</strong>”) provides access to the Tmart.com website or the mobile application/app or any other media <strong>("Website") </strong>to you subject
+                        to the terms and conditions (“<strong>Terms</strong>”) set out on this page. By using the Website, you, a registered or guest user in terms of the eligibility criteria set out herein (“User”) agree to be bound by the Terms. Please
+                        read them carefully as your continued usage of the Website, you signify your agreement to be bound by these Terms. If you do not want to be bound by the Terms, you must not subscribe to or use the Website or our services.&nbsp;<br><br></div>
+                    <div><br>1.2&nbsp; &nbsp; &nbsp; &nbsp;By impliedly or expressly accepting these Terms, you also accept and agree to be bound by Tmart Policies (including but not limited to Privacy Policy available at <a href="https://Tmart.com/t/PrivacyInfo"><strong>https://Tmart.com/t/PrivacyInfo</strong></a>)
+                        as amended from time to time.&nbsp;<br><br></div>
+                    <div><br>1.3&nbsp; &nbsp; &nbsp; &nbsp;In these Terms, references to "you", "User" shall mean the end user/customer accessing the Website, its contents and using the Services offered through the Website. References to the “Website”, "Tmart",
+                        “Tmart.com”, "we", "us" and "our" shall mean the Website and/or Tmart Limited.&nbsp;<br><br></div>
+                    <div><br>1.4&nbsp; &nbsp; &nbsp; &nbsp;The contents set out herein form an electronic record in terms of তথ্য ও যোগাযোগ প্রযুক্তি আইন, ২০০৬ (Information &amp; Communication Technology Act, 2006) and rules there under as applicable and as
+                        amended from time to time. As such, this document does not require any physical or digital signatures and forms a valid and binding agreement between the Website and the User.&nbsp;<br><br></div>
+                    <div><br>1.5&nbsp; &nbsp; &nbsp; &nbsp;The Website is operated by Tmart Limited., a company incorporated under the laws of Bangladesh having its registered office at 165 DIT Extension Road, Fakirapool, Dhaka, Bangladesh. All references
+                        to the Website in these Terms shall deem to refer to the aforesaid entity in inclusion of the online portal.&nbsp;<br><br></div>
+                    <div><br>1.6&nbsp; &nbsp; &nbsp; &nbsp;This Website may also contain links to other websites, which are not operated by Tmart, and Tmart has no control over the linked sites and accepts no responsibility for them or for any loss or damage
+                        that may arise from your use of them. Your use of the linked sites will be subject to the terms of use and service contained within each such site.&nbsp;<br><br></div>
+                    <div><br>1.7&nbsp; &nbsp; &nbsp; &nbsp;We reserve the right to change these Terms at any time. Such changes will be effective when posted on the Website. By continuing to use the Website after we post any such changes, you accept the Terms
+                        as modified.&nbsp;<br><br></div>
+                    <div><br>1.8&nbsp; &nbsp; &nbsp; &nbsp;These Terms will continue to apply until terminated by either You or Tmart in accordance with the terms set out below:&nbsp;<br><br></div>
+                    <div><br>1.9&nbsp; &nbsp; &nbsp; &nbsp;The agreement with Tmart can be terminated by (i) not accessing the Website; or (ii) closing Your Account, if such option has been made available to You.&nbsp;<br><br></div>
+                    <div><br>1.10&nbsp; &nbsp; Notwithstanding the foregoing, these provisions set out in these Terms which by their very nature survive are meant to survive termination, shall survive the termination / expiry of this agreement.&nbsp;<br><br></div>
+                    <div><br>&nbsp;<br><br></div>
+                    <div><strong><br>2.&nbsp; &nbsp; &nbsp; &nbsp; Eligibility</strong>&nbsp;<br><br></div>
+                    <div><br>2.1&nbsp; &nbsp; &nbsp; &nbsp;Use of the Website is available only to such persons who can legally contract under the Contract Act, 1872.&nbsp;<br><br></div>
+                    <div><br>2.2&nbsp; &nbsp; &nbsp; &nbsp;If you are a minor i.e. under the age of 18 years, you shall not register as a user of Tmart.com and shall not transact on or use the Website. As a minor if you wish to use or transact on website,
+                        such use or transaction may be made by your legal guardian or parents on the Website. Tmart reserves the right to terminate your membership and / or refuse to provide you with access to the website if it is brought to Tmart’s notice
+                        or if it is discovered that you are under the age of 18 years.&nbsp;<br><br></div>
+                    <div><br>2.3&nbsp; &nbsp; &nbsp; &nbsp;By accepting the Terms or using or transacting on the Website, the User irrevocably declares and undertakes that he/she is of legal age i.e. 18 years or older and capable of entering into a binding
+                        contract and such usage shall be deemed to form a contract between the Website and such User to the extent permissible under applicable laws.&nbsp;<br><br></div>
+                    <div><br>2.4&nbsp; &nbsp; &nbsp; The usage of the Services offered through the Website is only available if the address of the User to which the product(s) is/are to be delivered is within Dhaka City, Bangladesh; Tmart is serving with 1
+                        Hour Delivery Service, to Uttara, Tongi, Mirpur, Cantonment, Banani, Banani DOHS, Gulshan, Baridhara, Baridhara DOHS, Badda, Mohakhali, Mohakhali DOHS, Khilgaon, Paltan, Motijheel, Banasree, Moghbazar, Malibag, Razarbag, Kallyanpur,
+                        Shyamoli, Paikpara, Pallabi and Mohammedpur. For the rest of the Dhaka city Tmart is currently delivering within 4-7 hours timeframe.&nbsp; Subject to the above, if the User specifies a convenient time and Tmart will send the products
+                        during that time.&nbsp;<br><br></div>
+                    <div><strong><br></strong>&nbsp;</div>
+                    <div><strong><br>3.&nbsp; &nbsp; &nbsp; &nbsp; Communication</strong>&nbsp;<br><br></div>
+                    <div><br>3.1&nbsp; &nbsp; &nbsp; &nbsp;When you use Tmart.com, or contact us via phone or email, you consent to receive communication from us. You authorize us to communicate with you by e-mail, SMS, phone call or by posting notices on
+                        the website or by any other mode of communication. For contractual purposes, you consent to receive communications (including transactional, promotional and/or commercial messages), from us with respect to your use of the website
+                        and/or your order placed on the Website.&nbsp; Additionally any disclosures posted on the site, or sent to you by email fulfill the legal obligation of communication made in writing.&nbsp;<br><br></div>
+                    <div><strong><br></strong>&nbsp;</div>
+                    <div><strong><br>4.&nbsp; &nbsp; &nbsp; &nbsp; Your Account and Responsibilities</strong>&nbsp;<br><br></div>
+                    <div><br>4.1&nbsp; &nbsp; &nbsp; &nbsp;Any person may access the Website either by registering to the Website or using the Website as a guest. However, a guest user may not have access to all sections of the Website including certain benefits/promotional
+                        offers, which shall be reserved only for the purpose of registered Users, and which may change from time to time at the sole discretion of the Website.&nbsp;<br><br></div>
+                    <div><br>4.2&nbsp; &nbsp; &nbsp; &nbsp;If you wish to register your account with the Website, you shall be required to create an account by registering with a valid Bangladeshi mobile number and/or with your Facebook account or your email
+                        address or by filling in the details prescribed in the Website registration form. You will then receive a password or one-time PIN with which you can login to the website to place orders.&nbsp;<br><br></div>
+                    <div><br>4.3&nbsp; &nbsp; &nbsp; &nbsp;If you use the website, you will be responsible for maintaining the confidentiality of your username and password and you will be responsible for all activities that occur under your username and you
+                        will be under the obligation to restrict access to your computer or mobile phone to prevent unauthorised access to your account. You should inform us immediately if you have any reason to believe that your password has become known
+                        to anyone else, or if the password is being, or is likely to be, used in an unauthorised manner. You agree that if you provide any information that is untrue, inaccurate, not current or incomplete or we have reasonable grounds
+                        to suspect that such information is untrue, inaccurate, not current or incomplete, or not in accordance with this Terms of Use, we have the right to suspend or terminate your membership on the website.&nbsp;<br><br></div>
+                    <div><br>4.4&nbsp; &nbsp; &nbsp; &nbsp;The Website may be inaccessible for such purposes as it may, at its sole discretions deem necessary, including but not limited to regular maintenance. However, under no circumstances will Tmart be
+                        held liable for any losses or claims arising out of such inaccessibility to the Users and the Users expressly waive any claims against Tmart in this regard&nbsp;<br><br></div>
+                    <div><strong><br></strong>&nbsp;</div>
+                    <div><strong><br>5.&nbsp; &nbsp; &nbsp; &nbsp; Charges</strong>&nbsp;<br><br></div>
+                    <div><br>5.1&nbsp; &nbsp; &nbsp; &nbsp;Membership on the website is free for users. Tmart does not charge any fee for browsing and buying on the website. Tmart reserves the right to change its fee policy from time to time. In particular,
+                        Tmart may at its sole discretion introduce new services and modify some or all of the existing services offered on the website. In such an event, Tmart reserves the right to introduce fees for the new services offered or amend/introduce
+                        fees for existing services, as the case may be. Changes to the fee policy will be posted on the website and such changes will automatically become effective immediately after they are posted on the website.&nbsp;<br><br></div>
+                    <div><strong><br></strong>&nbsp;</div>
+                    <div><strong><br>6.&nbsp; &nbsp; &nbsp; &nbsp; Copyright</strong>&nbsp;<br><br></div>
+                    <div><br>6.1&nbsp; &nbsp; &nbsp; &nbsp;The material (including the content, and any other content, software or services) contained on Tmart.com are the property of Tmart Limited, its subsidiaries, affiliates and/or third party licensors.
+                        No material on this site may be copied, reproduced, republished, installed, posted, transmitted, stored or distributed without written permission from Tmart Limited.&nbsp;<br><br></div>
+                    <div><br>6.2&nbsp; &nbsp; &nbsp; &nbsp;You may not use any “deep-link”, “page-scrape”, “robot”, “spider” or other automatic device, program, algorithm or methodology, or any similar or equivalent manual process, to access, acquire, copy
+                        or monitor any portion of the website or any content, or in any way reproduce or circumvent the navigational structure or presentation of the website or any content, to obtain or attempt to obtain any materials, documents or information
+                        through any means not purposely made available through the website. We reserve our right to bar any such activity.&nbsp;<br><br></div>
+                    <div><br>&nbsp;<br><br></div>
+                    <div><strong><br>7.&nbsp; &nbsp; &nbsp; &nbsp; Cookies</strong>&nbsp;<br><br></div>
+                    <div><br>7.1&nbsp; &nbsp; &nbsp; &nbsp;This site uses cookies, which means that you must have cookies enabled on your computer in order for all functionality on this site to work properly. A cookie is a small data file that is written to
+                        your hard drive when you visit certain Web sites. Cookie files contain certain information, such as a random number user ID that the site assigns to a visitor to track the pages visited. A cookie cannot read data off your hard
+                        disk or read cookie files created by other sites. Cookies, by themselves, cannot be used to find out the identity of any user.&nbsp;<br><br></div>
+                    <div><strong><br>8.&nbsp; &nbsp; &nbsp; &nbsp; Promotional Activity</strong>&nbsp;<br><br></div>
+                    <div><br>8.1&nbsp; &nbsp; &nbsp; To promote its services Tmart uses various advertisement and commercials which are truthful and are not deceptive or unfair to the best of our knowledge and belief. Every user is under the obligation to
+                        go through the relevant information contained in the Website before using the service and it will be assumed that each user is aware of every information provided in the Website. Images of products in the Website are for and by
+                        reference only and actual product may vary from the corresponding image exhibited. The Website disclaims any liabilities arising out of any discrepancies to this end to the fullest extent permitted by law.&nbsp;<br><br></div>
+                    <div><strong><br>9.&nbsp; &nbsp; &nbsp; &nbsp; The Contract</strong>&nbsp;<br><br></div>
+                    <div><br>9.1&nbsp; &nbsp; &nbsp; Your order is an offer to us to buy the product(s) in your order. When you place an order to purchase a product from us, you will receive an e-mail and/or SMS to your mobile phone number confirming receipt
+                        of your order and/or containing the details of your order (the "Order Confirmation E-mail and/or SMS"). The Order Confirmation E-mail and/or SMS is acknowledgement that we have received your order, but does not confirm acceptance
+                        of your offer to buy the product(s) ordered; that when we send the Order Confirmation E-mail and/or SMS a contract called an “agreement to sell” is concluded in accordance with Section 4(3) of the Sale of Goods Act, 1930 i.e. the
+                        transfer of the property in the goods is to take place at a future time when the product(s) is/are delivered to your designated address. We only accept your offer, and the above “agreement to sell” becomes a contract of sale for
+                        product(s) ordered by you in accordance with Section 4(4) of the Sale of Goods Act, 1930, when the product(s) is/are delivered to your designated address and at that time the property in the goods is transferred from us to you.&nbsp;<br><br></div>
+                    <div><br>9.2 &nbsp; You can cancel your order for a product at no cost any time before the goods are delivered to you.&nbsp;<br><br></div>
+                    <div><br>9.3 &nbsp; Please note that we sell products only in quantities which correspond to the typical needs of an average household. This applies both to the number of products ordered within a single order and the placing of several
+                        orders for the same product where the individual orders comprise a quantity typical for a normal household.&nbsp;<br><br></div>
+                    <div><br>&nbsp;<br><br></div>
+                    <div><strong><br>10.&nbsp; &nbsp; &nbsp; &nbsp;Product Descriptions</strong>&nbsp;<br><br></div>
+                    <div><br>10.1&nbsp; &nbsp; &nbsp; Tmart attempts to be as accurate as possible. Tmart does not manufacture or produce any product by themselves. Therefore, Tmart does not warrant that product descriptions or other content of any Tmart product
+                        is accurate, complete, reliable, current, or error-free. If a product offered by Tmart itself is not as described, your sole remedy is to return it in unused condition.&nbsp;<br><br></div>
+                    <div><strong><br></strong>&nbsp;</div>
+                    <div><strong><br>11.&nbsp; &nbsp; &nbsp; &nbsp;Pricing</strong>&nbsp;<br><br></div>
+                    <div><br>11.1&nbsp; &nbsp; &nbsp; Except where noted otherwise, the list price or suggested price displayed for products on Tmart represents the full retail price listed on the product itself, suggested by the manufacturer or supplier,
+                        or estimated in accordance with standard industry practice; or the estimated retail value for a comparably featured item offered elsewhere. The list price or suggested price is a comparative price estimate and may or may not represent
+                        the prevailing price in every area on any particular day.&nbsp;<br><br></div>
+                    <div><br>11.2&nbsp; &nbsp; &nbsp; Despite our best efforts, a small number of the items in our catalog may be mispriced. If the MRP of an item sold by Tmart is higher than our stated price, we will, at our discretion, either contact you
+                        for instructions before shipping or cancel your order and notify you of such cancellation. And if the stated price on the product is lower than Tmart, we will, either refund the amount or replace the product according to your preference,
+                        when acknowledged.&nbsp;<br><br></div>
+                    <div><strong><br></strong>&nbsp;</div>
+                    <div><strong><br>12.&nbsp; &nbsp; &nbsp; &nbsp;Return Policy</strong>&nbsp;<br><br></div>
+                    <div><br>12.1&nbsp; &nbsp; &nbsp;A user may return any product during the time of delivery, or within 7 days if:&nbsp;<br><br></div>
+                    <div><br>a)&nbsp; &nbsp; &nbsp; &nbsp; Product does not meet user’s expectation.&nbsp;<br><br></div>
+                    <div><br>b)&nbsp; &nbsp; &nbsp; &nbsp; Found damaged during delivery&nbsp;<br><br></div>
+                    <div><br>c)&nbsp; &nbsp; &nbsp; &nbsp; Have doubt about the product quality and quantity&nbsp;<br><br></div>
+                    <div><br>d)&nbsp; &nbsp; &nbsp; &nbsp; Received in an unhealthy/ unexpected condition&nbsp;<br><br></div>
+                    <div><br>e)&nbsp; &nbsp; &nbsp; &nbsp; Is not satisfied with the packaging&nbsp;<br><br></div>
+                    <div><br>f)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Finds product unusable&nbsp;<br><br></div>
+                    <div><br>12.2&nbsp; &nbsp; &nbsp;A user may return any unopened or defective up to 20% and less, item within 7 days of receiving the item. But following products may not be eligible for return or replacement:&nbsp;<br><br></div>
+                    <div><br>a)&nbsp; &nbsp; &nbsp; &nbsp; Damages due to misuse of product&nbsp;<br><br></div>
+                    <div><br>b)&nbsp; &nbsp; &nbsp; &nbsp; Incidental damage due to malfunctioning of product&nbsp;<br><br></div>
+                    <div><br>c)&nbsp; &nbsp; &nbsp; &nbsp; Any consumable item which has been used/installed&nbsp;<br><br></div>
+                    <div><br>d)&nbsp; &nbsp; &nbsp; &nbsp; Products with tampered or missing serial/UPC numbers&nbsp;<br><br></div>
+                    <div><br>e)&nbsp; &nbsp; &nbsp; &nbsp; Any damage/defect which are not covered under the manufacturer's warranty&nbsp;<br><br></div>
+                    <div><br>f)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Any product that is returned without all original packaging and accessories, including the box, manufacturer's packaging if any, and all other items originally included with the product/s delivered.&nbsp;<br><br></div>
+                    <div><strong><br></strong>&nbsp;</div>
+                    <div><br></div>
+                    <div><strong>13.&nbsp; &nbsp; &nbsp; &nbsp;Refund Policy</strong><br><br>13.1&nbsp; &nbsp; &nbsp;Tmart tries its best to serve the users. But if under any circumstances, we fail to fulfill our commitment or to provide the service, we will
+                        notify you within 24 hours via phone/ text/ email. If the service, that Tmart fails to complete, requires any refund, it be done maximum within 10 Days after our acknowledgement.<br><br>13.2&nbsp; &nbsp; &nbsp;Refund requests will
+                        be processed under mentioned situation:<br><br>- Unable to serve with any product.<br><br>- Customer returns any product from a paid order.<br><br>- Customer cancels a paid order before it has been dispatched.<br><br>For all the
+                        above three scenarios, the refund amount will be sent to Tmart Balance of the customer. And the balance can only be used to purchase at Tmart. Upon customer's request, Tmart will transfer the refund amount to the user's original
+                        payment source within 10 days.</div>
+                    <div><strong><br></strong>&nbsp;</div>
+                    <div><strong><br>14.&nbsp; &nbsp; &nbsp; &nbsp;Supply Policy:</strong>&nbsp;<br><br></div>
+                    <div><br>14.1&nbsp; &nbsp; &nbsp;Tmart, itself does not produce or manufacture any product, therefore Tmart tries to control the quality, but do not give quality assurance for any. We believe the manufacturer/ vendor/ supplier are fully
+                        capable of assuring the quality of every product.&nbsp;<br><br></div>
+                    <div><br>14.2&nbsp; &nbsp; &nbsp; If any user, at the time of receiving the order delivery, finds any product injurious to health/ life/ security, we will take full liability and will accept return of that product. If the user faces any
+                        threat after 12 hours of the provided delivery, we will consider it as a lacking within the quality assurance from the manufacturers or suppliers.&nbsp;<br><br></div>
+                    <div><br>14.3&nbsp; &nbsp; &nbsp; All products displayed on the website are subject to change and are subject to availability.&nbsp;<br><br></div>
+                    <div><strong><br></strong>&nbsp;</div>
+                    <div><strong><br>15.&nbsp; &nbsp; &nbsp; &nbsp;Modifications</strong>&nbsp;<br><br></div>
+                    <div><br>15.1&nbsp; &nbsp; &nbsp; Tmart reserves the right to modify these Terms and Conditions. Such modifications shall be effective immediately upon posting on Tmart.com. You are responsible for the reviewing of such modifications. Your
+                        continued access or use of Tmart.com shall be deemed your acceptance of the modified terms and conditions.&nbsp;<br><br></div>
+                    <div><strong><br></strong>&nbsp;</div>
+                    <div><strong><br>16.&nbsp; &nbsp; &nbsp; &nbsp;Tmart Software Terms</strong>&nbsp;<br><br></div>
+                    <div><br>16.1&nbsp; &nbsp; &nbsp; Use of the Tmart Software/Application/App : You may use Tmart Software/ Application/ App solely for purposes of enabling you to use and enjoy the services as provided by Tmart, and as permitted by these
+                        Terms. You may not incorporate any portion of the Tmart Software / Application/ App into your own programs or compile any portion of it in combination with your own programs, transfer it for use with another service, or sell, rent,
+                        lease, lend, loan, distribute or sub-license the Tmart Software / Application/ App or otherwise assign any rights to the Tmart Software / Application/ App in whole or in part. You may not use the Tmart Software / Application/ App
+                        for any illegal purpose. We may cease providing any Tmart Software / Application/ App and we may terminate your right to use any Tmart Software / Application/ App at any time. Your rights to use the Tmart Software / Application/
+                        App will automatically terminate without notice from us if you fail to comply with any of these Terms. All software used in any Tmart Service is the property of Tmart and/or its affiliates or its software suppliers and protected
+                        by laws of Bangladesh including but not limited to any other applicable copyright laws.&nbsp;<br><br></div>
+                    <div><br>&nbsp;<br><br></div>
+                    <div><br>16.2&nbsp; &nbsp; &nbsp; Use of Third Party Services: When you use the Tmart Software / Application/ App, you may also be using the services of one or more third parties, such as a wireless carrier or a mobile platform provider.
+                        Your use of these third party services may be subject to the separate policies, terms of use, and fees of those third parties.&nbsp;<br><br></div>
+                    <div><br>&nbsp;<br><br></div>
+                    <div><br>16.3&nbsp; &nbsp; &nbsp; No Reverse Engineering: You may not, and you will not encourage, assist or authorize any other person to copy, modify, reverse engineer, decompile or disassemble, or otherwise tamper with, the Tmart Software
+                        / Application/ App, whether in whole or in part, or create any derivative works from or of the Tmart Software / Application/ App.&nbsp;<br><br></div>
+                    <div><br>&nbsp;<br><br></div>
+                    <div><br>16.4&nbsp; &nbsp; &nbsp; Updates: In order to keep the Tmart Software / Application/ App up-to-date, we may offer automatic or manual updates at any time and without notice to you.&nbsp;<br><br></div>
+                    <div>&nbsp;</div>
+                    <div><br>&nbsp;</div>
+                </div>
+            </mat-tab>
+
+        </mat-tab-group>
     </div>
 
 </div>

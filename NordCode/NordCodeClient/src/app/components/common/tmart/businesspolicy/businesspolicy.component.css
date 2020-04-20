@@ -1,3 +1,129 @@
+#navigation ul,
+#navigation ul li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navigation ul {
+    text-align: center;
+}
+
+#navigation ul li {
+    display: inline;
+    margin-right: .75em;
+}
+
+#navigation ul li.last {
+    margin-right: 0;
+}
+
+.callUs {
+    padding-top: 20px;
+    font-size: 30px;
+}
+
+.example-form {
+    width: 50%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.material-cust-large-button {
+    width: 100%;
+    height: 50px;
+    background: #11d3c1;
+    /* margin-top: 25px; */
+}
+
+.material-cust-medium-button {
+    width: 150px;
+    height: 70px;
+    padding-top: 13px;
+}
+
+h2 {
+    font-size: 10rem;
+    color: #11d3c1;
+    margin: 100px !important;
+}
+
+.custom-fileupload {
+    background-color: #11d3c1 !important;
+    border-radius: 50%;
+    width: 30px;
+    border: none;
+    font-size: 30px;
+    padding: 3px;
+    position: absolute;
+    margin-left: 70px;
+}
+
+div.topicPage .needHelpItemBody {
+    padding-top: 20px;
+}
+
+div.team-page .team-section .team-block .arrowClass {
+    display: none;
+}
+
+div.team-page .team-section .team-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+div.team-page .team-section .team-block .individualTeam .info-block {
+    background: #f9f9f9;
+    padding-top: 75px;
+    margin-top: -75px;
+    height: 100%;
+    transition: .5s ease-in-out;
+}
+
+div.team-page .team-section .team-block .individualTeam {
+    position: relative;
+    text-align: center;
+    width: 300px;
+    height: 380px;
+    margin: 20px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+
+/* 
+.img {
+    width: 100%;
+    max-width: 210px;
+    border-radius: 50%;
+    text-align: center;
+    transition: .5s ease-in-out;
+} */
+
+.banner {
+    width: 100%;
+    height: 300px;
+}
+
+
+/* 
+img {
+    margin: 30px
+} */
+
+
+/* 
+.img {
+    width: 100%;
+    max-width: 210px;
+    border-radius: 50%;
+    text-align: center;
+    transition: .5s ease-in-out;
+} */
+
 div.topicPage {
     margin: 0 20px;
     min-height: 900px;
@@ -50,10 +176,6 @@ ul {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
-}
-
-user agent stylesheet div {
-    display: block;
 }
 
 body {

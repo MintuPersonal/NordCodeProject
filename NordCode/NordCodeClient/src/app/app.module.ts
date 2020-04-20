@@ -50,6 +50,14 @@ import { ProfileComponent } from './components/admin/profile/profile.component';
 import { CategoryItemComponent } from './components/shoping-cart/filter/category-item/category-item/category-item.component';
 import { FilterComponent } from './components/shoping-cart/filter/filter.component';
 import { BusinesspolicyComponent } from './components/common/tmart/businesspolicy/businesspolicy.component';
+import { FaqComponent } from './components/common/tmart/faq/faq.component';
+import { StoryComponent } from './components/common/tmart/story/story.component';
+import { PolicyComponent } from './components/common/tmart/policy/policy.component';
+import { TermsComponent } from './components/common/tmart/terms/terms.component';
+import { ContactComponent } from './components/common/tmart/contact/contact.component';
+import { TmartComponent } from './components/common/tmart/tmart.component';
+import { CorporateComponent } from './components/common/tmart/corporate/corporate.component';
+import { ContactformComponent } from './components/common/tmart/contact/contactform/contactform.component';
 
 
 @NgModule({
@@ -57,16 +65,17 @@ import { BusinesspolicyComponent } from './components/common/tmart/businesspolic
     FooterComponent, ProductListComponent, ProductItemComponent, CartComponent, LoginComponent, SignupComponent,
     NavbarComponent, AddnewComponent, HomeComponent, ProductComponent, ProductdetailsComponent, CommercialComponent,
     CheckoutComponent, OrderComponent, PaymentComponent, BannerComponent, ImageComponent, PhoneLoginComponent,
-    DialogComponent, AlertHomeComponent, TopNavComponent, MenuComponent, MenuComponent, DialogpdetailsComponent, 
-    SearchComponent, ProfileComponent, CategoryItemComponent, FilterComponent, BusinesspolicyComponent],
+    DialogComponent, AlertHomeComponent, TopNavComponent, MenuComponent, MenuComponent, DialogpdetailsComponent,
+    SearchComponent, ProfileComponent, CategoryItemComponent, FilterComponent, BusinesspolicyComponent, FaqComponent,
+    StoryComponent, ContactComponent, PolicyComponent, TermsComponent, TmartComponent, CorporateComponent, ContactformComponent],
   imports: [
     RoutingModule, AlertModule, BrowserModule, NgbModule, BrowserAnimationsModule, HttpClientModule,
     FormsModule, ReactiveFormsModule, MatIconModule, MatInputModule, MatRadioModule, MatCheckboxModule,
     MatButtonModule, MatListModule, MatCardModule, MatToolbarModule, MatDatepickerModule, MaterialTimePickerModule,
     MatNativeDateModule, FlexLayoutModule, MatSelectModule, MatSliderModule, MatGridListModule, MatButtonModule,
-    MatMenuModule, MatToolbarModule, MatIconModule, MatCardModule, MatSidenavModule, MatInputModule, MatTooltipModule,
+    MatMenuModule, MatIconModule, MatCardModule, MatSidenavModule, MatInputModule, MatTooltipModule,
     MatBadgeModule, MatPaginatorModule, MatFormFieldModule, MatTableModule, MatExpansionModule, MatChipsModule,
-    MatButtonToggleModule, MatDialogModule],
+    MatButtonToggleModule, MatDialogModule, MatTabsModule],
 
   providers: [MatDatepickerModule, NavbarService],
   bootstrap: [AppComponent]
