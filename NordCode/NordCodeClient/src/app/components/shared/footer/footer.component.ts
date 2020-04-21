@@ -11,8 +11,8 @@ import { Ecom_Setting } from 'src/app/models/Setting';
 export class FooterComponent implements OnInit {
   version = VERSION;
   Setting: Ecom_Setting[];
-  SettingModel : Ecom_Setting;
-  Text : string;
+  SettingModel: Ecom_Setting;
+  Text: string;
   Mobile: string;
   Support: string;
   Facebook: string;
@@ -24,46 +24,46 @@ export class FooterComponent implements OnInit {
   Whatapps: string;
   constructor(private sharedService: SharedService) { }
 
-  ngOnInit() {    
-    this.sharedService.getSettingAll().subscribe((data: any) => {
-      if (data.status)
-        this.Setting = data.setting;
-        this.Setting.forEach(item=>{
-         
-          if(item.GID == 8){
-            this.Text = item.Text 
-          } 
-          if(item.GID == 8){
-            this.Text = item.Text
-            this.Mobile = item.GText; 
-          }   
-          if(item.GID == 9)  
-          {
-            this.Support = item.Text
-          } 
-          if(item.GID == 2 && item.Code == '1'){
-            this.Facebook = item.Text;            
-          }
-          if(item.GID == 2 && item.Code == '2'){
-            this.GooglePlus = item.Text;            
-          }
-          if(item.GID == 2 && item.Code == '3'){
-            this.Instagram = item.Text;            
-          }
-          if(item.GID == 2 && item.Code == '4'){
-            this.Linked = item.Text;            
-          }
-          if(item.GID == 2 && item.Code == '5'){
-            this.Twtter = item.Text;            
-          }
-          if(item.GID == 2 && item.Code == '6'){
-            this.Youtube = item.Text;            
-          }
-          if(item.GID == 2 && item.Code == '7'){
-            this.Whatapps = item.Text;            
-          }
-          
-        });      
+  ngOnInit() {
+    this.sharedService.getSettingAll(3).subscribe((data: any) => {
+      this.Setting = data.setting;
+      this.sharedService.SetSetting(this.Setting); 
+      
+      this.Setting.forEach(item => {
+
+        if (item.GID == 8) {
+          this.Text = item.Text
+        }
+        if (item.GID == 8) {
+          this.Text = item.Text
+          this.Mobile = item.GText;
+        }
+        if (item.GID == 9) {
+          this.Support = item.Text
+        }
+        if (item.GID == 2 && item.Code == '1') {
+          this.Facebook = item.Text;
+        }
+        if (item.GID == 2 && item.Code == '2') {
+          this.GooglePlus = item.Text;
+        }
+        if (item.GID == 2 && item.Code == '3') {
+          this.Instagram = item.Text;
+        }
+        if (item.GID == 2 && item.Code == '4') {
+          this.Linked = item.Text;
+        }
+        if (item.GID == 2 && item.Code == '5') {
+          this.Twtter = item.Text;
+        }
+        if (item.GID == 2 && item.Code == '6') {
+          this.Youtube = item.Text;
+        }
+        if (item.GID == 2 && item.Code == '7') {
+          this.Whatapps = item.Text;
+        }
+      });
+
     });
   }
 }

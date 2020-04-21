@@ -5,6 +5,7 @@ export class Customer {
     public TONumber: string;
     public Name: string;
     public Address: string;
+    public Message: string;
     public Area: string;
 
     public MobileNo: string;

@@ -50,7 +50,7 @@ const routes: Routes = [
   { path: 'alerthome', component: AlertHomeComponent },
   { path: 'logindialog', component: DialogComponent },
 
-  { path: 'corporate', component: CorporateComponent },
+  { path: 'tmart/corporate', component: CorporateComponent },
   { path: 'tmart/faq', component: FaqComponent},
   { path: 'tmart/story', component:  StoryComponent},
   { path: 'tmart/contact', component: ContactComponent},

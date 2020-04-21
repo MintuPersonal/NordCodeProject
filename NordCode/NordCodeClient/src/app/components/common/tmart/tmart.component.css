@@ -1,3 +1,10 @@
 a.mat-tab-link {
     color: white;
+    background: gray;
+    border-radius: 5px;
+}
+
+.features {
+    height: 300px;
+    width: 100%;
 }

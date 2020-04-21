@@ -1,11 +1,13 @@
 <div class="m-5">
-    <div class="body needHelpItemBody" data-reactid=".11u8ycziz68.6.2.0.0.0.1.0">
-        <p>Feel free to contact us anytime at <strong>+880-175-1234567</strong>.</p>
-        <p>Or if you prefer, you can drop us a note using the form below. You'll always get a response from a real person — with a real name — within 48 hours.</p>
+    <div class="body needHelpItemBody">
+        <div *ngFor="let item of Setting">
+            <!-- <p> {{item.Text}} </p> -->
+            <div [innerHTML]="item.Text"></div>
+        </div>
     </div>
     <br>
     <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }} </div>
-
+    <div class="alert alert-info" *ngIf="sucessMsg">{{ sucessMsg }} </div>
     <div>
         <mat-card *ngIf="!submitted">
             <h4 class="text-center"> Contact Us </h4>
@@ -26,23 +28,23 @@
                 </mat-form-field> -->
 
                 <mat-form-field class="example-full-width">
-                    <input #Name='ngModel' [(ngModel)]="customerModel.Name" name="Name" required matInput ngModel type="text" placeholder="Full Name">
+                    <input #Name='ngModel' [(ngModel)]="customerModel.Name" name="Name" required matInput ngModel type="text" placeholder="Name">
                     <mat-error *ngIf="Name.invalid"> Please enter minimum three letter. </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
-                    <input matInput #Email="ngModel" [(ngModel)]="customerModel.Email" name="Email" ngModel type="email" required minlength="6" placeholder="EMAIL" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-                    <mat-error *ngIf="Email.invalid"> Please erter an valid email. </mat-error>
+                    <input matInput #Email="ngModel" [(ngModel)]="customerModel.Email" name="Email" ngModel type="email" required minlength="6" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                    <mat-error *ngIf="Email.invalid"> Please enter an valid email. </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
-                    <input matInput #MobileNo="ngModel" [(ngModel)]="customerModel.MobileNo" name="MobileNo" ngModel type="text" required minlength="6" placeholder="Password">
-                    <mat-error *ngIf="MobileNo.invalid"> Please erter six character. </mat-error>
+                    <input matInput #MobileNo="ngModel" [(ngModel)]="customerModel.MobileNo" name="MobileNo" ngModel type="text" required minlength="11" placeholder="Mobile No">
+                    <mat-error *ngIf="MobileNo.invalid"> Please enter eleven number. </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
-                    <textarea #Address='ngModel' [(ngModel)]="customerModel.Address" name="Address" required matInput ngModel type="text" placeholder="Details Address"></textarea>
-                    <mat-error *ngIf="Address.invalid"> Please enter details address. </mat-error>
+                    <textarea #Message='ngModel' [(ngModel)]="customerModel.Message" name="Message" required matInput ngModel type="text" placeholder="Details Message"></textarea>
+                    <mat-error *ngIf="Message.invalid"> Please enter details Message. </mat-error>
                 </mat-form-field>
 
                 <!-- <mat-form-field class="example-full-width">
@@ -53,15 +55,10 @@
                 <hr>
                 <div class="example-button-row">
                     <!-- [disabled]="customerModel.form.invalid" -->
-                    <button mat-raised-button color="primary" class="material-cust-large-button"> Create </button>
+                    <button mat-raised-button color="primary" class="material-cust-large-button"> Send Mail </button>
                 </div>
                 <!-- <br> {{customerModel | json}} -->
             </form>
-            <div class="callUs">
-                <span>Or call us</span>
-                <span>: </span>
-                <span>0175-1234567</span>
-            </div>
         </mat-card>
     </div>
 </div>

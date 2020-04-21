@@ -1,18 +1,11 @@
 <app-tmart [featureItem]="featureItem"></app-tmart>
 <div class="m-5">
     <div class="body needHelpItemBody">
-        <div><strong>Our Story</strong></div>
-        <div>Tmart.com is an online shop in Dhaka, Bangladesh. We believe time is valuable to our fellow Dhaka residents, and that they should not have to waste hours in traffic, brave harsh weather and wait in line just to buy necessities like eggs!&nbsp;
-            This is why we deliver every day needs to our customers’ door-steps across Dhaka.<br><br></div>
-        <div>Tmart is a work in progress, and we hope to get better over time. We are firm believers in using technology and education to improve Bangladesh, and we will continue to invest all our effort in pushing the boundaries of technology.</div>
-        <div>If you have ideas on how we can improve, we would love to hear from you. Please do email us at <a href="mailto:founders@Tmart.com"><strong>info@Tmart.com</strong></a>.</div>
-        <div><br><strong>Waseem (Founder &amp; CEO)<br></strong>Before Tmart, Waseem worked at Sigfig, a Silicon Valley financial technology startup. At Sigfig, he led the development of a web-based portfolio management software. He designed algorithms to
-            monitor over $100 billion in brokerage assets held by retail investors.He aspires to change the culture in Bangladesh so that people value investment in bold ideas and are more accepting of new technology. Waseem graduated from the Wharton
-            School, University of Pennsylvania with a degree in Finance and Entrepreneurship.<br><br><strong>Zia (Founder &amp; COO)<br></strong>Zia brings in experience from the field of management and marketing. Prior to Tmart, he was the Head of Operations
-            at a ready-made garments factory in Bangladesh. He managed over 1000 employees and oversaw all facets of the business including merchandising, production, commercial design and marketing. Zia has an autistic brother, and he hopes to provide
-            proper care and education to all autistic children. He also believes that a university degree is no measure of a person’s merit.&nbsp; Zia holds a BBA in Marketing from North South University.<br><br><strong>Tejas (Founder &amp; CTO)<br></strong>Tejas
-            is a full stack engineer. Prior to Tmart he worked at Sigfig where he was in charge of tech infrastructure.His hobby includes research on Lisp machines and how we can develop better software. Tejas has a degree in Computer Science from National
-            University of Singapore. He invites you to read more about <a href="https://Tmart.tech"><strong>Tmart Engineering</strong></a>.<br><br><strong>Arun Ramamurthy (Senior Software Engineer)<br></strong>Arun is a full stack engineer who has previously
-            worked at Broadcom. He has a Masters in Computer Engineering from the University of British Columbia.&nbsp;</div>
+        <div><strong> Our Story </strong></div>
+        <br>
+        <div *ngFor="let item of Setting">
+            <!-- <div> {{item.Text}} <br><br> </div> -->
+            <div [innerHTML]="item.Text"></div>
+        </div>
     </div>
 </div>
