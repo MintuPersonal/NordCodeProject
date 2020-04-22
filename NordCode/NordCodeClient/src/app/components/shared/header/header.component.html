@@ -28,7 +28,7 @@
                         <span *ngIf="logincondition" class="dropdown">  
                                             
                     <i class="fa fa-user-circle"> </i>  
-                    <span> {{userName}} </span>
+                    <span> &nbsp; {{userName}} </span>
                         <div class="dropdown-content text-left" style="z-index: 9999;">
                             <!-- (click)="alertService.success('Success!!', options)" -->
                             <!-- <button class="btn btn-success m-1">Success</button> -->
@@ -66,6 +66,7 @@
                                         <tr class="tr">
                                             <th colspan="3">&nbsp; You have reduced delivery charge </th>
                                             <th colspan="2">&nbsp; 20 </th>
+                                            <!-- <th colspan="1" class="line">&nbsp; {{totalDiscount}} </th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -78,7 +79,11 @@
                                                 <mat-icon (click)="RemoveProductFromCart(item, false)">remove_circle</mat-icon>
                                             </td>
                                             <td> <img class="img-cart" src="../assets/img/product/feature/{{item.ImgPath}}"></td>
-                                            <td>{{ item.PName}}</td>
+                                            <td>
+                                                <span>{{ item.PName}} </span>
+                                                <br>
+                                                <span class="line" *ngIf="item.MRP"> ৳ {{item.MRP}} </span>
+                                            </td>
                                             <td>{{ item.Qty * item.UnitPrice | currency: 'BD '}} </td>
                                             <td title="remove from bag" class="td" (click)="RemoveFromCart(itemed)">
                                                 &nbsp; <span class="icon"> {{ item.Close }} </span>

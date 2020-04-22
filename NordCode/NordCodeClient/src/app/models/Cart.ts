@@ -8,6 +8,7 @@ export class Cart {
     Close: any;
     UnitPrice: number;
     NetPrice: number;
+    MRP: number;
 
 
     // constructor( add, pid, pname, qty, unitprice, Close) {

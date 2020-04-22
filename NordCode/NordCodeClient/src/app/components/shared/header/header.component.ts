@@ -12,6 +12,7 @@ import { Cart } from 'src/app/models/Cart';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Ecom_Menu } from 'src/app/models/Menu';
 import { NavItem } from 'src/app/models/nav-item';
+import { Customer } from 'src/app/models/Customer';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,7 @@ import { NavItem } from 'src/app/models/nav-item';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  userName: string = 'Login a Customer'
+  userName: string;
   options = {
     autoClose: true,
     keepAfterRouteChange: false
@@ -27,7 +28,9 @@ export class HeaderComponent implements OnInit {
   _cartItems = [];
   totalItem: number = 0;
 
-  totalAmounts: number;
+  totalAmounts: number = 0;
+  totalNetAmounts: number = 0;
+  //totalDiscount: number = 0;
   condition: boolean;
   animal: any;
   name: any;
@@ -39,7 +42,7 @@ export class HeaderComponent implements OnInit {
   data: any;
   pCategoryName: string;
   featuresModel: any;
-  logincondition: boolean;
+  logincondition: boolean = false;
 
   navItems: NavItem[];
   menuItems: object;
@@ -60,9 +63,10 @@ export class HeaderComponent implements OnInit {
   }
   item: any[];
 
+
   constructor(private router: Router, private dialog: MatDialog,
     protected alertService: AlertService, public navService: NavbarService,
-    private _interactionService: InteractionService, private productService: ProductService,
+    private interactionService: InteractionService, private productService: ProductService,
     private customerService: CustomerService) {
     //this.logincondition = this.CheckUserSession();
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -80,7 +84,7 @@ export class HeaderComponent implements OnInit {
       this.navItems = this.RenderMenu(distinctThings);
     })
     this.logMessage(this.navItems)
-    
+
   }
   private RenderMenu(data_off: any): NavItem[] {
 
@@ -106,7 +110,6 @@ export class HeaderComponent implements OnInit {
     console.log(value);
   }
   ngOnInit() {
-    this.logincondition = this.CheckUserSession();
 
     var firebaseConfig = {
       apiKey: "AIzaSyAABTcunn62aKYHkJGkfnr5JhXA-D9Ztak",
@@ -118,10 +121,9 @@ export class HeaderComponent implements OnInit {
       appId: "1:932041012966:web:9936106c9ea4e508e42d27"
     };
     firebase.initializeApp(firebaseConfig);
-    //this.loginStatus();
 
     ////////////// Here New Concept  ///////////////
-    this._interactionService.getForAddtoCart().subscribe((product: Cart) => {
+    this.interactionService.getForAddtoCart().subscribe((product: Cart) => {
       if (!this.productService.fromproductlist) {
         this.addProductToCart(product);
       } else {
@@ -131,12 +133,31 @@ export class HeaderComponent implements OnInit {
     });
     this._getTotalAmounts();
     ////////////// Here New Concept  ///////////////
+    if (this.CheckUserSession()) {
+
+      var customerInfo = JSON.parse(localStorage.getItem('customerInfo'));
+      if (customerInfo == "" || customerInfo == "undefined" || customerInfo == null) {
+        this.logincondition = false;
+      } else {
+        this.userName = 'Logged ' + customerInfo.Name
+        this.logincondition = true;
+      }
+    }
+
+    this.interactionService.getForLoginUpdate().subscribe((data: Customer) => {
+
+      if (data) {
+        this.userName = 'Logged ' + data.Name;
+        this.logincondition = true;
+      } else {
+        this.logincondition = false;
+      }
+    });
   }
 
-  onAddToBag(featureItem) {
-
+  public onAddToBag(featureItem) {
     featureItem.totalItems = featureItem.Qty;
-    this._interactionService.sendForAddtoCart(featureItem);
+    this.interactionService.sendForAddtoCart(featureItem);
     this._getTotalAmounts(); //featureItem.PID
   }
   public addProductToCart(product: Cart) {
@@ -156,7 +177,6 @@ export class HeaderComponent implements OnInit {
         Add: '+', PID: product.PID, ImgPath: product.ImgPath, PName: product.PName, Qty: 1, UnitPrice: product.UnitPrice, Close: 'X'
       });
     }
-
     this._getTotalAmounts();
   }
   private _getTotalAmounts() {
@@ -165,8 +185,11 @@ export class HeaderComponent implements OnInit {
     if (this._cartItems != null) {
       this.totalItem = this._cartItems.length;
       this.totalAmounts = 0;
+      //this.totalDiscount = 0;
       this._cartItems.forEach((item) => {
         this.totalAmounts += (item.Qty * item.UnitPrice);
+        this.totalNetAmounts += (item.Qty * item.MRP);
+       /// this.totalDiscount = this.totalNetAmounts - this.totalNetAmounts
       });
     };
   }
@@ -216,90 +239,31 @@ export class HeaderComponent implements OnInit {
     }
   }
   public logout() {
+    //this.router.navigate(['/']);
+    this.logincondition = false;
     localStorage.setItem('currentUser', JSON.stringify(''));
     this.CheckUserSession();
-    this.router.navigate(['/']);
-
   }
   public PhoneLogin() {
 
     this.router.navigate(['/login']);
   }
   public PlaceOrder(totalPrice: any) {
-    if (this.CheckUserSession()) {
-      var order = this.productService.GetOrder();
-      this.totalAmounts = order.TotalPrice;
-      this.totalItem = order.TotalItemQty;
-      //localStorage.setItem('TONumber', JSON.stringify(order.TONumber));
-      this.customerService.SetOrder(order).subscribe();
-      this.productService.SetEmptyCart();
+    var order = this.productService.GetOrder();
+    this.totalAmounts = order.TotalPrice;
+    //this.totalDiscount = order.Discount;
+    this.totalItem = order.TotalItemQty;
+    this.customerService.SetOrder(order).subscribe();
+    this.productService.SetEmptyCart();
+
+    if (this.CheckUserSession() && order.TotalPrice != 0) {
       this.router.navigate(['/checkout', order.TotalPrice]);
     } else {
+      this.productService.logincondition = 1;
       this.router.navigate(['/login']);
     }
   }
-
-  // private GetOrder(cartItems): Ecom_Orders {
-  //   var order = new Ecom_Orders();
-  //   var orderno = '11_' + Math.random().toString().slice(2, 11);
-  //   var OrderDetails = [];
-  //   var TUnitPrice = 0;
-  //   var TNetPrice = 0;
-  //   cartItems.forEach((item: Cart) => {
-  //     var orderdetail = new Ecom_OrderDetails();
-  //     orderdetail.OrderId = 0;
-  //     orderdetail.TONumber = orderno;
-
-  //     orderdetail.PID = item.PID;
-  //     orderdetail.PName = item.PName;
-  //     orderdetail.PQty = item.Qty;
-  //     orderdetail.ItemQty = item.Qty;
-  //     orderdetail.UnitPrice = item.UnitPrice;
-  //     orderdetail.NetPrice = item.NetPrice;
-  //     orderdetail.HostAddress = environment.baseurl;
-  //     orderdetail.ImgPath = item.ImgPath;
-
-  //     orderdetail.TrackedId = 'http://demo.one-ict.com:3000/api/'; //environment.baseurl;
-  //     orderdetail.CreateBy = '11';//environment.currentuserId;
-  //     orderdetail.CreateDate = new Date();
-  //     orderdetail.UpdateBy = '';
-  //     orderdetail.UpdateDate = new Date();
-  //     orderdetail.Delete = false;
-  //     orderdetail.Active = true;
-  //     OrderDetails.push(orderdetail);
-  //     TUnitPrice = TUnitPrice + item.UnitPrice;
-  //     TNetPrice = TNetPrice + item.UnitPrice
-  //   });
-
-  //   order.OID = 0;
-  //   order.TONumber = orderno;
-  //   order.CustomerId = 6; //this.customerId;
-  //   order.PaymentId = 0;
-  //   order.CouponId = 3333;
-  //   order.PaymentModeId = 1;
-  //   order.Discount = 20;
-  //   order.Reason = '_orderReason';
-  //   order.Active = true;
-
-  //   order.TotalItemQty = 5;
-  //   order.DeliveryCharge = 20;
-  //   order.TotalPrice = TUnitPrice;
-  //   order.NetPrice = TNetPrice;
-  //   order.Address = 'Address';
-  //   order.Aria = 'Area';
-  //   order.DeliveryTime = new Date();
-  //   order.OrderStatus = 1;
-
-  //   order.TrackedId = 'http://demo.one-ict.com:3000/api/'; //environment.baseurl;
-  //   order.CreateBy = '11'; //environment.currentuserId;
-  //   order.CreateDate = new Date();
-  //   order.Active = true;
-  //   order.Delete = false;
-  //   order.OrderDetails = OrderDetails;
-  //   return order;
-  // }
-
-  Search() {
+  public Search() {
     this.router.navigate(['/']);
     if (this.pCategoryName != "") {
 
@@ -309,76 +273,8 @@ export class HeaderComponent implements OnInit {
     else {
       this.router.navigate(['/']);
     }
-
-    // if (this.pCategoryName != "") {
-    //   this.featuresModel = this.featuresModel.filter(res => {
-    //     return res.PName.toLocaleLowerCase().match(this.pCategoryName.toLocaleLowerCase())
-    //   });
-    // } else {
-    //   this.ngOnInit();
-    // }
   }
-
   ////////////// Here New Concept  ///////////////
-
-
-
-
-
-
-
-
-
-
-  // public LoadItemTotal() {
-  //   var hasitemdata = JSON.parse(localStorage.getItem('item'));
-  //   if (hasitemdata != null && Object.keys(hasitemdata).length !== 0) {
-  //     var _totalItemsPrice = 0;
-  //     Object.keys(hasitemdata).forEach(key => {
-  //       const iteming = hasitemdata[key];
-  //       const intervale = Object.keys(iteming).map(key => iteming[key]);
-  //       _totalItemsPrice = _totalItemsPrice + intervale[4];
-  //     });
-  //     // alert('Total Price is Final :'+ _totalItemsPrice);
-  //     this.setTotalPrice(_totalItemsPrice);
-  //     this._totalItem = hasitemdata.length;
-  //     this.commercialModels = hasitemdata;
-  //   } else {
-  //     this.setTotalPrice(0);
-  //     this._totalItem = 0;
-  //     this.commercialModels = [];
-  //   }
-  // }
-  // public setTotalPrice(totalItemsPrice) {
-  //   this.totalAmounts = totalItemsPrice;
-  // }
-  // public DeleteRow(item) {
-  //   //alert('hi')
-  //   var hasitemdata = JSON.parse(localStorage.getItem('item'));
-  //   if (Object.keys(hasitemdata).length !== 0 && hasitemdata != null) {
-  //     this.itemState = [];
-  //     const deleteItem = Object.keys(item).map(key => item[key]);
-  //     Object.keys(hasitemdata).forEach(key => {
-  //       const iteming = hasitemdata[key];
-  //       const storageItem = Object.keys(iteming).map(mapper => iteming[mapper]);
-  //       if (storageItem[0] != deleteItem[0]) {
-  //         this.newline = new Ecom_Commercial(storageItem[0], storageItem[1], storageItem[2], storageItem[3], 'X', 'A+');
-  //         this.itemState.push(this.newline);
-  //         //localStorage.setItem('item', JSON.stringify(this.itemState));
-  //       }
-  //     });
-  //     localStorage.setItem('item', JSON.stringify(this.itemState));
-  //   }
-  //   this.LoadItemTotal();
-  // }
-  // public openNav() {
-  //   document.getElementById("mySidepanel").style.width = "250px";
-  //   document.getElementById("main").style.marginLeft = "250px";
-  // }
-  // public closeNav() {
-  //   document.getElementById("mySidepanel").style.width = "0";
-  //   document.getElementById("main").style.marginLeft = "0";
-  // }
 
 }
 

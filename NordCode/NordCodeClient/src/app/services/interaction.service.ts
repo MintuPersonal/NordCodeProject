@@ -2,25 +2,36 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Cart } from '../models/Cart';
 import { ProductService } from './product.service';
+import { Customer } from '../models/Customer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InteractionService {
 
-  private _teacherMessageSource = new Subject<Cart>();
+  private interactionMessageSource = new Subject<Cart>();
+  private interactionCustomerSource = new Subject<Customer>();
   constructor(private productService: ProductService) { }
   
   ////////////// Here New Concept  ///////////////
-  sendForAddtoCart(featureItem: Cart) {
-    this._teacherMessageSource.next(featureItem);
+  public sendForAddtoCart(featureItem: Cart) {
+    this.interactionMessageSource.next(featureItem);
   }
-  sendForRemoveFromCart(featureItem: Cart) {   
+  public sendForRemoveFromCart(featureItem: Cart) {   
     this.productService.RemoveProductFromCart(featureItem, true); 
-    this._teacherMessageSource.next(featureItem);   
+    this.interactionMessageSource.next(featureItem);   
   }
-  getForAddtoCart() {
-    return this._teacherMessageSource.asObservable();
+  public getForAddtoCart() {
+    return this.interactionMessageSource.asObservable();
   }
   ////////////// Here New Concept  ///////////////
+
+  public sendForLoginUpdate(customer: Customer) {
+    this.interactionCustomerSource.next(customer);
+  }
+
+  public getForLoginUpdate() {
+    return this.interactionCustomerSource.asObservable();
+  }
+
 }

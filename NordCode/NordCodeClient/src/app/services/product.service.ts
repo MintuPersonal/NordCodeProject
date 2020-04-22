@@ -22,31 +22,26 @@ export class ProductService {
   _totalItem: number;
   totalAmounts: number;
   TONumber: string = '';
-  TotalPrice: number = 0;
+  
   MobileNo: string = '';
   CustomerID: number = 0;
   Address: string = 'Address';
   Area: string = 'Area'
-  logincondition: boolean;
+  logincondition: number = 0;
   customer: Customer;
   productDetails = [];
-  constructor(private _http: HttpClient) {
-    this.TONumber = '';
-    this.TotalPrice = 0;
-    this.MobileNo = '';
+
+  TotalPrice: number = 0;
+  TotalNetPrice: number = 0;
+  OtherDiscount: number = 0;
+
+  constructor(private _http: HttpClient) {    
     var data = localStorage.getItem("item");
     if (data == 'undefined' || data == "null") {
       this._cartItems = []
     } else {
       this._cartItems = JSON.parse(localStorage.getItem('item' || "null"));
-    }
-
-    // this._customerPonne = localStorage.getItem("currentUser");
-    // if (this._customerPonne == 'undefined' || this._customerPonne == "null") {
-    //   this.MobileNo = ''
-    // } else {
-    //   this.MobileNo = JSON.parse(localStorage.getItem('currentUser' || "null"));
-    // }    
+    } 
     this.GetCustomerID();
 
   }
@@ -87,7 +82,9 @@ export class ProductService {
     var order = new Ecom_Orders();
     this.TONumber = '11_' + Math.random().toString().slice(2, 11);
     this.TotalPrice = 0;
-    var TNetPrice = 0;
+    this.TotalNetPrice = 0;
+    this.OtherDiscount = 0;
+
     var OrderDetails = [];
     this._cartItems.forEach((item: Cart) => {
       var orderdetail = new Ecom_OrderDetails();
@@ -99,12 +96,12 @@ export class ProductService {
       orderdetail.PQty = item.Qty;
       orderdetail.ItemQty = item.Qty;
       orderdetail.UnitPrice = item.UnitPrice;
-      orderdetail.NetPrice = item.NetPrice ? 0 : item.UnitPrice;
+      orderdetail.NetPrice = item.MRP;
       orderdetail.HostAddress = environment.baseurl;
       orderdetail.ImgPath = item.ImgPath;
 
-      orderdetail.TrackedId = 'http://demo.one-ict.com:3000/api/'; //environment.baseurl;
-      orderdetail.CreateBy = '11';//environment.currentuserId;
+      orderdetail.TrackedId = environment.baseurl;
+      orderdetail.CreateBy = this.customer.CID.toString();
       orderdetail.CreateDate = new Date();
       orderdetail.UpdateBy = '';
       orderdetail.UpdateDate = new Date();
@@ -112,7 +109,7 @@ export class ProductService {
       orderdetail.Active = true;
       OrderDetails.push(orderdetail);
       this.TotalPrice = this.TotalPrice + (item.UnitPrice * item.Qty);
-      TNetPrice = TNetPrice + (item.UnitPrice * item.Qty);
+      this.TotalNetPrice = this.TotalNetPrice + (item.MRP * item.Qty);
     });
 
     order.OID = 0;
@@ -121,21 +118,21 @@ export class ProductService {
     order.PaymentId = 0;
     order.CouponId = 3333;
     order.PaymentModeId = 1;
-    order.Discount = 20;
-    order.Reason = '_orderReason';
+    order.Discount = ((this.TotalNetPrice - this.TotalPrice) + this.OtherDiscount);
+    order.Reason = '';
     order.Active = true;
 
     order.TotalItemQty = this._cartItems.length;
     order.DeliveryCharge = 20;
     order.TotalPrice = this.TotalPrice;
-    order.NetPrice = TNetPrice;
+    order.NetPrice = this.TotalNetPrice;
     order.Address = this.customer.Address;
     order.Area = this.customer.Area;
     order.DeliveryTime = new Date();
     order.OrderStatus = 1;
 
-    order.TrackedId = 'http://demo.one-ict.com:3000/api/'; //environment.baseurl;
-    order.CreateBy = '11'; //environment.currentuserId;
+    order.TrackedId = environment.baseurl;
+    order.CreateBy = this.customer.CID;
     order.CreateDate = new Date();
     order.Active = true;
     order.Delete = false;
@@ -195,5 +192,5 @@ export class ProductService {
   };
   public getProductDetails(pid: number) {
     return this._http.get(environment.baseurl + 'getproductdetail?PID=' + pid);
-  } 
+  }
 };

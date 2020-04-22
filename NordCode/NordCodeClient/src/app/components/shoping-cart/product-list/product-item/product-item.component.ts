@@ -225,7 +225,7 @@ export class ProductItemComponent implements OnInit {
     this._getTotalAmounts(this.featureItem.PID);
   }
   public addProductToCart(cart: Cart) {
-
+    
     let productExits = false;
     this._cartItems = this.productService._cartItems;
     for (let key in this._cartItems) {
@@ -238,7 +238,7 @@ export class ProductItemComponent implements OnInit {
     }
 
     if (!productExits) {
-      this._cartItems.push({ Add: '+', PID: cart.PID, ImgPath: cart.ImgPath, PName: cart.PName, Qty: 0, UnitPrice: cart.UnitPrice, Close: 'X' });
+      this._cartItems.push({ Add: '+', PID: cart.PID, ImgPath: cart.ImgPath, PName: cart.PName, Qty: 0, MRP: cart.MRP, UnitPrice: cart.UnitPrice, Close: 'X' });
       console.log(JSON.stringify(this._cartItems));
     }
 
@@ -261,7 +261,7 @@ export class ProductItemComponent implements OnInit {
   public openDialog(feature_Item): void {
     this._getTotalAmounts(feature_Item.PID);
     this.productService.getProductDetails(feature_Item.PID).subscribe((data: any) => {
-      if (data) {        
+      if (data) {
         feature_Item.Qty = this.totalItems;
         feature_Item.productDetails = data.productdetail.Banner.fulfillmentValue;
         this.newMethod(feature_Item);
