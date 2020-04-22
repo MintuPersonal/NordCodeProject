@@ -33,7 +33,7 @@ export class ProductService {
 
   TotalPrice: number = 0;
   TotalNetPrice: number = 0;
-  OtherDiscount: number = 0;
+  OtherDiscount: number = 0;  
 
   constructor(private _http: HttpClient) {    
     var data = localStorage.getItem("item");

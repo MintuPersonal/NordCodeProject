@@ -82,7 +82,7 @@
                                             <td>
                                                 <span>{{ item.PName}} </span>
                                                 <br>
-                                                <span class="line" *ngIf="item.MRP"> ৳ {{item.MRP}} </span>
+                                                <span class="line" *ngIf="item.MRP > item.UnitPrice"> ৳ {{item.MRP}} </span>
                                             </td>
                                             <td>{{ item.Qty * item.UnitPrice | currency: 'BD '}} </td>
                                             <td title="remove from bag" class="td" (click)="RemoveFromCart(itemed)">

@@ -25,6 +25,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent implements OnInit {
   customerModel: Customer;
+  TotalPrice: number;
 
   ngOnInit(): void {
     let isCounted = JSON.parse(localStorage.getItem('IsCounted'))
@@ -47,16 +48,17 @@ export class LoginComponent implements OnInit {
     this.customerService.getCustomer(this.userModel.Mobileno).subscribe((data: any) => {
       if (data.status) {
         this.customerModel = data.customer[0]
-        this.productService.SetCustomerID(this.customerModel.CID);
         this.interactionService.sendForLoginUpdate(this.customerModel);
-        localStorage.setItem('currentUser', this.customerModel.CID.toString());
-        localStorage.setItem('customerInfo', JSON.stringify(this.customerModel));
-
         if (this.productService.logincondition == 1) {
-          this.productService.logincondition = 2
-          var order = this.productService.GetOrder();
-          this.router.navigate(['/checkout', order.TotalPrice]);
+          this.productService.logincondition = 2          
+          this.TotalPrice = this.productService.TotalPrice          
+          this.productService.SetCustomerID(this.customerModel.CID);         
+          localStorage.setItem('currentUser', this.customerModel.CID.toString());
+          localStorage.setItem('customerInfo', JSON.stringify(this.customerModel));
+          this.productService.SetEmptyCart();
+          this.router.navigate(['/checkout', this.TotalPrice]);
         } else {
+          debugger;
           this.router.navigate(['/']);
         }
       }

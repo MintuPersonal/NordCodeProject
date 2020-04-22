@@ -35,26 +35,25 @@ export class CheckoutComponent implements OnInit {
       this.TotalPrice = this.productService.TotalPrice;
       this.customerModel.CID = this.productService.GetCustomerID();
       this.customerModel.MobileNo = '0' + this.customerModel.CID;
-      
+
       this._customerService.getCustomer(this.customerModel.MobileNo).subscribe((data: any) => {
         if (data.status) {
           var newcustomer = data.customer[0];
           this.orderModel.Address = newcustomer.Address;
-         // this.Address = newcustomer.Address;
+          // this.Address = newcustomer.Address;
           this.orderModel.Area = newcustomer.Aria;
-        }else{
+        } else {
           this.orderModel.Address = ''
           this.orderModel.Area = '';
-        }        
+        }
       });
 
     } else {
       this.router.navigate(['/']);
     }
   }
-
   public LoadItemTotal() {
-    
+
     var hasitemdata = JSON.parse(localStorage.getItem('item'));
     if (hasitemdata != null) {
       var _totalItemsPrice = 0;
@@ -69,7 +68,6 @@ export class CheckoutComponent implements OnInit {
 
     }
   };
-
   onSubmit(_order: Ecom_Orders) {
     this.productService.Address = _order.Address;
     this.productService.Area = _order.Area;
@@ -77,20 +75,20 @@ export class CheckoutComponent implements OnInit {
     var order = new Ecom_Orders();
     order.OID = 0;
     order.CustomerId = this.CustomerId;
-    order.TONumber = this.TONumber;    
+    order.TONumber = this.TONumber;
     order.Address = _order.Address;
     order.Area = _order.Area;
     order.DeliveryTime = _order.DeliveryTime;
     order.Reason = _order.Reason;
 
-    order.CouponId = 3333;
-    order.PaymentModeId = 1;
-    order.Discount = 20;
-    order.TotalItemQty = 5;
-    order.DeliveryCharge = 20;
+    // order.CouponId = 3333;
+    // order.PaymentModeId = 1;
+    // order.Discount = 20;
+    // order.TotalItemQty = 5;
+    // order.DeliveryCharge = 20;
 
     order.TrackedId = 'http://americantmartbd.com/api/'; //environment.baseurl;
-    order.CreateBy = '11' //environment.currentuserId; 
+    order.CreateBy = this.CustomerId;
     order.CreateDate = new Date();
     order.Active = true;
     order.Delete = false;
@@ -108,9 +106,6 @@ export class CheckoutComponent implements OnInit {
     else {
       this.router.navigate(['/checkout', order.TotalPrice]);
     }
-
   }
-  onClear() {
-
-  }
+  
 }

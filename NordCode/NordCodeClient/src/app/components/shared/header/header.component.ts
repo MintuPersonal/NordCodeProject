@@ -189,7 +189,7 @@ export class HeaderComponent implements OnInit {
       this._cartItems.forEach((item) => {
         this.totalAmounts += (item.Qty * item.UnitPrice);
         this.totalNetAmounts += (item.Qty * item.MRP);
-       /// this.totalDiscount = this.totalNetAmounts - this.totalNetAmounts
+        /// this.totalDiscount = this.totalNetAmounts - this.totalNetAmounts
       });
     };
   }
@@ -250,15 +250,16 @@ export class HeaderComponent implements OnInit {
   }
   public PlaceOrder(totalPrice: any) {
     var order = this.productService.GetOrder();
+    this.productService.TotalPrice = order.TotalPrice;
     this.totalAmounts = order.TotalPrice;
-    //this.totalDiscount = order.Discount;
     this.totalItem = order.TotalItemQty;
     this.customerService.SetOrder(order).subscribe();
-    this.productService.SetEmptyCart();
-
+   
     if (this.CheckUserSession() && order.TotalPrice != 0) {
+      this.productService.SetEmptyCart();
       this.router.navigate(['/checkout', order.TotalPrice]);
     } else {
+
       this.productService.logincondition = 1;
       this.router.navigate(['/login']);
     }

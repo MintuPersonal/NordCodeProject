@@ -443,4 +443,5 @@ table {
 
 .line {
     text-decoration: line-through;
+    color: orangered;
 }
