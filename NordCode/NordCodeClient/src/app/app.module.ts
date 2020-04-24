@@ -75,7 +75,7 @@ import { ContactformComponent } from './components/common/tmart/contact/contactf
     MatNativeDateModule, FlexLayoutModule, MatSelectModule, MatSliderModule, MatGridListModule, MatButtonModule,
     MatMenuModule, MatIconModule, MatCardModule, MatSidenavModule, MatInputModule, MatTooltipModule,
     MatBadgeModule, MatPaginatorModule, MatFormFieldModule, MatTableModule, MatExpansionModule, MatChipsModule,
-    MatButtonToggleModule, MatDialogModule, MatTabsModule],
+    MatButtonToggleModule, MatDialogModule, MatTabsModule, MatProgressBarModule, MatProgressSpinnerModule],
 
   providers: [MatDatepickerModule, NavbarService],
   bootstrap: [AppComponent]

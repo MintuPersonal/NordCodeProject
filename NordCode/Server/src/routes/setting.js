@@ -3,6 +3,7 @@ const nodemailer = require("nodemailer");
 const Setting = require('../models/Setting.js');
 
 const router = express.Router();
+
 router.get('/getsettingall', (req, res, next) => {
     var name = req.query.Name;
     console.log('Test Name: ' + name)
@@ -57,5 +58,27 @@ const sendMail = (user, setting, callback) => {
     };
     transporter.sendMail(mailOptions, callback);
 }
+
+var multer = require('multer');
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './assets/img')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+        //cb(null, file.fieldname + '-' + Date.now() + '.jpg')
+    }
+});
+var upload = multer({ storage: storage });
+router.post('/uploadfile', upload.single('file'), (req, res, next) => {
+    const file = req.file
+    console.log('File Name :' + file)
+    if (!file) {
+        const error = new Error('Please upload a file')
+        error.httpStatusCode = 400
+        return next(error)
+    }
+    res.send(file)
+});
 
 module.exports = router;

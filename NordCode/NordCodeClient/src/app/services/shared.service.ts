@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Ecom_Setting } from '../models/Setting';
 import { Customer } from '../models/Customer';
+import { HttpClient, HttpEvent, HttpErrorResponse, HttpEventType } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
+
 
   Setting: Ecom_Setting[];
   constructor(private _http: HttpClient) {
@@ -35,4 +37,12 @@ export class SharedService {
   public sendCustomerMail(customerModel: Customer) {
     return this._http.post<Customer>(environment.baseurl + 'sendmail', customerModel);
   }
+
+  public upload(formData) { 
+    return this._http.post<any>(environment.baseurl + 'uploadfile', formData, {
+      reportProgress: true,
+      observe: 'events'
+    });
+  }
+
 }

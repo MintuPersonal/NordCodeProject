@@ -2,6 +2,7 @@ const express = require('express');
 const Customer = require('../models/Customer.js');
 const Order = require('../models/Order.js');
 const OrderDetails = require('../models/OrderDetails.js');
+
 const router = express.Router();
 
 router.get('/getcustomer', (req, res, next) => {
@@ -142,6 +143,28 @@ router.post('/updatecustomer', (req, res, next) => {
         });
     }
 });
+
+// SET STORAGE
+// var storage = multer.diskStorage({
+//     destination: function(req, file, cb) {
+//         cb(null, './img')
+//     },
+//     filename: function(req, file, cb) {
+//         cb(null, file.fieldname + '-' + Date.now())
+//     }
+// });
+
+// var upload = multer({ storage: storage });
+
+// app.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
+//     const file = req.file
+//     if (!file) {
+//         const error = new Error('Please upload a file')
+//         error.httpStatusCode = 400
+//         return next(error)
+//     }
+//     res.send(file)
+// });
 
 router.get('/getorders', (req, res, next) => {
     //var customerid = ''; //req.body.customerid; for x-www-urlencoded 

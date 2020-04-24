@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Customer } from 'src/app/models/Customer';
 import { environment } from 'src/environments/environment';
 import { ProductService } from 'src/app/services/product.service';
 import { CustomerService } from 'src/app/services/customer.service';
+import { SharedService } from 'src/app/services/shared.service';
+import { HttpEventType, HttpErrorResponse } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -14,10 +18,9 @@ export class ProfileComponent implements OnInit {
   disabled: boolean;
   Birthday = new FormControl();
 
-  constructor(private productService: ProductService,
-    private customerService: CustomerService) { }
+  constructor(private productService: ProductService, private customerService: CustomerService, private sharedService: SharedService) { }
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-
+  @ViewChild('file', { static: false }) file: ElementRef;
   customerModel = new Customer();
   public imagePath;
   public imgURL: any;
@@ -30,7 +33,7 @@ export class ProfileComponent implements OnInit {
 
     this.customerModel.FileUrl = files[0].name;
     this.customerModel.FileExtension = files[0].type;
-    this.customerModel.FileImage = files[0].size;
+    //this.customerModel.FileImage = files[0].size;
     this.customerModel.TrackedId = window.location.hostname
 
     if (this.customerModel.FileExtension.match(/image\/*/) == null) {
@@ -61,7 +64,7 @@ export class ProfileComponent implements OnInit {
     this.customerModel.MobileNo = '0' + this.customerModel.CID;
     this.customerService.getcustomerinfo(this.customerModel.MobileNo).subscribe((userData: any) => {
       this.customerModel = userData.customer[0];
-     // this.customerModel.FileUrl += this.customerModel.FileImage;
+      this.imgURL = '../assets/img/product/feature/' + this.customerModel.FileUrl;
       if (userData.customer.length) {
         this.disabled = true;
         this.Birthday = new FormControl(this.customerModel.Birthday);
@@ -96,5 +99,40 @@ export class ProfileComponent implements OnInit {
   onClear() {
     this.customerModel = new Customer();
   }
+  onFileRemove() {
+    this.imgURL = '../assets/img/member/Mahatab.png';
+  }
+  onFileChange() {
+    const file = this.file.nativeElement.files[0];
+    const fileToUpload = new FormData();
+    fileToUpload.set('file', file);
 
+
+    file.inProgress = true;
+    //file.progress = 50;
+    this.sharedService.upload(fileToUpload).pipe(
+      map(event => {
+        switch (event.type) {
+          case HttpEventType.UploadProgress:
+            file.progress = Math.round(event.loaded * 100 / event.total);
+            break;
+          case HttpEventType.Response:
+            return event;
+        }
+      }),
+      catchError((error: HttpErrorResponse) => {
+        file.inProgress = false;
+        return of(`${file.data.name} upload failed.`);
+      })).subscribe((event: any) => {
+        if (typeof (event) === 'object') {
+          console.log(event.body);
+        }
+      });
+    // this.sharedService.upload(fileToUpload).subscribe((data: any) => {      
+    //   if (data.status) {
+
+    //   }
+    // });
+
+  }
 }

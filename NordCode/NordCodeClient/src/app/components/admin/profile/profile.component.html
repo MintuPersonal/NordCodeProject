@@ -8,18 +8,36 @@
                 <mat-icon fxFlex="5%" (click)="onClear()">clear</mat-icon>
                 <span fxFlex="90%" class="text-center"> My Profile </span>
             </mat-card-title>
-            <hr>
+
+            <mat-card-content>
+                <!-- <ul>
+                    <li *ngFor="let file of files">
+                        <mat-progress-bar [value]="file.progress"></mat-progress-bar>
+                        <span id="file-label"></span>
+                    </li>
+                </ul> -->
+                <mat-progress-bar [value]="file.progress"></mat-progress-bar>
+            </mat-card-content>
+            <br>
+
 
             <p class="text-center" style="height: 100px;">
                 <span>                   
-                    <input #file type="file" accept='image/*' (change)="preview(file.files)"
+                    <input class="hidden" #file type="file" accept='image/*' (change)="preview(file.files)"
                         style="display: none; position: absolute; width: 30px; height: 28px; border-radius: 50%;  margin-left: 70px;" />
                         <button type="button" (click)="file.click()" class="custom-fileupload"> + </button>
                     {{message}}
-                    <img  [hidden]="true" [src]="imgURL" height="200" width="90px" *ngIf="imgURL" alt="" class="rounded-circle img-fluid">
-                    <img src="../assets/img/product/feature/{{customerModel.FileUrl}}" class="rounded-circle" alt="{{message}}">
+                    <img class="hidden" [src]="imgURL" height="200" width="90px" *ngIf="imgURL" alt="" class="rounded-circle img-fluid">
+                    <!-- <img src="../assets/img/product/feature/{{customerModel.FileUrl}}" class="rounded-circle" alt="{{message}}"> -->
                 </span>
+                <br>
+                <span (click)="onFileChange()"><i class="fa fa-paperclip">  | </i></span>
+                <span (click)="onFileRemove()"><i class="fa">&nbsp; Remove </i></span>
+
             </p>
+
+            <br>
+
             <hr>
             <form class="example-form" #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)">
                 <mat-form-field [hidden]="true">
