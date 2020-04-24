@@ -5,7 +5,7 @@ const OrderDetails = require('../models/OrderDetails.js');
 const router = express.Router();
 
 router.get('/getcustomer', (req, res, next) => {
-    var cmobileno = req.query.cmobileno;
+    var cmobileno = req.query.cmobileno.trim();
     var cid = parseInt(cmobileno);
     var toNomber = '+880';
     Customer.findAll({ where: { MobileNo: cmobileno }, limit: 1 }).then(customer => {
@@ -114,14 +114,28 @@ router.get('/getcustomerinfo', (req, res, next) => {
     });
 });
 router.post('/updatecustomer', (req, res, next) => {
+    console.log('Update CID: ' + req.body.CID)
     if (!req.body) {
         res.status(400);
         res.json({ error: 'Bad data request' + req.body });
     } else {
-        Customer.create(req.body).then(data => {
+        Customer.update({
+            Name: req.body.Name,
+            Email: req.body.Email,
+            Birthday: req.body.Birthday,
+            UpdateBy: req.body.UpdateBy,
+            UpdateDate: req.body.UpdateDate,
+            TONumber: req.body.TONumber,
+            TrackedId: req.body.TrackedId,
+            FileUrl: req.body.FileUrl
+                //FileImage: req.body.FileImage
+        }, {
+            where: { CID: req.body.CID }
+        }).then(data => {
             res.json({
+                customer: req.body,
                 status: true,
-                msg: 'Add to cart successfully'
+                msg: 'Update Customer Successfully'
             });
         }).catch(err => {
             console.log('Error :' + err);

@@ -47,14 +47,16 @@ export class LoginComponent implements OnInit {
     this.userModel.IsCounted = this.isCounted;
     this.customerService.getCustomer(this.userModel.Mobileno).subscribe((data: any) => {
       if (data.status) {
+        
         this.customerModel = data.customer[0]
-        this.interactionService.sendForLoginUpdate(this.customerModel);
+        this.TotalPrice = this.productService.TotalPrice          
+        this.productService.SetCustomerID(this.customerModel.CID);  
+        this.interactionService.sendForLoginUpdate(this.customerModel);       
+        localStorage.setItem('currentUser', this.customerModel.CID.toString());
+        localStorage.setItem('customerInfo', JSON.stringify(this.customerModel));
+        
         if (this.productService.logincondition == 1) {
-          this.productService.logincondition = 2          
-          this.TotalPrice = this.productService.TotalPrice          
-          this.productService.SetCustomerID(this.customerModel.CID);         
-          localStorage.setItem('currentUser', this.customerModel.CID.toString());
-          localStorage.setItem('customerInfo', JSON.stringify(this.customerModel));
+          this.productService.logincondition = 2 
           this.productService.SetEmptyCart();
           this.router.navigate(['/checkout', this.TotalPrice]);
         } else {

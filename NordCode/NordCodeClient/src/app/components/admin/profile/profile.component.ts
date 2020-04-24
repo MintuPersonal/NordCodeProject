@@ -16,9 +16,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private productService: ProductService,
     private customerService: CustomerService) { }
-  emailFormControl = new FormControl('',
-    [Validators.required, Validators.email]
-  );
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   customerModel = new Customer();
   public imagePath;
@@ -26,7 +24,7 @@ export class ProfileComponent implements OnInit {
   public message: string;
 
   preview(files) {
-    debugger;
+
     if (files.length === 0)
       return;
 
@@ -51,7 +49,7 @@ export class ProfileComponent implements OnInit {
     console.log(files)
   }
   public EndDateChange(event): void {
-    debugger;
+
     this.customerModel.Birthday = event.value;
 
     console.log(this.customerModel.Birthday)
@@ -59,10 +57,11 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.customerModel.CID = this.productService.GetCustomerID();
+
     this.customerModel.MobileNo = '0' + this.customerModel.CID;
     this.customerService.getcustomerinfo(this.customerModel.MobileNo).subscribe((userData: any) => {
       this.customerModel = userData.customer[0];
-      this.customerModel.FileUrl += this.customerModel.FileImage;
+     // this.customerModel.FileUrl += this.customerModel.FileImage;
       if (userData.customer.length) {
         this.disabled = true;
         this.Birthday = new FormControl(this.customerModel.Birthday);
@@ -83,11 +82,15 @@ export class ProfileComponent implements OnInit {
     this.customerModel;
     this.customerModel.TONumber = '11_' + Math.random().toString().slice(2, 11);
     this.customerModel.TrackedId = environment.baseurl;
-    this.customerModel.CreateBy = this.productService.GetCustomerID().toString();
-    this.customerModel.CreateDate = new Date;
+    this.customerModel.UpdateBy = this.productService.GetCustomerID().toString();
+    this.customerModel.UpdateDate = new Date;
     this.customerModel.Delete = false;
     this.customerModel.Active = true;
-    var data = this.customerService.updateCustomer(this.customerModel); //.subscribe((data: any)=>{    });    
+    var data = this.customerService.updateCustomer(this.customerModel).subscribe((data: any) => {
+      if (data.status) {
+        console.log(data.customer[0].MobileNo);
+      }
+    });
     this.customerModel = new Customer();
   };
   onClear() {

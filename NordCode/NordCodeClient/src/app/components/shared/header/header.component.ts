@@ -121,7 +121,29 @@ export class HeaderComponent implements OnInit {
       appId: "1:932041012966:web:9936106c9ea4e508e42d27"
     };
     firebase.initializeApp(firebaseConfig);
+    
+    if (this.CheckUserSession()) {
 
+      var customerInfo = JSON.parse(localStorage.getItem('customerInfo'));
+      if (customerInfo == "" || customerInfo == "undefined" || customerInfo == null) {
+        this.logincondition = false;
+      } else {
+        var result = (customerInfo.Name == null) ? customerInfo.MobileNo : customerInfo.Name;
+        this.userName = 'Logged ' + result; //customerInfo.Name == null ? customerInfo.MobileNo : customerInfo.Name
+        this.logincondition = true;
+      }
+    }
+
+    this.interactionService.getForLoginUpdate().subscribe((data: Customer) => {
+      
+      if (data) {
+        var result = (data.Name == null) ? data.MobileNo : data.Name;
+        this.userName = 'Logged ' + result;
+        this.logincondition = true;
+      } else {
+        this.logincondition = false;
+      }
+    });
     ////////////// Here New Concept  ///////////////
     this.interactionService.getForAddtoCart().subscribe((product: Cart) => {
       if (!this.productService.fromproductlist) {
@@ -133,26 +155,7 @@ export class HeaderComponent implements OnInit {
     });
     this._getTotalAmounts();
     ////////////// Here New Concept  ///////////////
-    if (this.CheckUserSession()) {
 
-      var customerInfo = JSON.parse(localStorage.getItem('customerInfo'));
-      if (customerInfo == "" || customerInfo == "undefined" || customerInfo == null) {
-        this.logincondition = false;
-      } else {
-        this.userName = 'Logged ' + customerInfo.Name
-        this.logincondition = true;
-      }
-    }
-
-    this.interactionService.getForLoginUpdate().subscribe((data: Customer) => {
-
-      if (data) {
-        this.userName = 'Logged ' + data.Name;
-        this.logincondition = true;
-      } else {
-        this.logincondition = false;
-      }
-    });
   }
 
   public onAddToBag(featureItem) {
@@ -254,7 +257,7 @@ export class HeaderComponent implements OnInit {
     this.totalAmounts = order.TotalPrice;
     this.totalItem = order.TotalItemQty;
     this.customerService.SetOrder(order).subscribe();
-   
+
     if (this.CheckUserSession() && order.TotalPrice != 0) {
       this.productService.SetEmptyCart();
       this.router.navigate(['/checkout', order.TotalPrice]);

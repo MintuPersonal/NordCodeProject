@@ -16,10 +16,8 @@
                         style="display: none; position: absolute; width: 30px; height: 28px; border-radius: 50%;  margin-left: 70px;" />
                         <button type="button" (click)="file.click()" class="custom-fileupload"> + </button>
                     {{message}}
-                    <img [src]="imgURL" height="200" width="90px" *ngIf="imgURL" alt=""
-                        class="rounded-circle img-fluid">
-                    <img src="../assets/img/member/Mahatab.png" *ngIf="!imgURL"
-                        class="rounded-circle" alt="{{message}}">
+                    <img  [hidden]="true" [src]="imgURL" height="200" width="90px" *ngIf="imgURL" alt="" class="rounded-circle img-fluid">
+                    <img src="../assets/img/product/feature/{{customerModel.FileUrl}}" class="rounded-circle" alt="{{message}}">
                 </span>
             </p>
             <hr>
@@ -37,13 +35,13 @@
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
-                    <input matInput #Email="ngModel" [(ngModel)]="customerModel.Email" name="Email" ngModel [disabled]="disabled" type="email" required minlength="6" placeholder="EMAIL" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                    <input matInput #Email="ngModel" [(ngModel)]="customerModel.Email" name="Email" ngModel type="email" required minlength="6" placeholder="EMAIL" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                     <mat-error *ngIf="Email.invalid"> Please erter an valid email. </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
-                    <input matInput #MobileNo="ngModel" [(ngModel)]="customerModel.MobileNo" name="MobileNo" ngModel [disabled]="disabled" type="text" required minlength="6" placeholder="Password">
-                    <mat-error *ngIf="MobileNo.invalid"> Please erter six character. </mat-error>
+                    <input matInput #MobileNo="ngModel" [(ngModel)]="customerModel.MobileNo" name="MobileNo" ngModel [disabled]="disabled" type="text" required minlength="6" placeholder="MobileNo">
+                    <mat-error *ngIf="MobileNo.invalid"> Please erter eleven number. </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">

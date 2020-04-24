@@ -11,6 +11,7 @@ import { Customer } from '../models/Customer';
   providedIn: 'root'
 })
 export class CustomerService {
+  
   updateCustomer(customerModel: Customer) {
     return this._http.post<any>(environment.baseurl + 'updatecustomer', customerModel);
   } 
