@@ -18,6 +18,14 @@
         <div class="row col-6">
             <div mat-dialog-content>
                 <mat-label class="round"> ID#{{("00000000"+data.PID).slice(-7)}} </mat-label>
+                <span class="offset-3">
+                        <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> 
+                             <span class="dropdown"> 
+                                <span><i class="fa fa-heart"></i> </span>
+                <div class="dropdown-content text-center text-white"> Browse Wishlist </div>
+                </span>
+                </button>
+                </span>
                 <h4 at-dialog-title>{{data.PName}}</h4>
                 <mat-label>{{data.Weight}}</mat-label>
                 <p class="price">
