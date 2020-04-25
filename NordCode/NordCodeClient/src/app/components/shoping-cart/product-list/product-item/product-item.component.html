@@ -19,6 +19,16 @@
                 </div>
 
                 <div *ngIf="featureItem.UnitsInStock !== 0 " class="overlay text">
+                    <div class="circle">
+                        <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> 
+                             <span class="dropdown"> 
+                                <span><i class="fa fa-heart"></i> </span>
+                                <div class="dropdown-content text-center text-white">
+                                   Browse Wishlist                                   
+                                </div>
+                                </span>
+                        </button>
+                    </div>
                     <div class="row">
                         <p class="addToBag" (click)="addProductToCart(featureItem)"> Add to Shopping Bag </p>
                     </div>

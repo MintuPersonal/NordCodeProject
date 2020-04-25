@@ -60,11 +60,10 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.customerModel.CID = this.productService.GetCustomerID();
-
     this.customerModel.MobileNo = '0' + this.customerModel.CID;
     this.customerService.getcustomerinfo(this.customerModel.MobileNo).subscribe((userData: any) => {
       this.customerModel = userData.customer[0];
-      this.imgURL = '../assets/img/product/feature/' + this.customerModel.FileUrl;
+      this.imgURL = '../assets/img/member/' + this.customerModel.FileUrl;
       if (userData.customer.length) {
         this.disabled = true;
         this.Birthday = new FormControl(this.customerModel.Birthday);
@@ -73,8 +72,6 @@ export class ProfileComponent implements OnInit {
       }
     });
   }
-
-  //// Save Method ///
 
   submitted = false;
   errorMsg = '';
@@ -89,7 +86,7 @@ export class ProfileComponent implements OnInit {
     this.customerModel.UpdateDate = new Date;
     this.customerModel.Delete = false;
     this.customerModel.Active = true;
-    var data = this.customerService.updateCustomer(this.customerModel).subscribe((data: any) => {
+    this.customerService.updateCustomer(this.customerModel).subscribe((data: any) => {
       if (data.status) {
         console.log(data.customer[0].MobileNo);
       }
@@ -100,28 +97,31 @@ export class ProfileComponent implements OnInit {
     this.customerModel = new Customer();
   }
   onFileRemove() {
+    this.customerModel.FileUrl = 'Mahatab.png';
     this.imgURL = '../assets/img/member/Mahatab.png';
+    //this.onFileChange();
   }
   onFileChange() {
+
+    this.onSubmit();
     const file = this.file.nativeElement.files[0];
     const fileToUpload = new FormData();
     fileToUpload.set('file', file);
 
-
-    file.inProgress = true;
-    //file.progress = 50;
+    // file.inProgress = true;
+    // file.progress = 50;
     this.sharedService.upload(fileToUpload).pipe(
       map(event => {
         switch (event.type) {
           case HttpEventType.UploadProgress:
-            file.progress = Math.round(event.loaded * 100 / event.total);
+            // file.progress = Math.round(event.loaded * 100 / event.total);
             break;
           case HttpEventType.Response:
             return event;
         }
       }),
       catchError((error: HttpErrorResponse) => {
-        file.inProgress = false;
+        //  file.inProgress = false;
         return of(`${file.data.name} upload failed.`);
       })).subscribe((event: any) => {
         if (typeof (event) === 'object') {

@@ -62,7 +62,7 @@ const sendMail = (user, setting, callback) => {
 var multer = require('multer');
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, './assets/img')
+        cb(null, 'F:/NordCodeProject2020/NordCode/NordCodeClient/src/assets/img/member/')
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);

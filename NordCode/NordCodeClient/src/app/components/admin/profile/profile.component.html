@@ -8,16 +8,16 @@
                 <mat-icon fxFlex="5%" (click)="onClear()">clear</mat-icon>
                 <span fxFlex="90%" class="text-center"> My Profile </span>
             </mat-card-title>
-
-            <mat-card-content>
-                <!-- <ul>
+            <hr>
+            <!-- <mat-card-content>
+                <ul>
                     <li *ngFor="let file of files">
                         <mat-progress-bar [value]="file.progress"></mat-progress-bar>
                         <span id="file-label"></span>
                     </li>
-                </ul> -->
+                </ul>
                 <mat-progress-bar [value]="file.progress"></mat-progress-bar>
-            </mat-card-content>
+            </mat-card-content> -->
             <br>
 
 
@@ -31,13 +31,12 @@
                     <!-- <img src="../assets/img/product/feature/{{customerModel.FileUrl}}" class="rounded-circle" alt="{{message}}"> -->
                 </span>
                 <br>
+                <!-- <a href="javascript:void(0)"> -->
                 <span (click)="onFileChange()"><i class="fa fa-paperclip">  | </i></span>
                 <span (click)="onFileRemove()"><i class="fa">&nbsp; Remove </i></span>
-
+                <!-- </a> -->
             </p>
-
             <br>
-
             <hr>
             <form class="example-form" #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)">
                 <mat-form-field [hidden]="true">
@@ -75,7 +74,7 @@
                 <!-- <hr> {{customerModel | json}} -->
                 <div class="example-button-row">
                     <!-- [disabled]="customerModel.form.invalid" -->
-                    <button mat-raised-button color="primary" class="material-cust-large-button"> Create </button>
+                    <button mat-raised-button color="primary" class="material-cust-large-button"> Update Profile </button>
                 </div>
                 <hr>
                 <div class="example-row">

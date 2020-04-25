@@ -15,7 +15,7 @@
 .material-cust-large-button {
     width: 100%;
     height: 50px;
-    background: #11d3c1;
+    background: green;
     /* margin-top: 25px; */
 }
 
@@ -27,7 +27,7 @@
 
 h2 {
     font-size: 10rem;
-    color: #11d3c1;
+    color: green;
     margin: 100px !important;
 }
 
@@ -36,14 +36,15 @@ h2 {
 }
 
 .custom-fileupload {
-    background-color: #11d3c1 !important;
+    background-color: green !important;
+    color: white;
     border-radius: 50%;
-    width: 30px;
+    width: 35px;
     border: none;
     font-size: 30px;
     padding: 3px;
     position: absolute;
-    margin-left: 70px;
+    margin-left: 85px;
 }
 
 img {
@@ -58,4 +59,8 @@ li {
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+a {
+    color: green;
 }
