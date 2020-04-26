@@ -45,6 +45,7 @@ import {
   MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatTabsModule,
   MatToolbarModule, MatTooltipModule, MatBadgeModule, MatPaginatorModule, MatFormFieldModule, MatTableModule
 } from '@angular/material';
+
 import { SearchComponent } from './components/shoping-cart/search/search.component';
 import { ProfileComponent } from './components/admin/profile/profile.component';
 import { CategoryItemComponent } from './components/shoping-cart/filter/category-item/category-item/category-item.component';
@@ -73,7 +74,7 @@ import { ContactformComponent } from './components/common/tmart/contact/contactf
     FormsModule, ReactiveFormsModule, MatIconModule, MatInputModule, MatRadioModule, MatCheckboxModule,
     MatButtonModule, MatListModule, MatCardModule, MatToolbarModule, MatDatepickerModule, MaterialTimePickerModule,
     MatNativeDateModule, FlexLayoutModule, MatSelectModule, MatSliderModule, MatGridListModule, MatButtonModule,
-    MatMenuModule, MatIconModule, MatCardModule, MatSidenavModule, MatInputModule, MatTooltipModule,
+    MatMenuModule, MatIconModule, MatSidenavModule, MatInputModule, MatTooltipModule,
     MatBadgeModule, MatPaginatorModule, MatFormFieldModule, MatTableModule, MatExpansionModule, MatChipsModule,
     MatButtonToggleModule, MatDialogModule, MatTabsModule, MatProgressBarModule, MatProgressSpinnerModule],
 

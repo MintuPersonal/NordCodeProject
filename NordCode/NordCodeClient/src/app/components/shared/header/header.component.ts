@@ -121,7 +121,7 @@ export class HeaderComponent implements OnInit {
       appId: "1:932041012966:web:9936106c9ea4e508e42d27"
     };
     firebase.initializeApp(firebaseConfig);
-    
+
     if (this.CheckUserSession()) {
 
       var customerInfo = JSON.parse(localStorage.getItem('customerInfo'));
@@ -135,7 +135,7 @@ export class HeaderComponent implements OnInit {
     }
 
     this.interactionService.getForLoginUpdate().subscribe((data: Customer) => {
-      
+
       if (data) {
         var result = (data.Name == null) ? data.MobileNo : data.Name;
         this.userName = 'Logged ' + result;
@@ -278,6 +278,7 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/']);
     }
   }
+
   ////////////// Here New Concept  ///////////////
 
 }

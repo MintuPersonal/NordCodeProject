@@ -129,20 +129,4 @@
     <mat-nav-list>
         <app-menu *ngFor="let item of navItems" [item]="item"> </app-menu>
     </mat-nav-list>
-    <!-- <br>
-    <hr>
-    <div>
-        HHHHHHHHH
-        <iui-treeview [items]="items" [controlStyle]="ctrlStyle">
-            <ng-template let-item>
-                <div (mouseenter)="hoverItem=item" (mouseleave)="hoverItem=null">
-                    <span [ngClass]="item.icon"></span>
-                    <span class="treeview-pec-item-content">{{item.text}}</span>
-                    <div class="treeview-pec-toolbar" *ngIf="item.locked || item==hoverItem">
-                        <span class="treeview-pec-item-button treeview-pec-item-button-lock" [ngClass]="{ 'treeview-pec-item-button-lock': item.locked, 'treeview-pec-item-button-unlock': !item.locked && item.items && item.items.length > 0 }" (click)="lock(item)"></span>
-                    </div>
-                </div>
-            </ng-template>
-        </iui-treeview>
-    </div> -->
 </div>

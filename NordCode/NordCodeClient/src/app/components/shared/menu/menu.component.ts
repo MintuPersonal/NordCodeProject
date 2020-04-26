@@ -13,9 +13,7 @@ import { ProductService } from 'src/app/services/product.service';
     trigger('indicatorRotate', [
       state('collapsed', style({ transform: 'rotate(0deg)' })),
       state('expanded', style({ transform: 'rotate(180deg)' })),
-      transition('expanded <=> collapsed',
-        animate('225ms cubic-bezier(0.4,0.0,0.2,1)')
-      ),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4,0.0,0.2,1)')),
     ])
   ]
 })
@@ -24,9 +22,9 @@ export class MenuComponent implements OnInit {
   @HostBinding('attr.aria-expanded') ariaExpanded = this.expanded;
   @Input() item: NavItem;
   @Input() depth: number;
-
-  constructor(public navService: NavbarService, private productService: ProductService, public elm: ElementRef,
-    public router: Router) {
+  //@ViewChild('file', { static: false }) file: ElementRef;
+  constructor(public navService: NavbarService, private productService: ProductService,
+    public elm: ElementRef, public router: Router) {
     if (this.depth === undefined) {
       this.depth = 0;
     }
@@ -35,35 +33,34 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.navService.currentUrl.subscribe((url: string) => {
       if (this.item.route && url) {
-        // console.log(`Checking '/${this.item.route}' against '${url}'`);
+        //console.log(`Checking '/${this.item.route}' against '${url}'`);       
         this.expanded = url.indexOf(`/${this.item.route}`) === 0;
         this.ariaExpanded = this.expanded;
-        // console.log(`${this.item.route} is expanded: ${this.expanded}`);
+        //console.log(`${this.item.route} is expanded: ${this.expanded}`);
       }
     });
   }
-
   onItemSelected(item: NavItem) {
 
-    if (item.ParentId != 0) {
-      if (!item.ChildAnswers || !item.ChildAnswers.length) {
-        this.productService.SetProductScearchFilter(item.Text);
-        this.router.navigate(['search/' + item.Text.toLocaleLowerCase()]);       
+    if (!item.ChildAnswers || !item.ChildAnswers.length) {
+      this.router.navigate([item.route]);
+      this.productService.SetProductScearchFilter(item.Text);
+      this.router.navigate(['search/' + item.Text.toLocaleLowerCase()]);
+      //alert('item first condition')
+    }
+    if (item.ChildAnswers && item.ChildAnswers.length) {
+      this.expanded = !this.expanded;
+      
+      if (item.Text != "" && item.ParentId == 0) {
+        this.router.navigate(['/category', item.Text]);
+      }else if(item.Text != "" && item.ParentId > 0){
+        this.productService.SetProductScearchFilter('');
+        this.router.navigate(['search/' + item.Text.toLocaleLowerCase()]);
       }
-      if (item.ChildAnswers && item.ChildAnswers.length) {
-        this.expanded = !this.expanded;
+      else {
+        this.router.navigate(['/']);
       }
-    } else {
-
-      if (!item.ChildAnswers || !item.ChildAnswers.length) {
-        this.productService.SetProductScearchFilter(item.Text);
-        this.router.navigate(['category/' + item.Text.toLocaleLowerCase()]);      
-      }
-      if (item.ChildAnswers && item.ChildAnswers.length) { 
-        this.expanded = !this.expanded;
-         // this.productService.SetProductScearchFilter(item.Text);
-         //this.router.navigate(['category/' + item.Text.toLocaleLowerCase()]); 
-      }
+      //alert('item 2nd condition')
     }
   }
 }

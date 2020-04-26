@@ -32,7 +32,8 @@ export class FilterComponent implements OnInit {
         this.commercialModel = this.commercialObj['homeobj'];
         this.categoriesModelAll = this.commercialModel['categories'];
         this.categoriesModel = this.commercialModel['categories'];
-        this.totalItems = this.categoriesModel.length;       
+        this.totalItems = this.categoriesModel.length;   
+       
         if (this.category != '') {
           this.categoriesModel = this.categoriesModel.filter(res => {
             if (res.Category.toLocaleLowerCase() == this.category.toLocaleLowerCase()) {
@@ -43,7 +44,7 @@ export class FilterComponent implements OnInit {
         else {
           this.pCategoryName = this.productService.pCategoryName;
         }
-        if (this.categoriesModel.length ) {
+        if (this.categoriesModel.length && this.categoriesModel[0].ParentId == 0) {
           this.categoriesModelAll = this.categoriesModelAll.filter(res => {
             if (res.ParentId == this.categoriesModel[0].PID) {
               return res 

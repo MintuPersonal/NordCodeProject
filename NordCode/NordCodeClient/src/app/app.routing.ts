@@ -37,6 +37,7 @@ const routes: Routes = [
 
   { path: 'category/:filter', component: FilterComponent },
   { path: 'search/:filter', component: SearchComponent },
+  //{ path: 'powder', component: SearchComponent },
   { path: 'cart', component: CartComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'home', component: HomeComponent },

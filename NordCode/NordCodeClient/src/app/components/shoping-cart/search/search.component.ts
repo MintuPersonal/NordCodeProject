@@ -18,6 +18,7 @@ export class SearchComponent implements OnInit {
   productsModel: any;
   filter: string;
   categoriesModel: any;
+  productsModelFilter: any;
 
   constructor(private _commercialService: CommercialService, private productService: ProductService,
     private route: ActivatedRoute) { }
@@ -44,12 +45,12 @@ export class SearchComponent implements OnInit {
             }
           });
          
-          if (this.categoriesModel.length ) {
-            this.productsModel = this.productsModel.filter(res => {
-              if (res.ParentId == this.categoriesModel[0].PID) {
-                return res 
-              }           
-            });
+          if (this.categoriesModel.length ) {   
+            this.productsModelFilter = [];         
+            this.categoriesModel.forEach(element => {
+              this.CategoryFilterMethod(element);
+            });    
+           this.productsModel = this.productsModelFilter        
           }    
         }
         else {
@@ -60,5 +61,14 @@ export class SearchComponent implements OnInit {
         console.log(err.message);
       }
     )
+  }
+
+  private CategoryFilterMethod(element: any) {
+    this.productsModelFilter = this.productsModel.filter(res => {
+      if(res.ParentId == element.PID){
+        return res
+      }
+      //return res.ParentId.toLocaleLowerCase().match(element.PID.toLocaleLowerCase());
+    });
   }
 }
