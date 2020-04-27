@@ -194,26 +194,15 @@ export class ProductService {
   public getProductDetails(pid: number) {
     return this._http.get(environment.baseurl + 'getproductdetail?PID=' + pid);
   }
-  public SetWishList(item: Cart) {
-    debugger;
+  public SetWishList(item: Cart) {   
     if (this.wishList.length) {
-      var wishList = this.wishList.filter(itemobj => { if (itemobj.PID == item.PID) { return itemobj; } });
-      debugger;
+      var wishList = this.wishList.filter(itemobj => { if (itemobj.PID == item.PID) { return itemobj; } });   
       if (wishList.length) {
-
       } else {
         this.wishList.push(item);
       }
     } else {
       this.wishList.push(item);
     }
-  }
-
-  private HasThisItem(item: Cart) {
-    this.wishList.forEach(itemexits => {
-      if (itemexits.PID != item.PID) {
-      }
-    });
-    return true;
-  }
+  } 
 };

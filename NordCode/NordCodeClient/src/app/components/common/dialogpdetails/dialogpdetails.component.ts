@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { ProductService } from 'src/app/services/product.service';
 import { Cart } from 'src/app/models/Cart';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dialogpdetails',
@@ -16,7 +17,7 @@ export class DialogpdetailsComponent implements OnInit {
   totalAmounts: number;
   totalItems: any;
   constructor(private productService: ProductService, private _interactionService: InteractionService,
-    public dialogRef: MatDialogRef<DialogpdetailsComponent>,
+    public dialogRef: MatDialogRef<DialogpdetailsComponent>, private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: Cart) { }
 
   onNoClick(): void {
@@ -47,5 +48,11 @@ export class DialogpdetailsComponent implements OnInit {
   }
   public setBigImage(name: string) {
     this.data.ImgPath = name;    
+  }
+  public ViewWishList() {
+    this.router.navigate(['wish']);   
+  }
+  public AddWishList(item: Cart) {
+    this.productService.SetWishList(item);    
   }
 }

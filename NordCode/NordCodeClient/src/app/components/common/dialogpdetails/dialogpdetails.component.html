@@ -18,11 +18,11 @@
         <div class="row col-6">
             <div mat-dialog-content>
                 <mat-label class="round"> ID#{{("00000000"+data.PID).slice(-7)}} </mat-label>
-                <span class="offset-3">
+                <span class="offset-3" (click)="AddWishList(data)">
                         <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> 
                              <span class="dropdown"> 
                                 <span><i class="fa fa-heart"></i> </span>
-                <div class="dropdown-content text-center text-white"> Browse Wishlist </div>
+                <div class="dropdown-content text-center text-white" (click)="ViewWishList()" [mat-dialog-close]="data" cdkFocusInitial> Browse Wishlist </div>
                 </span>
                 </button>
                 </span>
