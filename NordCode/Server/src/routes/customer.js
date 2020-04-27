@@ -2,7 +2,6 @@ const express = require('express');
 const Customer = require('../models/Customer.js');
 const Order = require('../models/Order.js');
 const OrderDetails = require('../models/OrderDetails.js');
-
 const router = express.Router();
 
 router.get('/getcustomer', (req, res, next) => {
@@ -10,7 +9,6 @@ router.get('/getcustomer', (req, res, next) => {
     var cid = parseInt(cmobileno);
     var toNomber = '+880';
     Customer.findAll({ where: { MobileNo: cmobileno }, limit: 1 }).then(customer => {
-        //console.log(JSON.stringify('DDD ' + customer.length));
         if (customer.length == 0) {
             customerobj = { CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }
             Customer.create(customerobj).then(data => {
@@ -32,65 +30,6 @@ router.get('/getcustomer', (req, res, next) => {
     }).catch(err => {
         console.log('Error ' + err);
     });
-
-    // if (!customer.length) {
-    //     const [customer, created] = Customer.findOrCreate({
-    //         where: { MobileNo: cmobileno },
-    //         defaults: { CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }
-    //     });
-    //     res.json({
-    //         status: true,
-    //         msg: 'User Create successfully',
-    //         customer: [{ CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }]
-    //     });
-    // }
-    // res.json({
-    //     status: true,
-    //     msg: 'User Create successfully',
-    //     customer: [{ CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }]
-    // });
-
-
-    // const [customer, created] = Customer.findOrCreate({
-    //     where: { MobileNo: cmobileno },
-    //     defaults: { CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }
-    // }).then(customer => {
-    //     res.json({
-    //         status: true,
-    //         msg: 'User Create successfully',
-    //         customer: [{ CID: cid, TONumber: toNomber, MobileNo: cmobileno, CreateDate: new Date(), Delete: 0, Active: 1 }]
-    //     });
-    // }).catch(err => {
-    //     console.log('Error ' + err);
-    // });
-    // Customer.findAll({ where: { MobileNo: cmobileno }, limit: 1 }).then(customer => {
-    //     res.json(customer);
-    // }).catch(err => {
-    //     console.log('Error ' + err);
-    // });
-    //res.json(customer);
-
-
-
-
-    // if (created) {
-    //     console.log('Some thing ' + customer.Id); // This will certainly be 'Technical Lead JavaScript'
-    // }
-    // Customer.findAll({ where: { MobileNo: cmobileno }, limit: 1 }).then(customer => {
-    //     res.json(customer);
-    // }).catch(err => {
-    //     console.log('Error ' + err);
-    // });
-    // console.log('CID ' + customer.CID); // 'sdepold'
-    // console.log('Mobile ' + customer.MobileNo); // This may or may not be 'Technical Lead JavaScript'
-    // console.log(created); // The boolean indicating whether this instance was just created
-    // if (created) {
-    //     console.log(customer.Id); // This will certainly be 'Technical Lead JavaScript'
-    // }
-    //var customerid = req.body.customerid; for x-www-urlencoded 
-    // var cmobileno = req.query.cmobileno;
-    // console.log(cmobileno);
-
 });
 router.get('/getcustomerinfo', (req, res, next) => {
     var cmobileno = req.query.cmobileno;
@@ -143,31 +82,8 @@ router.post('/updatecustomer', (req, res, next) => {
         });
     }
 });
-
-// SET STORAGE
-// var storage = multer.diskStorage({
-//     destination: function(req, file, cb) {
-//         cb(null, './img')
-//     },
-//     filename: function(req, file, cb) {
-//         cb(null, file.fieldname + '-' + Date.now())
-//     }
-// });
-
-// var upload = multer({ storage: storage });
-
-// app.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
-//     const file = req.file
-//     if (!file) {
-//         const error = new Error('Please upload a file')
-//         error.httpStatusCode = 400
-//         return next(error)
-//     }
-//     res.send(file)
-// });
-
 router.get('/getorders', (req, res, next) => {
-    //var customerid = ''; //req.body.customerid; for x-www-urlencoded 
+
     var customerid = req.query.customerid;
     console.log(customerid);
 
@@ -178,9 +94,7 @@ router.get('/getorders', (req, res, next) => {
     });
 });
 router.get('/getorder', (req, res, next) => {
-    //var customerid = ''; //req.body.customerid; for x-www-urlencoded 
     var TOnumber = req.query.TONumber;
-    //console.log(cmobileno);
     Order.findAll({ where: { TONumber: TOnumber }, limit: 1 }).then(order => {
         res.json({
             status: true,
@@ -191,10 +105,8 @@ router.get('/getorder', (req, res, next) => {
         console.log('Error ' + err);
     });
 });
-
 router.get('/getorderdetails', (req, res, next) => {
     var TOnumber = req.query.TONumber;
-    //console.log(TOnumber);
     OrderDetails.findAll({ where: { TONumber: TOnumber } }).then(order => {
         res.json({
             "status": true,
@@ -205,9 +117,7 @@ router.get('/getorderdetails', (req, res, next) => {
         console.log('Error ' + err);
     });
 });
-
 router.post('/setorder', (req, res, next) => {
-    //console.log(JSON.parse(req.body.cartItems) + ' Cart test');
     var homeobj = {};
     var orderId;
     if (!req.body) {

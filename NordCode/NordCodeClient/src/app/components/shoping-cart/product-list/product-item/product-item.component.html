@@ -8,8 +8,16 @@
             <div class="imageWrapper">
 
                 <div *ngIf="featureItem.UnitsInStock == 0" class="overlay text stockout" disabled="disabled">
+                    <div class="circle" (click)="AddWishList(featureItem)">
+                        <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> 
+                             <span class="dropdown"> 
+                                <span><i class="fa fa-heart"></i> </span>
+                                <div class="dropdown-content text-center text-white" (click)="ViewWishList(featureItem)"> Browse Wishlist </div>
+                                </span>
+                        </button>
+                    </div>
                     <div class="row">
-                        <p class="addToBag"> OUT OF STOCK </p>
+                        <p class="addToBag"> OUT OF STOCK PRODUCT </p>
                     </div>
                     <span>                   
                     <button class="btnShowDetails" (click)="openDialog(featureItem)">
@@ -19,13 +27,11 @@
                 </div>
 
                 <div *ngIf="featureItem.UnitsInStock !== 0 " class="overlay text">
-                    <div class="circle">
+                    <div class="circle" (click)="AddWishList(featureItem)">
                         <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> 
                              <span class="dropdown"> 
                                 <span><i class="fa fa-heart"></i> </span>
-                                <div class="dropdown-content text-center text-white">
-                                   Browse Wishlist                                   
-                                </div>
+                                <div class="dropdown-content text-center text-white" (click)="ViewWishList(featureItem)"> Browse Wishlist </div>
                                 </span>
                         </button>
                     </div>
@@ -81,97 +87,3 @@
         </mat-card>
     </a>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="overlay text">
-                <div class="row">
-                    <p class="addIcon">
-                        <mat-icon class="hide" matBadgeColor="warn" style="color: whitesmoke;" (click)="onRemoveFromBag(featureItem)">indeterminate_check_box</mat-icon>
-                    </p>
-                    <p class="addText" (click)="onAddToBag(featureItem)"> Add to Shopping Bag </p>
-                    <p class="addIcon">
-                        <mat-icon class="hide" matBadgeColor="warn" style="color: whitesmoke;" (click)="onAddToBag(featureItem)"> add </mat-icon>
-                    </p>
-                </div>
-                <span>
-                    <mat-form-field>
-                        <mat-label>What's your name?</mat-label>
-                        <input matInput [(ngModel)]="name">
-                        <input matInput [(ngModel)]="unitprice">
-                    </mat-form-field>
-                    <li *ngIf="data">
-                        You chose: <i>{{data.animal}}</i>
-                    </li>
-                    <button class="btnShowDetails" (click)="openDialog(featureItem)">
-                        <span >Details</span> <span>  &gt;&gt;  </span>
-                </button>
-                </span>
-                <span>
-                    <a href="#" class="btnShowDetails"><span> Details </span><span> &gt;&gt; </span></a>
-            </div> -->
-
-
-
-<!-- <div class="overlay text">
-
-                <section class="actionItems">
-                    <p class="total">
-                        <span>৳ </span>
-                        <span>480</span></p>
-                    <div>
-                        <p class="remove">-</p>
-                        <p class="quantity">
-                            <span>1</span></p>
-                        <p class="add">+</p>
-                    </div>
-                </section>
-                <p class="inBag">in bag</p>
-                <span>
-            <a href="#" class="btnShowDetails" >
-                <span >Details</span>
-                <span>  &gt;</span>
-                </a>                
-                </span>
-            </div> -->
-
-<!-- <div class="stockout overlay text">
-                <p class="addText">OUT OF STOCK</p>
-                <span>
-                    <mat-form-field>
-                        <mat-label>What's your name?</mat-label>
-                        <input matInput [(ngModel)]="name">
-                        <input matInput [(ngModel)]="unitprice">
-                    </mat-form-field>
-                    <li *ngIf="data">
-                        You chose: <i>{{data.animal}}</i>
-                    </li>
-                    <button class="btnShowDetails" (click)="openDialog(featureItem)">
-                        <span >Details</span> <span>  &gt;&gt;  </span>
-                </button>
-                </span>
-            </div> -->
-
-
-<!-- <i class="addText fa fa-minus-square" (click)="onAddToBag(featureItem)">  </i>
-                    <p class="addText" (click)="onAddToBag(featureItem)"> {{totalItems}} </p>
-                    <i class="addText fa fa-plus-square" (click)="onAddToBag(featureItem)"> + </i> -->
-
-<!-- <p class="addIcon">
-                        <mat-icon class="hide" matBadgeColor="warn" style="color: whitesmoke;" (click)="onRemoveFromBag(featureItem)">remove_circle_outline</mat-icon>
-                    </p>
-                    <span class="qty">৳ 200
-                    <p class="addText" > {{totalItems}} </p>
-                    </span>
-                    <p class="addIcon">
-                        <mat-icon class="hide" matBadgeColor="warn" style="color: whitesmoke;" (click)="onAddToBag(featureItem)"> add_circle_outline
-                        </mat-icon>
-                    </p> -->

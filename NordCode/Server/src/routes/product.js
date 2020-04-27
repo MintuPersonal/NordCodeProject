@@ -3,9 +3,9 @@ var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const db = require('../database/db.js');
 const { QueryTypes } = require('sequelize');
-
 const product = require('../models/Product.js');
 const router = express.Router();
+
 router.get('/getproductall', (req, res, next) => {
     var name = req.query.Name;
     product.findAll().then(products => {
@@ -68,11 +68,7 @@ router.get('/getproductdetail', (req, res, next) => {
     var productdetailobj = {};
     var ProductId = req.query.PID;
     var name = '';
-    //var ProductIamges;
-    // ProductIamges.findAll({ Where: { PID: ProductId } }).then(PImage => {
-    //     ProductIamges = PImage;
-    //     console.log('TTTT ' + PImage[0]);
-    // });
+
     var sqlquery = "Select image from Ecom_ProductIamges Where PID = " + ProductId;
     const ProductIamges = db.sequelize.query(sqlquery, { type: QueryTypes.SELECT });
     console.log(JSON.stringify(ProductIamges[0], null, 2));

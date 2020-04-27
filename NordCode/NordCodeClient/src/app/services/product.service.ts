@@ -22,7 +22,7 @@ export class ProductService {
   _totalItem: number;
   totalAmounts: number;
   TONumber: string = '';
-  
+
   MobileNo: string = '';
   CustomerID: number = 0;
   Address: string = 'Address';
@@ -33,17 +33,18 @@ export class ProductService {
 
   TotalPrice: number = 0;
   TotalNetPrice: number = 0;
-  OtherDiscount: number = 0;  
+  OtherDiscount: number = 0;
+  wishList: Cart[];
 
-  constructor(private _http: HttpClient) {    
+  constructor(private _http: HttpClient) {
     var data = localStorage.getItem("item");
     if (data == 'undefined' || data == "null") {
       this._cartItems = []
     } else {
       this._cartItems = JSON.parse(localStorage.getItem('item' || "null"));
-    } 
+    }
     this.GetCustomerID();
-
+    this.wishList = [];
   }
   public SetEmptyCart(): Cart[] {
     localStorage.setItem('item', null);
@@ -192,5 +193,27 @@ export class ProductService {
   };
   public getProductDetails(pid: number) {
     return this._http.get(environment.baseurl + 'getproductdetail?PID=' + pid);
+  }
+  public SetWishList(item: Cart) {
+    debugger;
+    if (this.wishList.length) {
+      var wishList = this.wishList.filter(itemobj => { if (itemobj.PID == item.PID) { return itemobj; } });
+      debugger;
+      if (wishList.length) {
+
+      } else {
+        this.wishList.push(item);
+      }
+    } else {
+      this.wishList.push(item);
+    }
+  }
+
+  private HasThisItem(item: Cart) {
+    this.wishList.forEach(itemexits => {
+      if (itemexits.PID != item.PID) {
+      }
+    });
+    return true;
   }
 };

@@ -1,0 +1,81 @@
+.line {
+    text-decoration: line-through;
+    color: orangered;
+}
+
+.circle {
+    /* display: inline-block; */
+    color: green;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    font-size: 1rem;
+}
+
+.circle:hover {
+    /* display: inline-block; */
+    color: green;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    font-size: 1.5rem;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    line-height: 20px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    font-size: 12px;
+    background: #ff4500c2;
+    border: solid 1px orangered;
+    border-radius: 5px;
+    min-width: 50px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    z-index: 9999;
+    background: #3d3d3f;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.mat-elevation-z8 {
+    padding: 15px;
+}
+
+.features {
+    border-top-left-radius: 2em;
+    height: 100px;
+    width: 100px;
+}
+
+.icon-x {
+    border: solid 1px #e04f54;
+    font-size: 30px;
+    border-radius: 15px;
+    margin: 1px;
+}
+
+.table td,
+.table th {
+    /* padding: .75rem; */
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}

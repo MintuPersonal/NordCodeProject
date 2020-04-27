@@ -1,8 +1,8 @@
 const db = require('../database/db.js');
 const coupon = require('../models/Coupon.js');
 const Order = require('../models/Order.js');
-
 const router = db.Express.Router();
+
 router.get('/setcoupon', (req, res, next) => {
     var couponNo = req.body.CouponNo;
     coupon.findAll({ where: { CouponNo: couponNo } }).then(offers => {

@@ -27,6 +27,7 @@ import { PolicyComponent } from './components/common/tmart/policy/policy.compone
 import { TermsComponent } from './components/common/tmart/terms/terms.component';
 import { TmartComponent } from './components/common/tmart/tmart.component';
 import { CorporateComponent } from './components/common/tmart/corporate/corporate.component';
+import { WishComponent } from './components/shoping-cart/wish/wish.component';
 
 
 const routes: Routes = [
@@ -37,7 +38,7 @@ const routes: Routes = [
 
   { path: 'category/:filter', component: FilterComponent },
   { path: 'search/:filter', component: SearchComponent },
-  //{ path: 'powder', component: SearchComponent },
+  { path: 'wish', component: WishComponent },
   { path: 'cart', component: CartComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'home', component: HomeComponent },

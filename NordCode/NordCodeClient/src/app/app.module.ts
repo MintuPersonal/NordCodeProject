@@ -59,6 +59,7 @@ import { ContactComponent } from './components/common/tmart/contact/contact.comp
 import { TmartComponent } from './components/common/tmart/tmart.component';
 import { CorporateComponent } from './components/common/tmart/corporate/corporate.component';
 import { ContactformComponent } from './components/common/tmart/contact/contactform/contactform.component';
+import { WishComponent } from './components/shoping-cart/wish/wish.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { ContactformComponent } from './components/common/tmart/contact/contactf
     CheckoutComponent, OrderComponent, PaymentComponent, BannerComponent, ImageComponent, PhoneLoginComponent,
     DialogComponent, AlertHomeComponent, TopNavComponent, MenuComponent, MenuComponent, DialogpdetailsComponent,
     SearchComponent, ProfileComponent, CategoryItemComponent, FilterComponent, BusinesspolicyComponent, FaqComponent,
-    StoryComponent, ContactComponent, PolicyComponent, TermsComponent, TmartComponent, CorporateComponent, ContactformComponent],
+    StoryComponent, ContactComponent, PolicyComponent, TermsComponent, TmartComponent, CorporateComponent, 
+    ContactformComponent, WishComponent],
   imports: [
     RoutingModule, AlertModule, BrowserModule, NgbModule, BrowserAnimationsModule, HttpClientModule,
     FormsModule, ReactiveFormsModule, MatIconModule, MatInputModule, MatRadioModule, MatCheckboxModule,

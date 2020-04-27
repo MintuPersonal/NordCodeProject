@@ -5,6 +5,7 @@ import { DialogpdetailsComponent } from 'src/app/components/common/dialogpdetail
 import { MatDialog } from '@angular/material';
 import { Cart } from 'src/app/models/Cart';
 import { ProductService } from 'src/app/services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-item',
@@ -37,7 +38,12 @@ export class ProductItemComponent implements OnInit {
   totalAmounts: number;
   expression: boolean;
   productDetailModel: any;
-  constructor(private dialog: MatDialog, private productService: ProductService, private _interactionService: InteractionService) { }
+  constructor(
+    private router: Router,
+    private dialog: MatDialog, 
+    private productService: ProductService, 
+    private _interactionService: InteractionService
+    ) { }
 
   ngOnInit() {
     ////////////// Here New Concept  ///////////////
@@ -225,7 +231,7 @@ export class ProductItemComponent implements OnInit {
     this._getTotalAmounts(this.featureItem.PID);
   }
   public addProductToCart(cart: Cart) {
-    
+
     let productExits = false;
     this._cartItems = this.productService._cartItems;
     for (let key in this._cartItems) {
@@ -264,13 +270,13 @@ export class ProductItemComponent implements OnInit {
       if (data) {
         feature_Item.Qty = this.totalItems;
         feature_Item.productDetails = data.productdetail.Banner.fulfillmentValue;
-        this.newMethod(feature_Item);
+        this.OpenMethod(feature_Item);
       }
     });
   }
 
 
-  private newMethod(feature_Item: any) {
+  private OpenMethod(feature_Item: any) {
     const dialogRef = this.dialog.open(DialogpdetailsComponent, {
       panelClass: 'custom-dialog-container',
       autoFocus: false, maxHeight: '90vh', width: '950px', data: feature_Item
@@ -281,4 +287,12 @@ export class ProductItemComponent implements OnInit {
     });
   }
   ////////////// Here New Concept  ///////////////
+
+  public AddWishList(item: Cart) {
+    this.productService.SetWishList(item);    
+  }
+
+  public ViewWishList() {
+    this.router.navigate(['wish']);   
+  }
 }

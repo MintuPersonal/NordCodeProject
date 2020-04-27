@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommercialService } from 'src/app/services/commercial.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProductService } from 'src/app/services/product.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-search',
@@ -20,19 +21,22 @@ export class SearchComponent implements OnInit {
   categoriesModel: any;
   productsModelFilter: any;
 
-  constructor(private _commercialService: CommercialService, private productService: ProductService,
-    private route: ActivatedRoute) { }
+  constructor(
+    private _commercialService: CommercialService,
+    private productService: ProductService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.filter = this.route.snapshot.paramMap.get('filter');
     this._commercialService.getCommercial().subscribe(
       data => {
-        this.commercialObj = data as object[];	 // FILL THE ARRAY WITH DATA.
+        this.commercialObj = data as object[];
         this.commercialModel = this.commercialObj['homeobj'];
         this.productsModel = this.commercialModel['products'];
         this.categoriesModel = this.commercialModel['categories'];
         this.pCategoryName = this.productService.pCategoryName;
-        this.totalItems = this.productsModel.length;       
+        this.totalItems = this.productsModel.length;
         if (this.pCategoryName != "") {
           this.productsModel = this.productsModel.filter(res => {
             return res.PName.toLocaleLowerCase().match(this.pCategoryName.toLocaleLowerCase())
@@ -44,18 +48,18 @@ export class SearchComponent implements OnInit {
               return res.Category.toLocaleLowerCase().match(this.filter.toLocaleLowerCase())
             }
           });
-         
-          if (this.categoriesModel.length ) {   
-            this.productsModelFilter = [];         
+
+          if (this.categoriesModel.length) {
+            this.productsModelFilter = [];
             this.categoriesModel.forEach(element => {
               this.CategoryFilterMethod(element);
-            });    
-           this.productsModel = this.productsModelFilter        
-          }    
+            });
+            this.productsModel = this.productsModelFilter
+          }
         }
         else {
           this.pCategoryName = this.productService.pCategoryName;
-        }          
+        }
       },
       (err: HttpErrorResponse) => {
         console.log(err.message);
@@ -65,10 +69,9 @@ export class SearchComponent implements OnInit {
 
   private CategoryFilterMethod(element: any) {
     this.productsModelFilter = this.productsModel.filter(res => {
-      if(res.ParentId == element.PID){
+      if (res.ParentId == element.PID) {
         return res
       }
-      //return res.ParentId.toLocaleLowerCase().match(element.PID.toLocaleLowerCase());
     });
   }
 }

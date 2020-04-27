@@ -1,0 +1,40 @@
+<div class="mt-5">
+    <mat-card class="card-picture ">
+        <div class="mat-elevation-z8 ">
+            <div class="col-sm-6 col-md-6">
+                <div class="card card-accent-info">
+                    <div class="card-header">
+                        <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> 
+                            <span class="dropdown"> <span> <i class="fa fa-heart"> </i> </span> </span>
+                            </button> WishList
+                    </div>
+                    <div class="card-body">
+                        <div *ngIf="totalItem">
+                            <table class="table">
+                                <thead>
+
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of WishList; index as itemed">
+                                        <td title="added to wishlist"> {{itemed+1}} </td>
+                                        <td> <img class="features" src="../assets/img/product/feature/{{item.ImgPath}}"></td>
+                                        <td> <span>{{ item.PName}} </span> <br> <span class="line" *ngIf="item.MRP > item.UnitPrice"> ৳ {{item.MRP}} </span> </td>
+                                        <td>{{ item.UnitPrice | currency: 'BD '}} </td>
+                                        <td title="remove from wishlist" (click)="RemoveFromWishList(itemed)"> &nbsp; <span class="icon-x"> X </span> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div *ngIf="!totalItem" class="emptyCart text-center">
+                            <div>
+                                <img src="https://cdn.chaldal.net/asset/Egg.Grocery.Fabric/Egg.Grocery.Web/1.5.0+Release-504/Default/components/header/ShoppingCart/images/emptyShoppingBag.png?q=low&webp=1&alpha=1">
+                            </div>
+                            <span style="padding: 10px;">Your shopping withlist is empty. Start add wishlist </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>
