@@ -30,25 +30,16 @@
                     <i class="fa fa-user-circle"> </i>  
                     <span> &nbsp; {{userName}} </span>
                         <div class="dropdown-content text-left" style="z-index: 9999;">
-                            <!-- (click)="alertService.success('Success!!', options)" -->
-                            <!-- <button class="btn btn-success m-1">Success</button> -->
-                            <a href="myprofile" class="fa fa-user-circle"> &nbsp; My Profile </a>
-                            <a href="myorders" class="fa fa-reorder"> &nbsp; My Orders </a>
-                            <a href="account-history" class="fa fa-history"> &nbsp; Payment Histry</a>
-                            <a href="customer/changepassword" class="fa fa-key"> &nbsp; Change Password</a>
-                            <a href="/" class="fa fa-sign-out" (click)="logout()"> &nbsp; Logout </a>
+                            <a href="javascript:void(0)" (click)="ProfileRoute('myprofile')" class="fa fa-user-circle"> &nbsp; My Profile </a>
+                            <a href="javascript:void(0)" (click)="ProfileRoute('myorders')" class="fa fa-reorder"> &nbsp; My Orders </a>
+                            <a href="javascript:void(0)" (click)="ProfileRoute('account-history')" class="fa fa-history"> &nbsp; Payment Histry</a>
+                            <a href="javascript:void(0)" (click)="ProfileRoute('customer/changepassword')" class="fa fa-key"> &nbsp; Change Password</a>
+                            <a href="javascript:void(0)" (click)="logout()" class="fa fa-sign-out"> &nbsp; Logout </a>
                         </div>
                         </span>
                     </div>
                 </div>
-                <!-- <div style="display: none;" id="menucarthide" mat-icon-button (click)="navService.openNavCart()">
-                    <mat-icon> shopping_basket </mat-icon>
-                    <br>
-                    <label> {{totalItem}} items </label>
-                    <div class="pricecrt">
-                        <label> Tk. {{totalAmounts}} </label>
-                    </div>
-                </div> -->
+
                 <div id="cartnav" class="sidepanel addcart" style="position:relative;right: 100%;">
                     <mat-label class="mat-lebal">{{totalItem}} Items</mat-label>
                     <a href=" javascript:void(0)" class="closebtn" (click)="navService.openNavCart()">&times;</a>

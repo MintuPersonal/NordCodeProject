@@ -8,7 +8,7 @@
             <br>
             <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
                 <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
-                    <button fxFlex="100%" class="text-center btn btn-success"> Order List </button>
+                    <button fxFlex="100%" class="text-center alert alert-warning"> Order List </button>
                 </mat-card-title>
                 <hr>
                 <div class="full-width">
@@ -16,10 +16,10 @@
                         <tbody *ngFor="let item of orsers; index as itemed" class="tbody">
                             <tr class="clearfix"> . </tr>
                             <tr>
-                                <div *ngIf="item.OrderStatus == 1" class="submited"> Submited</div>
-                                <div *ngIf="item.OrderStatus == 2" class="onway"> On The Way </div>
-                                <div *ngIf="item.OrderStatus == 3" class="completed"> Completed </div>
-                                <div *ngIf="item.OrderStatus == 4" class="cancled"> Cancled </div>
+                                <div *ngIf="item.OrderStatus == 1" class="text-center col-4 alert alert-warning"> Submited</div>
+                                <div *ngIf="item.OrderStatus == 2" class="text-center col-4 alert alert-danger"> On The Way </div>
+                                <div *ngIf="item.OrderStatus == 3" class="text-center col-4 alert alert-info"> Completed </div>
+                                <div *ngIf="item.OrderStatus == 4" class="text-center col-4 alert alert-dismissible"> Cancled </div>
                             </tr>
                             <tr class="tr">
                                 <div class="orderNo">Order # {{ item.TONumber }} </div>
@@ -28,8 +28,8 @@
                                 <div class="amount"> {{ item.TotalPrice | currency: 'BD '}} </div>
                             </tr>
                             <tr class="tr">
-                                <button fxFlex="100%" class="btn btn-success text-center" *ngIf="item.Active" (click)="OrderDetails(item)"> Details >>> </button>
-                                <button fxFlex="100%" class="btn btn-success text-center" *ngIf="!item.Active" (click)="OrderClose(item)"> Close </button>
+                                <button fxFlex="100%" class="alert alert-success text-center" *ngIf="item.Active" (click)="OrderDetails(item)"> Details >>> </button>
+                                <button fxFlex="100%" class="alert alert-warning text-center" *ngIf="!item.Active" (click)="OrderClose(item)"> Close </button>
                             </tr>
                         </tbody>
                     </table>
@@ -43,7 +43,7 @@
             <br>
             <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
                 <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
-                    <button fxFlex="100%" class="text-center btn btn-danger"> Add all items to Shopping Bag </button>
+                    <button fxFlex="100%" class="text-center alert alert-danger"> Add all items to shopping bag </button>
                 </mat-card-title>
                 <hr>
                 <div>

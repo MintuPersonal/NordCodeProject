@@ -242,7 +242,6 @@ export class HeaderComponent implements OnInit {
     }
   }
   public logout() {
-    //this.router.navigate(['/']);
     this.logincondition = false;
     localStorage.setItem('currentUser', JSON.stringify(''));
     this.CheckUserSession();
@@ -279,6 +278,10 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  public ProfileRoute(url: string) {
+    this.router.navigate([url]);
+    //alert(url);
+  }
   ////////////// Here New Concept  ///////////////
 
 }

@@ -3,15 +3,11 @@
 
     <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
         <mat-card style="margin-top:10px;" *ngIf="!submitted">
-            <h2 class="text-center" style="text-align: center;"><i class="fa fa-check "></i></h2>
+            <h2 class="text-center">
+                <i class="fa fa-check alert alert-success"></i>
+            </h2>
 
             <form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
-
-                <!-- 
-                <mat-form-field class="example-full-width">
-                    <input matInput #username="ngModel" name="username" ngModel [(ngModel)]="userModel.Username" type="email" required minlength="6" placeholder="UserName" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-                    <mat-error *ngIf="username.invalid"> Please enter an valid email. </mat-error>
-                </mat-form-field> -->
 
                 <mat-form-field class="example-full-width">
                     <input matInput #mobileno="ngModel" name="mobileno" ngModel [(ngModel)]="userModel.Mobileno" type="email" required minlength="11" placeholder="User Mobile No">
@@ -29,7 +25,7 @@
                 </mat-form-field>
                 <hr>
                 <div class="example-button-row">
-                    <button mat-raised-button [disabled]="userForm.form.invalid" color="primary" class="material-cust-large-button"> Sign In </button>
+                    <button mat-raised-button [disabled]="userForm.form.invalid" class="material-cust-large-button"> Sign In </button>
 
                     <mat-error *ngIf="1"> Your are login : {{isCounted}} </mat-error>
                 </div>
