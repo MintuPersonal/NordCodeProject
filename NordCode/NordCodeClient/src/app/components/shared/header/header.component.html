@@ -3,25 +3,24 @@
         <div class="header">
             <div class="over-line">
                 <div class="row " fxLayoutAlign="space-evenly">
-                    <div class="col-lg-2">
+                    <div class="col-md-2 col-sm-2">
                         <a href="javascript:void(0)">
                             <!-- javascript:void(0) -->
                             <mat-icon mat-icon-button id="menu" (click)="navService.openNavMenu()"> menu </mat-icon>
                         </a>
                         <a routerLink=""><img class="img" src="../assets/img/product/header/Logo.jpg"></a>
                     </div>
-                    <input [pCategoryName]="pCategoryName" [(ngModel)]="pCategoryName" #myInput (input)="Search()" class="col-lg-7" type="text" placeholder="Search for products (e.g. eggs, milk, alu)">
-
-                    <div class="col-lg-1 signin-cart">
+                    <input class="col-lg-7 col-md-5 col-sm-5" [pCategoryName]="pCategoryName" [(ngModel)]="pCategoryName" #myInput (input)="Search()" type="text" placeholder="Search for products (e.g. eggs, milk, alu)">
+                    <div class="col-md-1 col-sm-2 signin-cart">
                         <a href="javascript:void(0)">
                             <mat-icon (click)="navService.openNavCart()" [matBadge]="totalItem" matBadgeColor="warn">add_shopping_cart</mat-icon>
                             <span class="cdk-visually-hidden" (click)="navService.openNavCart()"> </span>
                         </a>
                     </div>
-                    <div class="enbn  col-lg-1">
+                    <div class="col-md-1 col-sm-2 enbn">
                         <span> En | Bn </span>
                     </div>
-                    <div class="col-lg-1 signin enbn">
+                    <div class="col-lg-1 col-md-2 col-sm-2 signin">
                         <a href="javascript:void(0)">
                             <span *ngIf="!logincondition" (click)="PhoneLogin()"> Signin </span>
                         </a>

@@ -74,8 +74,8 @@ router.get('/getproductdetail', (req, res, next) => {
     console.log(JSON.stringify(ProductIamges[0], null, 2));
 
     product.findByPk(ProductId).then(products => {
-        console.log(products.Category);
-        name = products.Category;
+        //console.log(products.Category);
+        //name = products.Category;
         //var imgUrl = products.ImgPath
         productdetailobj.Banner = ProductIamges; //[imgUrl, 'One_' + imgUrl, 'Two_' + imgUrl, 'Three_' + imgUrl, 'Four_' + imgUrl];
         productdetailobj.Product = products;

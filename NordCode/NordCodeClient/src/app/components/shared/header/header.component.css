@@ -359,6 +359,7 @@ body {
     height: 50px;
     background: orangered;
     color: white;
+    padding: 10px;
 }
 
 div#main {
@@ -375,6 +376,7 @@ div#main {
 .enbn {
     padding: 10px;
     color: white;
+    /* background-color: orange; */
 }
 
 .search {

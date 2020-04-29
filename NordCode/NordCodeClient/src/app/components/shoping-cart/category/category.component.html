@@ -1,7 +1,7 @@
 <ngb-carousel *ngIf="images" interval="2000">
     <ng-template ngbSlide *ngFor="let item of categories">
         <div class="row">
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <a [routerLink]="['category', item[0]]">
                     <mat-card style="background: orange;border-radius: 10px;">
                         <mat-card-subtitle></mat-card-subtitle>
@@ -14,7 +14,7 @@
                     </mat-card>
                 </a>
             </div>
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <a [routerLink]="['category', item[1]]">
                     <mat-card style="background: #f44336;border-radius: 10px;">
                         <mat-card-subtitle></mat-card-subtitle>
@@ -26,7 +26,7 @@
                     </mat-card>
                 </a>
             </div>
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <a [routerLink]="['category', item[2]]">
                     <mat-card style="background: #28a745;border-radius: 10px;">
                         <mat-card-subtitle></mat-card-subtitle>
@@ -39,7 +39,7 @@
                     </mat-card>
                 </a>
             </div>
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <a [routerLink]="['category', item[3]]">
                     <mat-card style="background: #17a2b8;border-radius: 10px;">
                         <mat-card-subtitle></mat-card-subtitle>
@@ -51,7 +51,7 @@
                     </mat-card>
                 </a>
             </div>
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <a [routerLink]="['category', item[4]]">
                     <mat-card style="background: rosybrown;border-radius: 10px;">
                         <mat-card-subtitle></mat-card-subtitle>
@@ -64,7 +64,7 @@
                     </mat-card>
                 </a>
             </div>
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <a [routerLink]="['category', item[5]]">
                     <mat-card style="background: salmon;border-radius: 10px;">
                         <mat-card-subtitle></mat-card-subtitle>
@@ -83,7 +83,7 @@
 
 <!-- <ng-template ngbSlide>
         <div class="row">
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <a [routerLink]="['search', item[3]]">
                     <mat-card style="background: orange;border-radius: 10px;">
                         <mat-card-subtitle></mat-card-subtitle>
@@ -96,7 +96,7 @@
                 </a>
             </div>
 
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <mat-card style="background: palegreen;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
@@ -106,7 +106,7 @@
                     </mat-card-title>
                 </mat-card>
             </div>
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <mat-card style="background: peachpuff;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
@@ -117,7 +117,7 @@
                     </mat-card-title>
                 </mat-card>
             </div>
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <mat-card style="background: rosybrown;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
@@ -128,7 +128,7 @@
                     </mat-card-title>
                 </mat-card>
             </div>
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <mat-card style="background: salmon;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
@@ -139,7 +139,7 @@
                     </mat-card-title>
                 </mat-card>
             </div>
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <mat-card style="background: palegoldenrod;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
@@ -154,7 +154,7 @@
     </ng-template>
     <ng-template ngbSlide>
         <div class="row">
-            <div class="picsum-img-wrapper col-lg-2">              
+            <div class="picsum-img-wrapper col-2">              
                 <mat-card style="background: orange;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
@@ -166,7 +166,7 @@
                 </mat-card>
             </div>
 
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <mat-card style="background: palegreen;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
@@ -177,7 +177,7 @@
                     </mat-card-title>
                 </mat-card>
             </div>
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <mat-card style="background: peachpuff;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
@@ -188,7 +188,7 @@
                     </mat-card-title>
                 </mat-card>
             </div>
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <mat-card style="background: rosybrown;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
@@ -199,7 +199,7 @@
                     </mat-card-title>
                 </mat-card>
             </div>
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <mat-card style="background: salmon;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
@@ -210,7 +210,7 @@
                     </mat-card-title>
                 </mat-card>
             </div>
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <mat-card style="background: palegoldenrod;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
@@ -225,7 +225,7 @@
     </ng-template>
     <ng-template ngbSlide>
         <div class="row">
-            <div class="picsum-img-wrapper col-lg-2">               
+            <div class="picsum-img-wrapper col-2">               
                 <mat-card style="background: orangered;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
@@ -236,7 +236,7 @@
                 </mat-card>
             </div>
 
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <mat-card style="background: goldenrod;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
@@ -246,7 +246,7 @@
                     </mat-card-title>
                 </mat-card>
             </div>
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <mat-card style="background: palevioletred;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
@@ -256,7 +256,7 @@
                     </mat-card-title>
                 </mat-card>
             </div>
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <mat-card style="background: royalblue;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
@@ -266,7 +266,7 @@
                     </mat-card-title>
                 </mat-card>
             </div>
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <mat-card style="background: skyblue;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">
@@ -276,7 +276,7 @@
                     </mat-card-title>
                 </mat-card>
             </div>
-            <div class="picsum-img-wrapper col-lg-2">
+            <div class="picsum-img-wrapper col-2">
                 <mat-card style="background: palegreen;border-radius: 10px;">
                     <mat-card-subtitle></mat-card-subtitle>
                     <mat-card-title fxLayout.gt-xs="5%" fxLayout.xs="column">

@@ -28,11 +28,12 @@
                 </span>
                 <h4 at-dialog-title>{{data.PName}}</h4>
                 <mat-label>{{data.Weight}}</mat-label>
-                <p class="price">
+                <p class="price col-12">
                     <span *ngIf="data.Discount"> 
-                        <span class="line" > ৳ {{data.MRP}} </span> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="line col-6 text-left" > ৳ {{data.MRP}} </span>
+                    <span class="offset-2"></span>
                     </span>
-                    <span>৳ {{data.UnitPrice}} </span>
+                    <span class="offset-1 col-6 text-right">৳ {{data.UnitPrice}} </span>
                 </p>
                 <!-- <p class="price"> ৳ {{data.UnitPrice}}</p> -->
                 <section>

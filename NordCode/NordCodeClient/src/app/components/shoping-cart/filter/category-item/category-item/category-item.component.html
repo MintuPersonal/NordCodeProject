@@ -1,22 +1,21 @@
 <div class="p-3">
     <a href="/" onclick="return false;" (click)="SetRouteValue(categoryItem)">
-        <mat-card class="card-picture" style="border-top-left-radius:3em; padding: 0px;">
+        <mat-card class="card-picture">
             <mat-card-title style="display: grid;">
                 <div class="flip-box">
                     <div class="flip-box-inner">
                         <div class="flip-box-front">
-                            <img src="../assets/img/product/feature/{{categoryItem.ImgPath}}" alt="Paris" style="width:300px;height:200px">
+                            <img src="../assets/img/product/feature/{{categoryItem.ImgPath}}" alt="Paris">
                         </div>
                         <div class="flip-box-back">
-                            <h2>{{categoryItem.PName}}</h2>
-                            <p>What an amazing {{categoryItem.PName}}</p>
-                            <img src="../assets/img/product/feature/{{categoryItem.ImgPath}}" alt="Paris" style="width:300px;height:200px">
-
+                            <h2> {{categoryItem.PName}} </h2>
+                            <p> What an amazing {{categoryItem.PName}}</p>
+                            <img src="../assets/img/product/feature/{{categoryItem.ImgPath}}" alt="Paris">
                         </div>
                     </div>
                 </div>
             </mat-card-title>
         </mat-card>
+        <div class="productName">{{categoryItem.PName}}</div>
     </a>
 </div>
-<div class="productName">{{categoryItem.PName}}</div>
