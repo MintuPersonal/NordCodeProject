@@ -137,3 +137,9 @@ img {
     background: white;
     color: white;
 }
+
+.alert-danger:hover {
+    color: #721c24;
+    background-color: #f4433696;
+    border-color: #dc3545;
+}

@@ -19,17 +19,19 @@ export class OrderComponent implements OnInit {
   newOrders: Ecom_Orders[]
   Address: string;
   ordersOrgin: Ecom_Orders[];
+  TONumber: string;
   constructor(private customerService: CustomerService, private productService: ProductService, ) { }
   customerModel = new Customer();
   ngOnInit() {
     this.customerModel.CID = this.productService.GetCustomerID();
     this.customerModel.MobileNo = '0' + this.customerModel.CID;
     this.customerService.getOrders(this.customerModel.CID).subscribe((orsers: Ecom_Orders[]) => {
-      this.orsers = orsers;     
+      this.orsers = orsers;
     });
   }
 
   public OrderDetails(order: Ecom_Orders) {
+    this.TONumber = order.TONumber;
     this.customerService.getOrderDetails(order.TONumber).subscribe((orserdetails: any) => {
       if (orserdetails.OrderDetails.length) {
         this.Address = order.Address;
@@ -56,6 +58,32 @@ export class OrderComponent implements OnInit {
     this.ngOnInit();
     this.orserdetails = [];
     this.Address = '';
+  }
+
+  public addtoCart() {  
+    this.orserdetails;  
+    alert('Feature under constraction : ' + this.TONumber);
+
+    // this.customerService.getOrderDetails(order.TONumber).subscribe((orserdetails: any) => {
+    //   if (orserdetails.OrderDetails.length) {
+    //     this.Address = order.Address;
+    //     this.productService.TotalPrice = order.TotalPrice;
+    //     this.productService.Address = order.Address;
+    //     this.orserdetails = orserdetails.OrderDetails;
+    //     this.newOrders = [];
+    //     this.orsers.forEach(item => {
+    //       if (item.TONumber == order.TONumber) {
+    //         item.Active = false;
+    //         this.newOrders.push(item);
+    //       } else {
+    //         item.Active = true;
+    //         this.newOrders.push(item);
+    //       }
+    //     })
+    //     this.orsers = [];
+    //     this.orsers = this.newOrders;
+    //   }
+    // });
   }
 }
 
