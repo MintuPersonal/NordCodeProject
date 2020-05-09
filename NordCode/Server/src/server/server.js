@@ -37,10 +37,9 @@ const httpsOptions = {
     key: fs.readFileSync(path.join(__dirname, 'ssl', 'privatekey.pem'))
 }
 
-https.createServer(httpsOptions, app)
-    .listen(PORT, () => {
-        console.log(`Server the ${directoryToServe}/ directory at https:/localhost/${PORT}`);
-    });
+https.createServer(httpsOptions, app).listen(PORT, () => {
+    console.log(`Server the ${directoryToServe}/ directory at https:/localhost/${PORT}`);
+});
 
 app.listen(port, () => {
     //console.log(config.production.host)

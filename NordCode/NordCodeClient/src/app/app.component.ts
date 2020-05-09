@@ -95,7 +95,7 @@ export class AppComponent implements AfterViewInit {
     }
   }
   logMessage(value) {
-    console.log(value);
+    //console.log(value);
   }
   ngAfterViewInit() {
     this.navService.appDrawer = this.appDrawer;

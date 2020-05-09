@@ -27,6 +27,7 @@ export class DialogpdetailsComponent implements OnInit {
   }
 
   public onAddToBag(featureItem) {
+    debugger;
     this._interactionService.sendForAddtoCart(featureItem);
     this._getTotalAmounts(featureItem.PID);
   }

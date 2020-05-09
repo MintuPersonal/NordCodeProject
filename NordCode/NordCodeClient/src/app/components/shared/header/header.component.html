@@ -13,7 +13,7 @@
                     <input class="col-lg-7 col-md-5 col-sm-5" [pCategoryName]="pCategoryName" [(ngModel)]="pCategoryName" #myInput (input)="Search()" type="text" placeholder="Search for products (e.g. eggs, milk, alu)">
                     <div class="col-md-1 col-sm-2 signin-cart">
                         <a href="javascript:void(0)">
-                            <mat-icon (click)="navService.openNavCart()" [matBadge]="totalItem" matBadgeColor="warn">add_shopping_cart</mat-icon>
+                            <mat-icon (click)="navService.openNavCart()" [matBadge]="totalItem" matBadgeColor="accent">add_shopping_cart</mat-icon>
                             <span class="cdk-visually-hidden" (click)="navService.openNavCart()"> </span>
                         </a>
                     </div>
@@ -61,7 +61,6 @@
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let item of _cartItems; index as itemed" class="tr">
-
                                             <td title="add one more to bag" class="td">
                                                 <mat-icon (click)="onAddToBag(item)">add_circle</mat-icon>
                                                 <br> {{ item.Qty }}
@@ -93,7 +92,7 @@
 
                     <h6 *ngIf="totalItem" class="text-center">
                         <div>
-                            <mat-button-toggle-group (click)="PlaceOrder(totalAmounts)" color="accent" [totalPrice]="totalAmounts " name="fontStyle " aria-label="Font Style ">
+                            <mat-button-toggle-group (click)="PlaceOrder(totalAmounts)" color="accent" name="fontStyle" aria-label="Font Style">
                                 <mat-button-toggle value="italic" class="order">
                                     Place Order </mat-button-toggle>
                                 <mat-button-toggle value="underline" class="price">Tk. {{totalAmounts}}

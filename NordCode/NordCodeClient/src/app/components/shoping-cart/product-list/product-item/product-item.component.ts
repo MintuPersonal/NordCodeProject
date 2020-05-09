@@ -230,30 +230,30 @@ export class ProductItemComponent implements OnInit {
     this._interactionService.sendForRemoveFromCart(this.featureItem);
     this._getTotalAmounts(this.featureItem.PID);
   }
-  public addProductToCart(cart: Cart) {
-
-    let productExits = false;
-    this._cartItems = this.productService._cartItems;
-    for (let key in this._cartItems) {
-      if (this._cartItems[key].PID === cart.PID) {
-        this._cartItems[key].Qty++;
-        this._cartItems[key].totalItems++;
-        productExits = true;
-        break;
-      }
-    }
-
-    if (!productExits) {
-      this._cartItems.push({ Add: '+', PID: cart.PID, ImgPath: cart.ImgPath, PName: cart.PName, Qty: 0, MRP: cart.MRP, UnitPrice: cart.UnitPrice, Close: 'X' });
-      console.log(JSON.stringify(this._cartItems));
-    }
-
+  public addProductToCart(product: Cart) {    
     this._interactionService.sendForAddtoCart(this.featureItem);
-    this._getTotalAmounts(cart.PID);
+    this._getTotalAmounts(product.PID);
+
+    // let productExits = false;
+    // this._cartItems = this.productService._cartItems;
+    // for (let key in this._cartItems) {
+    //   if (this._cartItems[key].PID === cart.PID) {
+    //     this._cartItems[key].Qty++;
+    //     this._cartItems[key].totalItems++;
+    //     productExits = true;
+    //     break;
+    //   }
+    // }
+
+    // if (!productExits) {
+    //   debugger;
+    //   this._cartItems.push({ Add: '+', PID: cart.PID, ImgPath: cart.ImgPath, PName: cart.PName, Qty: 0, MRP: cart.MRP, UnitPrice: cart.UnitPrice, Close: 'X' });
+    //   console.log(JSON.stringify(this._cartItems));
+    // }
+    
   }
   public _getTotalAmounts(pid) {
     this._cartItems = this.productService._cartItems;
-
     this.totalAmounts = 0;
     if (this._cartItems != null) {
       this._cartItems.forEach((item) => {

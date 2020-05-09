@@ -68,7 +68,6 @@ export class HeaderComponent implements OnInit {
     protected alertService: AlertService, public navService: NavbarService,
     private interactionService: InteractionService, private productService: ProductService,
     private customerService: CustomerService) {
-    //this.logincondition = this.CheckUserSession();
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.mySubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -107,7 +106,7 @@ export class HeaderComponent implements OnInit {
 
   }
   logMessage(value) {
-    console.log(value);
+    //console.log(value);
   }
   ngOnInit() {
 
@@ -147,6 +146,7 @@ export class HeaderComponent implements OnInit {
     ////////////// Here New Concept  ///////////////
     this.interactionService.getForAddtoCart().subscribe((product: Cart) => {
       if (!this.productService.fromproductlist) {
+        debugger;
         this.addProductToCart(product);
       } else {
         this._getTotalAmounts();
@@ -164,35 +164,20 @@ export class HeaderComponent implements OnInit {
     this._getTotalAmounts(); //featureItem.PID
   }
   public addProductToCart(product: Cart) {
-
-    let productExits = false;
+    
     this._cartItems = this.productService._cartItems;
-    for (let key in this._cartItems) {
-      if (this._cartItems[key].PID === product.PID) {
-        this._cartItems[key].Qty++;
-        productExits = true;
-        break;
-      }
-    }
-
-    if (!productExits) {
-      this._cartItems.push({
-        Add: '+', PID: product.PID, ImgPath: product.ImgPath, PName: product.PName, Qty: 1, UnitPrice: product.UnitPrice, Close: 'X'
-      });
-    }
-    this._getTotalAmounts();
+    this.productService.addProductToCart(product);
+    this._getTotalAmounts(); 
   }
   private _getTotalAmounts() {
     this._cartItems = this.productService._cartItems;
     localStorage.setItem('item', JSON.stringify(this._cartItems));
     if (this._cartItems != null) {
       this.totalItem = this._cartItems.length;
-      this.totalAmounts = 0;
-      //this.totalDiscount = 0;
+      this.totalAmounts = 0;      
       this._cartItems.forEach((item) => {
         this.totalAmounts += (item.Qty * item.UnitPrice);
-        this.totalNetAmounts += (item.Qty * item.MRP);
-        /// this.totalDiscount = this.totalNetAmounts - this.totalNetAmounts
+        this.totalNetAmounts += (item.Qty * item.MRP);       
       });
     };
   }
@@ -250,7 +235,7 @@ export class HeaderComponent implements OnInit {
 
     this.router.navigate(['/login']);
   }
-  public PlaceOrder(totalPrice: any) {
+  public PlaceOrder(totalPrice: number) {
     var order = this.productService.GetOrder();
     this.productService.TotalPrice = order.TotalPrice;
     this.totalAmounts = order.TotalPrice;

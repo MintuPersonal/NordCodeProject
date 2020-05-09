@@ -159,19 +159,29 @@ export class ProductService {
   public SetCustomerID(cid: number) {
     this.CustomerID = cid;
   }
-  // public GetTotalAmounts(): number {
-  //   //this._cartItems = this.productService._cartItems;
-  //   localStorage.setItem('item', JSON.stringify(this._cartItems));
-  //   if (this._cartItems != null) {
-  //     this._totalItem = this._cartItems.length;
-  //     this.totalAmounts = 0;
-  //     this._cartItems.forEach((item) => {
-  //       this.totalAmounts += (item.Qty * item.UnitPrice);
-  //     });      
-  //   };
-  //   localStorage.setItem('item', null)
-  //   return this.totalAmounts;
-  // }
+  public addProductToCart(product: Cart) {
+
+    let productExits = false;    
+    for (let key in this._cartItems) {
+      if (this._cartItems[key].PID === product.PID) {
+        this._cartItems[key].Qty++;
+        productExits = true;
+        break;
+      }
+    }
+    if (!productExits) {
+      let cart = new Cart();
+      cart.Add= '+';
+      cart.PID= product.PID;
+      cart.ImgPath= product.ImgPath;
+      cart.PName= product.PName;
+      cart.Qty= 1;
+      cart.MRP= product.MRP;
+      cart.UnitPrice= product.UnitPrice;
+      cart.Close= 'X';    
+      this._cartItems.push(cart);
+    }    
+  }
 
   ////////////// Here New Concept  ///////////////
 
