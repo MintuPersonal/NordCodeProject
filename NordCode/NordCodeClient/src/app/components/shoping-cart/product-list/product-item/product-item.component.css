@@ -175,6 +175,29 @@ th.mat-header-cell:last-of-type {
     opacity: 0;
 }
 
+.overlay.text.addtoshopping {
+    font-size: 20px;
+    position: absolute;
+    top: 34px;
+    left: 0;
+    padding-top: 0;
+    color: #fff;
+    background-color: rgba(40, 40, 40, .75);
+    text-align: center;
+    height: 77%;
+    width: 100%;
+    border: 1px solid #CCC;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    padding-bottom: 55px;
+    opacity: 0;
+}
+
 .overlay.text.stockout {
     font-size: 20px;
     position: absolute;

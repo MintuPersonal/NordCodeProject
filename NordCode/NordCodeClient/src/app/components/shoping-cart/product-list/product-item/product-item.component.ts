@@ -36,8 +36,9 @@ export class ProductItemComponent implements OnInit {
   _cartItems: any;
   totalItems: any = 0;
   totalAmounts: number;
-  expression: boolean;
+  //expression: boolean;
   productDetailModel: any;
+  hide: boolean = true;
   constructor(
     private router: Router,
     private dialog: MatDialog, 
@@ -51,7 +52,7 @@ export class ProductItemComponent implements OnInit {
     //     this._getTotalAmounts(product.PID);
     // });
     ////////////// Here New Concept  ///////////////
-    this.expression = false;
+    //this.expression = false;
   }
   public LoadItemTotal() {
 
@@ -230,7 +231,8 @@ export class ProductItemComponent implements OnInit {
     this._interactionService.sendForRemoveFromCart(this.featureItem);
     this._getTotalAmounts(this.featureItem.PID);
   }
-  public addProductToCart(product: Cart) {    
+  public addProductToCart(product: Cart) {   
+    this.hide = false; 
     this._interactionService.sendForAddtoCart(this.featureItem);
     this._getTotalAmounts(product.PID);
 

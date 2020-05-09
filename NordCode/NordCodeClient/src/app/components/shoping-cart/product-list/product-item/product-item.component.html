@@ -26,7 +26,7 @@
                     </span>
                 </div>
 
-                <div *ngIf="featureItem.UnitsInStock !== 0 " class="overlay text">
+                <div *ngIf="featureItem.UnitsInStock !== 0 && hide " class="overlay text addtoshopping">
                     <div class="circle" (click)="AddWishList(featureItem)">
                         <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> 
                              <span class="dropdown"> 
@@ -45,7 +45,7 @@
                     </span>
                 </div>
 
-                <div *ngIf="featureItem.totalItems > 0" class="overlay text">
+                <div *ngIf="featureItem.totalItems > 0" class="overlay text ">
                     <div class="column-list">
 
                         <p class="addText"> ৳ {{featureItem.UnitPrice}}</p>
