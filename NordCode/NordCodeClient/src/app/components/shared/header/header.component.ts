@@ -62,6 +62,7 @@ export class HeaderComponent implements OnInit {
     }
   }
   item: any[];
+  customer: any;
 
 
   constructor(private router: Router, private dialog: MatDialog,
@@ -164,20 +165,20 @@ export class HeaderComponent implements OnInit {
     this._getTotalAmounts(); //featureItem.PID
   }
   public addProductToCart(product: Cart) {
-    
+
     this._cartItems = this.productService._cartItems;
     this.productService.addProductToCart(product);
-    this._getTotalAmounts(); 
+    this._getTotalAmounts();
   }
   private _getTotalAmounts() {
     this._cartItems = this.productService._cartItems;
     localStorage.setItem('item', JSON.stringify(this._cartItems));
     if (this._cartItems != null) {
       this.totalItem = this._cartItems.length;
-      this.totalAmounts = 0;      
+      this.totalAmounts = 0;
       this._cartItems.forEach((item) => {
         this.totalAmounts += (item.Qty * item.UnitPrice);
-        this.totalNetAmounts += (item.Qty * item.MRP);       
+        this.totalNetAmounts += (item.Qty * item.MRP);
       });
     };
   }
@@ -236,6 +237,11 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   public PlaceOrder(totalPrice: number) {
+    this.customer = JSON.parse(localStorage.getItem('customerInfo' || "null"));
+    if (this.customer == null) {
+      this.router.navigate(['/login']);
+      return false;
+    }
     var order = this.productService.GetOrder();
     this.productService.TotalPrice = order.TotalPrice;
     this.totalAmounts = order.TotalPrice;

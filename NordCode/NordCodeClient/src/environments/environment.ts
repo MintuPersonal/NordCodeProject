@@ -5,7 +5,9 @@
 //import { currentId } from 'async_hooks';
 
 export const environment = {
-  production: false, baseurl: 'http://localhost:3000/api/', currentuserId: '11'
+  production: false, 
+  baseurl: 'http://10.11.4.155:8010/api/', 
+  currentuserId: '11'
 };
 //'http://admin.americantmartbd.com:8000/api/', //'http://10.11.1.6:3000/api/' demo.one-ict.com http://admin.americantmartbd.com:8000/api/
 

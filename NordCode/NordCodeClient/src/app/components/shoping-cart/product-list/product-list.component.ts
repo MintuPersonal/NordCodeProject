@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommercialService } from 'src/app/services/commercial.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Ecom_Commercial } from 'src/app/models/Commercial';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -19,8 +20,8 @@ export class ProductListComponent implements OnInit {
   featuresModel: any; 
   pCategoryName: string;
 
-  constructor(private commercialService: CommercialService) {
-
+  constructor(private commercialService: CommercialService, private productService : ProductService) {    
+    this.productService._cartItems = [];
     this.commercialService.getCommercial().subscribe(data => {
       this.commercialObj = data as object[];
       this.commercialModel = this.commercialObj['homeobj'];
@@ -30,7 +31,6 @@ export class ProductListComponent implements OnInit {
       this.featuresModel = this.commercialModel['features'];
       this.productsModel = this.commercialModel['products'];
     });
-
   }
 
   ngOnInit() {

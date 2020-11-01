@@ -42,7 +42,6 @@ export class CustomerService {
     return this._http.post<any>(environment.baseurl + 'setorder', order);
   };
 
-
   updateOrder(order: Ecom_Orders) {
     return this._http.post<any>(environment.baseurl + 'updateorder', order);
   };

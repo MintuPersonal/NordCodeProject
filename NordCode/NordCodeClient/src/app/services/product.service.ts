@@ -76,10 +76,11 @@ export class ProductService {
   public SetProductScearchFilter(categoryname) {
     this.pCategoryName = categoryname;
   }
+  
   public GetOrder(): Ecom_Orders {
-    localStorage.setItem('item', JSON.stringify(this._cartItems));
+    localStorage.setItem('item', JSON.stringify(this._cartItems));   
     this.customer = JSON.parse(localStorage.getItem('customerInfo' || "null"));
-
+  
     var order = new Ecom_Orders();
     this.TONumber = '11_' + Math.random().toString().slice(2, 11);
     this.TotalPrice = 0;

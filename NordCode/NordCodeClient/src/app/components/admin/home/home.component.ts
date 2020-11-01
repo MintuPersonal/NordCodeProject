@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../addnew/task';
 import { AddnewService } from '../../../services/addnew.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,8 @@ export class HomeComponent implements OnInit {
   errorMsg: any;
   id: any;
 
-  constructor(private _addnewService: AddnewService) { }
+  constructor(private _addnewService: AddnewService, private  _productService: ProductService) {    
+   }
 
   pictures = [
     { 'date': new Date, 'title': 'Mr Rahman', 'time': '10-12 pm', 'location': 'Bangladesh', 'IsDone': true, 'IsDelete': true },
@@ -42,8 +44,7 @@ export class HomeComponent implements OnInit {
 
     return value;
   }
-  ngOnInit() {
-    // this.ps.getProducts().subscribe((data: Product[]) => {this.products = data; });
+  ngOnInit() {    
     this._addnewService.getTask(this.taskModel).subscribe((data: Task[]) => { this.tasksModel = data; });
   }
 

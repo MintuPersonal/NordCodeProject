@@ -27,7 +27,6 @@ export class PaymentComponent implements OnInit {
   displayedColumn: string[] = ['Address'];
   displayedColumns: string[] = ['Add', 'OrderNo', 'Qty', 'UnitPrice', 'Close'];
 
-
   orderModels: Ecom_Orders[];
   ngOnInit() {
     
@@ -50,4 +49,5 @@ export class PaymentComponent implements OnInit {
       this.router.navigate(['/']);
     }
   }
+  
 }

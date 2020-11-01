@@ -10,7 +10,8 @@ export class BannerComponent implements OnInit {
 
   showNavigationArrows = false;
   showNavigationIndicators = false;
-  images = [62, 83, 466, 965, 982, 1043, 738].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  debugger;
+  images = [1, 2, 3, 4, 5, 6, 7].map((n) => `../assets/img/product/banner/${n}.png`);
   items: Array<any> = []
 
   constructor(config: NgbCarouselConfig, private renderer: Renderer2) {
